@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DeepShop: A Benchmark for Deep Research Shopping Agents</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>YJ7N97U7</td></tr><tr><th>wiki_id</th><td>YJ7N97U7</td></tr><tr><th>aliases</th><td>[YJ7N97U7]</td></tr><tr><th>slug</th><td>lyu-2025-deepshop-benchmark-shopping</td></tr><tr><th>title</th><td>&quot;DeepShop: A Benchmark for Deep Research Shopping Agents&quot;</td></tr><tr><th>authors</th><td>[&quot;Lyu, Yougang&quot;, &quot;Zhang, Xiaoyu&quot;, &quot;Yan, Lingyong&quot;, &quot;Rijke, Maarten de&quot;, &quot;Ren, Zhaochun&quot;, &quot;Chen, Xiuying&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>&quot;arXiv&quot;</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2506.02839&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2506.02839&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2506.02839&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;web shopping agents&quot;, &quot;benchmark evaluation&quot;, &quot;query complexity&quot;, &quot;e-commerce&quot;, &quot;product attributes&quot;, &quot;search filters&quot;, &quot;sorting preferences&quot;, &quot;multimodal agents&quot;, &quot;deep research systems&quot;, &quot;agent evaluation&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>DeepShop: A Benchmark for Deep Research Shopping Agents</h1>
+<h2>Contribution</h2>
+<p>The authors introduce DeepShop, a benchmark designed to evaluate web agents on complex and realistic online shopping scenarios. Existing benchmarks like WebShop, Mind2Web, and WebArena evaluate agents on overly simplistic deterministic queries that lack the contextual depth of real-world shopping. DeepShop addresses this gap by constructing 600 diverse queries across five product categories (Books, Electronics, Home, Fashion, Sports) that evolve in complexity through progressive enhancement of product attributes, search filters, and sorting preferences. The benchmark includes a fine-grained evaluation framework that assesses agent performance across three dimensions—product attribute matching, correct use of filters, and proper execution of sorting—alongside holistic task success measurement. The authors conduct systematic evaluation of simple RAG methods, web agents, and commercial deep research systems, demonstrating that all tested approaches struggle significantly with DeepShop's realistic complexity.</p>
+<h2>Research Question</h2>
+<p>Can existing web agents effectively fulfill diverse and complex user needs in realistic shopping scenarios? Specifically, how do simple RAG methods, web agents, and deep research systems perform on complex multi-attribute shopping queries, and how does performance degrade across different product categories and increasing query complexity?</p>
+<h2>Task</h2>
+<p>DeepShop formulates the web shopping task as a partially observable Markov decision process (POMDP) where an agent receives natural language user queries and interacts with live e-commerce environments to locate and return products matching specified requirements. Queries evolve from real user shopping intents across two dimensions: diversity (expanding to multiple product categories) and complexity (progressively adding product attributes, search filters, and sorting preferences). The benchmark aims to evaluate whether agents can autonomously browse product listings, apply filters, compare items, and satisfy nuanced user preferences across realistic online shopping platforms.</p>
+<h2>Data</h2>
+<p>The dataset construction begins with a curated seed set of 50 real-world queries manually selected from Mind2Web-Live and WebVoyager benchmarks, distributed across five representative shopping domains: Books (4 queries), Electronics (14 queries), Home (20 queries), Fashion (5 queries), and Sports (7 queries). Query diversity evolution uses GPT-4o to generate entirely new queries based on original seeds and randomly selected product categories, ensuring coverage across fine-grained product spaces within each domain. Query complexity evolution iteratively enhances queries through five rounds of random augmentation: attribute evolution adds concrete product characteristics (brand, model, color, size, weight); filter evolution incorporates search constraints (minimum customer ratings, review counts, shipping options, release timeframes, return policies); and sorting evolution appends ordering preferences (lowest price, highest rating, newest arrival, best seller). The final balanced subset comprises 150 queries (30 per category) manually verified for quality and answer availability on corresponding websites. Average query length in DeepShop is 62.0 tokens, substantially longer than existing online benchmarks (Mind2Web-Live: 16.2, WebVoyager: 29.5 tokens). Analysis shows that hard-level queries (4-5 complexity evolutions) contain on average 0.66 additional product attributes, 2.88 additional search filters, and 0.66 additional sorting preferences compared to seed queries.</p>
+<h2>Metrics</h2>
+<p>The evaluation framework employs a two-stage protocol combining fine-grained and holistic assessment. Fine-grained evaluation decomposes each query into three subqueries corresponding to product attributes, search filters, and sorting preferences. GPT-4o (temperature 0) evaluates whether final agent results align with each subquery requirement, providing binary success/failure decisions. For deep research systems lacking intermediate execution traces, human evaluators manually assess alignment using direct website access. Holistic evaluation aggregates the three fine-grained components using rule-based checking: a requirement is considered satisfied only if all explicitly specified dimensions (attributes, filters, sorting) are met; missing dimensions are treated as automatically satisfied. Human-GPT-4o agreement rates validate evaluation reliability: product attributes 84%, search filters 80%, sorting preferences 82%, overall task success 86%.</p>
+<h2>Baselines</h2>
+<p>The authors evaluate three baseline categories: Simple RAG combines GPT-4o with Google Search by submitting queries, retrieving the top-ranked page, and generating responses based on screenshots (no web interaction). Web agents include Agent-E (hierarchical planner-actor with DOM tree distillation), SeeAct (multimodal LLM with visual perception), WebVoyager (LLM with set-of-mark prompting), and Browser Use (hybrid HTML and visual understanding). Deep research systems include Gemini Deep Research (decomposes queries with extended reasoning) and OpenAI Deep Research (autonomous web browsing with o3 reasoning model). All agents are limited to maximum 15 steps per task and powered by GPT-4o.</p>
+<h2>Results</h2>
+<p>Simple RAG methods fail dramatically on DeepShop, achieving below 8% success rates across all metrics due to lack of web interaction capability: Google Search struggles with search filters (5.97%) and sorting preferences (4.55%). Web agents show progressive improvement but face significant challenges: Agent-E scores 6.67% overall, SeeAct 10.67%, WebVoyager 16.00%, peaking at Browser Use with 32.00% overall success. Browser Use excels in sorting preferences (30.68%) but all web agents struggle simultaneously satisfying all three dimensions. Deep research systems (Gemini 30.00%, OpenAI 30.00%) outperform web agents on product attributes and sorting preferences but fail on search filters, revealing that filtering requires deeper exploration on product detail pages. Performance degrades sharply with complexity: on easy queries simple RAG achieves 16% success, dropping to 0% on hard queries; web agents average 28.5% on easy but only 10% on hard. Across categories, vision-based approaches fail completely on Fashion and Sports where visual cues dominate, while Browser Use achieves most balanced cross-domain performance.</p>
+<h2>Related Work</h2>
+<h3>Benchmarks for web agent evaluation</h3>
+<p>WebShop, Mind2Web, WebArena, ChatShop, VWebarena, and MMInA use offline static environments (simulated or pre-collected snapshots) enabling controlled conditions but failing to capture dynamic real-world website characteristics and contemporary content updates. WebLINX, Mind2Web-Live, and WebVoyager operate in online real-time settings providing realistic environments but focus on simple deterministic tasks leaving complex shopping queries underexplored. DeepShop targets this gap by introducing complex online evaluation in realistic e-commerce environments with fine-grained assessment across product attributes, search filters, and sorting preferences.</p>
+<h3>Web agents for task automation</h3>
+<p>Early HTML-based approaches (WebGPT, MindAct, Agent-E) interpret natural language using LLMs and navigate via DOM trees. Recent multimodal vision-based systems (SeeAct, WebVoyager, Browser Use) integrate visual grounding for better layout handling and interactive component understanding. Advanced reasoning systems (OpenAI Deep Research, Gemini Deep Research) tackle complex information-seeking through multi-step reasoning. Despite progress, most evaluations remain limited to generic benchmarks leaving agent performance on complex real-world shopping scenarios underexplored.</p>
+<h3>Query understanding in E-commerce</h3>
+<p>Online shopping involves overwhelming product spaces and complex user preferences difficult to express with simple keywords. Traditional information retrieval systems struggle with this complexity while conversational IR systems remain constrained by training products and cannot autonomously browse. Web agents offer promise by autonomously interacting with e-commerce sites, searching and mimicking human browsing behaviors, though deployment in complex realistic shopping scenarios remains challenging.</p>
+<h2>Conclusion</h2>
+<p>DeepShop provides a challenging and realistic testbed for advancing web shopping agent development. The benchmark demonstrates that existing agents—from simple retrieval methods through advanced deep research systems—struggle substantially with realistic complexity. All tested approaches show sharp performance degradation on harder queries and across visually dominant product categories. The fine-grained evaluation framework reveals that agents consistently fail simultaneously satisfying multiple dimensions (attributes, filters, sorting) despite individual competence on isolated aspects. Key limitations in current agents include: grounding ability (missing interface element segmentation and visual details), state assessment and replanning (inability to backtrack or reformulate strategies), constrained action spaces (limited browser interaction for dynamic UI elements like sliders), execution-time learning (no generalization across tasks or memory of past strategies), and in deep research systems, hallucination errors (confident incorrect recommendations and links outside target platforms). These findings highlight substantial research opportunities for more robust agent architectures, multimodal fusion techniques, expanded action spaces, and learning mechanisms that enable agents to adapt and improve within realistic web environments.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

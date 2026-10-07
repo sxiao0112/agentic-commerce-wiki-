@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments?</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>4G9XTVC5</td></tr><tr><th>wiki_id</th><td>4G9XTVC5</td></tr><tr><th>aliases</th><td>[4G9XTVC5]</td></tr><tr><th>slug</th><td>li-2026-agentdyn-security-defenses-dynamic-environments</td></tr><tr><th>title</th><td>&quot;AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments?&quot;</td></tr><tr><th>authors</th><td>[&quot;Li, Hao&quot;, &quot;Wen, Ruoyao&quot;, &quot;Shi, Shanghao&quot;, &quot;Zhang, Ning&quot;, &quot;Vorobeychik, Yevgeniy&quot;, &quot;Xiao, Chaowei&quot;]</td></tr><tr><th>year</th><td>2026</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>arXiv</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2602.03117&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2602.03117&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2602.03117&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;agent security&quot;, &quot;prompt injection attacks&quot;, &quot;defenses&quot;, &quot;benchmarking&quot;, &quot;dynamic environments&quot;, &quot;deployment&quot;, &quot;LLM agents&quot;, &quot;tool-augmented workflows&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments?</h1>
+<h2>Contribution</h2>
+<p>The authors introduce AgentDyn, a manually designed benchmark for evaluating whether prompt injection defenses on autonomous LLM agents remain deployable under practical dimensions that existing benchmarks overlook. The benchmark comprises three application-domain scenarios (Shopping, GitHub, Daily Life) with 60 open-ended user tasks and 560 injection test cases, featuring dynamic planning requirements, helpful third-party instructions integrated throughout execution, and longer, multi-application workflows.</p>
+<h2>Research Question</h2>
+<p>Current agent security benchmarks like AgentDojo achieve near-perfect defense performance, yet a critical gap remains between benchmark evaluations and real-world deployment. The authors ask whether existing defenses are truly deployable when agents face dynamic open-ended tasks that require runtime adaptation, encounter benign and helpful instructions alongside malicious injections, and operate over extended action sequences across multiple integrated applications.</p>
+<h2>Task</h2>
+<p>AgentDyn comprises three task suites spanning seven application scenarios (Shopping, GitHub, Email, Bank, Web, FileSystem, Calendar): Shopping focuses on purchasing workflows; GitHub addresses repository management tasks; Daily Life covers routine activities including email management and bill payment. Each suite contains 20-39 tools and requires agents to execute tasks with an average trajectory length of 6.25-9.30 steps across 2.55-3.90 distinct application scenarios per task.</p>
+<h2>Data</h2>
+<p>AgentDyn includes 60 user tasks and 28 injection tasks that are combined in cross-product fashion to create 560 security test cases. Each user task enforces three design criteria: dynamic planning (agents must adapt strategies based on environmental feedback during execution), helpful instructions (at least one benign, necessary instruction embedded in the critical execution path), and task complexity (longer trajectories, larger tool sets, multi-application interactions). Test case design assumes practical threat models with injection vectors placed in realistic attack surfaces (e.g., advertisement banners on webpages) rather than unrealistic direct webpage manipulation; injection instructions are generalizable rather than user-specific.</p>
+<h2>Metrics</h2>
+<p>Three metrics evaluate both security and utility: Benign Utility measures baseline task completion without attacks. Utility under Attack evaluates task success when attacks are present. Attack Success Rate (ASR) measures the fraction of cases where the attacker's malicious goals succeed. The overall performance reported is the average across all three suites.</p>
+<h2>Baselines</h2>
+<p>The authors evaluate ten state-of-the-art defenses across four categories spanning twelve LLM agents (including commercial models Gemini, Claude, GPT families and open-source Llama, Qwen, Kimi). Prompting-based defenses include Prompt Sandwiching and Spotlighting. Filtering-based approaches include ProtectAI, PIGuard, and PromptGuard2. Alignment-based defenses are represented by Meta SecAlign-70B. System-level defenses include Tool Filter, CaMeL, Progent, and DRIFT. The evaluation on AgentDyn reveals that almost all existing defenses either lack sufficient security or suffer from severe overdefense, with filtering-based approaches struggling to distinguish helpful instructions from malicious injections, planning-dependent methods incurring sharp utility drops in dynamic scenarios, and the most successful alignment-based approach (Meta SecAlign) still achieving only 53.4% utility on AgentDyn compared to 80% on AgentDojo.</p>
+<h2>Conclusion</h2>
+<p>The authors conclude that nearly all existing defenses that achieve near-perfect performance on current agent security benchmarks struggle substantially on AgentDyn, revealing previously hidden failure modes. These findings underscore a fundamental mismatch between current benchmark evaluations and real-world deployment requirements, highlighting the urgent need for more realistic evaluation frameworks that incorporate dynamic planning, helpful environmental instructions, and complex multi-step tasks across integrated application environments.</p>
+<h2>Related Work</h2>
+<h3>Prompt Injection and Agent Security</h3>
+<p>Ignore Previous Prompt: Attack techniques for language models — Perez &amp; Ribeiro — seminal work introducing the concept of prompt injection attacks showing LLMs can be misled by crafted inputs leading to goal hijacking and prompt leakage.</p>
+<p>Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection — Abdelnabi et al. — reveals indirect prompt injection attacks where malicious instructions embedded in third-party content hijack agent behaviors in real-world deployments.</p>
+<p>OWASP LLM01 — OWASP — documents prompt injection as a top-tier AI security threat in deployed systems.</p>
+<p>The Attacker Moves Second: Stronger Adaptive Attacks Bypass Defenses Against LLM Jailbreaks and Prompt Injections — Nasr et al. — demonstrates adaptive attacks that circumvent current defense approaches, underscoring the need for more robust evaluation frameworks.</p>
+<h3>Prompting-Based Defenses</h3>
+<p>The Sandwich Defense: Strengthening AI Prompt Security — Schulhoff — proposes repeating trusted user instructions after each tool invocation to maintain focus on original user intent.</p>
+<p>Defending Against Indirect Prompt Injection Attacks with Spotlighting — Hines et al. — introduces special delimiters to mark untrusted tool outputs and force model attention to injection-prone segments.</p>
+<h3>Filtering-Based Defenses</h3>
+<p>Fine-Tuned DeBERTa-v3-Base for Prompt Injection Detection — ProtectAI — develops a classification model for detecting injection attempts in external data.</p>
+<p>Llama Prompt Guard 2 — Meta — introduces a defensive classifier trained to identify injection instructions.</p>
+<p>PIGuard: Prompt Injection Guardrail via Mitigating Overdefense for Free — Li et al. — proposes an approach to balance security and utility in filtering-based defenses.</p>
+<h3>Alignment-Based Defenses</h3>
+<p>StruQ: Defending Against Prompt Injection with Structured Queries — Chen et al. — splits context input into structured user query and external data, then fine-tunes the model to respond only to the user query.</p>
+<p>SecAlign: Defending Against Prompt Injection with Preference Optimization — Chen et al. — applies preference optimization to encourage LLMs to follow user queries over external instructions.</p>
+<p>Meta SecAlign: A Secure Foundation LLM Against Prompt Injection Attacks — Chen et al. — presents a defensive model fine-tuned on Llama-3.3-70B-Instruct achieving better balance between security and utility.</p>
+<p>Llama Guard: LLM-Based Input-Output Safeguard for Human-AI Conversations — Inan et al. — develops an LLM-based safeguard for identifying unsafe content.</p>
+<p>PromptArmor: Simple Yet Effective Prompt Injection Defenses — Shi et al. — proposes instruction identification and removal workflows leveraging LLMs as judges.</p>
+<h3>System-Level Defenses</h3>
+<p>IsolateGPT: An Execution Isolation Architecture for LLM-Based Agentic Systems — Wu et al. — introduces isolated execution environments for each application to minimize cross-application data flow risks.</p>
+<p>Tool Filter (from AgentDojo) — Debenedetti et al. — identifies and isolates tools relevant to the user task, preventing irrelevant tools triggered by attacks from being executed.</p>
+<p>CaMeL: Defeating Prompt Injections by Design — Debenedetti et al. — translates user tasks into static program code with strict information-flow controls for execution.</p>
+<p>Progent: Programmable Privilege Control for LLM Agents — Shi et al. — leverages policy-updating mechanisms to dynamically control agent tool access during execution.</p>
+<p>DRIFT: Dynamic Rule-Based Defense with Injection Isolation for Securing LLM Agents — Li et al. — combines initial planning to generate security constraints with dynamic validation to maintain functionality.</p>
+<h3>Existing Agent Security Benchmarks</h3>
+<p>InjecAgent: Benchmarking Indirect Prompt Injections in Tool-Integrated Large Language Model Agents — Zhan et al. — proposes a benchmark focusing on isolated steps but lacking end-to-end environmental interaction.</p>
+<p>Agent Security Bench (ASB): Formalizing and Benchmarking Attacks and Defenses in LLM-Based Agents — Zhang et al. — develops an early evaluation framework also limited to isolated steps.</p>
+<p>AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents — Debenedetti et al. — the most advanced existing benchmark providing simulated environments for multi-step interactions, but still featuring primarily static tasks, lacking helpful instructions, and employing oversimplified user task designs.</p>
+<h3>Real-World Agent Environments and Applications</h3>
+<p>On Generative Agents in Recommendation — Zhang et al. — explores autonomous agents in real-world recommendation applications.</p>
+<p>Introducing ChatGPT Atlas — OpenAI — demonstrates agent deployment in real-world economic applications.</p>
+<p>SOTOPIA: Interactive Evaluation for Social Intelligence in Language Agents — Zhou et al. — proposes interactive evaluation methods for agent behavior in social contexts.</p>
+<p>Hello Again! LLM-Powered Personalized Agent for Long-Term Dialogue — Li et al. — examines long-horizon agent interaction scenarios.</p>
+<p>WebArena: A Realistic Web Environment for Building Autonomous Agents — Zhou et al. — introduces a realistic web environment with dynamic interactive entities for agent evaluation.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

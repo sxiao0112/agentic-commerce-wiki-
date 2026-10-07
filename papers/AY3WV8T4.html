@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>AY3WV8T4</td></tr><tr><th>wiki_id</th><td>AY3WV8T4</td></tr><tr><th>aliases</th><td>[AY3WV8T4]</td></tr><tr><th>slug</th><td>borkakoty-2026-policy-ambiguity-retail-agents</td></tr><tr><th>title</th><td>&quot;DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain&quot;</td></tr><tr><th>authors</th><td>[&quot;Borkakoty, Hsuvas&quot;, &quot;Pohl, Sebastian&quot;, &quot;Wang, Cheng&quot;, &quot;Chen, Bei&quot;, &quot;Hou, Yufang&quot;]</td></tr><tr><th>year</th><td>2026</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>&quot;arXiv&quot;</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2605.07699&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2605.07699&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2605.07699&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;policy ambiguity&quot;, &quot;LLM agents&quot;, &quot;retail returns&quot;, &quot;decision-making&quot;, &quot;agent benchmarking&quot;, &quot;ambiguous policies&quot;, &quot;value pluralism&quot;, &quot;dialogue quality&quot;, &quot;behavioral alignment&quot;, &quot;multi-dimensional evaluation&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain</h1>
+<h2>Contribution</h2>
+<p>DRIP-R is a benchmark for evaluating LLM-based conversational agents operating under realistic, ambiguous domain policies. The authors introduce three main contributions: the DRIP-R benchmark itself, comprising 400 scenarios (40 tasks paired with 10 customer personas) grounded in real Amazon return policy; a multi-dimensional evaluation framework spanning policy adherence, dialogue quality, behavioral alignment, task-resolution alignment, and interest alignment with calibrated LLM judges; and empirical findings showing that frontier models fundamentally disagree on resolution outcomes in policy-ambiguous scenarios, confirming that policy ambiguity poses a systematic challenge to agent decision-making.</p>
+<h2>Research Question</h2>
+<p>How do LLM-based customer service agents reason, make decisions, and interact when confronted with inherently ambiguous domain policies where no single correct resolution exists? Do different models consistently converge on the same policy interpretation, and how do policy ambiguities manifest in conversational trajectories and final resolutions?</p>
+<h2>Task</h2>
+<p>Order Return scenarios: customers request to return items from an e-commerce purchase and negotiate resolution with a customer service agent. Each scenario involves at least one ambiguous policy clause that affects resolution. Tasks are stratified by complexity (low/medium/high), ambiguity type (vagueness, incompleteness, coordination ambiguity, missing condition, semantic ambiguity), and diversity across scenario setup, policy coverage, product types, and item condition complexity.</p>
+<h2>Data</h2>
+<p>40 high-quality tasks derived from 500 candidates, created by prompting GPT-4o-mini to generate realistic return scenarios that depend on identified policy ambiguities and elicit multi-turn dialogue. Tasks specify order timeline, item-level conditions, delivery status, and customer circumstances. 10 customer personas drawn from Persona-Hub and augmented with Big Five personality traits, communication styles (rapport vs. report-oriented, direct vs. indirect, linear vs. non-linear), language styles (Joos's Five Clocks model), age, income range, and purchase history. Full dataset: 400 scenarios (40 tasks × 10 personas). Ambiguities extracted from Amazon's return policy using GPT-4.1 with human validation (IAA 84.62%, Cohen's κ = 0.58). Realistic task content confirmed through manual verification by expert reviewers; for 10 representative tasks, human annotators independently labeled plausible outcomes, showing substantial disagreement and validating task ambiguity (mean exact agreement 0.10, Jaccard partial agreement 0.46).</p>
+<h2>Metrics</h2>
+<p>Five top-level evaluation dimensions with multiple subdimensions, each scored on a 1-5 Likert scale:
+- Policy Adherence: policy support per-turn, at conversation level, and at resolution level; reasoning quality; say-do gap between stated and executed commitments.
+- Dialogue Quality: conversation consistency, consistency drift, resolution-oriented responses, verbosity, argument-execution fidelity, resolution description fidelity.
+- Behavioral Alignment: agent and customer tone/behavioral consistency with assigned personas; values alignment using Schwartz value theory (conformity, benevolence, self-direction, security, universalism, power).
+- Task-Resolution Adherence: whether outcome addresses customer reason and aligns with task constraints (usage, timing, bundle details).
+- Interest Alignment: customer goal alignment (measured as fraction of explicit customer goals achieved) and company interest alignment (policy-compliance score). Evaluation implemented via LLM-as-Judge using five parallel judges with multi-stage calibration (DPFS + G-Eval); achieves mean bias 0.33 and adjacent agreement 0.84 on held-out test set.</p>
+<h2>Baselines</h2>
+<p>Four LLM models evaluated: two API-only (GPT-5-2025-08-07, GPT-4.1-2025-04-14) and two open-source (gpt-oss-120b, Qwen3-35B-A3B). Customer simulator uses GPT-4o-mini for consistent, cost-efficient turns. All scenarios run through each model under identical settings (temperature 0.7 for agents, max 20 turns). Evaluation uses GPT-5.4-2026-03-05 as judge. Conversation follows Dec-POMDP formalism: agent has tool-calling access; user simulator does not.</p>
+<h2>Results</h2>
+<p>Cross-model resolution agreement analysis reveals fragmentation on policy interpretation: only 4.2% of scenarios show full agreement (all four models produce the same outcome); 82.4% show partial agreement (2–3 models converge); 13.3% show full disagreement (each model different). Policy adherence trajectories differ by outcome type and model: GPT-5 maintains uniformly high policy support (≥4.83) regardless of outcome, while Qwen3 and OSS-120B show drift after conversation midpoint, with refund-granting outcomes dropping further than escalations. Behavior-decision gap (in-conversation policy adherence minus resolution policy adherence) is positive across all ambiguity types, largest for coordination ambiguity (0.29), indicating agents' in-conversation reasoning exceeds resolution consistency. User persona neuroticism and extraversion correlate with outcomes favoring customer goals (ρ = 0.109, p &lt; 0.0001 and ρ = 0.077, p = 0.0016 respectively); agreeableness correlates inversely (ρ = −0.054, p = 0.0259), raising fairness concerns about simulated customer service rewarding certain personality traits. Agent persona strongly anchors outcomes: DIRECT agents deny refunds most frequently, VERY_HELPFUL agents least (χ²(4) = 59.03, p &lt; 0.001), though model determines what replaces denials (full refund vs. escalation vs. partial).</p>
+<h2>Related Work</h2>
+<h3>Policy ambiguity in real-world domains</h3>
+<p>Policy Ambiguity and Institutional Challenges — Zahariadis [2023] defines policy ambiguity as coexistence of multiple valid interpretations; Massey et al. [2014] and Gervasi et al. [2019] provide taxonomies of ambiguity types (vagueness, incompleteness, coordination ambiguity, missing condition, semantic ambiguity). Fowler [2023] examines actor-specific interpretation and vagueness in real-world policies. Ang [2024] and Taylor et al. [2021] explore how ambiguities shape implementation and policy learning. Matland [1995] models ambiguity-conflict dynamics in policy implementation. Huizinga and de Bree [2021] document goal displacement in regulatory agencies under ambiguity. Nothdurfter and Hermans [2018] survey street-level discretion in public services, grounded in Lipsky [1980]. Zahariadis [2016] frames ambiguity in policy streams.</p>
+<h3>LLM agents under policy constraints</h3>
+<p>Agent Benchmarking and Policy Governance — Yehudai et al. [2025] survey LLM-agent evaluation across planning, instruction-following, and tool-calling capabilities. Barres et al. [2025a,b] and Ray et al. [2026] introduce τ/τ² and τ-voice benchmarks for conversational agents with tool-calling in dual-control environments; these use simplified, synthetic policies. Zhang et al. [2024b] and Boisvert et al. [2025] introduce Agent-SafetyBench and DoomArena using policy constraints for safety evaluation. Levy et al. [2024] propose ST-WebAgentBench with per-task rule instances. Richardson et al. [2025] combine deliberation and authoritative prescription for policy-compliant reasoning. Zieliński et al. [2026] decompose policy documents into atomic obligations to guide policy refinement. Zwerdling et al. [2025] focus on enforcing company policy adherence in agentic workflows. Luo et al. [2025] provide a broad survey of LLM-agent methodology, applications, and challenges.</p>
+<h3>Task construction and persona modeling</h3>
+<p>Dataset Generation and Simulation — Ge et al. [2024] introduce Persona-Hub for synthetic persona generation at scale. Mannekote et al. [2025] address naturalness in task-oriented dialogue by synthetically generating indirect user requests. Niwa and Iso [2024] introduce AmbigNLG to address task ambiguity in instruction-following. Kwon et al. [2023] provide efficient LLM serving (vLLM). For annotation and evaluation: Gu et al. [2024] survey LLM-as-Judge methods; Liu et al. [2023] propose G-Eval with chain-of-thought scoring; Tan et al. [2024] introduce JudgeBench for evaluating LLM judges; Jang and Silavong [2025] propose DPFS for calibrating judge bias; Selvakumar et al. [2025] introduce Multivox for multimodal interaction evaluation. Tkachenko et al. [2020–2025] provide Label Studio for annotation infrastructure.</p>
+<h3>Conversational simulation and tool-calling</h3>
+<p>Dialogue and Agent Interaction — Tannen [2007] establishes rapport vs. report-oriented communication styles. McCrae and John [1992] introduce the Big Five personality model. Zgusta [1966] reviews Joos's Five Clocks language-style model. Schwartz [2012] presents value theory used in behavioral evaluation. Crawford and Ostrom [1995] provide institutional foundations for policy as rules, norms, and strategies. Berlin [1969] introduces value pluralism (conflicting legitimate values with no universally correct resolution). Chen et al. [2025], Sun et al. [2026], and Lu et al. [2025] provide recent work on tool-calling, mobile-agent instruction-following, and LLM tool use benchmarks. Wang et al. [2026] and Zhang et al. [2024a] address multi-turn planning and tool-calling with synthetic data.</p>
+<h2>Conclusion</h2>
+<p>Policy ambiguities are an inherent feature of real-world deployment yet remain largely absent from existing agent benchmarks, which rely on purpose-built, unambiguous policies. DRIP-R establishes a foundation for evaluating how LLM-based agents navigate realistic ambiguity through grounding in Amazon's return policy, systematic ambiguity extraction, and multi-dimensional evaluation spanning policy adherence, dialogue quality, behavioral alignment, and interest alignment. Empirical findings demonstrate that frontier models fundamentally disagree on policy-ambiguous scenarios, confirming ambiguity as a genuine, systematic challenge. Results also reveal that conversational policy adherence exceeds resolution consistency, certain ambiguity types (especially coordination ambiguity) are harder for agents to resolve consistently, and agent and user persona significantly shape outcomes. The authors acknowledge limitations: the benchmark is currently scoped to retail only, relies on a single primary policy document, and would benefit from evaluation on a larger model set. Future work should expand to other high-stakes domains (healthcare, legal, airline) and incorporate broader policy sets.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

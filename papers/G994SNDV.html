@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>G994SNDV</td></tr><tr><th>wiki_id</th><td>G994SNDV</td></tr><tr><th>aliases</th><td>[G994SNDV]</td></tr><tr><th>slug</th><td>ling-2025-shopperbench-personalized-shopping-benchmark</td></tr><tr><th>title</th><td>&quot;ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation&quot;</td></tr><tr><th>authors</th><td>[&quot;Ling, Yuan&quot;, &quot;Yuan, Chunqing&quot;, &quot;Dong, Shujing&quot;, &quot;Yang, Yongjian&quot;, &quot;Mocherla, Nataraj&quot;, &quot;Goyal, Ayush&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>&quot;&quot;</td></tr><tr><th>url</th><td>&quot;&quot;</td></tr><tr><th>arxiv</th><td>&quot;&quot;</td></tr><tr><th>doi</th><td>&quot;&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;shopping agents&quot;, &quot;persona-guided simulation&quot;, &quot;personalization&quot;, &quot;benchmark&quot;, &quot;adaptive behavior&quot;, &quot;user personas&quot;, &quot;e-commerce&quot;, &quot;agent evaluation&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation</h1>
+<h2>Contribution</h2>
+<p>ShopperBench extends the WebShop dataset and τ²-Bench environment with persona-conditioned evaluation for shopping agents. The key contribution is a benchmark that assesses agents' ability to adapt their search and purchase strategies to distinct user archetypes. The work introduces a scalable LLM-assisted method for generating persona-conditioned shopping trajectories, designs three ShopperAgent policy variants that demonstrate different approaches to persona integration, and proposes novel evaluation metrics—Persona Fidelity Score, Persona-Query Alignment, and Path Consistency—alongside task success measures.</p>
+<h2>Research Question</h2>
+<p>The authors ask whether shopping agents can adapt their strategies to diverse user behaviors and how strictly persona information should be integrated into agent reasoning. Specifically, they investigate whether agents can interpret explicit persona profiles to guide search and purchase decisions, and what trade-offs emerge between task efficiency and persona-aligned behavior.</p>
+<h2>Task</h2>
+<p>ShopperBench evaluates agents on persona-conditioned shopping tasks where each episode is defined by a persona profile p, a natural-language instruction I describing the targeted product or purchase intent, structured goal facets G encoding constraints and persona-relevant preferences, and an environment state E containing the product catalog and metadata. Agents must navigate the WebShop environment using tools (search_products, open_product, apply_filters, add_to_cart) to find and add the correct item to their cart while respecting persona-specific behavioral patterns.</p>
+<h2>Data</h2>
+<p>The dataset consists of 240 persona-conditioned tasks drawn from 60 query clusters in WebShop. The authors constructed a taxonomy of ten shopper personas grounded in consumer behavior theory spanning three behavioral axes: planner versus explorer (structured versus open-ended search), value seeker versus trend seeker (utility versus style and novelty), and goal-driven versus serendipitous (task completion versus discovery browsing). The personas are Price-Conscious Planner, Quality-Focused Evaluator, Brand-Loyal Minimalist, Eco-Aware Minimalist, Trend-Seeking Explorer, Urgent Task Finisher, Gift-Giver, Comparison Enthusiast, Health-Conscious Explorer, and Comfort-Focused Evaluator. Dataset construction uses a three-stage LLM-assisted pipeline: sampling from query clusters, persona-conditioned task generation with instruction refinement and goal facet injection, and oracle trajectory extraction from WebShop human trajectories.</p>
+<h2>Metrics</h2>
+<p>Task Success Rate (TSR) measures whether the correct item or an acceptable equivalent is added to cart. Persona Fidelity Score (PFS) uses a judge-LLM to evaluate whether agent actions and tool calls reflect persona-specific behavior patterns, measuring behavioral adherence independent of linguistic alignment. Persona-Query Alignment (PQA) evaluates whether the agent's interpretation of instructions and search queries are consistent with the persona. Path Consistency (PC) measures whether the trajectory remains consistent with both the persona's behavioral expectations and the final purchase decision.</p>
+<h2>Baselines</h2>
+<p>ShopperBench introduces three policy variants representing different strategies for persona integration. Task-Focused (TF) receives only the natural-language instruction and goal facets with no persona signal, serving as a persona-agnostic control baseline. Persona-Adaptive (PA) receives the persona card, persona-refined instruction, and persona-conditioned goal facets but no procedural rules, testing whether an LLM can internalize persona cues without explicit constraints. Persona-Constrained (PC) adds persona-specific operational rules translating persona motives into concrete behavioral preferences (e.g., price thresholds for price-conscious shoppers). All three use Claude Haiku 4.5 as the underlying LLM.</p>
+<h2>Results</h2>
+<p>Task-Focused policy achieves the highest TSR (0.640) but shows the lowest persona alignment. Persona-Adaptive policy demonstrates balanced performance with TSR of 0.624 and PFS of 0.758, sacrificing only 2.5% task success while achieving comparable persona fidelity. Persona-Constrained policy maximizes persona metrics (PFS = 0.762, PC = 0.662, PQA = 0.881) but requires longer interaction trajectories. Per-persona analysis reveals heterogeneous responses: Eco-Aware Minimalist shows superior performance (mean 0.860), Quality-Focused Evaluator achieves highest PFS (0.908–0.969) but lower Path Consistency (0.492–0.569), and behavioral personas demonstrate greater sensitivity to policy variations than constraint-based personas. Human trajectories require 62.5% fewer steps than the best-performing agent policy, indicating substantial room for improvement in agent efficiency while maintaining persona awareness.</p>
+<h2>Conclusion</h2>
+<p>ShopperBench establishes a foundation for developing and evaluating adaptive e-commerce assistants that must balance task completion with behavioral personalization. The results demonstrate fundamental trade-offs between persona fidelity and task efficiency; tighter persona integration through explicit constraints yields stronger behavioral alignment but introduces longer and more variable trajectories relative to human behavior. The benchmark provides a controlled testbed for studying personalized and context-aware shopping intelligence in multi-agent interaction frameworks.</p>
+<h2>Related Work</h2>
+<h3>Benchmarks for Shopping Agents</h3>
+<p>WebShop - Yao et al., 2022 - pioneered goal-oriented task completion in simulated e-commerce by establishing the first interactive benchmark for evaluating web shopping agents. AgentBench - Liu et al., 2023 - extends interactive benchmarks for agent evaluation. ShoppingBench - Wang et al., 2024 - increases environmental complexity through larger catalogs and nuanced intents. DeepShop - Shao et al., 2024 - provides a benchmark for deep research shopping agents. WebMall - Afzal et al., 2024 - evaluates web agents across multiple shopping platforms. τ²-Bench - Barres et al., 2025 - evaluates conversational agents in dual-control environments, which ShopperBench builds upon.</p>
+<h3>Persona in User Simulation</h3>
+<p>Persona-driven recommendation systems - M.H and Koshy, 2018 - improve e-commerce recommendations through user persona integration. Automated customer profile generation - Tien et al., 2024 - applies personas to e-commerce contexts. PAARS - Yao et al., 2024 - explores direct persona-behavior alignment in agentic retail systems. ECom-Bench - Huang et al., 2024 - leverages persona-driven simulators for customer service evaluation. PersonaBench - Pitis et al., 2023 - measures LLM capacity for persona-consistent text generation. PersoBench - Thakur et al., 2024 - benchmarks personalized response generation in LLMs.</p>
+<h3>Behavioral and Consumer Theory</h3>
+<p>Information Processing Theory - Peterson et al., 1979 - describes systematic differences in how consumers seek and evaluate information. Fogg's Behavior Model - Fogg, 2009 - highlights interplay between motivation, ability, and triggers in shaping online actions. Goal-directed persona theory - Miller et al., 2017 - emphasizes capturing behavioral goals rather than demographic characteristics in understanding consumer behavior.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

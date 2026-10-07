@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>RSVYJVLX</td></tr><tr><th>wiki_id</th><td>RSVYJVLX</td></tr><tr><th>aliases</th><td>[RSVYJVLX]</td></tr><tr><th>slug</th><td>savadikar-2026-shopgym-framework-e-commerce</td></tr><tr><th>title</th><td>&quot;ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents&quot;</td></tr><tr><th>authors</th><td>[&quot;Savadikar, Chinmay&quot;, &quot;Zhao, Mingyu&quot;, &quot;Zhu, Yuanzheng&quot;, &quot;Li, Han&quot;, &quot;Xie, Shuang&quot;, &quot;Castelo, Alberto&quot;, &quot;Wu, Tianfu&quot;, &quot;Wang, Lingyun&quot;]</td></tr><tr><th>year</th><td>2026</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>arXiv</td></tr><tr><th>url</th><td>&quot;https://arxiv.org/abs/2605.16116&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2605.16116&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/ARXIV.2605.16116&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;e-commerce web agents&quot;, &quot;environment simulation&quot;, &quot;benchmark construction&quot;, &quot;ShopArena&quot;, &quot;ShopGuru&quot;, &quot;task generation&quot;, &quot;agent evaluation&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents</h1>
+<h2>Contribution</h2>
+<p>ShopGym is an integrated framework comprising two complementary components: ShopArena, which converts live storefronts into self-contained, anonymized sandbox shops through specification synthesis and staged code generation; and ShopGuru, which synthesizes grounded benchmark tasks that are valid against the generated shops. The framework addresses a core methodological gap in e-commerce agent evaluation: existing approaches force a tradeoff between live-website realism (which is non-stationary and irreproducible) and sandbox control (which lacks diversity). ShopGym produces evaluation artifacts that are simultaneously realistic, diverse, controllable, inspectable, and reproducible.</p>
+<h2>Research Question</h2>
+<p>How can the field systematically construct evaluation environments for e-commerce web agents that preserve meaningful task structure and agent-evaluation signals from live storefronts while enabling controllable, reproducible, and scalable scientific comparison?</p>
+<h2>Conclusion</h2>
+<p>ShopGym addresses a central methodological gap by combining realistic simulation with controlled benchmarking. Generated shops are structurally comparable to real storefronts and preserve meaningful behavioral signal for agent evaluation. Agent performance on synthetic twins positively tracks performance on live storefronts, while fully synthetic composite shops yield benchmarks of comparable difficulty. The framework provides a practical middle ground between live-web realism and sandbox control, offering a scalable foundation for more reproducible and interpretable evaluation of e-commerce web agents.</p>
+<h2>Task</h2>
+<p>ShopGym produces grounded benchmark tasks organized around seven skill categories: Product Discovery (exact search, substitute search), Filter-Selection (collection browse, collection filter), Information-Seeking (shipping policy lookup, returns policy lookup), and E2E shopping journeys. Short-horizon tasks are generated deterministically and evaluate primitive capabilities. Long-horizon journeys are LLM-authored using few-shot prompts grounded in human-shopper behavior patterns, including multi-step intents that combine navigation, filtering, information seeking, and cart actions. A post-generation validation pipeline ensures all generated tasks are feasible against the shop's actual catalog, collections, and page structure.</p>
+<h2>Data</h2>
+<p>ShopArena generates synthetic sandbox shops from live seed storefronts through an exploration-specification-generation pipeline. The exploration phase browses seed storefronts and writes anonymized specifications capturing navigation structure, affordances, page organization, and catalog statistics. Specifications are composed from multiple seeds when provided, enabling a single sandbox shop to span structural and behavioral diversity that no individual source storefront would cover. The framework generated six shops for validation: three constructed with synthetic product data and three with real product data (twins). Synthetic product names, descriptions, and imagery are generated rather than copied, maintaining anonymity while preserving structural alignment with source storefronts. The validation corpus includes 224 generated tasks across the six shops.</p>
+<h2>Metrics</h2>
+<p>Structural validity is evaluated using three axes: observation and interaction complexity (measured by accessibility-tree depth and counts of interactive elements), state-transition complexity (using directed graph metrics of distinct UI states and transitions), and behavioral consistency (comparing agent success rates across models and harnesses on real vs. synthetic twin shops). Agent evaluation uses LLM-as-judge scoring of task completion across three frontier models (GPT-5-mini, Gemini 3 Flash, GPT-5) in two harnesses (BrowserGym with accessibility trees; internal harness with screenshots and accessibility trees). Behavioral validation shows that agent performance on synthetic twins positively correlates with performance on live storefronts.</p>
+<h2>Baselines</h2>
+<p>The paper evaluates three frontier LLM models as agent baselines: GPT-5-mini, Gemini 3 Flash, and GPT-5. On short-horizon tasks in the internal harness, success rates range from 70-77% (GPT-5-mini to GPT-5). On long-horizon tasks, success rates range from 54-57% (GPT-5-mini to GPT-5), indicating that the benchmark generates meaningfully hard tasks. The BrowserGym harness shows similar patterns, with short-horizon success rates around 76-86% and long-horizon rates around 48-62%.</p>
+<h2>Related Work</h2>
+<h3>Static web environments and benchmarks</h3>
+<p>Mind2Web — Online dataset providing large-scale offline traces from real websites, emphasizing breadth and cross-site generalization. OPeRA — Dataset of human shopping observations, personas, rationales, and actions from real Amazon sessions. WebArena — Self-hosted, fully functional websites with executable tasks and reproducible evaluation. VisualWebArena — Extension of WebArena to visually grounded tasks. WebShop — Synthetic storefront with 1.25M products and grounded language agent interactions. ShoppingBench — Large shopping sandbox with API-based interaction, focused on intent grounding. ShopSimulator — Chinese web environment for multi-turn shopping dialog and fine-grained product differentiation. WebMall — Four simulated shops with authentic product offers and comparison-shopping tasks. These existing benchmarks enable controlled evaluation but are tied to fixed sets of layouts, taxonomies, and policies, capturing only a limited slice of real-world e-commerce diversity.</p>
+<h3>Live-website evaluation</h3>
+<p>Online-Mind2Web — Agent evaluation directly on live websites with real shopping domains. WebVoyager — End-to-end web agent evaluated on live shopping sites. DeepShop — Shopping assistant benchmark evaluated directly on live websites. These approaches improve diversity and realism but depend on external sites whose layouts, inventories, and policies may change without notice, making reproducibility difficult.</p>
+<h3>Automated environment and task generation</h3>
+<p>Gym-Anything — Multi-agent pipeline treating environment setup as installation and configuration, producing 10K+ tasks. WebArena-Infinity — Generates synthetic web apps from user manuals. WebForge — Plan/Generate/Refine/Validate pipeline for creating self-contained web environments at scale. VeriEnv — Constructs executable synthetic versions of real websites with deterministic rewards. Go-Browse — Multi-agent pipeline for generating tasks and trajectories via website navigation while maintaining a visited URL graph. These approaches sacrifice fidelity by deriving environments from manuals or ungrounded LLM design choices. ShopArena grounds generation in observed real shops through an exploration phase that produces an anonymized shop manual, then synthesizes calibrated sandbox shops from that manual while preserving diversity and determinism.</p>
+<h3>LLM-based agentic systems and agent evaluation</h3>
+<p>Shopping companion — Memory-augmented LLM agent for real-world e-commerce tasks. Customer-r1 — Personalized simulation of human behaviors via RL-based LLM agent. See, think, act — Online shopper behavior simulation with vision-language model agents. LLASA — Large language and e-commerce shopping assistant. ProductResearch — Training e-commerce deep research agents via multi-agent synthetic trajectory distillation. Simgym — Traffic-grounded browser agents for offline A/B testing. AgentA/B — Automated and scalable web A/B testing with interactive LLM agents. These works address agent training, simulation, and evaluation in e-commerce, complementing ShopGym's focus on environment construction and controlled benchmarking.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

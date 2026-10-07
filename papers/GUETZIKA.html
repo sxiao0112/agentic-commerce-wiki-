@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>GUETZIKA</td></tr><tr><th>wiki_id</th><td>GUETZIKA</td></tr><tr><th>aliases</th><td>[GUETZIKA]</td></tr><tr><th>slug</th><td>yu-2026-shopping-companion-benchmark</td></tr><tr><th>title</th><td>&quot;Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks&quot;</td></tr><tr><th>authors</th><td>[&quot;Yu, Zijian&quot;, &quot;Xiao, Kejun&quot;, &quot;Zhao, Huaipeng&quot;, &quot;Luo, Tao&quot;, &quot;Zeng, Xiaoyi&quot;]</td></tr><tr><th>year</th><td>2026</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>&quot;arXiv&quot;</td></tr><tr><th>url</th><td>&quot;https://arxiv.org/abs/2603.14864&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2603.14864&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/ARXIV.2603.14864&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;long-term memory&quot;, &quot;shopping agents&quot;, &quot;preference grounding&quot;, &quot;e-commerce benchmarks&quot;, &quot;tool-wise rewards&quot;, &quot;LLM agents&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks</h1>
+<h2>Contribution</h2>
+<p>The paper introduces Shopping Companion Bench, a novel benchmark for evaluating and training LLM agents in cross-session preference-aware e-commerce tasks over a real-world product pool of 1.2 million items from Lazada.com. It proposes annotation-free tool-wise rewards that provide process-level supervision for memory and product tool calls, enabling lightweight 4B models to approach GPT-5 performance while addressing identified failure modes of preference hallucination and insufficient attribute verification.</p>
+<h2>Research Question</h2>
+<p>The paper addresses how LLM agents can effectively capture long-term implicit user preferences embedded across extended conversation histories and apply them to accurate product recommendation under budget and attribute constraints. Specifically: what are the main failure modes when agents handle multi-turn shopping tasks grounded in real products, and how can fine-grained process supervision improve preference grounding and multi-product coordination?</p>
+<h2>Task</h2>
+<p>Shopping Companion Bench comprises two task types. Single-product recommendation requires retrieving relevant preferences from long-term memory and finding one matching product. Add-on deal recommendation requires retrieving multiple preferences for several products while reasoning over voucher thresholds and budget constraints. Both tasks embed preference-relevant evidence sparsely as a needle within extended conversation histories (15-50 turns total) drawn from the LongMemEval corpus.</p>
+<h2>Data</h2>
+<p>The benchmark contains 1,000 instances (500 single-product, 500 add-on deals), split into 800 training and 200 test examples. Products are sourced from Lazada.com (1.29 million real-world items across broad categories: electronics, fashion, home &amp; living, etc.), each with searchable fields including title, price, category, brand, description, and structured attributes. Instances undergo a five-step construction pipeline: product and voucher sampling; user instruction generation via LLM; synthesis of natural-language preference dialogues with automatic conflict-checking against existing user conversation history; injection into multi-topic conversation histories; and expert verification by two e-commerce annotators to ensure resolvability, searchability, and consistency. For single-product tasks, users express average 2.1 wanted attributes; for add-on deals, average 5.6 wanted attributes. User conversation histories span 56 sessions and ~106k tokens per instance, presenting a significant long-context challenge.</p>
+<h2>Metrics</h2>
+<p>Accuracy (Acc.) measures the fraction of ground-truth preference attributes correctly retrieved by the agent in Stage 1 preference identification. Success Rate (Succ.) measures the fraction of test cases satisfying all criteria: correct product count, user need satisfaction, consistency with long-term preferences, and budget feasibility (for add-on deals). Evaluation uses the LLM-as-Judge paradigm via five diverse judge models, with high inter-judge correlation (OPC = 0.9547 ± 0.0289) and strong alignment with human meta-evaluation (iPAR = 0.8950, PAR = 0.9497 with GPT-5 judge on 200 samples annotated by 8 e-commerce experts and native speakers).</p>
+<h2>Baselines</h2>
+<p>Closed-source models tested in zero-shot include GPT-5, GPT-4.1, GPT-4o, and Qwen3-Max. Open-source baselines span model families: Qwen3 (4B, 30B, 80B variants), DeepSeek-R1, Kimi-K2-Instruct, and Gemma-3-27B. GPT-5 achieves the strongest zero-shot performance (74% Acc., 64.5% Succ. average), but drops substantially on add-on deals (54% Succ.). The paper also trains Qwen3-4B with supervised fine-tuning (2,948 step-level examples via GPT-4.1 rejection sampling), outcome-level RL, and outcome-level plus tool-wise RL.</p>
+<h2>Method</h2>
+<p>The agent framework is a two-stage policy with four tools. Stage 1 (Preference Identification) uses mem_search and mem_view to retrieve and confirm user preferences from long-term dialogue history. Stage 2 (Shopping Task Execution) uses product_search and product_view to iteratively search products and verify attribute constraints against explicit requirements and inferred preferences. mem_search performs query-based retrieval over conversation history via dense vectors (all-MiniLM-L6-v2), returning top-k turns by cosine similarity. mem_view fetches full dialogue sessions by index. product_search retrieves candidates via BM25 over concatenated product titles, categories, brands, and descriptions, with optional shop ID and price-range filters, returning up to 50 results with basic metadata. product_view retrieves detailed attributes and option variants from the index. Preliminary analysis of 200 GPT-5 zero-shot trajectories reveals two-phase behavior: early memory retrieval (turns 0-2) followed by prolonged search-view loops (turns 3+). Failure attribution across 69 failed cases shows unverified attributes (39.1%), same-shop alignment failures (15.9%), and preference hallucination (10.1%) as the dominant error modes. Early errors cascade through subsequent searches, indicating that preference identification is a fragile bottleneck.</p>
+<h2>Training: Reward Design</h2>
+<p>The training objective combines three complementary reward components. Outcome-level reward (Rz) evaluates final answer quality per stage via LLM judge, scoring query relevance, matched preference-attribute count, and for add-on deals, matched product count and budget feasibility. Tool-wise process reward (Rtool) provides per-call supervision without manual annotation: for memory tools, it compares retrieved/viewed session indices against gold preference sessions; for product tools, it compares retrieved/viewed products against reference product IDs, falling back to LLM-based semantic matching when exact IDs are unavailable. Format reward (Rfmt) enforces output protocol compliance (answer tags present, thinking tags well-formed, tool-call JSON parsable, recommendation conforms to required schema). Total reward R(τ) = Rz(τz) + Rtool(τ) + Rfmt(τ). Models are trained with GRPO algorithm via VeRL framework on 800 training instances (1,600 instances after two-stage splitting) for 2.6 epochs with learning rate 1e-6, eight rollouts per sample, maximum 20 assistant turns per trajectory, temperature 0.6, top-k=20 top-p=0.95, on 8 NVIDIA H20 GPUs with FSDP distributed training.</p>
+<h2>Results</h2>
+<p>On single-product tasks, GPT-5 achieves 82% Acc./75% Succ.; open-source baselines range from 49-81% Acc./44-75% Succ. On add-on deals, performance drops sharply: GPT-5 66% Acc./54% Succ.; Qwen3-4B zero-shot 11% Acc./6% Succ. Fine-tuned Qwen3-4B with outcome-level RL reaches 69.5% Acc./59.5% Succ. (average). Adding tool-wise rewards achieves 72.5% Acc./63.5% Succ. (average), with 90% Acc./84% Succ. on single products and 55% Acc./43% Succ. on add-on deals, surpassing all open-source baselines and approaching GPT-5 performance. Ablation studies show tool-wise supervision increases average tool-wise score throughout training and produces shorter, more efficient trajectories: outcome-level RL alone uses 9.82 turns and 10,485 tokens average response length; outcome-level plus tool-wise RL uses 8.89 turns and 10,069 tokens. User simulator evaluation shows one-stage setting (preference identification and shopping end-to-end) achieves only 52.5% average success vs. two-stage no-hint baseline 64.5%, with low-hint and high-hint user feedback improving to 68.5% and 70.0%, indicating preference grounding remains a bottleneck even with oracle context (85% single-product, 73% add-on, 79% average).</p>
+<h2>Conclusion</h2>
+<p>The paper presents a product-grounded benchmark for evaluating shopping agents that must recover long-term user preferences from cross-session conversations and apply them to real-world recommendation tasks. Results demonstrate that this setting remains challenging even for strong LLMs: GPT-5 achieves 64.5% zero-shot success, with most failures arising from insufficient verification and tool-calling errors. The proposed annotation-free tool-wise rewards provide fine-grained supervision over memory and product tool calls, enabling a lightweight 4B agent trained on this objective to improve both preference grounding and task success, reaching 63.5% average success.</p>
+<h2>Related Work</h2>
+<h3>Long-Term Memory</h3>
+<p>Dense passage retrieval — Lewis et al., 2020; Karpukhin et al., 2020 — enabling retrieval-augmented generation over extended context.
+Retrieval-augmented language model pre-training — Guu et al., 2020 — augmenting models with external memory.
+Memory management for LLM agents — Packer et al., 2023 — explicit read/write memory modules for multi-session tracking.
+MemoryBank — Zhong et al., 2024 — enhancing language models with long-term memory.
+A-mem: Agentic memory for LLM agents — Xu et al., 2025 — training memory operations as tool actions with stepwise supervision.
+Zep: temporal knowledge graph architecture for agent memory — Rasmussen et al., 2025 — temporal organization of agent memories.
+Mem0: Building production-ready ai agents with scalable long-term memory — Chhikara et al., 2025 — production-scale long-term memory systems.
+Agentic Memory: Learning unified long-term and short-term memory management — Yu et al., 2026 — joint optimization of memory operations for task success.</p>
+<h3>Shopping Agents and E-Commerce</h3>
+<p>Towards conversational search and recommendation — Zhang et al., 2018 — system initiative for clarification in conversational settings.
+Conversational product search based on negative feedback — Bi et al., 2019 — dialogue-driven refinement through user corrections.
+Learning to ask: Conversational product search via representation learning — Zou et al., 2022 — learning to generate clarifying questions in preference elicitation.
+Shopping MMLU: A massive multi-task online shopping benchmark — Jin et al., 2024 — knowledge-based shopping comprehension across diverse tasks.
+ShoppingBench: A real-world intent-grounded shopping benchmark for LLM-based agents — Wang et al., 2025a — evaluating agents on diverse shopping intents with realistic search workflows.
+Wizard of shopping: Target-oriented e-commerce dialogue generation — Li et al., 2025 — decision tree branching for multi-path dialogue planning.
+EcomScriptBench: A multi-task benchmark for e-commerce script planning — Wang et al., 2025b — step-wise intention-driven product association.
+ShopSimulator: Evaluating and exploring RL-driven LLM agent for shopping assistants — Wang et al., 2026 — multi-turn interaction with static expert-summarized preferences.
+WebShop: Towards scalable real-world web interaction with grounded language agents — Yao et al., 2022 — single-session web navigation and shopping.
+LongMemEval: Benchmarking chat assistants on long-term interactive memory — Wu et al., 2024 — evaluating memory across sessions but without downstream shopping tasks.</p>
+<h3>Reinforcement Learning Training and Evaluation</h3>
+<p>Long-range objectives in reinforcement learning — Ouyang et al., 2022 — using human feedback for instruction following.
+LoRA: Low-rank adaptation of large language models — Hu et al., 2022 — parameter-efficient fine-tuning via low-rank updates.
+LLaMAFactory: Unified efficient fine-tuning of 100+ language models — Zheng et al., 2024 — framework for efficient model fine-tuning.
+HybridFlow: A flexible and efficient RLHF framework — Sheng et al., 2024 — the VeRL framework used for RL training.
+DeepSeekMath: Pushing the limits of mathematical reasoning — Shao et al., 2024 — GRPO algorithm for RL-based optimization.
+Judging LLM-as-Judge with MT-Bench and Chatbot Arena — Zheng et al., 2023 — evaluating LLM-based judges and meta-evaluation robustness.</p>
+<h3>Information Retrieval and Search</h3>
+<p>BM25 and beyond — Robertson and Zaragoza, 2009 — probabilistic relevance framework for retrieval ranking.
+Pyserini: An easy-to-use Python toolkit for replicable IR research — Lin et al., 2021 — toolkit for sparse and dense IR experiments.
+Quantum mechanics helps in searching for a needle in a haystack — Grover, 1997 — the needle-in-haystack framework for evaluating long-context retrieval.
+All-MiniLM-L6-v2 — Hugging Face, 2021 — lightweight sentence transformer for dense retrieval over dialogue.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

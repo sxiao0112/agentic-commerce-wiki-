@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contradictions Register</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="index.html">Index</a><a href="overview.html">Overview</a><a href="next-step.html">Next Step</a><a href="open-questions.html">Open Questions</a><a href="contradictions.html">Contradictions</a><a href="log.html">Log</a></nav>
+
+<h1>Contradictions Register</h1>
+<p>Cross-cutting register of disagreements between papers, attributed with <code>&lt;span class="missing" title="not yet in the wiki"&gt;links&lt;/span&gt;</code>. Judgment-zone content.</p>
+<h2>Does more agents help or harm agreement?</h2>
+<ul>
+<li><strong><a href="papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a></strong>: Deal welfare increases with greater buyer and seller multiplicity, attributed to market liquidity that lets agents find compatible trading partners.</li>
+<li><strong><a href="papers/I5MWYLFD.html" title="Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation [I5MWYLFD]">Abdelnabi et al., 2024</a></strong>: Adding parties and tightening the feasible-deal ratio sharply degrades agreement success, dropping GPT-4 from 81% to 30% as feasible deals shrink.</li>
+<li>Nature: Contextual: price-only matching markets ease finding partners, while multi-issue games with veto parties make agreement combinatorially harder. (topic <a href="topics/agent-to-agent-negotiation.html" title="Agent-to-agent negotiation">agent-to-agent-negotiation</a>)</li>
+</ul>
+<h2>Manipulation resistance of frontier AI shopping agents</h2>
+<ul>
+<li><strong><a href="papers/CBL2GTGW.html" title="Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets [CBL2GTGW]">Bansal et al., 2025</a></strong>: Frontier models robustly resist traditional psychological manipulation tactics (authority, social proof, loss aversion) and keep payments to manipulative businesses low.</li>
+<li><strong><a href="papers/4HUDI9FW.html" title="What Is Your AI Agent Buying? Evaluation, Biases, Model Dependence, &amp; Emerging Implications for Agentic E-Commerce [4HUDI9FW]">Allouah et al., 2025</a></strong>: Frontier agents remain substantially exploitable through seller-side listing optimization, with modest description edits driving large market-share swings; Affonso models the same exploitability as the engine of vertical tacit collusion, and Kumar &amp; Lakkaraju (XT585ED2) realize it as an adversarial strategic-text-sequence attack that forces a target product to the top.</li>
+<li>Nature: Different attack surfaces: conversational psychological persuasion (resisted) versus structural and adversarial exploitation of position, endorsement, and description channels (still effective). (topic <a href="topics/ai-mediated-market-dynamics.html" title="Economics, manipulation, and collusion in AI-mediated markets">ai-mediated-market-dynamics</a>)</li>
+</ul>
+<h2>Simplified vs. ambiguous benchmark policies</h2>
+<ul>
+<li><strong><a href="papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al., 2024</a></strong>: τ-bench and τ²-bench evaluate agents against purpose-built, unambiguous domain policies and treat inconsistent outcomes as agent unreliability measured by pass^k.</li>
+<li><strong><a href="papers/AY3WV8T4.html" title="DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain [AY3WV8T4]">Borkakoty et al., 2026</a></strong>: DRIP-R grounds tasks in real ambiguous retail policy and shows frontier models fundamentally disagree on resolutions where no single correct outcome exists, reframing apparent unreliability as irreducible decision ambiguity.</li>
+<li>Nature: Disagreement over whether realistic policy ambiguity should be designed into the benchmark or held simple, and over what inconsistent agent outcomes actually measure. (topic <a href="topics/tool-agent-user-interaction.html" title="Tool-agent-user interaction and conversational service agents">tool-agent-user-interaction</a>)</li>
+</ul>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

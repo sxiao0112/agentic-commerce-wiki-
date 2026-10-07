@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Generative Engine Optimization and Search Manipulation</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+
+<h1>Generative Engine Optimization and Search Manipulation</h1>
+<p>How sellers and adversaries shape the content that LLM-backed search and recommendation systems retrieve and rank, to win product visibility.</p>
+<h2>Definition</h2>
+<p>Generative engine optimization (GEO) is the practice of optimizing content so that a generative engine ranks it highly in its output. Bagga et al. frame it as the successor to classical search engine optimization, arising as generative engines become alternatives to traditional search. In their account the central question is which properties of product content determine whether a generative engine ranks it highly, a question that is practically important but poorly understood. They study it in e-commerce, where ranking improvements translate directly into measurable economic outcomes <a href="../papers/J7UPZPJR.html" title="E-GEO: A Testbed for Generative Engine Optimization in E-Commerce [J7UPZPJR]">Bagga et al., 2025</a>.</p>
+<p>A second strand frames the same goal adversarially as search manipulation. Kumar and Lakkaraju ask whether a vendor can increase a product's visibility in LLM-generated recommendations by embedding optimized strategic text sequences into the product information the LLM retrieves. They generate these sequences with the Greedy Coordinate Gradient adversarial attack, repurposing a jailbreak method toward a product-ranking objective <a href="../papers/XT585ED2.html" title="Manipulating Large Language Models to Increase Product Visibility [XT585ED2]">Kumar &amp; Lakkaraju, 2024</a>.</p>
+<p>A third strand pushes the attack upstream into the retriever itself. Ben-Tov and Sharif define corpus-poisoning SEO attacks as inserting adversarial passages into a corpus, at inference time and without modifying the retriever, so the passages achieve high retrieval ranking for target queries. Their GASLITE method optimizes a passage by maximizing similarity between it and a target query distribution in the embedding space <a href="../papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a>.</p>
+<p>Across all three, the shared substrate is retrieval-augmented generation: generative engines retrieve candidate content and an LLM generates a response over it. Both the retrieval step and the generation step are surfaces an optimizer can target.</p>
+<h2>State of the area (synthesis)</h2>
+<p>The field splits along intent. One side treats content optimization as a legitimate, even necessary, response to the rise of generative search. The other treats it as an attack on marketplace integrity. The methods on both sides overlap heavily, which is what makes the field coherent.</p>
+<p>Bagga et al. anchor the legitimate side with E-GEO, the first benchmark built specifically for GEO in e-commerce <a href="../papers/J7UPZPJR.html" title="E-GEO: A Testbed for Generative Engine Optimization in E-Commerce [J7UPZPJR]">Bagga et al., 2025</a>. They evaluate 15 GEO rewriting heuristics drawn from current practice, such as authoritative tone, persuasive language, social proof, and scannable formatting. Most heuristics barely help. Ten of the 15 yield negligible or negative rank changes, and the best gives only a small average improvement. Their key finding is that systematic prompt optimization beats ad hoc heuristics. A lightweight iterative optimizer produces consistent gains across all 15 prompts. The optimized prompts converge toward a stable, domain-agnostic pattern, which the authors read as evidence of a universally effective GEO strategy rather than a per-domain trick.</p>
+<p>Kumar and Lakkaraju attack the generation step directly. Their strategic text sequence, optimized with the Greedy Coordinate Gradient algorithm, is appended to a product's information so the LLM names that product first <a href="../papers/XT585ED2.html" title="Manipulating Large Language Models to Increase Product Visibility [XT585ED2]">Kumar &amp; Lakkaraju, 2024</a>. In a controlled catalog of ten fictitious coffee machines ranked by Llama-2, the sequence elevates a product that was not recommended at all into the top recommendation. Robustness to product ordering matters: a sequence optimized over random permutations of the product list maintains its advantage far better than one optimized at a fixed ordering. The authors position this as a vendor-side analogue to SEO that is potentially more effective, and as a vulnerability requiring safeguards.</p>
+<p>Ben-Tov and Sharif move the attack to the retriever, before any LLM sees the content <a href="../papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a>. GASLITE crafts adversarial passages that rank highly without access to the corpus or the model weights, using multi-coordinate greedy search and gradient averaging in discrete token space. Their threat-model taxonomy is the field's sharpest lens on how realistic an attack is. Knows All targets a single specific query and is completely solved, reaching full appeared@1 across nine retrievers. Knows What targets a concept, the case they argue is most realistic, and succeeds with negligible poisoning: ten passages, a tiny fraction of the corpus, push adversarial content into the top results for a majority of held-out queries on most models. Knows Nothing targets arbitrary queries, needs a larger budget, and yields weaker but nonzero promotion. Susceptibility varies by model. They tie this variance to embedding-space anisotropy and to the similarity metric, with dot-product models such as Contriever especially exposed.</p>
+<p>Read together, the three papers trace the GEO surface end to end. Ben-Tov and Sharif show content can be forced into the retrieved set <a href="../papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a>. Kumar and Lakkaraju show that, once retrieved, content can be forced to the top of the generated answer <a href="../papers/XT585ED2.html" title="Manipulating Large Language Models to Increase Product Visibility [XT585ED2]">Kumar &amp; Lakkaraju, 2024</a>. Bagga et al. show that even within fluent, non-adversarial rewriting there is a systematic optimum that reliably lifts rank <a href="../papers/J7UPZPJR.html" title="E-GEO: A Testbed for Generative Engine Optimization in E-Commerce [J7UPZPJR]">Bagga et al., 2025</a>. The two adversarial papers use gradient-based discrete optimization to produce often-unreadable token sequences. The benchmark paper uses prompt optimization to produce readable marketing copy. The line between optimization and attack is therefore one of method and readability, not of mechanism: all three exploit how a retrieval-and-generation pipeline scores text.</p>
+<p>The economic stakes are why this matters for agentic commerce. Bagga et al. ground GEO in evidence that higher rankings translate into more clicks, conversions, and revenue, and situate it in the shift toward conversational, intent-rich shopping where an LLM mediates the purchase <a href="../papers/J7UPZPJR.html" title="E-GEO: A Testbed for Generative Engine Optimization in E-Commerce [J7UPZPJR]">Bagga et al., 2025</a>. The same agentic-commerce setting that this optimization targets is where its consequences land. When an AI agent buys on a user's behalf, manipulated rankings steer real spending, a concern that connects this field to <a href="ai-mediated-market-dynamics.html" title="Economics, manipulation, and collusion in AI-mediated markets">ai-mediated-market-dynamics</a> and to the agentic e-commerce evaluation of <a href="../papers/4HUDI9FW.html" title="What Is Your AI Agent Buying? Evaluation, Biases, Model Dependence, &amp; Emerging Implications for Agentic E-Commerce [4HUDI9FW]">Allouah et al., 2025</a>. Because the corpus-poisoning route operates through the same indirect-injection surface that compromises retrieval pipelines, the field also overlaps with <a href="agent-security-and-prompt-injection.html" title="Agent Security and Prompt Injection">agent-security-and-prompt-injection</a>.</p>
+<h2>Papers in this field</h2>
+<ul>
+<li><a href="../papers/J7UPZPJR.html" title="E-GEO: A Testbed for Generative Engine Optimization in E-Commerce [J7UPZPJR]">Bagga et al., 2025</a> — introduces E-GEO, the first e-commerce GEO benchmark, and shows systematic prompt optimization substantially outperforms heuristic rewriting, converging on a universal rewriting strategy.</li>
+<li><a href="../papers/XT585ED2.html" title="Manipulating Large Language Models to Increase Product Visibility [XT585ED2]">Kumar &amp; Lakkaraju, 2024</a> — demonstrates that strategic text sequences optimized with GCG can manipulate LLM-driven e-commerce recommendations to make a target product the top choice.</li>
+<li><a href="../papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a> — presents GASLITE, a gradient-based corpus-poisoning attack showing dense embedding retrievers are highly vulnerable to SEO attacks at negligible poisoning rates, especially for concept-specific queries.</li>
+</ul>
+<h2>Contradictions</h2>
+<ul>
+<li>None directly flagged among collected papers. The papers differ in stance, from legitimate optimization to adversarial attack, but report no conflicting empirical findings; all agree that LLM-backed retrieval and ranking can be reliably steered by crafted content.</li>
+</ul>
+<h2>Open questions / gaps</h2>
+<ul>
+<li>Equilibrium dynamics when GEO adoption becomes universal, including congestion effects, strategic arms races, and possible degradation of content informativeness <a href="../papers/J7UPZPJR.html" title="E-GEO: A Testbed for Generative Engine Optimization in E-Commerce [J7UPZPJR]">Bagga et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
+<li>Fairness and market-design implications, since GEO advantage may favor sophisticated sellers and widen platform inequality <a href="../papers/J7UPZPJR.html" title="E-GEO: A Testbed for Generative Engine Optimization in E-Commerce [J7UPZPJR]">Bagga et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
+<li>Extending optimization beyond text to multimodal product content such as images and video <a href="../papers/J7UPZPJR.html" title="E-GEO: A Testbed for Generative Engine Optimization in E-Commerce [J7UPZPJR]">Bagga et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
+<li>Countermeasures to detect and prevent manipulation, plus ethical guidelines for responsible optimization, to preserve marketplace integrity and fair competition <a href="../papers/XT585ED2.html" title="Manipulating Large Language Models to Increase Product Visibility [XT585ED2]">Kumar &amp; Lakkaraju, 2024</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
+<li>Defense mechanisms against corpus-poisoning retrieval attacks beyond L2-norm and perplexity filtering, and robustness evaluation on larger models and specialized domains beyond the white-box, 110M-parameter, MSMARCO-centric setting studied <a href="../papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
+</ul>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebMall - A Multi-Shop Benchmark for Evaluating Web Agents</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>WZ5CP8MZ</td></tr><tr><th>wiki_id</th><td>WZ5CP8MZ</td></tr><tr><th>aliases</th><td>[WZ5CP8MZ]</td></tr><tr><th>slug</th><td>peeters-2025-webmall-multi-shop-benchmark</td></tr><tr><th>title</th><td>&quot;WebMall - A Multi-Shop Benchmark for Evaluating Web Agents&quot;</td></tr><tr><th>authors</th><td>[&quot;Peeters, Ralph&quot;, &quot;Steiner, Aaron&quot;, &quot;Schwarz, Luca&quot;, &quot;Caspary, Julian Yuya&quot;, &quot;Bizer, Christian&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>&quot;&quot;</td></tr><tr><th>url</th><td>&quot;https://arxiv.org/abs/2508.13024v2&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2508.13024&quot;</td></tr><tr><th>doi</th><td>&quot;&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;web agents&quot;, &quot;e-commerce benchmark&quot;, &quot;comparison shopping&quot;, &quot;product search&quot;, &quot;multi-shop environment&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>WebMall - A Multi-Shop Benchmark for Evaluating Web Agents</h1>
+<h2>Contribution</h2>
+<p>WebMall is the first offline multi-shop e-commerce benchmark designed to evaluate web agents on challenging comparison shopping tasks in a reproducible environment. The benchmark consists of four simulated electronics-focused online shops populated with real product offers extracted from the Common Crawl, along with 91 tasks across 11 task categories. WebMall distinguishes itself from existing simulated environment benchmarks by requiring agents to navigate multiple shops with heterogeneous product descriptions, category structures, and pricing interfaces, performing complex retrieval tasks that range from specific product searches and price comparisons to searches for substitute or compatible products, as well as checkout processes. The authors validate WebMall using eight baseline agent configurations that vary along three dimensions: observation space (accessibility tree and/or screenshots), availability of short-term memory, and underlying language model (GPT-5.4 versus Qwen 3.6 Plus).</p>
+<h2>Research Question</h2>
+<p>How should web agents be evaluated on complex comparison shopping tasks that require navigation and search across multiple e-shops with heterogeneous product data, and what design choices in agent architecture (observation modality, memory, and language model) most effectively enable agent performance on such tasks?</p>
+<h2>Task</h2>
+<p>WebMall includes 91 tasks across 11 task categories grouped into five task groups. Specific Product Search tasks require agents to retrieve all offers for a named product or offers satisfying explicit attribute constraints. Vague Product Search tasks capture retrieval under vague user specifications, including finding substitutes or compatible products. Cheapest Product Search tasks require price-based ranking and selection after relevance and constraints are satisfied. Action and Transaction tasks include adding offers to carts and completing checkout with form-filling. End-to-End tasks combine price-aware retrieval with cart and checkout workflows. Tasks are expressed as natural-language queries with solution URLs as ground truth, enabling evaluation of set retrieval (recall of all relevant offers) and specific selection or ranking (choosing the cheapest relevant offer under constraints). All tasks were created and cross-checked by domain experts and refined over multiple baseline runs and human trials before finalization.</p>
+<h2>Data</h2>
+<p>The WebMall environment consists of four electronics-focused WordPress shops implemented using free WooCommerce templates, each with a shopping cart, checkout functionality, search bar, category drop-down, and product detail pages. Products are populated from the WDC Extraction of the October 2024 Common Crawl, filtered to English-language offers containing title, description, price, and price currency. After filtering and deduplication, offers are clustered by globally unique product identifiers (GTIN or MPN numbers) to group same real-world products, then manually selected and distributed across shops to ensure a realistic comparison shopping scenario. The four shops contain a total of 4,421 product offers distributed across three categories: PC Components (1,477 offers), PC Peripherals (1,388 offers), and Other Electronics (1,556 offers). Product titles range from 6 to 264 characters with median length 69, while descriptions span 15 to over 14,000 characters with median 573. The category trees in each shop are heterogeneous and manually created to simulate real e-shop variation.</p>
+<h2>Metrics</h2>
+<p>Agent effectiveness is evaluated using task-level metrics: task completion rate (strict exact-match when the agent returns every relevant item and no additional irrelevant items), precision, recall, and F1 aggregated by macro-averaging over tasks in each category. Efficiency is measured using token usage, runtime per task, and API cost. For each task, an agent is allowed up to 50 steps (actions such as go to page, click, fill text, and scroll) to complete it.</p>
+<h2>Baselines</h2>
+<p>The authors validate WebMall using eight baseline agent configurations implemented in the Browsergym and AgentLab frameworks, varying observation space (accessibility tree only, screenshots only, or both), availability of persistent short-term memory, and language model backend (GPT-5.4 via OpenAI API and Qwen 3.6 Plus via OpenRouter API). Results show that GPT-5.4 achieves best performance on most task groups with completion rates below 65% on challenging categories (cheapest product search and vague product search), while using the accessibility tree is most important for task completion and screenshots alone are insufficient. GPT-5.4 agents average 2.1-2.8 minutes per task with costs ranging from $0.34 to $0.56, whereas Qwen 3.6 Plus agents average 3.9-6.4 minutes per task but cost only $0.07-$0.12. Adding memory reduces average steps for GPT-5.4 but does not offset the additional token context. Vision-only agents are substantially weaker than accessibility-tree-based agents, with Qwen 3.6 Plus vision agents failing entirely on every task group due to inability to maintain stable mapping from rendered screenshots to navigation elements.</p>
+<h2>Conclusion</h2>
+<p>WebMall fills a gap in existing web agent benchmarks by introducing the first offline, reproducible, multi-shop e-commerce benchmark requiring agents to perform comparison shopping across multiple shops with heterogeneous product data and interfaces. The benchmark's difficulty is validated through baseline experiments showing that state-of-the-art models achieve task completion rates below 65% on complex categories, demonstrating the need for improved agent architectures that can effectively perform product comparisons and maintain information over longer interaction trajectories while reducing token consumption and runtime. The results highlight that structural grounding via accessibility trees is crucial for navigation and that vision-only approaches are insufficient without adequate semantic grounding.</p>
+<h2>Related Work</h2>
+<h3>Web Agent Benchmarks (Single-Shop and Multi-Domain)</h3>
+<p>Early and existing single-shop benchmarks: WebShop (2022) simulates a single e-shop populated with over one million Amazon product offers — <a href="WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a> notes this as foundational but limited to single-shop scenarios. Mind2Web (2023) uses snapshots of real websites to simulate a web environment covering various tasks including online shopping but limits shopping tasks to single websites with shorter trajectories. WebArena (2024) simulates multiple websites spanning e-commerce, social media, and productivity but shopping tasks are limited to single e-shops focusing on shop administration and sales statistics rather than product search. REAL benchmark (2026) spans various task types including shopping in single-shop environments such as product search, shopping cart management, and checkout. ShoppingBench (2026) also simulates a single shop requiring tasks like product search, voucher usage, and budget adherence. AgentBench (2024) extends beyond the Web to databases and operating systems. VisualWebArena (2024) focuses on visually grounded tasks. WebChoreArena (2025) emphasizes memory-intensive tasks.</p>
+<h3>Online Web Benchmarks</h3>
+<p>Online-Mind2Web (extension of Mind2Web to the live Web). BrowseComp features deliberately difficult reasoning and web search tasks. DeepShop (2025) evaluates complex product search queries. ShoppingComp (2026) includes complex shopping queries with safety-critical constraints. AmazonBench (2026) covers e-commerce tasks with focus on agent safety. ShopperBench (2026) and AgenticShop (2026) assess persona-guided shopping abilities. A survey paper on web agents (2025) provides comprehensive overview of the landscape.</p>
+<h3>Related Work by Authors</h3>
+<p>Aaron Steiner, Ralph Peeters, and Christian Bizer (2026) follow up on WebMall with a comparison of different agent interfaces to the Web including HTML browsing, RAG search, MCP interaction, and NLWeb querying.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

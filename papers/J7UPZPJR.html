@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E-GEO: A Testbed for Generative Engine Optimization in E-Commerce</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>J7UPZPJR</td></tr><tr><th>wiki_id</th><td>J7UPZPJR</td></tr><tr><th>aliases</th><td>[J7UPZPJR]</td></tr><tr><th>slug</th><td>bagga-2025-egeo-testbed-generative-engine</td></tr><tr><th>title</th><td>&quot;E-GEO: A Testbed for Generative Engine Optimization in E-Commerce&quot;</td></tr><tr><th>authors</th><td>[&quot;Bagga, Puneet S.&quot;, &quot;Farias, Vivek F.&quot;, &quot;Korkotashvili, Tamar&quot;, &quot;Peng, Tianyi&quot;, &quot;Wu, Yuhang&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>&quot;arXiv&quot;</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2511.20867&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2511.20867&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2511.20867&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;generative engine optimization&quot;, &quot;e-commerce&quot;, &quot;large language models&quot;, &quot;product ranking&quot;, &quot;prompt optimization&quot;, &quot;benchmark dataset&quot;, &quot;retrieval-augmented generation&quot;]</td></tr><tr><th>updated</th><td>2026-06-25</td></tr></tbody></table>
+<h1>E-GEO: A Testbed for Generative Engine Optimization in E-Commerce</h1>
+<h2>Contribution</h2>
+<p>The authors introduce E-GEO, the first benchmark specifically designed for studying generative engine optimization in e-commerce. E-GEO consists of over 7,000 long-form consumer product queries paired with relevant Amazon listings, capturing rich intent, constraints, preferences, and shopping contexts that existing datasets miss. Using this benchmark, they conduct the first large-scale empirical evaluation of 15 common GEO rewriting heuristics, develop a lightweight iterative prompt-optimization algorithm that substantially outperforms heuristic baselines, and uncover evidence of a universally effective rewriting strategy that generalizes across queries and product domains.</p>
+<h2>Research Question</h2>
+<p>The authors address the core question of what properties of product content determine whether a generative engine ranks it highly in its output. As generative engines become alternatives to traditional search, the question of how to optimize content visibility and relevance for these systems—distinct from classical SEO—has emerged as practically important but remains poorly understood. The work focuses specifically on e-commerce, where ranking improvements translate directly to measurable economic outcomes.</p>
+<h2>Task</h2>
+<p>E-GEO contains 7,151 high-quality product-seeking queries sourced from the BuyItForLife subreddit, curated for explicit product recommendation requests that include nontrivial intent details. Real-world examples include nuanced requests such as sandal durability preferences, budget constraints, and desired material properties, or specific alarm clock features across different days of the week. These queries are paired with 52,165 unique products from the Amazon Reviews dataset, with each query matched to its top 10 most relevant products via embedding-based retrieval.</p>
+<h2>Data</h2>
+<p>Queries were obtained from the BuyItForLife subreddit, chosen because the community frequently discusses durable, high-quality products and contains recommendation-oriented requests with rich context. An initial pool of 141,105 recommendation-oriented requests was identified using GPT-4o-mini, then refined to 7,151 final queries via human-quality curation with GPT-4o. Product listings come from the Amazon Reviews dataset, which contains over 48 million products across 30+ categories with titles, descriptions, and feature lists. Products are retrieved for each query using all-MiniLM-L6-v2 sentence embeddings with cosine similarity matching.</p>
+<h2>Metrics</h2>
+<p>Performance is evaluated through ranking improvement: for each query, a product from the retrieved candidate set is sampled, and its rank position is compared before and after rewriting its description. The primary metric is the average rank change across a set of queries, with positive values indicating improved placement. The authors also report statistical measures including mean ranking improvement, standard deviation, improvement rate (percentage of queries where ranking improved), and median improvement.</p>
+<h2>Baselines</h2>
+<p>The authors establish baselines using 15 heuristic rewriting strategies inspired by current GEO practices. These heuristics target diverse rewriting strategies: advertisement-like style, authoritative/confident tone, persuasive language, competitive differentiation, inclusivity, FAQ additions, linguistic fluency, formatting with headings and bullets, foreign language expressions, minimalist single-sentence reduction, quality emphasis, narrative storytelling, technical terminology, LLM-output formatting, and rare vocabulary. Initial human-written prompts show inconsistent performance: 10 of 15 yield negligible or negative rank changes, with the best heuristic achieving only +0.71 average improvement.</p>
+<h2>Conclusion</h2>
+<p>Systematic prompt optimization substantially outperforms ad hoc heuristic rewriting for GEO. The authors demonstrate that even lightweight zeroth-order optimization methods can reliably improve product rankings, with all 15 optimized prompts producing consistent gains (minimum +0.68, with most exceeding +1). Analysis of optimized prompts reveals emergent convergence toward a stable, domain-agnostic pattern characterized by ranking emphasis, user intent alignment, competitive differentiation, social proof integration, compelling narrative, authoritative voice, unique selling point focus, urgency cues, scannable formatting, and factuality preservation. This convergence suggests the existence of a universally effective GEO strategy, indicating that systematic optimization rather than ad hoc heuristics governs effective content presentation for generative engines. The work opens directions for studying equilibrium dynamics when GEO adoption becomes widespread, extending optimization to multimodal content, and addressing fairness and market-design questions in platform economics.</p>
+<h2>Related Work</h2>
+<h3>Generative Engine Optimization</h3>
+<p>Generative engine optimization was introduced by Aggarwal et al. (2024) as a framework for increasing source visibility in generative engine outputs using an impression score metric combining word count, citation position, and GPT-based quality assessment — foundational but lacking systematic optimization and clear commercial translation.</p>
+<p>Prompt injection and manipulation attacks on LLMs have been studied by Kumar and Lakkaraju (2024) and Pfrommer et al. (2024), demonstrating that model outputs can be systematically influenced, though with adversarial objectives distinct from legitimate visibility improvement.</p>
+<h3>Prompt Optimization and Automated Engineering</h3>
+<p>Automatic prompt engineering (APE) was introduced by Zhou et al. (2023) for refining prompts on downstream tasks. Subsequent work has explored prompt refinement and adaptation techniques, with the authors' optimization approach particularly inspired by the reflection module in GEPA by Agrawal et al. (2025), which uses reflective self-critique for prompt evolution.</p>
+<h3>LLM-Backed Shopping and Recommendation</h3>
+<p>Recent work on LLM-empowered shopping assistants has examined conversational, intent-rich interactions in e-commerce platforms. Allouah et al. (2025) studies evaluation and implications of agentic e-commerce systems, and Wu et al. (2024) surveys the broader literature on LLM-backed recommender systems, highlighting the shift toward conversational commerce that creates the context for GEO.</p>
+<h3>Retrieval-Augmented Generation</h3>
+<p>The conceptualization of generative engines as retrieval-augmented generation (RAG) systems is grounded in Lewis et al. (2020), which established the foundational framework for combining retrieval and generation in knowledge-intensive NLP tasks.</p>
+<h3>Search Economics and Ranking Effects</h3>
+<p>The connection between product rankings and observable commercial outcomes is grounded in the empirical literature on e-commerce search, particularly Baye et al. (2009), which documents that higher rankings translate strongly into increased clicks, conversions, and revenue.</p>
+<h3>E-Commerce Datasets</h3>
+<p>Existing e-commerce retrieval datasets are discussed by Papenmeier et al. (2021), Chen et al. (2022), and Reddy et al. (2022). The authors note that while e-commerce retrieval datasets are prolific, they primarily contain short keyword queries and lack the rich, context-heavy natural-language interactions that characterize real user engagement with shopping agents.</p>
+<p>The shift toward generative search has been documented by recent industry studies and commentary, including observations by Sommerfeld et al. (2025) and Toscano (2025) on reduced user engagement with traditional search as generative engines offer comparable content retrieval, and industry guidance from Berry (2025) and Madhavan (2025) on answer engine optimization practices.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

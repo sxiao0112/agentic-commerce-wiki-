@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>NR3QZNJE</td></tr><tr><th>wiki_id</th><td>NR3QZNJE</td></tr><tr><th>aliases</th><td>[NR3QZNJE]</td></tr><tr><th>slug</th><td>yao-2023-webshop-scalable-real-world-web-interaction</td></tr><tr><th>title</th><td>&quot;WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents&quot;</td></tr><tr><th>authors</th><td>[&quot;Yao, Shunyu&quot;, &quot;Chen, Howard&quot;, &quot;Yang, John&quot;, &quot;Narasimhan, Karthik&quot;]</td></tr><tr><th>year</th><td>2023</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>&quot;arXiv (NeurIPS 2022)&quot;</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2207.01206&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2207.01206&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2207.01206&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;language grounding&quot;, &quot;web interaction&quot;, &quot;e-commerce benchmark&quot;, &quot;autonomous agents&quot;, &quot;imitation learning&quot;, &quot;reinforcement learning&quot;, &quot;query reformulation&quot;, &quot;strategic exploration&quot;, &quot;sim-to-real transfer&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents</h1>
+<h2>Contribution</h2>
+<p>The authors develop WebShop, a large-scale simulated e-commerce environment for training and evaluating autonomous agents that interact with web pages using natural language instructions. The environment contains 1.18 million real-world products scraped from Amazon and 12,087 crowdsourced text instructions describing shopping tasks. Agents must navigate multiple page types (search, results, item detail), formulate search queries, select products, choose options, and complete purchases. The authors train multiple models using imitation learning and reinforcement learning, achieving a success rate of 29% with the best model (IL+RL), significantly above a rule baseline at 9.6% but well below human expert performance at 59%. They also demonstrate sim-to-real transfer, deploying agents trained on WebShop to operate directly on Amazon.com and eBay.com without fine-tuning.</p>
+<h2>Research Question</h2>
+<p>How can language understanding and sequential decision-making be improved for agents that must interact with realistic, large-scale web environments? The authors address the gap between static NLP benchmarks and truly interactive environments, specifically focusing on tasks that require compositional instruction understanding, query reformulation, robust semantic matching of noisy web text, and long-term strategic exploration across multiple pages.</p>
+<h2>Task</h2>
+<p>Given a natural language instruction specifying product requirements (including desired attributes, options, and price constraint), an agent navigates a simulated e-commerce website to find, customize, and purchase a matching product. Instructions are generated based on target products and specify a subset of product attributes, options, and an upper-bound price. The task requires the agent to reason about compositional requirements and match them against product metadata across multiple pages.</p>
+<h2>Data</h2>
+<p>The product corpus consists of 1,181,436 products scraped from Amazon.com across five categories (fashion, makeup, electronics, furniture, food) using 113 sub-category queries. Product texts have an average length of 262.9 tokens with a vocabulary of 224,041 words. Each product is annotated with a hidden set of attributes (670 unique attributes total, averaging 3.1 per product) extracted via TF-IDF scoring and manual filtering, and 842,849 unique options available across products (averaging 0.67 options per product). Natural language instructions (12,087 total, averaging 15.9 words) were collected via Amazon Mechanical Turk from workers given a target product and asked to write instructions without copying the full title. The authors collected 1,012 human demonstrations for task verification and imitation learning, and an additional 54 expert demonstrations for hyperparameter tuning. Human trajectories were collected for all 500 test instructions. The data is split into train/dev/test at 10,587 / 1,000 / 500 instructions.</p>
+<h2>Metrics</h2>
+<p>Task Score is computed as 100 times the average reward across episodes. Success Rate is the fraction of episodes where the agent achieves a perfect reward (r = 1.0). The reward function combines four components: attribute matching (intersection of instruction and product attributes), option matching (intersection of instruction and product options), price satisfaction (binary check that product price is within budget), and type reward (heuristic text matching to ensure the product is fundamentally the correct type). The formula is r = r_type · (|U_att ∩ Y_att| + |U_opt ∩ Y_opt| + 1[y_price ≤ u_price]) / (|U_att| + |U_opt| + 1), where r_type accounts for coarse-grain category match, fine-grain category match, and title overlap.</p>
+<h2>Baselines</h2>
+<p>A simple rule baseline searches the exact instruction text and chooses the first returned product without selecting any options, achieving a score of 45.6 and success rate of 9.6%. The authors also evaluate a Choice oracle with access to the ground-truth reward function and hidden attributes/options; when given human-quality search queries, this oracle achieves 85%+ success rate, demonstrating that search quality and option selection are key bottlenecks.</p>
+<h2>Method</h2>
+<p>The authors train agents using two approaches: imitation learning (IL) and reinforcement learning (RL). For IL, they separate search generation and action choice. Search is modeled as a sequence-to-sequence problem, fine-tuning a BART model on 1,421 instruction-search pairs from human demonstrations. Choice is modeled as ranking available actions; a BERT-based transformer encodes both the observation (page text, with product images encoded via ResNet-50) and each candidate action, with a cross-attention layer combining their representations before a learned linear scoring layer. During inference, the search model generates top-5 queries via beam search and one is chosen randomly for exploration. At other page types, an action is sampled from the learned policy. For RL, the authors initialize from the IL model and apply policy gradient with value baseline, freezing the search generator and letting the choice policy learn to explore the top-10 generated queries. This IL+RL approach prevents language drift during RL training.</p>
+<h2>Setup</h2>
+<p>The environment is implemented using Flask and OpenAI Gym with two rendering modes: HTML (for human interaction) and simple mode (stripped of metadata, for agents). A deterministic search engine using BM25 retrieval (via Pyserini) returns the top 50 results across five pages. The transition function is deterministic; state spaces consist of search, results, item, and item-detail pages. Human performance is measured in HTML mode; all model training and evaluation uses simple mode. Agents are evaluated on the i.i.d. test split (500 instructions) against human expert performance measured on the same set.</p>
+<h2>Results</h2>
+<p>The IL model achieves a score of 59.9 and success rate of 29.1%, significantly outperforming the rule baseline but lagging human experts at 82.1 / 59.6%. IL+RL improves the score to 62.4 but slightly reduces success rate to 28.7%, suggesting RL makes the agent greedier and less exploratory (average trajectory length drops from 9.4 to 4.8 steps). Ablations show that language pre-training (LP) is critical—removing pre-trained BERT weights degrades success rate by two-thirds. Fine-grained analysis reveals the largest performance gap between agents and humans is in option selection (28 percentage point gap). A Choice oracle experiment shows that with perfect action selection, success rate reaches 85%, confirming that choosing correct options is the primary bottleneck. For sim-to-real transfer on Amazon and eBay without fine-tuning, IL+RL achieves scores of 65.9 / 25% and 62.3 / 21% respectively, outperforming the rule baseline by large margins. Humans achieve slower but higher-quality performance (88.2 / 65% on Amazon and 79.7 / 40% on eBay, but taking an average of 815 seconds per episode compared to &lt;8 seconds for agents).</p>
+<h2>Findings</h2>
+<p>Agents struggle with four key challenges: (1) generating effective search queries and reformulating them adaptively (agents learn to search but achieve only 38-45% option match compared to humans at 74%); (2) semantic matching of noisy web text, particularly for synonyms and paraphrases in option selection; (3) strategic exploration and long-term memory to compare products and backtrack (humans explore 11.3 items and 7+ states per trajectory vs. agents averaging 4-5 items and 4-5 states); and (4) balancing exploration vs. exploitation during RL (RL reduces exploration which helps with low-level scores but hurts option matching). Sim-to-real transfer results are promising, with agents maintaining similar performance on real e-commerce sites despite differences in search engines and product catalogs, validating the realism and transferability of the WebShop task. Human failure analysis identifies impatience as a common pattern—workers commit to the first reasonable match rather than exploring and refining searches.</p>
+<h2>Conclusion</h2>
+<p>WebShop provides a realistic, scalable benchmark for developing grounded language agents capable of complex sequential decision-making over large-scale web environments. The benchmark combines realistic linguistic and visual content from real products with automatically computable rewards, avoiding expensive human-in-the-loop evaluation. The significant gap between agent and human performance (29% vs. 59% success rate) indicates ample room for research advances. The authors identify promising directions including multi-modal pre-training on web data, query reformulation techniques, improved exploration and memory mechanisms, and better semantic understanding of noisy web content. The successful sim-to-real transfer to real shopping websites demonstrates the benchmark's practical value for developing autonomous web agents.</p>
+<h2>Related Work</h2>
+<h3>Reinforcement learning on the web</h3>
+<p>End-to-End Goal-Driven Web Navigation — Nogueira and Cho — Prior work introduced WikiNav, a navigation-only benchmark restricted to following hyperlinks.
+World of Bits (WoB) and MiniWoB — Shi et al., Gur et al., Humphreys et al., others — RL agents trained to complete web tasks via pixel and DOM observations; variants explored curriculum learning, meta-learning, DOM tree representations, and behavioral cloning, but lacked long-range decision-making across multiple pages and did not scale beyond low-level mouse/keyboard actions.
+Workflow-Guided Exploration — Liu et al. — Applied exploration strategies to web navigation tasks.
+Adversarial Environment Generation for Learning to Navigate the Web — Gur et al. — Generated challenging web environments.
+AndroidEnv and MoTIF — Toyama et al., Burns et al. — Environments for training agents on mobile apps and services.</p>
+<h3>Non-interactive web-based tasks</h3>
+<p>Predicting web elements — Pasupat and others — Supervised classification on webpage structure.
+Generating API calls — Su et al. — Semantic parsing to generate API calls for web navigation.
+Mapping natural language commands to web elements — Pasupat et al. — Mapping instructions to web actions via supervised learning.
+The Klarna Product Page Dataset — Hotti et al. — Labeled product pages for supervised learning, but used single-decision classification rather than sequential interaction.</p>
+<h3>Leveraging the web for traditional NLP tasks</h3>
+<p>Information extraction — Narasimhan et al., others — Using web for evidence gathering.
+Question answering on the web — Various authors — Web search as a knowledge retriever for QA.
+Dialog and language models on webtext — Aghajanyan et al., Shuster et al., others — Pre-training and prompting with web content.
+WebGPT — Nakano et al. — Web interface with search engine for RL-based question answering, but required human-in-the-loop evaluation and had less diverse action/observation space.</p>
+<h3>Language grounding and agents</h3>
+<p>Survey of reinforcement learning informed by natural language — Luketina et al. — Overview of language-guided RL.
+Task-oriented dialogue as dataflow synthesis — Andreas et al. — Grounding language in task-oriented settings.
+MultiWOZ — Budzianowski et al. — Multi-domain task-oriented dialogue dataset.
+ALFRED — Shridhar et al. — Grounded instructions for embodied agents in simulated environments.
+Keep CALM and Explore and Reading and acting while blindfolded — Yao et al. (authors themselves) — Language understanding and exploration in text-based games.
+SILG: The multidomain symbolic interactive language grounding benchmark — Zhong et al. — Language grounding across domains.
+Interactive fiction game playing — Guo et al. — Multi-paragraph comprehension and RL in interactive narrative.</p>
+<h3>Query generation and reformulation</h3>
+<p>Internet-augmented dialogue generation — Komeili et al. — Query formulation in dialogue.
+Task-Oriented Query Reformulation with Reinforcement Learning — Nogueira and Cho — Query refinement via RL.
+Deep reinforced query reformulation for information retrieval — Wang et al. — Learned query reformulation.
+Bridging the gap between indexing and retrieval — Zhuang et al. — Query generation for retrieval.
+Boosting Search Engines with Interactive Agents — Adolphs et al. — Using agents to improve search.</p>
+<h3>Exploration, memory, and decision-making</h3>
+<p>Multi-stage episodic control for strategic exploration in text games — Tuyls et al. — Memory and exploration strategies for long-horizon tasks.
+Go-Explore — Ecoffet et al. — Hard-exploration approach for RL.
+Curiosity-driven exploration by self-supervised prediction — Pathak et al. — Intrinsic motivation for exploration.
+Towards mental time travel — Lampinen et al. — Episodic and working memory for RL agents.
+Generalization of reinforcement learners with working and episodic memory — Fortunato et al. — Memory mechanisms in RL.
+Multi-agent Communication meets Natural Language — Lazaridou et al. — Communication and language in multi-agent settings.</p>
+<h3>Vision-language and web understanding</h3>
+<p>Hyper-text pre-training and prompting of language models (HTLM) — Aghajanyan et al. — Pre-training on web hypertext.
+Oscar: Object-semantics aligned pre-training for vision-language tasks — Li et al. — Vision-language pre-training.
+SimVLM: Simple visual language model pretraining with weak supervision — Wang et al. — Vision-language alignment via pre-training.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

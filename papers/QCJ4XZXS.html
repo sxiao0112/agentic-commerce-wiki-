@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PersonaAct: Simulating Short-Video Users with Personalized Agents for Counterfactual Filter Bubble Auditing</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>QCJ4XZXS</td></tr><tr><th>wiki_id</th><td>QCJ4XZXS</td></tr><tr><th>aliases</th><td>[QCJ4XZXS]</td></tr><tr><th>slug</th><td>zhao-2026-persona-act-simulating-short-video</td></tr><tr><th>title</th><td>&quot;PersonaAct: Simulating Short-Video Users with Personalized Agents for Counterfactual Filter Bubble Auditing&quot;</td></tr><tr><th>authors</th><td>[&quot;Zhao, Shilong&quot;, &quot;Yang, Qinggang&quot;, &quot;Yin, Zhiyi&quot;, &quot;Wang, Xiaoshi&quot;, &quot;Chen, Zhenxing&quot;, &quot;Su, Du&quot;, &quot;Cheng, Xueqi&quot;]</td></tr><tr><th>year</th><td>2026</td></tr><tr><th>paper_type</th><td>empirical-method</td></tr><tr><th>venue</th><td>&quot;arXiv&quot;</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2601.22547&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2601.22547&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2601.22547&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;persona synthesis&quot;, &quot;multimodal agents&quot;, &quot;filter bubble auditing&quot;, &quot;short-video platforms&quot;, &quot;recommendation auditing&quot;, &quot;reinforcement learning&quot;, &quot;behavioral simulation&quot;, &quot;counterfactual analysis&quot;, &quot;content diversity&quot;, &quot;algorithmic inertia&quot;]</td></tr><tr><th>updated</th><td>2026-06-25</td></tr></tbody></table>
+<h1>PersonaAct: Simulating Short-Video Users with Personalized Agents for Counterfactual Filter Bubble Auditing</h1>
+<h2>Contribution</h2>
+<p>PersonaAct is a framework for simulating short-video users with persona-conditioned multimodal agents to audit filter bubbles. The framework addresses the limitations of existing approaches (rule-based systems lack adaptability, LLM-based agents fail to capture multimodal cues essential to short-video engagement) by combining automated persona synthesis with multimodal behavioral learning via supervised fine-tuning and reinforcement learning. The framework achieves substantial improvements in behavioral fidelity over generic LLM baselines while maintaining scalability and privacy preservation compared to real user studies or sockpuppet accounts.</p>
+<h2>Research Question</h2>
+<p>How can short-video user behavior be simulated with high fidelity to enable scalable and privacy-preserving auditing of filter bubble formation and escape dynamics across major platforms?</p>
+<h2>Method</h2>
+<p>PersonaAct operates through three integrated stages. First, an Automated Persona Interview Agent conducts structured conversations with real users to synthesize interpretable personas. A behavior analyzer extracts features from session logs including category distributions, engagement rates, watch durations, and creator preferences. During the interview, questions are dynamically generated to adapt to behavioral patterns and prior responses. The agent then synthesizes responses into persona profiles integrating self-narrative summaries, personality traits, and behavioral statistics.</p>
+<p>Second, behavior simulation learns a persona-conditioned policy that predicts actions from multimodal observations. The approach employs supervised fine-tuning using Qwen2.5-VL-7B-Instruct with LoRA to establish behavioral manifolds from demonstrations, followed by Group Relative Policy Optimization (GRPO) that refines the policy via a reward function combining action matching, duration-sensitive scoring, and output format constraints.</p>
+<p>Third, counterfactual filter bubble auditing deploys the trained agents to measure filter bubble severity through two complementary dimensions. Bubble breadth is measured via content diversity by deploying agents on fresh accounts and tracking distinct categories within sliding exposure windows. Bubble depth is measured via Bubble Escape Potential (BEP) using a reversed-persona counterfactual protocol where a reversed persona inverts engagement signals through quantile reversal, and divergence is computed via Jensen-Shannon divergence between content category distributions.</p>
+<h2>Setup</h2>
+<p>The dataset comprises 1,719 video-interaction samples from 2 users across 27 browsing sessions on short-video platforms. Data collection synchronized video frames, audio transcripts, metadata, and user actions including watch, like, comment, and share with precise timestamps. Participants browsed on regularly-used platforms to ensure authentic behaviors. Session-based temporal splitting prevented leakage with 80% training, 10% validation, and 10% test. The dataset exhibits extreme action sparsity, with all samples including watch durations but likes occurring in only 6.5% and comments/shares in 0.3%.</p>
+<h2>Results</h2>
+<p>Simulation fidelity evaluation on watch duration prediction showed SFT+GRPO achieving the lowest error across both personas: Persona A achieved SMAPE of 0.617 and MAE of 5.10 seconds, while Persona B achieved SMAPE of 0.860 and MAE of 19.08 seconds, compared to LLM baselines at 1.161 and 6.69 (Persona A) and 1.357 and 19.09 (Persona B). Ablation studies revealed that removing persona conditioning increased error by 2.6%, while removing behavioral tuning increased error by 88%, indicating both components are essential.</p>
+<p>Filter bubble auditing across three platforms revealed significant content narrowing: after 800 interactions, Persona A showed a 20% decrease in content diversity while Persona B showed a 40% decline. Bubble Escape Potential measurements showed Bilibili had the highest escape potential across both personas (BEP of 0.3393 for Persona A and 0.2721 for Persona B), while Douyin (TikTok) yielded exceptionally low BEP for Persona B (0.1149), suggesting stronger algorithmic inertia for polarized engagement behaviors. Platform responses to behavioral reversal varied significantly: Persona A's category shifts on Bilibili showed Entertainment-Comedy dropping from 17.50% to 6.25% upon reversal, while Music categories surged, reflecting platform-dependent algorithmic inertia.</p>
+<h2>Conclusion</h2>
+<p>PersonaAct demonstrates that persona-conditioned multimodal agents can achieve high behavioral fidelity while enabling cost-efficient, privacy-preserving auditing of recommendation algorithms at scale. The combination of automated persona synthesis through structured interviews with multimodal behavioral modeling and reinforcement learning produces substantial simulation improvements. Counterfactual auditing reveals that filter bubbles manifest across major platforms through both content diversity decline and platform-dependent escape potential, with algorithmic inertia varying significantly based on the interplay between platform design and user behavioral profiles.</p>
+<h2>Related Work</h2>
+<h3>LLM Agents for User Simulation in Recommender Systems</h3>
+<p>User Behavior Simulation with Large Language Model based Agents — <span class="missing" title="not yet in the wiki">Wang et al., 2024</span> — develops RecAgent to simulate user-item interactions from textual logs but relies on text-centric approaches that overlook multimodal cues.</p>
+<p>LLM-Powered User Simulator for Recommender System — <span class="missing" title="not yet in the wiki">Zhang et al., 2024</span> — presents Agent4Rec simulating user-item interactions from textual logs but similarly relies on static one-shot prompting without dynamic persona refinement.</p>
+<p>SimUSER: Simulating User Behavior with Large Language Models for Recommender System Evaluation — <span class="missing" title="not yet in the wiki">Bougie &amp; Watanabe, 2025</span> — aligns personas with historical behavior but maintains text-centric limitations.</p>
+<p>Customer-R1: Personalized Simulation of Human Behaviors via RL-based LLM Agent in Online Shopping — <span class="missing" title="not yet in the wiki">Wang et al., 2025</span> — uses GRPO to condition agents on survey-derived profiles but does not address multimodal engagement signals.</p>
+<p>A Survey on Large Language Models for Recommendation — <span class="missing" title="not yet in the wiki">Wu et al., 2024</span> — surveys text-centric approaches in recommender systems highlighting the gap in addressing multimodal engagement.</p>
+<p>Generative Agents: Interactive Simulacra of Human Behavior — <span class="missing" title="not yet in the wiki">Park et al., 2023</span> — foundational work on LLM-based generative agents that later adapts to recommender systems but lacks multimodal conditioning.</p>
+<p>RecSim: A Configurable Simulation Platform for Recommender Systems — <span class="missing" title="not yet in the wiki">Ie et al., 2019</span> — traditional RL and cognitive model approach to recommender simulation preceding LLM-based methods.</p>
+<p>Virtual-Taobao: Virtualizing Real-world Online Retail Environment for Reinforcement Learning — <span class="missing" title="not yet in the wiki">Shi et al., 2018</span> — earlier RL-based simulation environment for e-commerce preceding modern LLM approaches.</p>
+<h3>Filter Bubble Auditing</h3>
+<p>Filter bubbles, echo chambers, and online news consumption — <span class="missing" title="not yet in the wiki">Flaxman, Goel, &amp; Rao, 2016</span> — foundational work establishing the filter bubble concept in information consumption contexts.</p>
+<p>Echo chambers, filter bubbles, and polarisation: A literature review — <span class="missing" title="not yet in the wiki">Ross Arguedas et al., 2022</span> — comprehensive literature review on filter bubbles and polarization phenomena.</p>
+<p>An Empirical Investigation of Personalization Factors on TikTok — <span class="missing" title="not yet in the wiki">Boeker &amp; Urman, 2022</span> — empirical auditing of TikTok's personalization using sockpuppet accounts but lacking scalability and behavioral realism.</p>
+<p>Auditing YouTube's recommendation system for ideologically congenial, extreme, and problematic recommendations — <span class="missing" title="not yet in the wiki">Haroon et al., 2023</span> — sockpuppet-based auditing of YouTube recommendations but facing scalability limitations.</p>
+<p>ClipMind: A Framework for Auditing Short-Format Video Recommendations Using Multimodal AI Models — <span class="missing" title="not yet in the wiki">Gong et al., 2025</span> — multimodal auditing framework for short-video platforms constrained by coarse textual profiles.</p>
+<p>Simulating Filter Bubble on Short-video Recommender System with Large Language Model Agents — <span class="missing" title="not yet in the wiki">Sukiennik et al., 2025</span> — LLM-based auditing of filter bubbles on short-video platforms but limited by coarse textual profiles.</p>
+<p>Revisiting Algorithmic Audits of TikTok: Poor Reproducibility and Short-term Validity of Findings — <span class="missing" title="not yet in the wiki">Mosnar et al., 2025</span> — critical evaluation of sockpuppet-based auditing methods highlighting reproducibility and validity challenges.</p>
+<p>Quantifying the Potential to Escape Filter Bubbles: A Behavior-Aware Measure via Contrastive Simulation — <span class="missing" title="not yet in the wiki">Feng et al., 2025</span> — proposes Bubble Escape Potential concept which PersonaAct extends through sequential counterfactual framework.</p>
+<p>The filter bubble: How the new personalized web is changing what we read and how we think — <span class="missing" title="not yet in the wiki">Pariser, 2011</span> — seminal work introducing the filter bubble concept.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

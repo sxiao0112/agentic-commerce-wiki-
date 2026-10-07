@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>G9BXGJ79</td></tr><tr><th>wiki_id</th><td>G9BXGJ79</td></tr><tr><th>aliases</th><td>[G9BXGJ79]</td></tr><tr><th>slug</th><td>liu-2026-llms-negotiate-verifiable-rewards</td></tr><tr><th>title</th><td>&quot;Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards&quot;</td></tr><tr><th>authors</th><td>[&quot;Liu, Shuze Daniel&quot;, &quot;Chen, Claire&quot;, &quot;Xiao, Jiabao Sean&quot;, &quot;Lei, Lei&quot;, &quot;Zhang, Yuheng&quot;, &quot;Yue, Yisong&quot;, &quot;Simchi-Levi, David&quot;]</td></tr><tr><th>year</th><td>2026</td></tr><tr><th>paper_type</th><td>empirical-method</td></tr><tr><th>venue</th><td>&quot;arXiv&quot;</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2604.09855&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2604.09855&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2604.09855&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;negotiation&quot;, &quot;reinforcement learning&quot;, &quot;verifiable rewards&quot;, &quot;LLM agents&quot;, &quot;bilateral bargaining&quot;, &quot;strategic behavior&quot;, &quot;incomplete information games&quot;, &quot;economic surplus&quot;, &quot;price negotiation&quot;]</td></tr><tr><th>updated</th><td>2026-06-25</td></tr></tbody></table>
+<h1>Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards</h1>
+<h2>Contribution</h2>
+<p>The authors introduce a reinforcement learning framework grounded in verifiable economic rewards (RLVR) that trains LLMs to act as strategic negotiators in bilateral price negotiations. Unlike previous approaches relying on supervised fine-tuning or human preference data, their method directly optimizes for objective outcomes—economic surplus extraction and strict budget constraint adherence. The trained 30B buyer agent substantially outperforms frontier models up to 1 trillion parameters on the core negotiation task and generalizes robustly to unseen stronger opponents and adversarial seller personas. The work reveals that verifiable reward signals enable the emergence of sophisticated, multi-turn linguistic persuasion strategies and eliminate common LLM behavioral failures such as budget violations and excessive politeness-driven concessions.</p>
+<h2>Research Question</h2>
+<p>Can reinforcement learning from verifiable rewards enable LLMs to develop the strategic rationality and linguistic persuasion necessary to resolve the negotiator's dilemma—the tension between claiming maximum economic value and ensuring an agreement is reached—in bilateral price negotiations where both parties possess private information?</p>
+<h2>Method</h2>
+<p>The authors formalize bilateral negotiation as a Markov Decision Process from the buyer's perspective. The state space includes the complete dialogue history, the buyer's private budget constraint, the product's list price, and rich product context from the AmazonHistoryPrice dataset. The action space consists of structured tripartite outputs: a hidden reasoning block (scratchpad for internal strategic thinking), public dialogue text, and a discrete economic action (one of [BUY] $X, [SELL] $X, [DEAL] $X, [REJECT], or [QUIT]). The transition dynamics are controlled by a regulated seller model that strictly adheres to its private cost limit, preventing exploitation of model artifacts. The reward formulation unifies the bilateral bargaining problem: for successful transactions at price P_final with buyer budget B and seller cost C, reward equals (B - P_final) / |B - C|, scaled to [-1, 1]. This formulation naturally handles both mutual interest scenarios (B &gt; C) where beneficial deals exist and conflict of interest scenarios (B &lt; C) where walking away is optimal. The agent is trained using Group Relative Policy Optimization (GRPO) on 802 training products across 18 product categories from the AmazonHistoryPrice dataset with 128 held-out test products.</p>
+<h2>Setup</h2>
+<p>The authors train a Qwen3-30B-A3B-Instruct-2507 buyer agent against a regulated Qwen3-30B-A3B-Instruct-2507 seller over 60 training iterations. Training uses batch_size = 64, group_size = 8 (512 episodes per iteration), max_turns = 6, max_tokens = 300. The buyer temperature is set to 1.0; seller temperature to 0.7. Evaluation includes three settings: held-out test split from the training distribution, generalization to an unseen gpt-5.4-high-reasoning frontier seller, and robustness against adversarial seller personas (begging, insulting, unyielding). All models are evaluated with group_size = 4 and max_tokens = 4000 to accommodate reasoning-oriented baselines. Baselines span 4B to 1T parameters and include instruction-tuned models and reasoning models (gpt-5.4, DeepSeek-V3.1, Kimi-K2, Llama-3.3, Qwen3 variants).</p>
+<h2>Results</h2>
+<p>On the held-out test set, the trained 30B agent achieves a reward of 0.7664, nearly double the strongest baseline gpt-5.4-high-reasoning (0.4021) and more than double larger models like Kimi-K2-Thinking (0.3419) and DeepSeek-V3.1-thinking (0.3240). The trained agent extracts a bargained ratio of 0.8385 compared to 0.4380 for gpt-5.4-high-reasoning, demonstrating superior surplus extraction efficiency. The agent maintains near-flawless budget adherence with a price overshoot rate of only 0.10% compared to 10.35% for the untrained baseline. Training reveals a systematic four-phase strategic evolution: Phase 1 (Iterations 0–12) shows aggressive price anchoring but poor deal rates; Phase 2 (Iterations 12–20) exhibits temporary deadlock as the agent pursues aggressive prices without sufficient persuasion; Phase 3 (Iterations 20–30) achieves rational concession as opening prices stabilize and deal ratios recover; Phase 4 (Iterations 30–60) demonstrates advanced persuasion with renewed price aggression, stable high deal rates (~90%), and increasing episode length indicating multi-turn linguistic negotiation. Against an unseen gpt-5.4-high-reasoning seller, the trained agent achieves reward 0.4081 versus 0.1823 for gpt-5.4-high-reasoning buyer, demonstrating generalization of strategic logic rather than overfitting. Under adversarial personas, the trained agent maintains positive surplus extraction across all scenarios: against a begging seller, reward 0.6953 (vs. gpt-5.4-high-reasoning 0.3804); against insulting seller, reward 0.4988 (vs. 0.2266); against unyielding seller, reward 0.1174 with 40.04% deal rate (vs. gpt-5.4-high-reasoning 6.64% deal rate). These results demonstrate that the agent develops robust strategic behaviors resilient to emotional manipulation and hostile negotiation tactics.</p>
+<h2>Related Work</h2>
+<h3>LLMs in Strategic Negotiation</h3>
+<p>From Numerical Bidding to Linguistic Persuasion — Numerical game-theoretic and reinforcement learning approaches have traditionally optimized bidding strategies in structured environments such as eBay auctions, but LLMs introduce a layer of natural language persuasion allowing agents to supplement proposals with rhetorical justifications and semantic framing. Bakhtin et al. (2022) achieved human-level performance in the complex strategy game Diplomacy utilizing natural language negotiation among seven players. Traditional automated negotiation research — Lewis et al. (2017), Green and Plunkett (2022), Fudenberg and Tirole (1991) — grounded bargaining in purely numerical models.</p>
+<p>Benchmarking and Behavioral Diagnostics — Deng et al. (2024) evaluate bilateral negotiation through prompting, measuring model efficiency against game-theoretic predictions. Bianchi et al. (2024) introduce frameworks to analyze how behavioral tactics such as feigning desperation influence payoffs. Studies have identified critical behavioral anomalies such as budget violations and artificial empathy concessions that pose significant financial risks in autonomous transactions. Davidson et al. (2024), Zhu et al. (2025) characterize negotiation as a subset of agentic behavior where model scale correlates with bargaining power.</p>
+<p>Scaffolded and Prompt-Based Improvements — Xia et al. (2024) utilize deterministic offer generators to calculate price points; Li et al. (2024) employ tool-assisted frameworks to facilitate strategic decision-making. Fu et al. (2023) rely on in-context learning to iteratively refine strategies within the prompt window. These systems improve task success but delegate core bidding logic to external components or leave model parameters unchanged, rather than internalizing strategic discipline.</p>
+<h3>LLMs as Autonomous Agents</h3>
+<p>Recent research introduces structural innovations like non-parametric episodic memory (Fountas et al., 2024) and multi-agent loops for self-evolution in static domains (Peng et al., 2026). Liu et al. (2025) demonstrate that self-play in simple zero-sum games can effectively reinforce reasoning patterns. These advancements improve general instruction following but do not address the unique challenges of information asymmetry and adversarial interaction in negotiation (Xi et al., 2025; Wang et al., 2024). This work shifts the agentic objective from cooperative reasoning to adversarial surplus extraction grounded in verifiable economic outcomes.</p>
+<h3>Strategic Alignment and Reinforcement Learning</h3>
+<p>Standard alignment techniques such as Reinforcement Learning from Human Feedback (RLHF) (Christiano et al., 2017; Ouyang et al., 2022) optimize models for subjective human preferences using Proximal Policy Optimization (PPO) (Schulman et al., 2017). Negotiation provides a uniquely verifiable environment where performance is objectively measurable through final transaction prices and constraint adherence, enabling a shift from preference-based alignment to Reinforcement Learning from Verifiable Rewards (RLVR). Guo et al. (2025) explore this paradigm in a complementary direction. The authors leverage Group Relative Policy Optimization (GRPO) (Shao et al., 2024), which eliminates the need for a separate value model by calculating relative advantages within groups of generated outputs, thereby reducing computational overhead while enhancing reasoning capabilities. This approach effectively addresses artificial empathy and excessive politeness biases identified in instruction-tuned models (Huang et al., 2024; Zhu et al., 2025).</p>
+<h2>Conclusion</h2>
+<p>This work demonstrates that reinforcement learning grounded in verifiable economic rewards enables LLMs to develop sophisticated strategic logic for bilateral negotiation. Through a four-phase behavioral evolution, the trained 30B agent transitions from naive bargaining to sophisticated multi-turn linguistic persuasion, outperforming frontier-scale models by more than doubling reward and surplus extraction. The agent generalizes to stronger unseen counterparties and remains resilient against hostile personas. These findings suggest that optimizing for verifiable rewards helps agents better manage the negotiator's dilemma, allowing mid-sized models to develop strong strategic skills and challenging the notion that successful negotiation is limited only to the largest models.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebArena: A Realistic Web Environment for Building Autonomous Agents</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>8T9KKXKK</td></tr><tr><th>wiki_id</th><td>8T9KKXKK</td></tr><tr><th>aliases</th><td>[8T9KKXKK]</td></tr><tr><th>slug</th><td>zhou-2024-webarena-benchmark</td></tr><tr><th>title</th><td>&quot;WebArena: A Realistic Web Environment for Building Autonomous Agents&quot;</td></tr><tr><th>authors</th><td>[&quot;Zhou, Shuyan&quot;, &quot;Xu, Frank F.&quot;, &quot;Zhu, Hao&quot;, &quot;Zhou, Xuhui&quot;, &quot;Lo, Robert&quot;, &quot;Sridhar, Abishek&quot;, &quot;Cheng, Xianyi&quot;, &quot;Ou, Tianyue&quot;, &quot;Bisk, Yonatan&quot;, &quot;Fried, Daniel&quot;, &quot;Alon, Uri&quot;, &quot;Neubig, Graham&quot;]</td></tr><tr><th>year</th><td>2024</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>ICLR</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2307.13854&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2307.13854&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2307.13854&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;web-based agents&quot;, &quot;autonomous agents&quot;, &quot;benchmark tasks&quot;, &quot;natural language instructions&quot;, &quot;functional correctness evaluation&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>WebArena: A Realistic Web Environment for Building Autonomous Agents</h1>
+<h2>Contribution</h2>
+<p>The paper introduces WebArena, a fully functional, self-hosted web environment designed to evaluate autonomous agents on realistic web-based tasks. The environment consists of four operational websites spanning e-commerce, social forums, collaborative software development, and content management systems, enhanced with utility tools and knowledge resources. Accompanying the environment is a benchmark of 812 annotated long-horizon tasks with evaluation metrics based on functional correctness rather than action-sequence matching.</p>
+<h2>Research Question</h2>
+<p>How can autonomous agents be fairly and comprehensively evaluated on complex, realistic web tasks when current environments often oversimplify real-world scenarios, lack dynamic interaction, or evaluate only textual surface-form accuracy rather than whether tasks are actually completed?</p>
+<h2>Task</h2>
+<p>The benchmark covers three task categories: information-seeking tasks requiring textual answers derived from user-centric content across multiple pages; site-navigation tasks requiring agents to locate specific information or sections using various interactive elements; and content-and-configuration tasks requiring agents to create, revise, or configure content and settings in the web environment. Tasks are instantiated from 241 templates, with each template producing multiple variations to enable evaluation of consistency across similar-but-distinct task instances.</p>
+<h2>Data</h2>
+<p>WebArena comprises four fully functional websites built from open-source libraries with data imported from real-world counterparts. The e-commerce site (OneStopShop) built on Adobe Magento contains 90k products with prices, options, descriptions, images, and reviews across 300 categories. The social forum platform (Reddit-like) deployed on Postmill software contains 95 subreddits, 127k posts, and 661k users. The collaborative development platform is GitLab with 300 repositories sampled to represent a realistic distribution from popular to personal projects. The content management system is built from Adobe Magento's admin portal. Additional resources include offline Wikipedia (knowledge cutoff May 2023), tool websites for maps (OpenStreetMap confined to northeast US), calculator, and scratchpad. User profiles simulate realistic access patterns across platforms with diverse roles and permission levels.</p>
+<h2>Metrics</h2>
+<p>For information-seeking tasks, three evaluation functions compare predicted answers to reference answers: exact_match for standardized-format responses; must_include for verifying presence of required key concepts; and fuzzy_match using GPT-4 to assess semantic equivalence across diverse phrasings. For site-navigation and content-and-configuration tasks, programmtic reward functions examine intermediate execution states (databases, webpage content, URLs) to verify that outcomes align with intended results. Tasks marked as unachievable (due to missing information or insufficient permissions) are evaluated by whether agents appropriately refuse completion rather than hallucinating answers.</p>
+<h2>Baselines</h2>
+<p>The paper evaluates three LLMs (GPT-4, GPT-3.5, and TEXT-BISON-001) using two prompting strategies: direct action prediction given current observation and intent, and chain-of-thought reasoning before action. A detailed system prompt specifies all available actions, rules for valid execution, and instructions for handling unachievable tasks. Two few-shot examples demonstrate the expected behavior. Agents use accessibility trees with element IDs as observations, enabling agents to select elements by ID rather than coordinates. Human performance is measured by five computer-science graduate students completing one task per template from 170 templates.</p>
+<h2>Results</h2>
+<p>GPT-4 with chain-of-thought prompting achieves an end-to-end task success rate of 11.70%, significantly below human performance of 78.24%. Removing an explicit instruction asking models to recognize unachievable tasks increases GPT-4 success to 14.41% on achievable tasks (while reducing detection of genuinely unachievable tasks to 44.44%). GPT-3.5 achieves only 8.75% with chain-of-thought and 6.41% without. TEXT-BISON-001 achieves 5.05%. Analysis reveals two primary failure modes: models prematurely conclude tasks are impossible due to instruction framing, and models demonstrate inconsistent performance across task variations from the same template (GPT-4 achieves 100% on only 4 of 61 templates where it succeeds on at least one variant). Common error patterns include observation bias (latching onto first relevant information without verification), failures in observation interpretation (overlooking granular details like previously entered input), hallucination of incorrect answers, and repetition of invalid actions.</p>
+<h2>Related Work</h2>
+<h3>Benchmarks for Controlling Agents through Natural Language</h3>
+<p>Vision-and-language navigation: Anderson et al. 2018 — Interpreting visually-grounded navigation instructions in real environments; establishes foundational methodology for grounding language to embodied action.</p>
+<p>Form/QAWoB: Shi et al. 2017 — Platform for web-based agents with static states; early work demonstrating limitations of non-dynamic environments for fair evaluation.</p>
+<p>Reinforcement learning on web interfaces: Liu et al. 2018 (ICLR 2018) — Workflow-guided exploration on web interfaces; introduces structured navigation but remains simplified relative to real-world web.</p>
+<p>Mind2Web: Deng et al. 2023 — Generalist agent for the web with realistic environments; demonstrates value of diverse human tasks but relies on static cached states.</p>
+<p>VirtualHome: Puig et al. 2018 — Simulating household activities via programs; extends from physical to domestic environments but maintains simulation-specific task vocabulary.</p>
+<p>ALFRED: Shridhar et al. 2020 (CVPR 2020) — Benchmark for interpreting grounded instructions for everyday tasks; pioneering work on long-horizon instruction following but in visual rather than web environments.</p>
+<p>ALFWorld: Shridhar et al. 2021 (ICLR 2021) — Aligning text and embodied environments for interactive learning; unifies embodied and text-based agents.</p>
+<p>MiniWoB++: Liu et al. 2018 — Suite of web-based task variants; introduces dynamic interaction but with simplified websites and task composition.</p>
+<p>Webshop: Yao et al. 2022a — Scalable real-world web interaction with grounded language agents; demonstrates task complexity growth but in constrained domain.</p>
+<p>AndroidEnv: Toyama et al. 2021 — Reinforcement learning platform for Android; achieves realistic environment through live applications but sacrifices reproducibility.</p>
+<h3>Interactive Decision-Making Agents</h3>
+<p>WebGPT: Nakano et al. 2021 — Search the web and read results to answer questions; early demonstration of language models on web tasks.</p>
+<p>Web agent via JavaScript synthesis: Gur et al. 2023 — Real-world web agent with planning, long context understanding, and program synthesis; shows alternative control modality through code generation.</p>
+<p>Pixel-to-actions: Lee et al. 2023, Shaw et al. 2023 — Predict actions based on web screenshots rather than DOM text; explore multimodal observation representation.</p>
+<p>Hierarchical planning and state tracking: Huang et al. 2022 — Language models as zero-shot planners; demonstrates decomposition of long-horizon tasks.</p>
+<p>Task composition as subgoals: Madaan et al. 2022, Zhou et al. 2022b — Break tasks into manageable sub-tasks; addresses complexity management.</p>
+<p>Program-aided execution: Liang et al. 2023, Wang et al. 2023, Gao et al. 2023 — Program-aided language models and code-as-policies; aid sub-task management and skill reuse.</p>
+<p>Search and backtracking: Yao et al. 2023, Long 2023 — Tree-of-thought and structured decision reconsideration; introduce planning rather than greedy step-by-step execution.</p>
+<p>Failure recovery and self-correction: Shinn et al. 2023 (Reflexion), Kim et al. 2023 — Autonomous agents with dynamic memory and self-reflection; improve robustness through learned error handling.</p>
+<p>Observation summarization: Sridhar et al. 2023 — Hierarchical prompting assists large language model on web navigation; compress observation space for context-limited models.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

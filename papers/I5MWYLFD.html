@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>I5MWYLFD</td></tr><tr><th>wiki_id</th><td>I5MWYLFD</td></tr><tr><th>aliases</th><td>[I5MWYLFD, KATNIJJ3]</td></tr><tr><th>slug</th><td>abdelnabi-2024-llm-stakeholders-negotiation</td></tr><tr><th>title</th><td>&quot;Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation&quot;</td></tr><tr><th>authors</th><td>[&quot;Abdelnabi, Sahar&quot;, &quot;Gomaa, Amr&quot;, &quot;Sivaprasad, Sarath&quot;, &quot;Schönherr, Lea&quot;, &quot;Fritz, Mario&quot;]</td></tr><tr><th>year</th><td>2024</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>&quot;NeurIPS 2024 Datasets and Benchmarks&quot;</td></tr><tr><th>url</th><td>&quot;&quot;</td></tr><tr><th>arxiv</th><td>&quot;&quot;</td></tr><tr><th>doi</th><td>&quot;&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;multi-agent negotiation&quot;, &quot;LLM evaluation&quot;, &quot;cooperation and competition&quot;, &quot;adversarial agents&quot;, &quot;theory of mind&quot;, &quot;AI safety&quot;, &quot;interactive benchmark&quot;, &quot;agent manipulation&quot;, &quot;strategic reasoning&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation</h1>
+<h2>Contribution</h2>
+<p>The authors develop a scorable multi-agent negotiation benchmark to evaluate Large Language Models as agents in complex interactive settings. The benchmark consists of diverse, configurable negotiation games where multiple agents with competing preferences must reach agreements on multi-issue deals. The authors contribute structured prompting techniques based on Chain-of-Thought that decompose negotiation into observation, exploration, and planning stages. They release an evolving toolkit with four complete games of varying difficulty, support for creating new games via LLM-assisted design, and study critical safety aspects including adversarial agents and manipulation dynamics. The benchmark demonstrates that GPT-4 reaches agreement in 81% of base game runs while smaller models and GPT-3.5 significantly underperform, and reveals vulnerabilities where greedy or adversarial agents can alter negotiation outcomes unfairly.</p>
+<h2>Research Question</h2>
+<p>How well can LLMs conduct complex multi-turn negotiation when they must balance cooperation with competition, maintain partial information, and reason about other agents' preferences under dynamic interaction? Can structured prompting unlock necessary capabilities such as arithmetic reasoning, theory of mind, and strategic planning? How do agents respond when given adversarial incentives, and what are the implications for multi-agent AI safety when rogue or manipulative agents interact with compromising ones?</p>
+<h2>Task</h2>
+<p>Agents negotiate over semantically rich, multi-party, multi-issue deals structured as scorable games. Each game involves n parties (5–7 in experiments) negotiating over m issues (6–7 issues, each with 3–5 discrete or continuous sub-options), resulting in 720–2880 possible deals. Each party has a secret scoring system assigning points to sub-options and a minimum acceptance threshold; agents must find deals that meet the thresholds of at least n−1 parties (including two veto parties p1 and p2) or receive a default BATNA (Best Alternative to Negotiated Agreement) payoff. Agents may represent different stakeholder roles: project proposers, budget managers, beneficiary groups, constraint-imposing parties, or opposition. The game dynamics range from fully cooperative (all agents instructed to reach fair agreements) to adversarial (some agents instructed to sabotage or maximize own payoff at others' expense).</p>
+<h2>Data</h2>
+<p>The benchmark comprises four games, each defined by parties, issues with sub-options, scoring matrices, and acceptance thresholds. The base game is adapted from an established negotiation teaching exercise and consists of 5 parties, 6 issues, and 720 possible deals with approximately 7% feasible (meeting all thresholds). The authors generated an extended version with 7 parties, 7 issues, and 2880 possible deals via LLM-assisted design. Three additional games were created from scratch using LLM prompting to generate background stories, party descriptions, preferences, and semantic relationships, then manually curated for logical consistency. The framework allows instantiating new games and increasing difficulty by adjusting thresholds and feasible deal ratios. Experiments ran each condition 20 times with random agent orderings across rounds.</p>
+<h2>Metrics</h2>
+<p>Final success: rate of games where the proposing agent p1 reaches a feasible agreement after all negotiation rounds. Any success: rate of games where a feasible deal was proposed at any point. Own score: an agent's score of its own proposed deals relative to itself, measuring role alignment. Collective score: average score of all agents given an agent's deal, an oracle measure of whether the agent correctly infers others' preferences. Wrong deals: rate of deals proposed below the agent's own minimum threshold, measuring arithmetic correctness. Score leakage ratio: fraction of public answers that revealed confidential score or threshold information, measuring instruction-following and contextual integrity.</p>
+<h2>Baselines</h2>
+<p>Random deal selection achieves 7.7% final success in the base game (55 feasible deals out of 720). A rule-based heuristic baseline iteratively improves proposed deals by single-option shifts to meet one agent's threshold at a time, achieving 37–79% success depending on game difficulty. GPT-4 with full structured prompting achieves 81% final success; GPT-3.5 achieves 20%; Llama-3 70B achieves 60%; Gemini Pro achieves 45%; smaller models fail to follow basic formatting. Ablation studies show that arithmetic calculation steps, theory-of-mind inference of other agents' preferences, and multi-turn planning are individually important; removing any step degrades performance for GPT-4.</p>
+<h2>Results</h2>
+<p>GPT-4 demonstrates strong performance in base game negotiation (81% final success, 33% any success) with minimal arithmetic errors (1.4% wrong deals) and high confidentiality maintenance (0% score leakage). GPT-3.5 performs poorly (20% final success, 22% wrong deals, 25% score leakage), suggesting arithmetic and theory-of-mind deficits. Llama-2/3 70B and Mixtral 8x7B show intermediate performance. In mixed-population experiments, including GPT-3.5 agents reduces success for all agents, and the same agent role achieves lower payoffs when paired with weaker models. Difficulty scaling via reduced feasible-deal ratios shows abrupt performance drops: base game 81% success decreases to 65% with 30 feasible deals and 30% with 17 feasible deals, indicating room for improvement in future models.</p>
+<p>In greedy-agent variants, including a single greedy agent (instructed to maximize own payoff) reduces final success to 27–65% depending on which party is greedy; when p1 is greedy, success drops to 27%. Greedy agents achieve higher own scores but lower collective scores, and their proposals may bias final deals toward their preferences even among compromising agents. In adversarial variants where one agent is instructed to sabotage negotiations, the adversary can reduce success to 58–63% and successfully target specific agents for worse outcomes if aligned with majority preferences. Qualitative analysis shows agents correctly map high-level incentives (compromise, greed, malice) to distinct deal-proposal patterns despite never receiving explicit instructions on which deals to propose.</p>
+<h2>Conclusion</h2>
+<p>The authors demonstrate that multi-agent negotiation is a challenging and practically relevant task for evaluating LLM capabilities beyond single-agent NLP. Negotiation spans critical skills—arithmetic, inference, theory of mind, exploration, planning, and manipulation resistance—that are difficult to isolate in other benchmarks. Current models, even GPT-4, show systematic underperformance on non-cooperative games and when feasible solutions are constrained, indicating ample room for future progress. The benchmark's evolving design (adjustable thresholds, LLM-assisted game generation, and scaling to more players/issues) provides a durable testbed for future model iterations. The authors flag critical safety gaps: adversarial agents can disrupt multiagent coordination, greedy incentives leak into negotiation outcomes, and weaker models compromise group success. They advocate for future work on manipulation detection, defensive strategies, coalition formation, and inherent defenses such as moderator agents.</p>
+<h2>Related Work</h2>
+<h3>Multi-agent LLM systems</h3>
+<p>Large Language Models in Multi-Agent Communication and Decision-Making — Abdelnabi et al. position their work as advancing multi-agent LLM research beyond tool use and reasoning tasks by introducing complex communication and decision-making in negotiation. They note that LLMs are increasingly deployed in multi-agent frameworks for autonomous systems but lack explicit training for multiagent interaction, motivating structured evaluation.</p>
+<h3>Negotiation and game-playing with LLMs</h3>
+<p>Playing Repeated Games with Large Language Models — Akata et al., 2023 — evaluated LLMs in repeated game settings, simpler than the multi-party, multi-issue negotiation studied here. Evaluating Language Model Agency Through Negotiations — Davidson et al., 2024 — tested LLM negotiation but with only two players, limiting complexity. Improving Language Model Negotiation with Self-Play and In-Context Learning from AI Feedback — Fu et al., 2023 — studied negotiation with in-context learning but in simpler dyadic setups. Strategic Reasoning with Language Models — Gandhi et al., 2023 — evaluated strategic reasoning in games but not negotiation-specific multi-turn dynamics.</p>
+<h3>Theory of Mind and multi-agent reasoning</h3>
+<p>Minding Language Models' (Lack of) Theory of Mind: A Plug-and-Play Multi-Character Belief Tracker — Sclar et al., 2023 — measured LLM theory-of-mind capabilities; this work uses negotiation as a practical test of ToM in service of goal achievement. Neural Theory-of-Mind? On the Limits of Social Intelligence in Large LMs — Sap et al., 2022 — examined LLM social intelligence; Abdelnabi et al. show negotiation requires integrating ToM with arithmetic, planning, and strategic reasoning.</p>
+<h3>Commonsense and reasoning</h3>
+<p>CommonsenseQA: A Question Answering Challenge Targeting Commonsense Knowledge — Talmor et al., 2019 — establishes commonsense as a measurable LLM capability. Beyond the Imitation Game: Quantifying and Extrapolating the Capabilities of Language Models — Srivastava et al., 2023 — broadly catalogs LLM capabilities; negotiation combines multiple such capabilities in a single integrated task.</p>
+<h3>Multi-agent simulation and emergent behavior</h3>
+<p>Generative Agents: Interactive Simulacra of Human Behavior — Park et al., 2023 — used LLMs to create simulated agents; Concordia provides tools for agent-based modeling in space. CAMEL: Communicative Agents for "Mind" Exploration of Large Language Model Society — Li et al., 2023 — studied emergent behavior in multi-agent LLM systems; Abdelnabi et al. extend this to quantifiable, scorable interaction.</p>
+<h3>AI safety, manipulation, and alignment</h3>
+<p>AI Deception: A Survey of Examples, Risks, and Potential Solutions — Park et al., 2023 — surveys AI deception and manipulation risks. Foundational Challenges in Assuring Alignment and Safety of Large Language Models — Anwar et al., 2024 — identifies multi-agent safety as an orthogonal challenge distinct from single-agent alignment. Can LLMs Keep a Secret? Testing Privacy Implications of Language Models via Contextual Integrity Theory — Mireshghallah et al., 2024 — tests LLM compliance with information-hiding rules, which the score-leakage metric in this paper operationalizes in negotiation. This work contributes practical evidence that adversarial agents in mixed populations can cause fairness and safety issues.</p>
+<h3>Prompting and chain-of-thought</h3>
+<p>Chain-of-Thought Prompting Elicits Reasoning in Large Language Models — Wei et al., 2022 — established structured reasoning as a foundation for LLM capabilities. This work decomposes negotiation into observation, exploration, and planning substeps, extending CoT to multi-agent dynamics.</p>
+<h3>Debate and scalable oversight</h3>
+<p>On Scalable Oversight with Weak LLMs Judging Strong LLMs — Kenton et al., 2024 — explores LLM-based evaluation via debate. Chateval: Towards Better LLM-Based Evaluators Through Multi-Agent Debate — Chan et al., 2024 — uses multi-agent debate for text evaluation. Debating with More Persuasive LLMs Leads to More Truthful Answers — Khan et al., 2018 — studies debate as a path to truthfulness; negotiation generalizes debate to non-zero-sum, multi-party settings with diverse goals.</p>
+<h3>Benchmark design and contamination</h3>
+<p>Task Contamination: Language Models May Not Be Few-Shot Anymore — Li &amp; Flanigan, 2023 — identifies training-data contamination of benchmarks. Abdelnabi et al. provide evolving difficulty tuning to sustain challenge as models improve. Large Language Models Fail on Trivial Alterations to Theory-of-Mind Tasks — Ullman, 2023 — shows LLM brittleness on similar-seeming tasks; the rewritten-game experiments here verify robustness.</p>
+<h3>Applications of negotiation and autonomous agents</h3>
+<p>The cited applications include use cases from HBR (Walmart supplier negotiations), Luminance (AI-powered legal negotiation), Pactum (autonomous corporate negotiations), and emerging chatbot-for-negotiation deployments. These motivate why negotiation is practically important for agent autonomy in commerce, contracts, and customer service.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

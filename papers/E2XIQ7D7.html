@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues?</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>E2XIQ7D7</td></tr><tr><th>wiki_id</th><td>E2XIQ7D7</td></tr><tr><th>aliases</th><td>[E2XIQ7D7]</td></tr><tr><th>slug</th><td>wang-2025-ecom-bench-llm-agent</td></tr><tr><th>title</th><td>&quot;ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues?&quot;</td></tr><tr><th>authors</th><td>[&quot;Wang, Haoxin&quot;, &quot;Peng, Xianhan&quot;, &quot;Huang, Xucheng&quot;, &quot;Huang, Yizhe&quot;, &quot;Gong, Ming&quot;, &quot;Yang, Chenghan&quot;, &quot;Liu, Yang&quot;, &quot;Jiang, Ling&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>arXiv</td></tr><tr><th>url</th><td>&quot;https://arxiv.org/abs/2507.05639&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2507.05639&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/ARXIV.2507.05639&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;LLM agents&quot;, &quot;e-commerce customer support&quot;, &quot;multimodal benchmark&quot;, &quot;user simulation&quot;, &quot;persona-driven evaluation&quot;, &quot;tool use&quot;, &quot;MCP&quot;, &quot;agent evaluation&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues?</h1>
+<h2>Contribution</h2>
+<p>ECom-Bench is the first open-source benchmark framework for evaluating multimodal LLM agents with Model Context Protocol (MCP) tools in e-commerce customer support scenarios. The benchmark introduces three components: a dataset of persona information meticulously collected from real e-commerce customer interactions, a dataset of realistic task instances derived from authentic e-commerce dialogues, and a comprehensive evaluation platform that assesses agent capabilities across diverse business scenarios including product inquiries, order management, and multimodal content recognition.</p>
+<h2>Research Question</h2>
+<p>Traditional rule-based customer service systems encounter performance bottlenecks and lack context understanding, tool-calling ability, and multimodal processing. Current LLM-based evaluation frameworks fall short in comprehensively assessing agent capabilities in e-commerce scenarios, either lacking e-commerce-specific tasks, supporting only single-turn dialogues, or omitting multimodal task evaluation. What benchmark framework can comprehensively evaluate multimodal LLM agents across realistic, complex e-commerce customer support interactions?</p>
+<h2>Task</h2>
+<p>The benchmark evaluates agents on 53 manually verified task instances derived from authentic e-commerce dialogues, with 18 involving multimodal interactions. Tasks span a wide range of business scenarios aligned with real business requirements, including product inquiries, order modification, returns and exchanges, logistics tracking, and price protection requests.</p>
+<h2>Data</h2>
+<p>The benchmark dataset comprises persona profiles, task instances, database records, domain documentation, and tools. Persona profiles are grounded in consumer psychology and behavioral studies, encompassing consumer types, personality traits such as emotion, attention to detail, patience, trust, and rights awareness, and behavioral traits including questioning style, communication style, and interaction patterns. Data classes include products, logistics, orders, invoices, and other essential e-commerce entities. All data are based on historical online dialogues primarily sourced from conversations related to home and appliance products. LLMs generated preliminary content, which was then reviewed by humans to ensure consistency and authenticity. The dataset includes 53 task instances across various business scenarios with manual annotations to represent authentic business operations.</p>
+<h2>Metrics</h2>
+<p>Evaluation assesses each task across three rule-based dimensions: database state compared against the ground truth expected state, verification of required information retrieval tool invocation, and examination of output keywords. The pass^k metric measures agent robustness across k independent and identically distributed trials for the same problem, with k ranging from 1 to 3 in main results. A task is considered successful when the database reaches the expected ground truth state and all required information-retrieval tools are invoked. The framework also evaluates consistency and robustness by running tasks multiple times and introducing dimensional evaluation metrics: Action (database operation results), Search (tool hallucination phenomena), and Output (keyword generation and multimodal tool invocation).</p>
+<h2>Baselines</h2>
+<p>The benchmark evaluates proprietary models including GPT-4o, DeepSeek-V3, Doubao-1.5-Pro-32k, Qwen-Max, and Moonshot-V1-32k, as well as Multimodal Large Language Models (MLLMs) including Qwen-VLMax and Doubao-Pro-Vision. Agents are built using LangGraph incorporating the ReAct framework, limited to 20 turns and 600 seconds per task with temperature set to 0.3. Results show GPT-4o achieves the highest pass^1 score of 44.03% and pass^3 score of 16.98%, while Qwen-Max achieves 15.09% and 5.66% respectively, and Qwen-VL-Max achieves 8.18% and 3.77%. A decoupled MLLM-as-Tool approach outperforms end-to-end MLLM-as-Planner architectures. Error analysis identifies three main error categories: Wrong Argument (correct tool invocation but incorrect argument filling), Wrong Decision (failure to choose appropriate tools or process incorrect objects), and Partially Resolved (agent solves only part of the problem).</p>
+<h2>Conclusion</h2>
+<p>Current large language models remain unstable when addressing identical problems, with pass^8 scores significantly lower than pass^1 scores even for the strongest models. The benchmark demonstrates that persona characteristics such as emotional states, patience levels, and communication styles significantly influence agent reactions, underscoring the importance of accurate user behavior simulation. Agents show higher failure rates in the Action dimension due to inherent difficulty of database modification tasks. Advanced models like GPT-4o exhibit lower error rates across all dimensions and demonstrate greater tendency to obtain information through external tool invocation rather than direct generation, with stronger tool usage awareness and factual consistency.</p>
+<h2>Related Work</h2>
+<h3>Benchmark and Evaluation Environments</h3>
+<p>Agent Evaluation Frameworks and Task-Oriented Environments — ALFWorld: Aligning Text and Embodied Environments for Interactive Learning — Shridhar et al., 2021 — benchmark for interactive learning in text and embodied environments.</p>
+<p>ToolBench: On the tool manipulation capability of open-source large language models — Xu et al., 2023 — tool manipulation evaluation framework lacking e-commerce-specific tasks.</p>
+<p>WebShop: Towards scalable real-world web interaction with grounded language agents — Yao et al., 2022 — real-world web interaction environment supporting only single-turn dialogues.</p>
+<p>InterCode: Standardizing and benchmarking interactive coding with execution feedback — Yang et al., 2023 — interactive coding evaluation benchmark.</p>
+<p>τ-Bench: A benchmark for tool-agent-user interaction in real-world domains — Yao et al., 2024 — multi-domain dynamic interaction benchmark including retail but omitting multimodal task evaluations.</p>
+<p>EcomScriptBench: A multi-task benchmark for e-commerce script planning via step-wise intention-driven product association — Wang et al., 2025 — e-commerce evaluation benchmark focusing on script planning.</p>
+<h3>User Simulation and Persona-Driven Methods</h3>
+<p>MultiWOZ - A Large-Scale Multi-Domain Wizard-of-Oz Dataset for Task-Oriented Dialogue Modelling — Budzianowski et al., 2018 — large-scale task-oriented dialogue dataset.</p>
+<p>RecAgent: A Novel Simulation Paradigm for Recommender Systems — Wang et al., 2023 — multi-agent simulation in sandbox environments with personality traits.</p>
+<p>Scaling Synthetic Data Creation with 1,000,000,000 Personas — Chan et al., 2024 — persona-driven synthetic data for training and testing.</p>
+<p>SimUser: Generating usability feedback by simulating various users interacting with mobile applications — Xiang et al., 2024 — user simulation focusing on user preferences.</p>
+<h3>Domain-Specific LLM Evaluation</h3>
+<p>Challenges and Opportunities in E-commerce Operations: A Systematic Review — Zhang et al., 2021 — systematic review of e-commerce operational challenges.</p>
+<p>Automating Customer Service Using Langchain: Building Custom Open-Source GPT Chatbot for Organizations — Pandya and Holia, 2023 — LLM-based customer service solutions.</p>
+<p>MedMCQA: A Large-Scale Multi-Subject Multi-Choice Dataset for Medical Domain Question Answering — Pal et al., 2022 — medical domain evaluation dataset.</p>
+<p>DSTC-11: Speech Aware Task-Oriented Dialog Modeling Track — Soltau et al., 2023 — dialogue system technology challenge.</p>
+<p>LegalBench: A Collaboratively Built Benchmark for Measuring Legal Reasoning in Large Language Models — Guha et al., 2023 — legal domain reasoning benchmark.</p>
+<p>SaullM-7B: A Pioneering Large Language Model for Law — Colombo et al., 2024 — legal domain language model.</p>
+<p>TelBench: A Benchmark for Evaluating Telco-Specific Large Language Models — Lee et al., 2024 — telecommunications domain evaluation benchmark.</p>
+<p>Tool Learning with Foundation Models — Qin et al., 2023 — tool learning evaluation framework.</p>
+<p>WebArena: A Realistic Web Environment for Building Autonomous Agents — Zhou et al., 2023 — realistic web environment for agent evaluation.</p>
+<h3>Reasoning and Chain-of-Thought Methods</h3>
+<p>Chain-of-Thought Prompting Elicits Reasoning in Large Language Models — Wei et al., 2022 — chain-of-thought prompting technique for improving reasoning.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

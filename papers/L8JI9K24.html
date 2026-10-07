@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>L8JI9K24</td></tr><tr><th>wiki_id</th><td>L8JI9K24</td></tr><tr><th>aliases</th><td>[L8JI9K24]</td></tr><tr><th>slug</th><td>gajo-2025-sari-sandbox-virtual-retail</td></tr><tr><th>title</th><td>&quot;Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents&quot;</td></tr><tr><th>authors</th><td>[&quot;Gajo, Janika Deborah&quot;, &quot;Merales, Gerarld Paul&quot;, &quot;Escarcha, Jerome&quot;, &quot;Molina, Brenden Ashley&quot;, &quot;Nartea, Gian&quot;, &quot;Maminta, Emmanuel G.&quot;, &quot;Roldan, Juan Carlos&quot;, &quot;Atienza, Rowel O.&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>&quot;arXiv&quot;</td></tr><tr><th>url</th><td>&quot;https://arxiv.org/abs/2508.00400&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2508.00400&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/ARXIV.2508.00400&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;embodied agents&quot;, &quot;retail simulation&quot;, &quot;grocery store&quot;, &quot;visual navigation&quot;, &quot;object manipulation&quot;, &quot;benchmarking&quot;, &quot;human-agent evaluation&quot;, &quot;VLM-powered agents&quot;, &quot;VR interaction&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents</h1>
+<h2>Contribution</h2>
+<p>The authors introduce Sari Sandbox, a high-fidelity photorealistic 3D virtual retail store environment designed specifically for embodied agents performing grocery shopping tasks. They provide 250 interactive grocery items across three store layouts with a Python API for agent control. The authors also release SariBench, a benchmark dataset comprising 100 videos of human participants completing shopping tasks via VR, with varying difficulty levels (easy, average, difficult). Finally, they demonstrate a baseline embodied agent architecture using a vision language model and provide performance comparisons between human and agent completion times and success rates on easy tasks.</p>
+<h2>Research Question</h2>
+<p>How can embodied agents be trained and evaluated on retail-specific tasks in a photorealistic simulation environment? The authors specifically ask: what gap exists between human and AI agent performance on grocery shopping activities, and what baseline capabilities are needed for embodied agents to navigate, inspect, and manipulate retail items?</p>
+<h2>Task</h2>
+<p>The environment supports three difficulty-tiered shopping tasks: easy tasks require perception, navigation, and manipulation to find and retrieve a single item (e.g., find and pick up a box of cereal); average tasks add memory and task execution demands by requiring item retrieval and checkout (e.g., pick up a bottle of soda and scan at checkout); difficult tasks introduce decision-making and comprehension, requiring agents to compare products and make conditional actions (e.g., determine which of two products has lower sugar content, then scan the answer).</p>
+<h2>Data</h2>
+<p>SariBench comprises 100 videos collected from 20 human participants interacting with the Sari Sandbox environment via VR. Each participant completed seven assigned tasks: three easy, two average, and two difficult tasks. Environmental data was captured at 10 Hz including head position and rotation, hand position and rotation, grip state, and hovered or held items. Participants' think-aloud protocols were transcribed to capture reasoning. The Sari Sandbox itself contains 250 photorealistic 3D product models across 11 food categories (water, soda, juice, dairy, biscuits, cans, chips, nuts, soup, noodles, liquor), with annotations including category, name, price, net weight, ingredients, nutritional facts, allergens, and manufacturing origin.</p>
+<h2>Metrics</h2>
+<p>Human performance is measured by completion time (seconds) and completion rate (percentage of tasks successfully completed). Embodied agent performance is similarly evaluated using average time to completion and completion rate, with a success threshold of 45 minutes and failure defined as exceeding this limit or entering mode collapse (getting lost). Texture fidelity is assessed using PaddleOCR, measuring precision (0.986), recall (0.943), and character error rate (0.014) on product label text. Environment performance is measured in frames-per-second: Layout 1 achieved 26.73 FPS, Layout 2 achieved 23.23 FPS, and Layout 3 achieved 35.14 FPS.</p>
+<h2>Baselines</h2>
+<p>Human baselines across three store layouts show completion times of 47-73 seconds for easy tasks (88.88% to 100% success), 84-158 seconds for average tasks (87.50% to 100% success), and 76-136 seconds for difficult tasks (100% success). The authors also provide a baseline embodied agent using Gemini 2.5 Pro with a ReAct framework adapted for retail tasks, which completes easy tasks in 420-780 seconds with success rates of 33.33% to 68.63%, demonstrating substantial performance gaps (human agents up to 16 times faster than AI agents).</p>
+<h2>Conclusion</h2>
+<p>Sari Sandbox addresses an under-explored gap in embodied agent research by providing the first retail-specific simulation environment with high fidelity, diverse product sets, and human benchmarks. The significant performance disparity between humans and embodied agents on easy tasks indicates challenges in visual language model reasoning, decision-making, and computational efficiency for embodied tasks. Future work should optimize environment performance to stable 60 FPS, expand the human dataset with additional tasks and participants, improve embodied agent evaluation across all difficulty levels, and develop more sophisticated agent architectures with enhanced navigation and manipulation capabilities through better context engineering for vision language models.</p>
+<h2>Related Work</h2>
+<h3>Embodied retail store simulators</h3>
+<p>Desktop Indoor Navigation and Simulation Environments — Matterport3D-Simulator is a visual navigation dataset built on Matterport3D enabling household navigation research; Room-to-Room benchmark provides household navigation tasks using Matterport3D; AI2-Thor is an interactive 3D environment enabling visual AI research and household task benchmarking; ION addresses instance-level object navigation with 600 household scenes; ALFRED benchmark covers everyday household tasks in AI2-Thor environments; HumanoidBench provides humanoid locomotion and manipulation tasks in MuJoCo.</p>
+<p>General-Purpose Embodied Agent Simulators — Habitat 3.0 (Meta) is a widely-used simulator for visual exploration and diverse embodied tasks; iGibson 1.0 and iGibson 2.0 enable interactive tasks in large realistic scenes; Isaac Sim (NVIDIA) powered by Omniverse provides physics-accurate simulation; ThreeDWorld is a multi-modal physical simulation platform. A survey by Duan et al. evaluates embodied agent simulators using features including environment type, object complexity, physics fidelity, and interactivity. A survey by Wong et al. traces robotic navigation and manipulation progress from basic navigation to complex interactions in non-retail settings.</p>
+<p>Retail and Digital Twin Applications — Paolanti et al. developed RGB-D deep learning systems for analyzing shopper movement, shelf interactions, and re-identification in real retail stores; NVIDIA Omniverse is used by retailers like Kroger and Lowe's for digital twin construction and employee training; the Future Convenience Store Challenge at the World Robot Summit proposes retail-specific tasks including item acquisition, placement, and restocking.</p>
+<h3>Embodied agents in virtual simulation</h3>
+<p>Language Grounding and Instruction Following — Huang et al. explore visual language maps for robot navigation, addressing the gap between language model semantics and spatial precision; LM-Nav targets language-guided navigation using off-the-shelf models for physical agents; ReAct framework provides the core loop (thought, action, observation, refinement) suitable for embodied tasks; StateAct extends ReAct for household environments like ALFWorld; ALFWorld aligns text and embodied environments for interactive learning.</p>
+<p>LLM and VLM-Powered Agents — Recent advances in LLM-powered embodied agents demonstrate effectiveness in open-ended sandbox environments; NVIDIA's VOYAGER demonstrates open-ended embodied agent capabilities with large language models; Embodied Agent Interface benchmarks LLMs for embodied decision-making. The Massive Multi-discipline Multimodal Understanding and Reasoning (MMMU) benchmark provides evaluation criteria for multimodal LLMs like Gemini 2.5 Pro; Gemini family models provide state-of-the-art multimodal reasoning.</p>
+<p>Memory Architectures for Embodied Agents — CoALA proposes cognitive architectures modeling procedural, working, semantic, and episodic memory; memory writing operations manage and utilize agent memory through summaries and recollections; a survey on memory mechanisms for large language model-based agents catalogs approaches to stateful reasoning; MemoryBank enhances LLMs with long-term memory techniques; RetLLM provides read-write memory mechanisms for language models.</p>
+<p>Vision and Perception Tools — PaddleOCR provides robust multilingual optical character recognition for text extraction; Depth Anything V2 enables monocular depth estimation for spatial understanding.</p>
+<p>Design Philosophy — The environment adopts evaluation criteria from a survey on embodied agents, explicitly addressing the under-explored domain of retail scenarios by considering environment type, object complexity, physics fidelity, and interactivity. The authors frame three foundational research tasks for embodied agent adaptation: visual exploration (gathering environmental data through motion and perception), visual navigation (achieving goals through embodied agent navigation), and embodied question answering (navigating and answering questions).</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

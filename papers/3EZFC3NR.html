@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>3EZFC3NR</td></tr><tr><th>wiki_id</th><td>3EZFC3NR</td></tr><tr><th>aliases</th><td>[3EZFC3NR]</td></tr><tr><th>slug</th><td>yao-2024-tau-bench-tool-agent</td></tr><tr><th>title</th><td>&quot;τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains&quot;</td></tr><tr><th>authors</th><td>[&quot;Yao, Shunyu&quot;, &quot;Shinn, Noah&quot;, &quot;Razavi, Pedram&quot;, &quot;Narasimhan, Karthik&quot;]</td></tr><tr><th>year</th><td>2024</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>&quot;arXiv&quot;</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2406.12045&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2406.12045&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2406.12045&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;agent benchmarking&quot;, &quot;tool-use evaluation&quot;, &quot;user simulation&quot;, &quot;human-agent interaction&quot;, &quot;domain-specific policies&quot;, &quot;function calling&quot;, &quot;task-oriented dialogue&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains</h1>
+<h2>Contribution</h2>
+<p>τ-bench measures an agent's ability to interact consistently with simulated human users and programmatic APIs while following domain-specific policies. The benchmark is constructed in a modular framework combining realistic databases, domain-specific API tools, policy documents, and diverse user scenarios with ground truth annotations. The authors propose a novel metric (pass^k) to evaluate agent reliability and consistency over multiple trials, distinct from pass@k (which measures discovery). Experiments on two domains (τ-retail and τ-airline) reveal that even state-of-the-art function-calling agents like gpt-4o succeed on less than 50% of tasks and show poor consistency at scale.</p>
+<h2>Research Question</h2>
+<p>How well can language agents interact with both humans and programmatic APIs over long horizons while accurately adhering to complex domain-specific policies, and how consistently do they maintain reliable behavior across multiple interactions and variations in conversation flow?</p>
+<h2>Task</h2>
+<p>τ-bench defines two domains for evaluation. τ-retail focuses on customer service tasks where agents help simulated users cancel or modify pending orders, return or exchange delivered orders, modify addresses, or provide information. Tasks involve reasoning over complex product inventories and diverse user preferences. τ-airline extends the complexity with more intricate policies, where agents must help users book, modify, or cancel flight reservations or process refunds. The airline domain includes realistic flight networks across 20 US cities with constraints on payment-method combinations, baggage allowances that vary by membership tier and cabin class, and multi-hop reasoning puzzles for constraint satisfaction.</p>
+<h2>Data</h2>
+<p>The benchmark is constructed in three stages: (1) manual design of database schemas, APIs, and policies; (2) LM-assisted generation of data entries using gpt-4 with manual refinement; (3) manual task annotation and verification. τ-retail contains 500 users, 50 products, and 1,000 orders with 115 task instances. τ-airline contains 500 users, 300 flights, and 2,000 reservations with 50 task instances. Each task specifies a user instruction (hidden from the agent) and ground truth annotations of database write actions. The user simulator is powered by gpt-4-0613 and generates natural utterances by sampling from the LM conditioned on the scenario and conversation history.</p>
+<h2>Metrics</h2>
+<p>The benchmark uses a reward r = r_action × r_output in {0,1}. r_action checks whether the final database state matches the annotated ground truth outcome, and r_output verifies that agent responses convey all necessary information to the user. The pass^k metric measures the probability that all k independent trials succeed, capturing agent consistency and robustness—distinct from pass@k which measures at least one success. By default, pass^1 (equivalent to pass@1) reports average task success. The benchmark also reports qualitative failure analysis categorizing errors into: wrong arguments (complex database reasoning failures), wrong information (omitted or miscalculated user-required data), incorrect decision-making (domain understanding and policy adherence), and partial resolution of compound requests.</p>
+<h2>Baselines</h2>
+<p>Experiments test state-of-the-art proprietary and open models: GPT-4o, GPT-4-turbo, GPT-4-32k, GPT-3.5-turbo, Claude-3-opus, Claude-3-sonnet, Claude-3-haiku, Gemini-1.5-pro, Gemini-1.5-flash, Mistral-large, Mixtral-8x22b, and Llama-3-70b. Methods evaluated include function calling (natively supported by most models) and text-formatted ReAct with and without reasoning traces. Function calling consistently outperforms text-formatted methods. Results show gpt-4o achieves 61.2% pass^1 on τ-retail and 35.2% on τ-airline; with increasing k, pass^k drops dramatically to less than 25% for pass^8. Claude-3-opus achieves 44.2% and 34.7% respectively. Ablation studies removing domain policies reveal that τ-airline performance drops more sharply (−22.4% for gpt-4o vs −4.4% for τ-retail), suggesting agents struggle more with complex ad-hoc airline policies than intuitive retail constraints.</p>
+<h2>Conclusion</h2>
+<p>τ-bench reveals that even state-of-the-art language agents lack sufficient consistency and rule-following ability for reliable real-world deployment. The benchmark enables systematic evaluation of agent improvements in long-horizon human-in-the-loop interaction, complex database reasoning, domain policy understanding, and handling of compound user requests. The modular construction facilitates extension to additional domains and serves as a foundation for developing more robust agent architectures.</p>
+<h2>Related Work</h2>
+<h3>Agent and Tool-Use Benchmarks</h3>
+<p>Several benchmarks for language agents and tool-use capabilities have emerged, such as the Berkeley Function Calling Leaderboard, ToolBench, and MetaTool, which test function-calling accuracy across programming languages. ToolEmu uses language models to emulate tool execution and expose safety risks when agents fail to use tools correctly. However, these benchmarks feature single-step user interaction where humans provide all required information upfront, without multi-turn dialogue. τ-bench extends beyond these by requiring agents to gather information through interaction with simulated humans over multiple conversational turns.</p>
+<h3>Task-Oriented Dialogue Systems</h3>
+<p>Task-oriented dialogue has long been a challenge for NLP, with benchmarks ranging from static offline datasets to rule-based or symbolically-specified user simulators and crowdsourced human interactions. Recent work explores using language models as response raters to train dialogue systems and evaluates their capability for user simulation. τ-bench advances this tradition by leveraging powerful LM text generation to simulate realistic user utterances and long-context conversations from textual scenario descriptions, and crucially, uses this simulation to benchmark agent reliability rather than just demonstrate simulation fidelity.</p>
+<h3>User Simulation with Language Models</h3>
+<p>Recent efforts use language models to simulate human characters in text adventure games, multi-agent societies, collaborative tasks, and human-in-the-loop interactions for shopping and web search. These works showcase the ability of LMs to enable realistic simulations. τ-bench is novel in using such realistic user simulation to assess the reliability and robustness of AI agents for systems handling millions of real-world interactions with humans, rather than focusing solely on simulation capabilities.</p>
+<h3>Related-Work in Agent Evaluation Methodology</h3>
+<p>The paper notes that existing benchmarks do not test agents on interaction with human users or adherence to domain-specific rules, both vital for real-world deployment. τ-bench closes this gap by formulating each task as a partially observable Markov decision process (POMDP) with state space combining database and user states, and by employing an efficient evaluation process comparing database state at the episode end to annotated goals. This state-based evaluation is objective while allowing stochasticity in conversation flow.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

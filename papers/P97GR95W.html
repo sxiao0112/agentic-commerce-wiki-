@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>P97GR95W</td></tr><tr><th>wiki_id</th><td>P97GR95W</td></tr><tr><th>aliases</th><td>[P97GR95W]</td></tr><tr><th>slug</th><td>wang-2025-shoppingbench-intent-grounded</td></tr><tr><th>title</th><td>&quot;ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents&quot;</td></tr><tr><th>authors</th><td>[&quot;Wang, Jiangyuan&quot;, &quot;Xiao, Kejun&quot;, &quot;Sun, Qi&quot;, &quot;Zhao, Huaipeng&quot;, &quot;Luo, Tao&quot;, &quot;Zhang, Jian Dong&quot;, &quot;Zeng, Xiaoyi&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>arXiv</td></tr><tr><th>url</th><td>&quot;https://arxiv.org/abs/2508.04266&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2508.04266&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/ARXIV.2508.04266&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;benchmark&quot;, &quot;e-commerce&quot;, &quot;language agents&quot;, &quot;tool use&quot;, &quot;agent evaluation&quot;, &quot;shopping&quot;, &quot;intent grounding&quot;, &quot;complex user intents&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents</h1>
+<h2>Contribution</h2>
+<p>The authors propose ShoppingBench, a large-scale end-to-end shopping benchmark with 3,310 user instructions designed to evaluate language agents on increasingly complex, real-world e-commerce tasks. They provide a scalable framework to simulate user instructions based on diverse intents derived from sampled real-world products, a large-scale interactive shopping sandbox environment containing over 2.5 million real products from Lazada, and automatic evaluation metrics grounded in intent-specific constraints. Additionally, they propose a trajectory distillation strategy where tool-use trajectories generated by GPT-4.1 are filtered using rejection sampling; these synthetic trajectories are then used with supervised fine-tuning and reinforcement learning to train smaller models like Qwen3-4B to achieve competitive performance with GPT-4.1.</p>
+<h2>Research Question</h2>
+<p>How can language agents be systematically evaluated on complex, realistic e-commerce intents that extend beyond basic product purchase tasks, and what are the actual capabilities and limitations of state-of-the-art language models when faced with such grounded shopping scenarios?</p>
+<h2>Task</h2>
+<p>ShoppingBench encompasses four progressively challenging user purchase intent categories: Products Finder (identifying products based on attribute descriptions), Knowledge (inferring knowledge requirements and identifying related products), Multi-products Seller (finding stores that sell multiple products), and Coupon &amp; Budget (understanding voucher rules and finding optimal product combinations within budget constraints). The benchmark requires agents to perform multi-step reasoning, leverage domain-specific e-commerce knowledge, and effectively utilize a suite of predefined API tools.</p>
+<h2>Data</h2>
+<p>The benchmark comprises 3,310 intent-grounded user instructions constructed through three stages. Stage I involves sampling diverse real-world products from a shopping sandbox covering varied categories, brands, attributes, and services. Stage II extracts structured product fields including titles, attributes, associated services, and metadata. Stage III uses GPT-4.1 to simulate diverse and realistic user queries tailored to each purchase intent. The test set contains 900 instructions with 250 samples each for Products Finder, Multi-products Seller, and Coupon &amp; Budget intents, and 150 samples for Knowledge intent. The training set comprises 2,410 user instructions. The shopping sandbox environment incorporates over 2.5 million real products sourced from Lazada with diverse categories, brands, and services.</p>
+<h2>Metrics</h2>
+<p>The authors propose Absolute Success Rate (ASR) and Cumulative Average of product Relevance (CAR) as overall metrics, computed from intent-specific constraint scores. Product Relevance Score evaluates title similarity, price range match, and feature overlap between predicted and target products. Knowledge Constraint Score verifies whether predicted products have correct knowledge attributes. Shop Constraint Score assesses whether predicted products come from the same shop for multi-product requests. Budget Constraint Score checks whether final prices satisfy the user's budget after applying vouchers. ASR measures the proportion of tasks where predicted products fully satisfy all specified constraints, while CAR measures average product relevance across all tasks.</p>
+<h2>Baselines</h2>
+<p>The authors evaluate 17 language agents including leading closed-source models (GPT-4.1, o3-mini, GPT-4o, Claude-4-Sonnet, Qwen2.5-max, Gemini-2.5-Flash), open-source models (DeepSeek-R1, DeepSeek-V3, Qwen3-235B-A22B, Qwen3-32B, Qwen3-14B, Qwen3-8B, Gemma-3-27B, Gemma-3-12B, Gemma-3-4B), and their trajectory-distilled Qwen3-4B variants trained with supervised fine-tuning (SFT) and reinforcement learning (RL using GRPO). The best untrained model, GPT-4.1, achieves an overall ASR of 48.2%, demonstrating that even state-of-the-art agents struggle significantly with these complex tasks. The SFT+RL-Qwen3-4B model achieves 48.7% overall ASR, surpassing GPT-4.1 by 0.5 percentage points.</p>
+<h2>Related Work</h2>
+<h3>Agent Benchmarks</h3>
+<p>WebShop and WebArena — These benchmarks establish web shopping as a key domain for evaluating language agent capabilities in fulfilling user purchase requests. However, they primarily focus on basic user intents such as finding and purchasing products, lacking the complex, multi-faceted goals present in real-world e-commerce scenarios.</p>
+<p>Recent advances in language agents show promise for task automation and autonomous decision-making across diverse domains, requiring evaluation of agents' abilities to aggregate information for multi-step reasoning and effective tool utilization. Language agents have been applied to domain-specific scenarios, with e-commerce emerging as a particularly realistic application area for evaluation.</p>
+<h3>E-commerce Datasets</h3>
+<p>Shopping MMLU and ChineseEcomQA — These multidimensional benchmarks constructed from large e-commerce corpora focus on conceptual and skill-based question answering in e-commerce rather than end-to-end agent performance, limiting their effectiveness in assessing agents' ability to fulfill complex user intents in real-world shopping scenarios.</p>
+<p>E-ConvRec — A large-scale conversational recommendation dataset for e-commerce customer service addressing isolated or narrowly-scoped downstream recommendation tasks.</p>
+<p>EcomScriptBench — Proposes evaluation of language models' ability to generate plans with scripts and recommend products based on step-wise intention-driven product association.</p>
+<p>Previous e-commerce benchmarks have primarily addressed isolated downstream tasks or narrow task scopes, with recent large-scale benchmarks focusing on question-answering and skill evaluation rather than end-to-end agent task completion.</p>
+<h2>Conclusion</h2>
+<p>Even the best-performing language agent, GPT-4.1, achieves a success rate below 50% on ShoppingBench, underscoring the significant challenges posed by the benchmark and revealing substantial gaps between current agent capabilities and real-world e-commerce requirements. Analysis of GPT-4.1 failures identifies five error types: missing or mismatched product attributes, metric issues from strict evaluation thresholds, product not found in the sandbox, user constraints not satisfied, and knowledge reasoning errors. The benchmark reveals that viewing product details strongly correlates with task success across all intents, while web search is particularly crucial for knowledge-dependent tasks. The proposed trajectory distillation strategy successfully distills GPT-4.1 capabilities into smaller models through rejection sampling, supervised fine-tuning, and reinforcement learning, achieving comparable performance. The authors note that advances in agent architecture, tool usage strategies, problem decomposition, and web information integration are needed to address these real-world e-commerce challenges.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evaluating Fairness in LLM Negotiator Agents via Economic Games Using Multi-Agent Systems</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>CPCJQVGF</td></tr><tr><th>wiki_id</th><td>CPCJQVGF</td></tr><tr><th>aliases</th><td>[CPCJQVGF]</td></tr><tr><th>slug</th><td>mouri-zadeh-khaki-2026-fairness-llm-negotiator</td></tr><tr><th>title</th><td>&quot;Evaluating Fairness in LLM Negotiator Agents via Economic Games Using Multi-Agent Systems&quot;</td></tr><tr><th>authors</th><td>[&quot;Mouri Zadeh Khaki, Ahmad&quot;, &quot;Choi, Ahyoung&quot;]</td></tr><tr><th>year</th><td>2026</td></tr><tr><th>paper_type</th><td>empirical-method</td></tr><tr><th>venue</th><td>&quot;Mathematics&quot;</td></tr><tr><th>url</th><td>&quot;https://www.mdpi.com/2227-7390/14/3/458&quot;</td></tr><tr><th>arxiv</th><td>&quot;&quot;</td></tr><tr><th>doi</th><td>&quot;10.3390/math14030458&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;autonomous agents&quot;, &quot;fairness&quot;, &quot;game theory&quot;, &quot;large language model&quot;, &quot;multi-agent systems&quot;]</td></tr><tr><th>updated</th><td>2026-06-25</td></tr></tbody></table>
+<h1>Evaluating Fairness in LLM Negotiator Agents via Economic Games Using Multi-Agent Systems</h1>
+<h2>Contribution</h2>
+<p>The authors develop a multi-agent system framework using ChatGPT-4 Turbo to evaluate fairness in LLM-based negotiator agents through controlled buyer-seller economic games. They investigate whether autonomous LLM agents exhibit demographic bias when aware of negotiating partners' gender and race, and propose persona-based conditioning as a practical mitigation strategy. The work extends prior fairness evaluations in LLMs by analyzing interactive negotiation outcomes across multiple awareness scenarios and conducting intersectional analysis across gender and four racial groups.</p>
+<h2>Research Question</h2>
+<p>The authors address three primary questions: Do LLM-based negotiation agents exhibit demographic bias in interactive negotiation settings? How do social and gender biases emerge in seller-buyer negotiations? Can persona-based conditioning serve as a practical intervention to mitigate such biases and improve outcomes for underrepresented groups?</p>
+<h2>Method</h2>
+<p>The authors implement a buyer-seller negotiation game within a multi-agent system adapted from NegotiationArena. Two agents instantiated from ChatGPT-4 Turbo interact as seller and buyer, each with private knowledge and explicit role-based goals. The seller knows production cost (set at $40) and aims to maximize profit; the buyer knows maximum willingness to pay (set at $60) and aims to minimize expenditure. Negotiations proceed in up to ten turns with agents instructed to provide chain-of-thought reasoning before each decision. The authors examine three awareness scenarios: seller aware of buyer demographics, buyer aware of seller demographics, and both players mutually aware. They simulate 20 independent games for each of nine gender-race combinations (four racial groups plus gender variations) across all scenarios, totaling 540 runs. Profit margin (difference between final agreed price and target price) serves as the primary evaluation metric. The authors analyze offers, negotiation turns, and qualitatively examine chain-of-thought reasoning to identify bias mechanisms.</p>
+<h2>Setup</h2>
+<p>The multi-agent framework consists of role-conditioned instances of ChatGPT-4 Turbo with explicitly defined private knowledge and negotiation constraints. Demographic information (White, Black, Asian, Latino; male, female) is communicated to agents when relevant to the awareness scenario via direct prompt statement. For persona-based conditioning, buyers receive an added instruction to appear desperate and plead to reduce spending. All conversations use temperature 0.7 and maximum token limit 400. The baseline condition is gender- and race-blind negotiation. The authors use Spearman correlation analysis to measure relationships between variables and 95% confidence intervals for statistical inference.</p>
+<h2>Results</h2>
+<p>When the seller is aware of buyer demographics, the seller achieves higher profit margins with Latino and female buyers compared to White and male buyers, despite no explicit discriminatory language in reasoning traces. Latino buyers yield the highest seller profit margin at $5.75 compared to $4.72 for White buyers; female buyers yield $5.47 versus $4.97 for male buyers. The seller's initial offer shows very strong correlation with final agreed price (ρ = 0.84, p &lt; 0.001), and offers systematically vary by buyer demographics even when sellers use identical stated reasoning. When the buyer is aware of seller demographics, buyers achieve higher profit margins than the baseline for all seller subpopulations, demonstrating asymmetric advantage of awareness. Buyers achieve the lowest final price against Asian sellers ($47.27) and the highest margin against White sellers ($12.42). In the mutual-awareness scenario, profit disparities become more pronounced across intersectional subgroups, with Asian male and Black female participants showing the most and least privilege respectively in different roles. Persona-based conditioning substantially improves buyer outcomes across all subpopulations, increasing profit margins by $6.13-$6.65, reducing counteroffers by 13%, and increasing negotiation turns by 23.25%. However, relative demographic disparities persist despite conditioning, indicating that conditioning enhances performance within a biased system rather than eliminating the underlying bias. The authors observe approximately 5% of cases with irrational behavior (offers below cost, bad-faith dealing) but find no correlation between irrationality and demographic setup.</p>
+<h2>Conclusion</h2>
+<p>LLM-based negotiation agents systematically exhibit demographic bias in interactive commercial settings through subtle behavioral shifts in initial offers, counteroffers, and concession timing rather than overtly discriminatory language. Although the text generated by agents contains no explicit social biases, hidden gender and social biases in training data lead to skewed outcomes favoring dominant groups. Persona-based conditioning can partially mitigate disadvantage for underrepresented groups but does not eliminate underlying disparities and raises ethical concerns by shifting burden of fairness onto disadvantaged users rather than addressing structural model-level inequalities. The authors emphasize that responsible deployment requires robust dataset curation, demographic masking during interactions, and systemic mitigation strategies rather than user-level adaptations alone.</p>
+<h2>Related Work</h2>
+<h3>Evaluating Fairness in LLM Agents Using Multi-Agent Systems</h3>
+<p>Your large language model is secretly a fairness proponent and you should prompt it like one — Li et al. — researchers developed a multi-agent system simulating jury-style debate to evaluate and improve fairness in LLMs through structured discussion and role assignment.</p>
+<p>Reflexion: Language agents with verbal reinforcement learning — Shinn et al. — framework where agents improve through verbal feedback over multiple interactions.</p>
+<p>MetaAgents: Simulating interactions of human behaviors for LLM-based task-oriented coordination via collaborative generative agents — Li et al. — system using mock job fair environment to assess agent information processing, collaboration, and coordination.</p>
+<p>Humanoid Agents: Platform for simulating human-like generative agents — Wang et al. — platform developing agents that mirror human thinking patterns, communication styles, and behavioral tendencies influenced by human drivers.</p>
+<p>Building cooperative embodied agents modularly with large language models — Zhang et al. — investigation of whether multi-agent systems powered by LLMs can reproduce collaborative problem-solving abilities found in human groups.</p>
+<h3>Exploring Behavior of LLM Agents in Economic Games</h3>
+<p>Evaluating language model agency through negotiations — Davidson et al. — examined how well LLMs understand game rules and adhere to established goals in negotiation contexts.</p>
+<p>LLMs with personalities in multi-issue negotiation games — Noh &amp; Chang — investigated how LLM agents with distinct personality traits based on psychological models negotiate over resource trades according to preferences.</p>
+<p>Put your money where your mouth is: Evaluating strategic planning and execution of LLM agents in an auction arena — Chen et al. — created Aucarena testing environment assessing LLM agents' resource management, risk evaluation, and strategic planning during auction scenarios.</p>
+<p>Simulating strategic reasoning: Comparing the ability of single LLMs and multi-agent systems to replicate human behavior — Sreedhar &amp; Chilton — demonstrated that language models can replicate human decision-making patterns when given specific behavioral profiles in ultimatum games.</p>
+<p>How well can LLMs negotiate? NEGOTIATIONARENA platform and analysis — Bianchi et al. — comprehensive multi-agent simulation platform modeling LLM agent negotiations across ultimatum games, resource trading, and buyer-seller interactions with quantitative outcome assessment.</p>
+<h3>Bias and Fairness in Large Language Models</h3>
+<p>Measuring Gender and Racial Biases in Large Language Models: Intersectional Evidence from Automated Resume Evaluation — An et al. — measured intersectional gender and racial biases in LLMs through automated hiring decisions.</p>
+<p>Inducing group fairness in LLM-based decisions — Atwood et al. — measured fairness of LLM-based classifiers and empirically showed that prompt-based classifiers may lead to unfair decisions.</p>
+<p>On measuring social biases in sentence encoders — May et al. — examined gender bias in word embeddings as widely used text representation models.</p>
+<p>Man is to computer programmer as woman is to homemaker? Debiasing word embeddings — Bolukbasi et al. — investigated structural gender biases in word embeddings and proposed debiasing approaches.</p>
+<p>Bias out-of-the-box: An empirical analysis of intersectional occupational biases in popular generative language models — Kirk et al. — empirically demonstrated both racial and gender biases in occupational associations within ChatGPT.</p>
+<p>Should ChatGPT be biased? Challenges and risks of bias in large language models — Ferrara — discussed risks and challenges of bias in large language models.</p>
+<p>Fairness in large language models: A taxonomic survey — Chu et al. — comprehensive survey of fairness approaches and dimensions in LLMs.</p>
+<p>CrowS-Pairs: A challenge dataset for measuring social biases in masked language models — Nangia et al. — dataset for measuring social biases in language models.</p>
+<p>Reevaluating bias detection in language models: The role of implicit norms — Kohankhaki et al. — examined the role of implicit norms in bias detection within language models.</p>
+<p>Human-Like Intuitive Behavior and Reasoning Biases Emerged in Large Language Models but Disappeared in ChatGPT — Hagendorff et al. — demonstrated that human-like biases and reasoning failures emerged in early LLMs but declined in ChatGPT.</p>
+<h3>Negotiation, Bargaining, and Communication</h3>
+<p>Language of bargaining — Heddaya et al. — examined language use and strategies in bargaining contexts.</p>
+<p>Keeping up appearances: Computational modeling of face acts in persuasion oriented discussions — Dutt et al. — computational modeling of face-saving behaviors in persuasion-oriented communication.</p>
+<p>The importance of the agenda in bargaining — Fershtman — game-theoretic analysis of how negotiation agenda structure influences bargaining outcomes.</p>
+<p>Decoupling strategy and generation in negotiation dialogues — He et al. — methods for separating strategic planning from language generation in negotiation systems.</p>
+<p>A dynamic strategy coach for effective negotiation — Zhou et al. — framework integrating coaching mechanisms to improve LLM negotiation performance.</p>
+<p>Improving language model negotiation with self-play and in-context learning from AI feedback — Fu et al. — techniques for improving negotiation capabilities in LLMs through training approaches.</p>
+<p>Gender Differences in Negotiation and Policy for Improvement — Recalde &amp; Vesterlund — economic analysis of gender differences in negotiation behavior.</p>
+<p>Gender differences in the acquisition of salary negotiation skills: The role of goals, self-efficacy, and perceived control — Stevens et al. — psychological investigation of gender differences in negotiation skill acquisition.</p>
+<p>I can't pay more versus It's not worth more: Divergent effects of constraint and disparagement rationales in negotiations — Lee &amp; Ames — behavioral analysis of how constraint versus disparagement framing affects negotiation outcomes.</p>
+<h3>Large Language Model Agents and Reasoning</h3>
+<p>Exploring large language model based intelligent agents: Definitions, methods, and prospects — Cheng et al. — broad survey of LLM-based agent architectures, capabilities, and applications.</p>
+<p>Chat Dev: Communicative agents for software development — Qian et al. — multi-agent system of LLM agents collaborating on software development tasks.</p>
+<p>Sapien: Affective virtual agents powered by large language models — Hasan et al. — development of emotionally expressive agents based on LLMs.</p>
+<p>Chain-of-thought prompting elicits reasoning in large language models — Wei et al. — foundational work demonstrating that explicit step-by-step reasoning improves LLM performance on complex reasoning tasks.</p>
+<p>A zero-shot high-performance fire detection framework based on large language models — Zhao et al. — application of LLMs to zero-shot detection tasks, demonstrating breadth of LLM capabilities.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

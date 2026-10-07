@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>YA9UTHZP</td></tr><tr><th>wiki_id</th><td>YA9UTHZP</td></tr><tr><th>aliases</th><td>[YA9UTHZP]</td></tr><tr><th>slug</th><td>liu-2026-agenticpay-benchmark-system</td></tr><tr><th>title</th><td>&quot;AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions&quot;</td></tr><tr><th>authors</th><td>[&quot;Liu, Xianyang&quot;, &quot;Gu, Shangding&quot;, &quot;Song, Dawn&quot;]</td></tr><tr><th>year</th><td>2026</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>arXiv</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2602.06008&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2602.06008&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2602.06008&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;multi-agent negotiation&quot;, &quot;buyer-seller transactions&quot;, &quot;language-mediated markets&quot;, &quot;LLM agents&quot;, &quot;benchmark evaluation&quot;, &quot;negotiation efficiency&quot;, &quot;deal welfare&quot;, &quot;strategic reasoning&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions</h1>
+<h2>Contribution</h2>
+<p>The paper introduces AgenticPay, a scalable benchmark and simulation framework for evaluating large language model-based agents in multi-agent buyer-seller negotiation driven by natural language. The framework supports over 110 negotiation tasks ranging from bilateral bargaining to many-to-many markets, with dialogue-to-action grounding and welfare-oriented evaluation metrics. Agents operate under asymmetric private information, possessing reservation prices unknown to their counterparts, and negotiate through multi-turn dialogue to reach agreements. The authors benchmark state-of-the-art proprietary and open-weight LLMs under a unified protocol, revealing substantial performance gaps and persistent challenges in long-horizon strategic reasoning, particularly among smaller open-weight models.</p>
+<h2>Research Question</h2>
+<p>How effectively can current large language models function as autonomous negotiators in diverse market environments, from bilateral bargaining to complex many-to-many markets with multiple buyers, sellers, and products? What negotiation capabilities do frontier versus open-weight models possess, and where do current LLMs struggle in language-mediated economic interaction?</p>
+<h2>Method</h2>
+<p>The framework models negotiation as a finite-horizon, multi-round language game where dialogue is grounded in structured economic outcomes. Agents receive private reservation prices (buyer's maximum willingness-to-pay, seller's minimum acceptable price) injected into system prompts, while sharing public information about products and market context. At each negotiation round, agents exchange natural-language messages and extract structured negotiation actions via a parser that identifies proposed prices. Negotiation terminates when agents reach agreement (proposing the same price within the bargaining zone), exceed maximum rounds, or violate feasibility constraints. The environment supports two interaction modes: parallel negotiation where agents reason over multiple simultaneous negotiations, and sequential negotiation where agents adaptively decide whether to continue, switch, or commit to partnerships.</p>
+<h2>Setup</h2>
+<p>AgenticPay comprises 111 total negotiation tasks across eight multi-agent configurations: single buyer-seller (1B1S), single buyer with multiple sellers (1BMS), multiple buyers with single seller (MB1S), and multiple buyers with multiple sellers (MBMS), each further divided by product set complexity. Tasks span 10 realistic business scenarios organized into four economic domains—Daily Life (used smartphone, used car, vacation rental), Professional Services (website development, commercial photography, home renovation), Business Procurement (SaaS software, raw materials), and Financial Assets (luxury watch, business acquisition)—with transaction values ranging from $350 to $120,000. Agents receive identical prompts across all model evaluations under deterministic decoding (temperature 0, seed 0, max 1024 tokens per response). Benchmarked models include proprietary systems (Claude Opus 4.5, GPT-5.2, Gemini-3-Flash) and open-weight models (Qwen3-14B, Llama-3.1-8B).</p>
+<h2>Metrics</h2>
+<p>Three complementary outcome scores evaluate negotiation performance. GlobalScore measures overall deal quality by rewarding balanced outcomes where both parties benefit, using a symmetric quality term that peaks when surplus is split equally. BuyerScore and SellerScore capture role-specific utility, reflecting each agent's individual gain from the transaction. All three incorporate negotiation efficiency via a discount factor (γ = 0.99) that incentivizes faster agreements. Scores normalize utilities within the bargaining zone and apply a failure penalty to discourage deadlock. The framework additionally reports deal rate (percentage of successful negotiations), timeout rate, price overflow rate (proposals outside acceptable bounds), and average rounds to termination.</p>
+<h2>Results</h2>
+<p>Proprietary models substantially outperform open-weight models. Claude Opus 4.5 achieves the highest GlobalScore of 86.9 with perfect 100% deal rate and zero timeouts; Gemini-3-Flash and GPT-5.2 follow closely (82.2 and 81.7 respectively), while Qwen3-14B achieves only 63.9 with 20.7% timeout rate and Llama-3.1-8B struggles significantly with 32.5 GlobalScore and 48.6% timeouts. Negotiation efficiency inversely correlates with model capability: stronger models reach agreements faster (Claude Opus 4.5: 3.7 rounds; Llama-3.1-8B: 15.0 rounds). All models exhibit asymmetric buyer-seller performance, with systematically higher SellerScores than BuyerScores across the board. Counter-intuitively, GlobalScore increases with greater buyer and seller multiplicity, attributed to increased market liquidity enabling agents to find compatible trading partners. Financial Asset scenarios consistently expose the lowest scores across most models, suggesting sophisticated risk assessment remains challenging for current LLMs. Cross-play analysis reveals universal buyer disadvantage, with models achieving substantially higher SellerScores than BuyerScores when playing opposing roles. Personality configurations significantly impact negotiation outcomes: budget-conscious buyers paired with aggressive sellers achieve the highest GlobalScore (92.7), while busy professional buyers achieve the lowest. Sequential versus parallel negotiation modes show minimal impact on frontier models, though open-weight models benefit from parallel execution with 4-5 point improvements. Near-miss analysis reveals that over 40% of open-weight model failures occurred when price gaps were within 5 units, suggesting deficiencies in final convergence rather than understanding of the negotiation space.</p>
+<h2>Conclusion</h2>
+<p>AgenticPay establishes a foundation for studying agentic commerce and language-mediated market interaction. The benchmark reveals that strong language generation alone is insufficient for effective economic negotiation, with frontier models demonstrating substantially better negotiation performance than open-weight models. Persistent challenges in long-horizon strategic reasoning, particularly evident in financial asset negotiations and the final convergence phase, highlight areas requiring further research in autonomous LLM-based negotiators.</p>
+<h2>Related Work</h2>
+<h3>Negotiation and Bargaining in Game Theory</h3>
+<p>Bargaining under Incomplete Information — Chatterjee &amp; Samuelson — classical game-theoretic study of bargaining and bilateral trade under incomplete information.</p>
+<p>Efficient Mechanisms for Bilateral Trading — Myerson &amp; Satterthwaite — foundational work on equilibrium efficiency and impossibility theorems in bilateral trading.</p>
+<p>A Bargaining Model with Incomplete Information about Time Preferences — Rubinstein — classical analysis of alternating-offer bargaining dynamics.</p>
+<p>Bargaining with Incomplete Information — Ausubel, Cramton, &amp; Deneckere — comprehensive handbook treatment of bargaining theory under asymmetric information.</p>
+<p>Approximating Gains-from-Trade in Bilateral Trading — Blumrosen &amp; Mizrahi — analysis of trade efficiency in bilateral matching under information asymmetry.</p>
+<p>Strategic Behavior of Large Language Models: Game Structure vs. Contextual Framing — Loré &amp; Heydari — empirical study of LLM behavior in strategic game settings.</p>
+<p>Can Large Language Models Serve as Rational Players in Game Theory? A Systematic Analysis — Fan et al. — systematic assessment of LLM strategic rationality in game-theoretic settings.</p>
+<p>Strategic Behavior of Large Language Models and the Role of Game Structure Versus Contextual Framing — Loré &amp; Heydari (Nature Human Behaviour) — experimental investigation of how game structure and framing affect LLM strategic behavior.</p>
+<p>Playing Repeated Games with Large Language Models — Akata et al. — study of LLM behavior and learning in iterated game settings.</p>
+<p>Large Language Models Playing Mixed Strategy Nash Equilibrium Games — Silva — analysis of LLMs' ability to play mixed strategies in equilibrium games.</p>
+<p>LLM Strategic Reasoning: Agentic Study through Behavioral Game Theory — Jia et al. — game-theoretic examination of LLM strategic reasoning capabilities.</p>
+<p>Game Theory Meets Large Language Models: A Systematic Survey — Sun et al. — comprehensive survey of LLM behavior in game-theoretic contexts.</p>
+<h3>Neural and Dialogue-Based Negotiation</h3>
+<p>Deal or No Deal? End-to-End Learning for Negotiation Dialogues — Lewis et al. — foundational work on learning negotiation strategies from dialogue data.</p>
+<p>Decoupling Strategy and Generation in Negotiation Dialogues — He et al. — neural approach separating strategic planning from language generation in negotiations.</p>
+<p>Casino: A Corpus of Campsite Negotiation Dialogues for Automatic Negotiation Systems — Chawla et al. — corpus for training negotiation dialogue systems.</p>
+<p>Dialograph: Incorporating Interpretable Strategy-Graph Networks into Negotiation Dialogues — Joshi et al. — strategy-graph based approach to negotiation dialogue generation.</p>
+<p>Improving Language Model Negotiation with Self-Play and In-Context Learning from AI Feedback — Fu et al. — self-play and reinforcement learning approaches for improving LLM negotiation.</p>
+<p>Negotiation Simulation System Using Large Language Model for Medical Office Staff — Washio et al. — application of LLMs to domain-specific negotiation scenarios.</p>
+<p>Assistive Large Language Model Agents for Socially-Aware Negotiation Dialogues — Hua et al. — study of social and ethical considerations in LLM-based negotiation.</p>
+<p>Using Negotiation and Large Language Models in Human-to-Software Agent Negotiations — Vahidov et al. — integration of LLMs in human-agent negotiation settings.</p>
+<p>Self-Play Fine-Tuning Converts Weak Language Models to Strong Language Models — Chen et al. — self-play techniques for improving LLM capabilities including negotiation.</p>
+<p>Using Large Language Models for Humanitarian Frontline Negotiation: Opportunities and Considerations — Ma et al. — application and ethical considerations of LLMs in real-world negotiation contexts.</p>
+<p>EvoEmo: Towards Evolved Emotional Policies for LLM Agents in Multi-Turn Negotiation — Long et al. — emotion-driven policy learning for LLM negotiators.</p>
+<h3>LLMs in Economic and Auction Settings</h3>
+<p>Put Your Money Where Your Mouth Is: Evaluating Strategic Planning and Execution of LLM Agents in an Auction Arena — Chen et al. — benchmark for evaluating LLM strategic behavior in auction mechanisms.</p>
+<p>Mechanism Design for Large Language Models — Duetting et al. — theoretical framework for designing mechanisms compatible with LLM rationality assumptions.</p>
+<p>Measuring Bargaining Abilities of LLMs: A Benchmark and a Buyer-Enhancement Method — Xia et al. — benchmark and improvement methods for LLM bargaining capabilities.</p>
+<p>Evaluating LLM Agent Collusion in Double Auctions — Agrawal et al. — study of LLM behavior and potential collusion in market mechanisms.</p>
+<p>Learning from Synthetic Labs: Language Models as Auction Participants — Shah et al. — evaluation of LLMs as strategic participants in auction settings.</p>
+<p>STEER: Assessing the Economic Rationality of Large Language Models — Raman et al. — framework for measuring economic rationality of LLM behavior.</p>
+<p>How Well Can LLMs Negotiate? NegotiationArena Platform and Analysis — Bianchi et al. — negotiation benchmark platform with comparative evaluation of multiple LLM models.</p>
+<p>Evaluating Negotiation Capabilities of Large Language Models: From Ultimatum Games to Nash Bargaining — Bhattacharya et al. — evaluation of LLM negotiation in stylized economic games.</p>
+<p>Harbor: Exploring Persona Dynamics in Multi-Agent Competition — Jiang et al. — study of persona and personality effects in multi-agent economic competition.</p>
+<p>The Automated but Risky Game: Modeling Agent-to-Agent Negotiations and Transactions in Consumer Markets — Zhu et al. — modeling framework for autonomous agent negotiation in consumer markets.</p>
+<p>LLMs at the Bargaining Table — Deng et al. — analysis of LLM negotiation risk and strategy in bargaining contexts.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

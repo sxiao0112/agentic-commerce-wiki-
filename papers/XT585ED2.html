@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manipulating Large Language Models to Increase Product Visibility</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>XT585ED2</td></tr><tr><th>wiki_id</th><td>XT585ED2</td></tr><tr><th>aliases</th><td>[XT585ED2]</td></tr><tr><th>slug</th><td>kumar-2024-manipulating-llms-product-visibility</td></tr><tr><th>title</th><td>&quot;Manipulating Large Language Models to Increase Product Visibility&quot;</td></tr><tr><th>authors</th><td>[&quot;Kumar, Aounon&quot;, &quot;Lakkaraju, Himabindu&quot;]</td></tr><tr><th>year</th><td>2024</td></tr><tr><th>paper_type</th><td>empirical-method</td></tr><tr><th>venue</th><td>&quot;arXiv&quot;</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2404.07981&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2404.07981&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2404.07981&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;strategic text sequences&quot;, &quot;LLM manipulation&quot;, &quot;e-commerce recommendations&quot;, &quot;adversarial attacks&quot;, &quot;RAG systems&quot;, &quot;product visibility&quot;, &quot;AI-driven search&quot;, &quot;LLM optimization&quot;, &quot;search ranking&quot;]</td></tr><tr><th>updated</th><td>2026-06-25</td></tr></tbody></table>
+<h1>Manipulating Large Language Models to Increase Product Visibility</h1>
+<h2>Contribution</h2>
+<p>The authors demonstrate a framework for manipulating LLM-driven search recommendations in e-commerce by inserting optimized strategic text sequences (STS) into product information. Using the Greedy Coordinate Gradient (GCG) adversarial attack algorithm, they show that a carefully crafted token sequence added to a product's description can significantly increase its likelihood of being recommended as the top choice to users querying an LLM-powered search tool.</p>
+<h2>Research Question</h2>
+<p>Can product vendors increase the visibility and ranking of their products in LLM-generated recommendations by embedding adversarially optimized text sequences into the product information that LLMs retrieve and use for generating responses?</p>
+<h2>Method</h2>
+<p>The authors employ the GCG algorithm, an adversarial attack method typically designed to bypass LLM safety mechanisms, to generate strategic text sequences. The STS optimization is conducted by initializing a sequence of dummy tokens and iteratively replacing tokens using GCG, which selects the tokens with highest gradients at each step. The objective function minimizes cross-entropy loss with respect to the target product name appearing as the first recommendation. To improve robustness, the method randomly permutes the product list during each optimization iteration, making the STS robust to variations in product ordering.</p>
+<h2>Setup</h2>
+<p>The authors create a controlled experimental scenario with a catalog of ten fictitious coffee machines, each with attributes such as name, description, price, capacity, customer rating, and ideal use case. They work with Llama-2, an open-source language model, configured to receive a system prompt instructing it to rank products by user preference, a list of product information in JSON format, and a user query requesting affordable coffee machine recommendations. The STS is embedded in a field of the target product. Two target products are studied: ColdBrew Master (high-priced product not recommended without STS) and QuickBrew Express (typically ranks second without STS). The researchers run 2000 iterations of the GCG algorithm to optimize the STS and evaluate effectiveness across 200 independent LLM inference runs, both with fixed product ordering and with random permutations.</p>
+<h2>Results</h2>
+<p>For ColdBrew Master, the STS successfully elevates the product from not appearing in recommendations to being the top recommendation in approximately 100 iterations. When product ordering is fixed, the STS provides an advantage in roughly 40% of evaluations with no rank change in 60%. When the STS is optimized with random product permutations, the percentage advantage increases substantially while disadvantages become negligible. For QuickBrew Express, the STS boosts a product already ranking second to the top recommendation with high probability. The rank distribution shows that without the STS this product never appears first, but with the optimized sequence, it frequently becomes the top recommendation. The STS optimized with random product ordering shows marked improvement in maintaining advantage across different product list orderings.</p>
+<h2>Conclusion</h2>
+<p>Strategic text sequences can effectively manipulate LLM-driven search recommendations to favor vendor products, presenting a significant vulnerability in LLM-based e-commerce systems. This capability offers vendors substantial competitive advantage by artificially inflating product visibility, analogous to but potentially more effective than traditional search engine optimization. The authors emphasize that as LLMs become increasingly integral to digital commerce infrastructure, safeguards are urgently needed to prevent exploitation of this vulnerability and maintain fair market competition. Future work should explore ethical guidelines for responsible use of optimization techniques, develop countermeasures to detect and prevent manipulation, and investigate broader implications of AI search optimization for marketplace integrity.</p>
+<h2>Related Work</h2>
+<h3>Retrieval-Augmented Generation</h3>
+<p>Retrieval-augmented generation: Enhancing LLMs with external knowledge sources — Kumar &amp; Lakkaraju frame RAG as fundamental to keeping LLM-based search tools current, combining retrieval components with LLMs to provide context-rich responses by integrating database or search engine information with user prompts. [2] Retrieval-augmented generation for knowledge-intensive NLP tasks — Lewis et al. introduce the RAG framework that underpins modern LLM-integrated search. [3] Retrieval-augmented generation for large language models: A survey — Gao et al. provide comprehensive survey of RAG approaches. [4] Atlas: Few-shot learning with retrieval augmented language models — Izacard et al. demonstrate improved few-shot performance through RAG. [5] REALM: Retrieval-augmented language model pre-training — Guu et al. show effectiveness of RAG in pretraining. [6] Crosslingual retrieval augmented in-context learning for Bangla — Li et al. extend RAG to cross-lingual settings. [7] Leveraging passage retrieval with generative models for open domain question answering — Izacard &amp; Grave apply RAG to open-domain QA. [8] End-to-end training of multi-document reader and retriever for open-domain question answering — Singh et al. present integrated training of retrieval and reading components. [9] Retrieval as attention: End-to-end learning of retrieval and reading within a single transformer — Jiang et al. unify retrieval and reading in transformer architecture. [10] Webgpt: Browser-assisted question-answering with human feedback — Nakano et al. integrate retrieval and LLM generation. [11] Webbrain: Learning to generate factually correct articles for queries by grounding on large web corpus — Qian et al. ground LLM responses in web-scale retrieval. [12] BRENT: Bidirectional retrieval enhanced Norwegian transformer — Charpentier et al. apply retrieval enhancement to non-English models. [13] Long-term visual localization with semantic enhanced global retrieval — Chen et al. apply retrieval principles to vision tasks.</p>
+<h3>Adversarial Attacks on LLMs</h3>
+<p>Universal and transferable adversarial attacks on aligned language models — Zou et al. introduce the GCG algorithm that the authors repurpose for benign product-visibility objectives, showing adversarial sequences are universal and transferable across harmful prompts and black-box models. [14] Jailbroken: How does LLM safety training fail? — Wei et al. analyze fundamental vulnerabilities in LLM safety mechanisms. [15] Coercing LLMs to do and reveal (almost) anything — Geiping et al. demonstrate diverse adversarial objectives beyond harmful outputs. [16] AutoDAN: Generating stealthy jailbreak prompts on aligned large language models — Liu et al. develop methods to evade perplexity-based defenses. [17] AutoDAN: Automatic and interpretable adversarial attacks on large language models — Zhu et al. present automated attack generation. [18] Not what you've signed up for: Compromising real-world LLM-integrated applications with indirect prompt injection — Greshake et al. show prompt injection vulnerabilities in deployed LLM systems. [19] Here comes the AI worm: Unleashing zero-click worms that target genAI-powered applications — Cohen et al. demonstrate self-replicating adversarial sequences that spread across LLM networks.</p>
+<h3>Search Engine Optimization</h3>
+<p>An empirical study on the search engine optimization technique and its outcomes — Wang et al. study SEO effectiveness in traditional search. [20] A survey on search engine optimization techniques — R. Anil Kumar et al. review SEO methodology including content optimization, keyword selection, and link quality. [21] The impact of search engine optimization on the visibility of research paper and citations — Shahzad et al. examine SEO effects on academic visibility. [22] The influence of search engine optimization on Google's results: A multi-dimensional approach for detecting SEO — Lewandowski et al. develop methods to detect SEO manipulation in search results.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

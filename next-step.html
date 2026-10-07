@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Next Step — Sourcing Queue</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="index.html">Index</a><a href="overview.html">Overview</a><a href="next-step.html">Next Step</a><a href="open-questions.html">Open Questions</a><a href="contradictions.html">Contradictions</a><a href="log.html">Log</a></nav>
+
+<h1>Next Step — Sourcing Queue</h1>
+<p>Refreshed on every "update now" run.</p>
+<h2>Referenced-but-absent papers</h2>
+<p>Papers cited by our processed papers but <strong>not in your Zotero library</strong> — candidates to add. Grouped by topic, priority-sorted by <strong>citation count across processed papers</strong>. <code>[review]</code> = surfaced from a survey/review. Remove a row once the paper enters Zotero.</p>
+<h3><a href="topics/agent-security-and-prompt-injection.html" title="Agent Security and Prompt Injection">agent-security-and-prompt-injection</a> — Agent security and prompt-injection defenses</h3>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Authors</th>
+<th>Citing</th>
+<th>Cites</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Not What You've Signed Up For: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection</td>
+<td>Abdelnabi et al.</td>
+<td><a href="papers/4G9XTVC5.html" title="AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? [4G9XTVC5]">Li et al., 2026</a> <a href="papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents</td>
+<td>Debenedetti et al.</td>
+<td><a href="papers/4G9XTVC5.html" title="AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? [4G9XTVC5]">Li et al., 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>Corpus Poisoning for Dense Retrieval via Contrastive Learning</td>
+<td>Zhong et al.</td>
+<td><a href="papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>HotFlip: White-Box Adversarial Examples for Text Classification</td>
+<td>Ebrahimi et al.</td>
+<td><a href="papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>Ignore Previous Prompt: Attack techniques for language models</td>
+<td>Perez &amp; Ribeiro</td>
+<td><a href="papers/4G9XTVC5.html" title="AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? [4G9XTVC5]">Li et al., 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>Meta SecAlign: A Secure Foundation LLM Against Prompt Injection Attacks</td>
+<td>Chen et al.</td>
+<td><a href="papers/4G9XTVC5.html" title="AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? [4G9XTVC5]">Li et al., 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>Detecting Strategic Deception Using Linear Probes</td>
+<td>Apollo Research</td>
+<td><a href="papers/DECY38ZV.html" title="Linear Probes for Strategic Deception Generalize Across Three LLM Families in Multi-Agent Negotiation [DECY38ZV]">Sims, 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training</td>
+<td>Hubinger et al.</td>
+<td><a href="papers/DECY38ZV.html" title="Linear Probes for Strategic Deception Generalize Across Three LLM Families in Multi-Agent Negotiation [DECY38ZV]">Sims, 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets</td>
+<td>Marks &amp; Tegmark</td>
+<td><a href="papers/DECY38ZV.html" title="Linear Probes for Strategic Deception Generalize Across Three LLM Families in Multi-Agent Negotiation [DECY38ZV]">Sims, 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3><a href="topics/agent-to-agent-negotiation.html" title="Agent-to-agent negotiation">agent-to-agent-negotiation</a> — Agent-to-agent negotiation</h3>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Authors</th>
+<th>Citing</th>
+<th>Cites</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How Well Can LLMs Negotiate? NegotiationArena Platform and Analysis</td>
+<td>Bianchi et al.</td>
+<td><a href="papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a> <a href="papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a> <a href="papers/CPCJQVGF.html" title="Evaluating Fairness in LLM Negotiator Agents via Economic Games Using Multi-Agent Systems [CPCJQVGF]">Mouri Zadeh Khaki &amp; Choi, 2026</a></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>Deal or No Deal? End-to-End Learning for Negotiation Dialogues</td>
+<td>Lewis et al.</td>
+<td><a href="papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a> <a href="papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a> <a href="papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>Improving Language Model Negotiation with Self-Play and In-Context Learning from AI Feedback</td>
+<td>Fu et al.</td>
+<td><a href="papers/I5MWYLFD.html" title="Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation [I5MWYLFD]">Abdelnabi et al., 2024</a> <a href="papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a> <a href="papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>Decoupling Strategy and Generation in Negotiation Dialogues</td>
+<td>He et al.</td>
+<td><a href="papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a> <a href="papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>Perfect Equilibrium in a Bargaining Model / A Bargaining Model with Incomplete Information about Time Preferences</td>
+<td>Rubinstein</td>
+<td><a href="papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a> <a href="papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>Playing Repeated Games with Large Language Models</td>
+<td>Akata et al.</td>
+<td><a href="papers/I5MWYLFD.html" title="Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation [I5MWYLFD]">Abdelnabi et al., 2024</a> <a href="papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>Game-theoretic LLM: Agent Workflow for Negotiation Games</td>
+<td>Hua et al.</td>
+<td><a href="papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>Deep Reinforcement Learning from Human Preferences</td>
+<td>Christiano et al.</td>
+<td><a href="papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning</td>
+<td>Guo et al.</td>
+<td><a href="papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models</td>
+<td>Shao et al.</td>
+<td><a href="papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>Human-level play in the game of Diplomacy by combining language models with strategic reasoning</td>
+<td>Bakhtin et al.</td>
+<td><a href="papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>Measuring Bargaining Abilities of LLMs: A Benchmark and a Buyer-Enhancement Method</td>
+<td>Xia et al.</td>
+<td><a href="papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3><a href="topics/agentic-marketplaces.html" title="Two-sided agentic marketplaces and the agentic economy">agentic-marketplaces</a> — Two-sided agentic marketplaces and the agentic economy</h3>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Authors</th>
+<th>Citing</th>
+<th>Cites</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Artificial intelligence, algorithmic pricing, and collusion</td>
+<td>Calvano et al.</td>
+<td><a href="papers/EBZ6DN2P.html" title="Vertical tacit collusion in AI-mediated markets [EBZ6DN2P]">Affonso, 2026</a> <a href="papers/MH8I5WJ6.html" title="Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces [MH8I5WJ6]">Karten et al., 2026</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>LLM Economist: Large population models and mechanism design in multi-agent generative simulacra</td>
+<td>Karten et al.</td>
+<td><a href="papers/CBL2GTGW.html" title="Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets [CBL2GTGW]">Bansal et al., 2025</a> <a href="papers/MH8I5WJ6.html" title="Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces [MH8I5WJ6]">Karten et al., 2026</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>AI Models Collapse when Trained on Recursively Generated Data</td>
+<td>Shumailov et al.</td>
+<td><a href="papers/9KPI4X8R.html" title="Bittensor Agent Arenas as a Trajectory Primitive: Distilling a Shopping Agent from ShoppingBench Subnet Traces [9KPI4X8R]">Bansal et al., 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>Bittensor: A Peer-to-Peer Intelligence Market</td>
+<td>Rao et al.</td>
+<td><a href="papers/9KPI4X8R.html" title="Bittensor Agent Arenas as a Trajectory Primitive: Distilling a Shopping Agent from ShoppingBench Subnet Traces [9KPI4X8R]">Bansal et al., 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning</td>
+<td>DeepSeek-AI</td>
+<td><a href="papers/9KPI4X8R.html" title="Bittensor Agent Arenas as a Trajectory Primitive: Distilling a Shopping Agent from ShoppingBench Subnet Traces [9KPI4X8R]">Bansal et al., 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>The agentic economy</td>
+<td>Rothschild et al.</td>
+<td><a href="papers/CBL2GTGW.html" title="Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets [CBL2GTGW]">Bansal et al., 2025</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>The coasean singularity? Demand, supply, and market design with AI agents</td>
+<td>Shahidi et al.</td>
+<td><a href="papers/MH8I5WJ6.html" title="Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces [MH8I5WJ6]">Karten et al., 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>The market for lemons: Quality uncertainty and the market mechanism</td>
+<td>Akerlof</td>
+<td><a href="papers/MH8I5WJ6.html" title="Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces [MH8I5WJ6]">Karten et al., 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>Vending-Bench Arena: Competitive multi-agent economic evaluation</td>
+<td>Andon Labs</td>
+<td><a href="papers/MH8I5WJ6.html" title="Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces [MH8I5WJ6]">Karten et al., 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>Virtual agent economies</td>
+<td>Tomasev et al.</td>
+<td><a href="papers/CBL2GTGW.html" title="Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets [CBL2GTGW]">Bansal et al., 2025</a></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3><a href="topics/ai-mediated-market-dynamics.html" title="Economics, manipulation, and collusion in AI-mediated markets">ai-mediated-market-dynamics</a> — Economics, manipulation, and collusion in AI-mediated markets</h3>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Authors</th>
+<th>Citing</th>
+<th>Cites</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Constitutional AI: Harmlessness from AI feedback</td>
+<td>Bai et al.</td>
+<td><a href="papers/EBZ6DN2P.html" title="Vertical tacit collusion in AI-mediated markets [EBZ6DN2P]">Affonso, 2026</a> <a href="papers/MH8I5WJ6.html" title="Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces [MH8I5WJ6]">Karten et al., 2026</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>Large language models as simulated economic agents: What can we learn from homo silicus?</td>
+<td>Horton</td>
+<td><a href="papers/CBL2GTGW.html" title="Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets [CBL2GTGW]">Bansal et al., 2025</a> <a href="papers/MH8I5WJ6.html" title="Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces [MH8I5WJ6]">Karten et al., 2026</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>Platform competition in two-sided markets</td>
+<td>Rochet &amp; Tirole</td>
+<td><a href="papers/CBL2GTGW.html" title="Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets [CBL2GTGW]">Bansal et al., 2025</a> <a href="papers/EBZ6DN2P.html" title="Vertical tacit collusion in AI-mediated markets [EBZ6DN2P]">Affonso, 2026</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>Training language models to follow instructions with human feedback</td>
+<td>Ouyang et al.</td>
+<td><a href="papers/EBZ6DN2P.html" title="Vertical tacit collusion in AI-mediated markets [EBZ6DN2P]">Affonso, 2026</a> <a href="papers/MH8I5WJ6.html" title="Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces [MH8I5WJ6]">Karten et al., 2026</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>Universal and transferable adversarial attacks on aligned language models</td>
+<td>Zou et al.</td>
+<td><a href="papers/XT585ED2.html" title="Manipulating Large Language Models to Increase Product Visibility [XT585ED2]">Kumar &amp; Lakkaraju, 2024</a> <a href="papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a></td>
+<td>2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3><a href="topics/embodied-retail-environments.html" title="Embodied retail store environments">embodied-retail-environments</a> — Embodied retail store environments</h3>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Authors</th>
+<th>Citing</th>
+<th>Cites</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ReAct: Synergizing Reasoning and Acting in Language Models</td>
+<td>Yao et al.</td>
+<td><a href="papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al., 2024</a> <a href="papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a> <a href="papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>A survey on embodied ai: From simulators to research tasks</td>
+<td>Duan et al.</td>
+<td><a href="papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a></td>
+<td>1</td>
+<td>[review]</td>
+</tr>
+<tr>
+<td>AI2-THOR: An Interactive 3D Environment for Visual AI</td>
+<td>Kolve et al.</td>
+<td><a href="papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>Habitat 3.0: A Co-Habitat for Humans, Avatars and Robots</td>
+<td>Puig et al.</td>
+<td><a href="papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3><a href="topics/generative-engine-optimization.html" title="Generative Engine Optimization and Search Manipulation">generative-engine-optimization</a> — Generative engine optimization and search manipulation</h3>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Authors</th>
+<th>Citing</th>
+<th>Cites</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retrieval-augmented generation for knowledge-intensive NLP tasks</td>
+<td>Lewis et al.</td>
+<td><a href="papers/J7UPZPJR.html" title="E-GEO: A Testbed for Generative Engine Optimization in E-Commerce [J7UPZPJR]">Bagga et al., 2025</a> <a href="papers/XT585ED2.html" title="Manipulating Large Language Models to Increase Product Visibility [XT585ED2]">Kumar &amp; Lakkaraju, 2024</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>GEO: Generative Engine Optimization</td>
+<td>Aggarwal et al.</td>
+<td><a href="papers/J7UPZPJR.html" title="E-GEO: A Testbed for Generative Engine Optimization in E-Commerce [J7UPZPJR]">Bagga et al., 2025</a></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>Ranking manipulation for conversational search engines</td>
+<td>Pfrommer et al.</td>
+<td><a href="papers/J7UPZPJR.html" title="E-GEO: A Testbed for Generative Engine Optimization in E-Commerce [J7UPZPJR]">Bagga et al., 2025</a></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3><a href="topics/shopping-agent-benchmarks.html" title="Shopping and e-commerce agent benchmarks">shopping-agent-benchmarks</a> — Shopping and e-commerce agent benchmarks</h3>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Authors</th>
+<th>Citing</th>
+<th>Cites</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mind2Web: Towards a Generalist Agent for the Web</td>
+<td>Deng et al.</td>
+<td><a href="papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> <a href="papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a> <a href="papers/8T9KKXKK.html" title="WebArena: A Realistic Web Environment for Building Autonomous Agents [8T9KKXKK]">Zhou et al., 2024</a> <a href="papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a> <a href="papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a> <a href="papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a></td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td>GAIA: a Benchmark for General AI Assistants</td>
+<td>Mialon et al.</td>
+<td><a href="papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> <a href="papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a> <a href="papers/P97GR95W.html" title="ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents [P97GR95W]">Wang et al., 2025</a> <a href="papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a></td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>Shopping MMLU: A Massive Multi-Task Online Shopping Benchmark for Large Language Models</td>
+<td>Jin et al.</td>
+<td><a href="papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> <a href="papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a> <a href="papers/GUETZIKA.html" title="Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks [GUETZIKA]">Yu et al., 2026</a> <a href="papers/P97GR95W.html" title="ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents [P97GR95W]">Wang et al., 2025</a></td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>An Illusion of Progress? Assessing the Current State of Web Agents</td>
+<td>Xue et al.</td>
+<td><a href="papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> <a href="papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a> <a href="papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>EcomScriptBench: A Multi-Task Benchmark for E-commerce Script Planning via Step-Wise Intention-Driven Product Association</td>
+<td>Wang et al.</td>
+<td><a href="papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a> <a href="papers/GUETZIKA.html" title="Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks [GUETZIKA]">Yu et al., 2026</a> <a href="papers/P97GR95W.html" title="ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents [P97GR95W]">Wang et al., 2025</a></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>WebGPT: Browser-Assisted Question-Answering with Human Feedback</td>
+<td>Nakano et al.</td>
+<td><a href="papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> <a href="papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a> <a href="papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>WebVoyager: Building an End-to-End Web Agent with Large Multimodal Models</td>
+<td>He et al.</td>
+<td><a href="papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> <a href="papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a> <a href="papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>A Functionality-Grounded Benchmark for Evaluating Web Agents in E-commerce Domains (AmazonBench)</td>
+<td>Zhang et al.</td>
+<td><a href="papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> <a href="papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>Agent-E: From Autonomous Web Navigation to Foundational Design Principles in Agentic Systems</td>
+<td>Abuelsaad et al.</td>
+<td><a href="papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> <a href="papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>Browser Use = State of the Art Web Agent</td>
+<td>Müller et al.</td>
+<td><a href="papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> <a href="papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>ChatShop: Interactive Information Seeking with Language Agents</td>
+<td>Chen et al.</td>
+<td><a href="papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> <a href="papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>ChineseEcomQA: A Scalable E-commerce Concept Evaluation Benchmark for Large Language Models</td>
+<td>Chen et al.</td>
+<td><a href="papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> <a href="papers/P97GR95W.html" title="ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents [P97GR95W]">Wang et al., 2025</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>GPT-4V(ision) is a Generalist Web Agent, if Grounded (SeeAct)</td>
+<td>Zheng et al.</td>
+<td><a href="papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> <a href="papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>OPeRA: A Dataset of Observation, Persona, Rationale, and Action for Evaluating LLMs on Human Online Shopping Behavior Simulation</td>
+<td>Wang et al.</td>
+<td><a href="papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a> <a href="papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>ShopSimulator: Evaluating and Exploring RL-Driven LLM Agent for Shopping Assistants</td>
+<td>Wang et al.</td>
+<td><a href="papers/GUETZIKA.html" title="Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks [GUETZIKA]">Yu et al., 2026</a> <a href="papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a></td>
+<td>2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3><a href="topics/tool-agent-user-interaction.html" title="Tool-agent-user interaction and conversational service agents">tool-agent-user-interaction</a> — Tool-agent-user interaction and conversational service agents</h3>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Authors</th>
+<th>Citing</th>
+<th>Cites</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AgentBench: Evaluating LLMs as Agents</td>
+<td>Liu et al.</td>
+<td><a href="papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al., 2024</a> <a href="papers/7NSXRTYR.html" title="$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al., 2025</a> <a href="papers/VIP29ZR5.html" title="VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks [VIP29ZR5]">Koh et al., 2024</a> <a href="papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a></td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>MetaTool Benchmark for Large Language Models: Deciding Whether to Use Tools and Which to Use</td>
+<td>Huang et al.</td>
+<td><a href="papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al., 2024</a> <a href="papers/7NSXRTYR.html" title="$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al., 2025</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>MultiWOZ - A Large-Scale Multi-Domain Wizard-of-Oz Dataset for Task-Oriented Dialogue Modelling</td>
+<td>Budzianowski et al.</td>
+<td><a href="papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al., 2024</a> <a href="papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>On the Tool Manipulation Capability of Open-Source Large Language Models (ToolBench)</td>
+<td>Xu et al.</td>
+<td><a href="papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al., 2024</a> <a href="papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>Scaling Synthetic Data Creation with 1,000,000,000 Personas (Persona-Hub)</td>
+<td>Ge et al. / Chan et al.</td>
+<td><a href="papers/AY3WV8T4.html" title="DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain [AY3WV8T4]">Borkakoty et al., 2026</a> <a href="papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>SWE-Bench: Can Language Models Resolve Real-World GitHub Issues?</td>
+<td>Jimenez et al.</td>
+<td><a href="papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al., 2024</a> <a href="papers/7NSXRTYR.html" title="$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al., 2025</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>ToolSandbox: A Stateful, Conversational, Interactive Evaluation Benchmark for LLM Tool Use Capabilities</td>
+<td>Lu et al.</td>
+<td><a href="papers/7NSXRTYR.html" title="$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al., 2025</a> <a href="papers/AY3WV8T4.html" title="DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain [AY3WV8T4]">Borkakoty et al., 2026</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>τ-voice: Benchmarking Full-Duplex Voice Agents on Real-World Domains</td>
+<td>Ray et al.</td>
+<td><a href="papers/AY3WV8T4.html" title="DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain [AY3WV8T4]">Borkakoty et al., 2026</a></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3><a href="topics/web-agent-environments.html" title="Realistic web environments for autonomous agents">web-agent-environments</a> — Realistic web environments for autonomous agents</h3>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Authors</th>
+<th>Citing</th>
+<th>Cites</th>
+<th>Review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>World of Bits / MiniWoB++: An Open-Domain Platform for Web-Based Agents</td>
+<td>Shi et al.; Liu et al.</td>
+<td><a href="papers/8T9KKXKK.html" title="WebArena: A Realistic Web Environment for Building Autonomous Agents [8T9KKXKK]">Zhou et al., 2024</a> <a href="papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a> <a href="papers/VIP29ZR5.html" title="VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks [VIP29ZR5]">Koh et al., 2024</a></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td>An Illusion of Progress? Assessing the Current State of Web Agents (Online-Mind2Web)</td>
+<td>Xue et al.</td>
+<td><a href="papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a> <a href="papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>The BrowserGym Ecosystem for Web Agent Research</td>
+<td>Le Sellier de Chezelles et al.</td>
+<td><a href="papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a> <a href="papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>Set-of-Mark Prompting Unleashes Extraordinary Visual Grounding in GPT-4V</td>
+<td>Yang et al.</td>
+<td><a href="papers/VIP29ZR5.html" title="VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks [VIP29ZR5]">Koh et al., 2024</a></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>⚠ Unplaced Papers</h2>
+<p>Papers already in the wiki whose <code>topics:</code> is empty (not linked from any <code>topics/</code> page). A paper should never silently fail to appear in some topic; this section is the warning. Should be empty after a clean run.</p>
+<ul>
+<li>None — all wiki papers are placed under at least one topic.</li>
+</ul>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

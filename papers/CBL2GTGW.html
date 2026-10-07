@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>CBL2GTGW</td></tr><tr><th>wiki_id</th><td>CBL2GTGW</td></tr><tr><th>aliases</th><td>[CBL2GTGW]</td></tr><tr><th>slug</th><td>bansal-2025-magentic-marketplace-agentic-markets</td></tr><tr><th>title</th><td>&quot;Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets&quot;</td></tr><tr><th>authors</th><td>[&quot;Bansal, Gagan&quot;, &quot;Hua, Wenyue&quot;, &quot;Huang, Zezhou&quot;, &quot;Fourney, Adam&quot;, &quot;Swearngin, Amanda&quot;, &quot;Epperson, Will&quot;, &quot;Payne, Tyler&quot;, &quot;Hofman, Jake M.&quot;, &quot;Lucier, Brendan&quot;, &quot;Singh, Chinmay&quot;, &quot;Mobius, Markus&quot;, &quot;Nambi, Akshay&quot;, &quot;Yadav, Archana&quot;, &quot;Gao, Kevin&quot;, &quot;Rothschild, David M.&quot;, &quot;Slivkins, Aleksandrs&quot;, &quot;Goldstein, Daniel G.&quot;, &quot;Mozannar, Hussein&quot;, &quot;Immorlica, Nicole&quot;, &quot;Murad, Maya&quot;, &quot;Vogel, Matthew&quot;, &quot;Kambhampati, Subbarao&quot;, &quot;Horvitz, Eric&quot;, &quot;Amershi, Saleema&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>empirical-method</td></tr><tr><th>venue</th><td>&quot;arXiv&quot;</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2510.25779&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2510.25779&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2510.25779&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;agentic markets&quot;, &quot;two-sided marketplaces&quot;, &quot;LLM agents&quot;, &quot;agent simulation&quot;, &quot;marketplace design&quot;, &quot;behavioral biases&quot;, &quot;manipulation resistance&quot;, &quot;agent-to-agent interaction&quot;, &quot;economic welfare&quot;, &quot;first-proposal bias&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets</h1>
+<h2>Contribution</h2>
+<p>The authors design and implement Magentic Marketplace, an open-source simulation environment for studying how LLM-powered agents behave in two-sided agentic markets where Assistant agents represent consumers and Service agents represent businesses. They develop a REST API architecture supporting the full transaction lifecycle from search and discovery through negotiation to transaction execution. Using this environment, they conduct systematic empirical studies of agent welfare, manipulation vulnerability, and behavioral biases under varying market conditions, and open-source the platform to enable further research on agentic market design.</p>
+<h2>Research Question</h2>
+<p>As autonomous LLM agents increasingly mediate economic decisions and transactions on behalf of users, several critical questions arise: How effectively can agents discover and transact with one another in realistic market conditions? How do market design decisions (such as search mechanisms) impact agent performance at scale? How does current AI agent technology compare to ideal agentic behavior and non-agentic market baselines? How vulnerable are agents to strategic manipulation and behavioral biases in competitive marketplace settings?</p>
+<h2>Method</h2>
+<p>The authors implement Magentic Marketplace using an HTTP/REST client-server architecture with three core endpoints: register (agent registration), protocol (dynamic capability discovery), and action (execution of marketplace operations). The action endpoint supports five core actions: Search (discovery of service agents), Send Text Messages (communication), Send Order Proposals (structured offers), Send Payments (transaction completion), and Receive (asynchronous message handling). This minimal three-endpoint design enables extensibility while supporting the complete economic lifecycle. The architecture separates marketplace state from agent state and maintains backward compatibility as new capabilities are added.</p>
+<h2>Setup</h2>
+<p>The authors conduct experiments in fully synthetic data domains (Mexican restaurants and contractors) to enable controlled experimentation and safe exploration of agent behaviors. The data generation pipeline consists of three stages: creating a universe of items with price distributions, synthesizing customers with specific menu/service requests and amenity constraints, and generating candidate businesses with varying price structures and feature completeness. They evaluate two market scales: small (33 customers, 99 businesses) and medium (100 customers, 300 businesses). The utility model defines consumer utility as value (dollars) for having a need met minus the price paid; the value is calibrated as two times the average price of desired items. Agents are evaluated on frontier proprietary models (GPT-4o, GPT-4.1, GPT-5, Gemini-2.5-Flash) and open-source models (GPT-OSS-20b, Qwen3-14b). All experiments use 5 independent runs with means and standard deviations reported.</p>
+<h2>Results</h2>
+<p>First-proposal bias emerges as the dominant behavioral pattern distorting marketplace dynamics across all tested models: first proposals achieve selection rates between 60-100%, while third proposals see near-zero selection, creating a 10-30 fold advantage for response speed over quality. Frontier models (GPT-4.1, Sonnet-4.5, Gemini-2.5-Flash) approach optimal welfare when provided with perfect search results (access to the three best-matching businesses), suggesting that with accurate discovery and effective communication, agentic markets can substantially reduce information asymmetries. Performance degrades sharply with realistic lexical search conditions; for example, GPT-4o's consumer welfare declines 4.3% when search results increase from 3 to 100 options. The consideration set size experiments reveal a paradox of choice effect where more search results paradoxically reduce welfare, with some models (Sonnet-4, GPT-5) showing welfare declines of 44-65%. Frontier models (GPT-4.1, Sonnet-4.5, Gemini-2.5-Flash) demonstrate robust resistance to traditional psychological manipulation tactics (authority, social proof, loss aversion), maintaining stable performance and low payments to manipulated businesses (typically under 1.0 out of 3.0). However, some vulnerability to strong prompt injection attacks appears in certain models (Gemini-2.5-Flash shows reduced performance under strong prompt injection in the Mexican restaurant scenario). In contrast, GPT-4o, GPT-OSS-20B, and Qwen3-4B demonstrate significant vulnerability across multiple manipulation vectors including traditional psychological appeals and prompt injection. Qwen3-4B proves particularly susceptible to both authority and social proof tactics. Position bias in search results shows variable effects: frontier models demonstrate near-uniform selection across positions, but Qwen3-4B exhibits severe position bias, selecting the third-listed business at 57-67% rates compared to the 33% expected under random selection. Open-source models show more varied results overall, with competitive performance under perfect search but notable degradation under realistic lexical search conditions.</p>
+<h2>Conclusion</h2>
+<p>Two-sided agentic markets show promise for improving consumer welfare by reducing information asymmetries through coordinated agent-to-agent interaction, but systematic behavioral variations across models and significant vulnerabilities warrant careful market mechanism design before real-world deployment. The severe first-proposal bias identified across all models reveals that marketplace performance may be fundamentally constrained not by agent reasoning ability but by temporal dynamics: businesses gain more competitive advantage from fast response than from quality or pricing improvements. The paradox of choice in agent decision-making suggests that expanding consumer options does not necessarily improve outcomes and may instead overwhelm agent reasoning capabilities or cause agents to satisfice on early proposals. Frontier models demonstrate stronger reasoning and manipulation resistance than smaller models, with performance gaps widening as market complexity increases. The authors emphasize that end-to-end simulation environments are essential for understanding emergent behaviors and designing safe, efficient agentic marketplaces before commercial deployment.</p>
+<h2>Related Work</h2>
+<h3>Agentic Markets and Multi-Agent Economics</h3>
+<p>The economic market potential of AI agents — The agentic economy. — Rothschild et al. — Framework describing dramatic shifts when both sides of a market are simultaneously represented by agents that interact with each other.
+Two-sided agentic marketplaces benefits through communication and information asymmetry reduction — Rothschild et al. — Discusses how agent-to-agent interaction can overcome information asymmetries by engaging in conversation to explore the full range of possible options.
+Virtual agent economies — Tomasev et al. — Broader framework for understanding virtual economies populated by agents.
+Multi-agent risks from advanced AI — Hammond et al. — Addresses risks emerging from multiagent systems with advanced capabilities.
+A multi-LLM-agent-based framework for economic and public policy analysis — Hao &amp; Xie — Investigates forces that create and shape agentic economies through multi-agent frameworks.</p>
+<h3>Economic Agents and Strategic Decision-Making</h3>
+<p>Strategic and reasoning capabilities of agents in business and consumer decision problems — Allouah et al. — Evaluates whether AI agents can navigate markets on behalf of humans in consumer decision-making scenarios.
+Strategic and reasoning capabilities of agents in business and consumer decision problems — Brand et al. — Investigates strategic capabilities of agents in economic decision contexts.
+Determinants of LLM-assisted decision-making — Eigner &amp; Händler — Studies how LLMs make decisions in economic contexts.
+Large language models as simulated economic agents: What can we learn from homo silicus? — Filippas et al. — Uses LLMs as economic agents to explore classical economic theories through simulation.
+Game-theoretic LLM: Agent workflow for negotiation games — Hua et al. — Develops game-theoretic approaches for agents engaged in negotiation.
+Assessment of economic rationality of large language models — Raman et al. — Benchmark framework (STEER) for evaluating economic rationality of LLMs.</p>
+<h3>Agent Negotiation and Offers</h3>
+<p>Using large language models to simulate multiple humans and replicate human subject studies — Aher et al. — Uses agents to replicate human subject studies in laboratory experimental settings.
+Psychological influences in negotiation outcomes — Huang &amp; Hadfi — Studies how personality traits and psychological factors influence agent negotiation outcomes.
+Deal or no deal? End-to-end learning for negotiation dialogues — Lewis et al. — Negotiation dialogue framework with end-to-end learning.
+Decoupling strategy and generation in negotiation dialogues — He et al. — Studies strategy and negotiation dialogue generation in agent interactions.
+Game-theoretic LLM approaches and negotiation tactics — Liu et al. — Develops frameworks for agent decision-making under uncertainty in negotiation contexts.
+LLM-deliberation: Evaluating LLMs with interactive multi-agent negotiation games — Abdelnabi et al. — Evaluates agents through interactive negotiation game scenarios.
+Cooperation, competition, and maliciousness: LLM-stakeholders interactive negotiation — Abdelnabi et al. — Studies cooperation and competition in multi-stakeholder negotiation with agents.
+Multi-agent reinforcement learning guided by language-based inter-robot negotiation — Godfrey et al. — Uses negotiation communication to guide multiagent reinforcement learning.</p>
+<h3>Collusion and Behavioral Phenomena</h3>
+<p>Algorithmic collusion by large language models — Gonczarowski et al. — Investigates whether agents exhibit collusive behaviors in competitive markets.
+Can LLMs replace economic choice prediction labs? The case of language-based persuasion games — Tennenholtz et al. — Studies susceptibility of agents to persuasion and behavioral phenomena in choice experiments.</p>
+<h3>Agent Bidding and Auction Mechanisms</h3>
+<p>Put your money where your mouth is: Evaluating strategic planning and execution of LLM agents in an auction arena — Richardson et al. — Tests agent strategic planning and execution in auction settings.</p>
+<h3>Multi-Agent Economic Games and Simulations</h3>
+<p>Do LLMs trust AI regulation? Emerging behaviour of game-theoretic LLM agents — Buscemi et al. — Explores emergent behaviors of agents in game-theoretic settings.
+ALYMPICS: LLM agents meet game theory — Mao et al. — Game-theoretic framework for studying multiagent LLM systems.
+Competition and diversity in generative AI — Raghavan — Studies how competition affects agent behavior and diversity in markets.
+Spiral: Self-play on zero-sum games incentivizes reasoning via multi-agent multi-turn reinforcement learning — Liu et al. — Uses game-theoretic training to develop reasoning in multiagent systems.
+Reasoning like an economist: Post-training on economic problems induces strategic generalization in LLMs — Zhou et al. — Post-training approach to improve economic reasoning in agents.
+Macroeconomic simulations with agent-based modeling — Liao et al. — ECONAGENT framework for simulating macroeconomic systems with learning agents.
+Optimal matching between people using large language models — Liang — Studies matching problems in agent-mediated systems.</p>
+<h3>Group Dynamics and Behavior Simulation</h3>
+<p>Group-think behaviors in competitive settings — Raghavan — Studies group-level behaviors and consensus effects in competitive agent settings.
+Generative agents: Interactive simulacra of human behavior — Park et al. — Framework for simulating human-like agent behaviors in interactive environments.</p>
+<h3>Economic Environments and Benchmarks</h3>
+<p>How well can LLMs negotiate? NegotiationArena platform and analysis — Bianchi et al. — Platform for studying negotiation capabilities of LLMs.
+Economics arena for large language models — Sui et al. — GLEE: unified framework and benchmark for language-based economic environments and evaluation of economic rationality.
+Benchmarks for economic rationality of LLMs — Madmon et al. — GLEE framework for systematic evaluation of economic behavior in agents.</p>
+<h3>Agent Protocol Standards and Communication</h3>
+<p>Anthropic Model Context Protocol — Anthropic — Establishes JSON-RPC-based standardization for agent-to-tool communication.
+Agent2Agent protocol (A2A) — Google — Enables direct agent-to-agent communication with emerging standards.
+Agent Communication Protocol — IBM Research — Lightweight HTTP-native REST protocol for agent communication powering platforms like BeeAI.
+Agent Network Protocol technical white paper — Chang et al. — Three-layer system for decentralized secure agent-to-agent communication.
+A survey of AI agent protocols — Yang et al. — Comprehensive survey of emerging agent-to-agent communication and coordination protocols.
+Agent Payment Protocol (AP2) — Parikh &amp; Surapaneni — Addresses agent-initiated financial transactions through cryptographically-signed mandates, developed with 60+ organizations.</p>
+<h3>Agent Architecture and Frameworks</h3>
+<p>A survey on code generation with LLM-based agents — Dong et al. — Comprehensive survey on agent architectures and capabilities.
+A self-improving coding agent — Robeyns et al. — Study of agent autonomy and self-improvement capabilities.
+From LLM reasoning to autonomous AI agents: A comprehensive review — Ferrag et al. — Comprehensive review of agent capabilities and reasoning.
+Stride: A tool-assisted LLM agent framework for strategic and interactive decision-making — Li et al. — Framework for strategic decision-making in agents.
+CRMArena: Understanding the capacity of LLM agents to perform professional CRM tasks in realistic environments — Huang et al. — Evaluates agent capabilities in realistic business environments.
+GUI agents with foundation models: A comprehensive survey — Wang et al. — Survey of agent capabilities for interacting with graphical interfaces.
+Superagent: A customer service chatbot for e-commerce websites — Cui et al. — Early agent system for e-commerce customer service.</p>
+<h3>Agent Economics and Future Markets</h3>
+<p>What is your AI agent buying? Evaluation, implications, and emerging questions for agentic e-commerce — Allouah et al. — Evaluates what agents purchase and implications for agentic e-commerce.
+LLM Economist: Large population models and mechanism design in multi-agent generative simulacra — Karten et al. — Uses agents to explore mechanism design problems in economic settings.
+Agent Exchange: Shaping the future of AI agent economics — Yang et al. — Platform for exploring agentic economy design and agent-mediated resource exchange.</p>
+<h3>Agent-Based Financial and Market Simulation</h3>
+<p>ABIDES-Economist: Agent-based simulation of economic systems with learning agents — Dwarakanath et al. — Framework for agent-based financial market simulation.
+The AI Economist: Improving equality and productivity with AI-driven tax policies — Zheng et al. — Agent-based macroeconomic simulation for studying policy.</p>
+<h3>Two-Sided Marketplace Economics</h3>
+<p>Platform competition in two-sided markets — Rochet &amp; Tirole — Classical economic framework for understanding two-sided market dynamics.
+Generalized task markets for human and machine computation — Shahaf &amp; Horvitz — Early framework for mixed human-machine marketplaces.</p>
+<h3>Price Prediction and Trading</h3>
+<p>Price prediction in a trading agent competition — Wellman et al. — Early work on algorithmic agents in competitive market trading.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

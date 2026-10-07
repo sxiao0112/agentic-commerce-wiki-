@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>7NSXRTYR</td></tr><tr><th>wiki_id</th><td>7NSXRTYR</td></tr><tr><th>aliases</th><td>[7NSXRTYR]</td></tr><tr><th>slug</th><td>barres-2025-tau2-bench-dual-control</td></tr><tr><th>title</th><td>&quot;$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment&quot;</td></tr><tr><th>authors</th><td>[&quot;Barres, Victor&quot;, &quot;Dong, Honghua&quot;, &quot;Ray, Soham&quot;, &quot;Si, Xujie&quot;, &quot;Narasimhan, Karthik&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>arXiv</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2506.07982&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2506.07982&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2506.07982&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;conversational agents&quot;, &quot;dual-control environment&quot;, &quot;user simulation&quot;, &quot;tool use&quot;, &quot;benchmark&quot;, &quot;agent coordination&quot;, &quot;communication challenges&quot;, &quot;task-oriented dialogue&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment</h1>
+<h2>Contribution</h2>
+<p>The authors introduce τ²-bench, a benchmark that extends prior conversational agent evaluation by introducing a dual-control environment where both the AI agent and a simulated user can call tools and modify a shared world state. Unlike existing benchmarks where the user is passive and provides information only, this work models the interaction as a Decentralized Partially Observable Markov Decision Process (Dec-POMDP) where both parties possess distinct tool affordances. The benchmark includes a novel telecom domain with a compositional task generator that programmatically creates diverse, verifiable tasks from atomic components. A key finding is that agent performance drops substantially (approximately 20% pass^1) when shifting from autonomous operation to dual-control scenarios requiring coordination and communication, isolating communication and coordination as critical bottlenecks separate from pure reasoning capability.</p>
+<h2>Research Question</h2>
+<p>How can conversational agent benchmarks be designed to capture real-world collaboration scenarios where users actively participate in modifying the environment, and how do such dual-control settings expose distinct failure modes in current language models beyond reasoning capability?</p>
+<h2>Task</h2>
+<p>The benchmark focuses on evaluating agents in multi-turn task-oriented interactions where success requires coordination between an LLM-based agent and an LLM-based simulated user. The primary domain is telecom customer support, where users experience issues and agents must diagnose and guide them to perform resolution actions. The task involves both parties calling tools over a shared, observable environment state to reach a resolved state.</p>
+<h2>Data</h2>
+<p>The telecom domain comprises 2285 automatically generated tasks, with 114 tasks selected to form a balanced dataset across different intents and complexity levels. Tasks span three primary user intents: service_issue (simple one-to-eight action resolution paths), mobile_data_issue (typically four-to-eight action paths with prerequisite diagnostics), and mms_issue (complex six-to-twelve action paths requiring conditional reasoning). The benchmark also includes retail and airline domains from the prior τ-bench work (115 and 50 tasks respectively). Each task can be assigned to a user persona (None, Easy, or Hard) representing different levels of technical familiarity. The agent and user each interact with separate databases: the agent accesses customer relationship management data, while the user interfaces with a mocked phone device with status attributes like airplane mode and data connectivity.</p>
+<h2>Metrics</h2>
+<p>Performance is evaluated using pass^k metrics, measuring the fraction of k independent runs that achieve task success. Tasks are verified using multiple evaluation criteria including database state assertions, status assertions that check conditions in the final world state via predefined assertion functions, natural language assertions over conversation history, action matching that verifies solution functions exist in the trajectory, and communication information checks. The analysis includes fine-grained diagnosis through ablation studies: a no-user autonomous mode isolates reasoning capability, the oracle-plan mode provides ground-truth action sequences to focus on communication, and the default dual-control mode tests full coordination.</p>
+<h2>Baselines</h2>
+<p>Four large language models are evaluated: gpt-4.1, o4-mini, gpt-4.1-mini, and claude-3.7-sonnet. The user simulator is implemented using gpt-4.1. Results show substantial performance variation: gpt-4.1 achieves 34% pass^1 on telecom compared to 74% on retail and 56% on airline; claude-3.7-sonnet achieves 49% on telecom; o4-mini and gpt-4.1-mini perform around 42-50% on telecom. The no-user autonomous mode shows significantly higher performance (52-68% for the evaluated models), while oracle-plan with ground-truth sequences reaches 73-96%, demonstrating that communication and coordination are major challenges. Performance degrades substantially as the number of required actions increases, with near-zero pass rates for sequences exceeding seven actions. Issue type analysis reveals that service_issue tasks are substantially easier than mobile_data_issue and mms_issue tasks. User persona effects show agents perform notably better on easy-persona tasks compared to hard-persona or no-persona baselines.</p>
+<h2>Conclusion</h2>
+<p>τ²-bench provides a controlled testbed for evaluating agents that must both reason effectively and guide user actions in collaborative environments. The dual-control formalism using Dec-POMDP enables realistic simulation of scenarios where users possess agency and affordances. The compositional task generator ensures systematic domain coverage and verifiable correctness. User simulation reliability is substantially improved compared to prior benchmarks: the telecom domain shows only 16% total user simulator error rate with 6% critical errors, compared to 40-47% error rates in retail and airline domains. The key finding—that coordination and communication overhead introduces a ~20% performance penalty even for models that can reason autonomously—demonstrates that current LLMs struggle significantly with collaborative problem-solving despite adequate reasoning capability. The work identifies agent coordination and communication as critical bottlenecks for real-world deployment in customer support and similar domains.</p>
+<h2>Related Work</h2>
+<h3>Task-Oriented Dialogue and Agent Benchmarks</h3>
+<p>τ-bench — Yao et al. — Measures reliability of language agents in multi-turn task-oriented conversations across retail and airline domains while respecting domain policies and introduces pass^k metrics for evaluating run consistency.</p>
+<p>FlowBench — Xiao et al. — Isolates planning in tool-using agents by injecting explicit workflow knowledge via natural language, pseudocode, or flowchart specifications to test workflow-guided planning.</p>
+<p>IntellAgent — Levi &amp; Kadar — Provides an evaluation pipeline to programmatically build synthetic test suites from structured policy graphs, achieving high correlation with τ-bench as a fast synthetic proxy task.</p>
+<p>APIGen-MT — Prabhakar et al. — Explores fine-tuning tool-calling agents by generating conversation blueprints and simulating conversational traces based on explicit tool-call dependencies.</p>
+<p>ToolSandbox — Lu et al. — Focuses on creating stateful tools to enable more fine-grained evaluation of agent progress over time.</p>
+<p>AgentBench — Liu et al. — Evaluates LLMs as agents across diverse benchmarking scenarios beyond conversation.</p>
+<p>WebShop — Yao et al. — Tests grounded language agents in scalable real-world web interaction settings.</p>
+<p>WebArena — Zhou et al. — Provides a realistic web environment for building autonomous agents.</p>
+<p>Language Agents and Tool Use — Yao et al.; Qin et al.; Huang et al. — Foundational work on agent reasoning and LLM tool-calling capabilities.</p>
+<h3>User Simulation for Conversational Systems</h3>
+<p>User Simulation in Task-Oriented Dialogue — Pietquin &amp; Hastie — Comprehensive survey of metrics for evaluating user simulations in dialogue systems.</p>
+<p>LLMs as User-Agents — Kazi et al. — Demonstrates effective use of LLMs as user simulators in task-oriented dialogue evaluation when combined with careful prompting and state tracking.</p>
+<h3>Multi-Agent Systems</h3>
+<p>MultiAgentBench — Zhu et al. — Evaluates collaboration and competition of LLM agents in multi-agent settings, complementing the focus on asymmetric agent-user collaboration.</p>
+<h3>Foundational Frameworks</h3>
+<p>Decentralized POMDPs — Oliehoek &amp; Amato — Provides the formal framework underlying the dual-control environment modeling in τ²-bench.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linear Probes for Strategic Deception Generalize Across Three LLM Families in Multi-Agent Negotiation</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>DECY38ZV</td></tr><tr><th>wiki_id</th><td>DECY38ZV</td></tr><tr><th>aliases</th><td>[DECY38ZV]</td></tr><tr><th>slug</th><td>sims-2026-linear-probes-strategic-deception</td></tr><tr><th>title</th><td>&quot;Linear Probes for Strategic Deception Generalize Across Three LLM Families in Multi-Agent Negotiation&quot;</td></tr><tr><th>authors</th><td>[&quot;Sims, Teanna&quot;]</td></tr><tr><th>year</th><td>2026</td></tr><tr><th>paper_type</th><td>empirical-method</td></tr><tr><th>venue</th><td>&quot;2nd Workshop on AI for Critical National Infrastructure (AI4CNI-26) @ AAMAS 2026&quot;</td></tr><tr><th>url</th><td>&quot;&quot;</td></tr><tr><th>arxiv</th><td>&quot;&quot;</td></tr><tr><th>doi</th><td>&quot;&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;linear probes&quot;, &quot;deception detection&quot;, &quot;multi-agent systems&quot;, &quot;mechanistic interpretability&quot;, &quot;LLM safety&quot;, &quot;AI alignment&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>Linear Probes for Strategic Deception Generalize Across Three LLM Families in Multi-Agent Negotiation</h1>
+<h2>Contribution</h2>
+<p>Linear probes trained on residual-stream activations from three instruction-tuned models (Gemma-7B-IT, Llama-3.1-8B-Instruct, and Mistral-7B-Instruct-v0.1) detect strategic deception across two-agent commercial negotiation scenarios at AUC above 0.93 on 11 of 12 model-scenario combinations. A probe trained on explicit instructed deception detects emergent incentive-driven deception in the same model at AUC 0.70–0.77, supporting deployment of cheap synthetic-data-trained monitors. The deception signal concentrates in a single mass-mean direction; projecting this direction out collapses AUC by 0.30–0.44, replicating the one-dimensional structure of deception representations. Within-model-family transfer is strong (Gemma with-ToM to no-ToM at AUC 0.92), but cross-family transfer is weak (Llama to Mistral at 0.56), indicating that architecture-specific geometry limits deployment across different LLM families.</p>
+<h2>Research Question</h2>
+<p>Can linear probes detect deception in multi-agent negotiation settings by examining LLM residual-stream activations, and do probe directions learned on one model's architecture transfer to other models?</p>
+<h2>Method</h2>
+<p>The work uses a two-agent negotiation framework built on Concordia with EntityAgent architecture. Each agent contains deterministic context-producing modules (Theory of Mind, Bayesian uncertainty, evolutionary strategy selection, cultural adaptation, temporal planning, swarm coordination) that emit structured text into the LLM's input context, with the LLM generating the final action. The study manipulates ToM module availability to enable within-Gemma cross-configuration transfer testing.</p>
+<p>Three two-agent commercial-negotiation scenarios elicit deception via incentive structure: Ultimatum Bluff (commission: agent rewarded for misrepresenting walkaway price), Alliance Betrayal (commission: agent may profess loyalty while planning defection), and Information Withholding (omission: agent withholds disclosure of known defect in used-car sale). Each scenario runs in instructed mode (explicit "be deceptive" prompt) and emergent mode (incentive structure only).</p>
+<p>Activation capture wraps each LLM in a TransformerLens HookedTransformer, capturing residual stream at blocks.{l}.hook_resid_post at the last input-token position on every agent.act() call. For Gemma-7B-IT, capture occurs at layers {0, 14, 27} for direct comparison with prior work; for Llama and Mistral, dense layer sets {0, 4, 8, 12, 16, 20, 24, 28, 31} enable post-hoc best-layer identification. Both agents are hooked simultaneously, producing paired traces per round.</p>
+<p>Probe pipeline uses 80/20 stratified train-test split (seed 42), StandardScaler fitting on training fold only, PCA reduction to 30 components, and Ridge regression with α=100. Pre-negotiation and post-negotiation single-shot turns are excluded at training time. Ground truth uses rule-based evaluation (regex on response against scenario parameters for binary label) and optionally continuous LLM-judge severity scores binarized at 0.5.</p>
+<h2>Setup</h2>
+<p>The paper tests transfer along three axes: instructed-to-emergent within model, scenario-to-scenario within model, and across architectures. Mass-mean ablation projects the learned direction out of the residual stream and retrains to assess faithfulness. Cross-architecture transfer projects one model's mass-mean direction onto another model's activations as a 1-D classifier. Logit-level steering adds the direction at magnitudes −3 to +3 during forward passes and measures mean absolute change in last-token logits.</p>
+<h2>Results</h2>
+<p>At best layer, strategic deception is linearly decodable at AUC above 0.93 on 11 of 12 cells with 95% bootstrap CIs entirely above 0.87. Best layers vary by architecture: Gemma-7B peaks late (layers 14–27 of 28), Llama-3.1-8B peaks as early as layer 4, Mistral-7B peaks late (layers 28–31 of 32). Mass-mean ablation across five cells drops AUC by 0.30–0.44 (from 0.984 to 0.540 on headline cell), confirming the bulk of signal is one-dimensional.</p>
+<p>Instructed-trained probes detect emergent deception at AUC 0.70–0.77 on all four cells where both modes co-occur. Within Gemma family, with-ToM direction projected onto no-ToM yields AUC 0.918; reverse projection yields 0.596. Cross-family (Llama–Mistral, both 4096-dim), transfer collapses to 0.51–0.56.</p>
+<p>Logit-level steering shows monotone dose-response across seven of eight tested cells: effect sizes scale roughly linearly with magnitude (Gemma-7B max 0.45, Llama-3.1-8B and Mistral-7B ~0.19–0.23), demonstrating causal correlation between the direction and output distribution. One cell (Mistral-7B ultimatum-bluff) showed numerical instability.</p>
+<h2>Conclusion</h2>
+<p>The paper demonstrates that activation-based deception detection is practical within a single model family: train on cheap instructed examples, expect within-model AUC 0.70–0.77 on emergent deception, and do not assume transfer across architectures without recalibration. The one-dimensional structure replicates prior single-agent findings in multi-agent negotiation. Logit-level steering provides correlative causal evidence that the direction affects model output; behavioral causality via generation-loop steering remains the immediate next experiment. Limitations include: behavioral causality not established, one logit cell failed, data quality varies (23–81% clean dialogue), only three 7–8B-scale models tested, three commercial scenarios only, class imbalance on one cell, and that the cross-architecture pattern was post-hoc rather than pre-registered.</p>
+<h2>Related Work</h2>
+<h3>Linear probes for deception in LLMs</h3>
+<p>The Internal State of an LLM Knows When It's Lying — Azaria &amp; Mitchell — showed truth-vs-lie is linearly decodable from LLM internal states. Discovering Latent Knowledge in Language Models Without Supervision — Burns et al. — extracted latent knowledge without supervision. The Geometry of Truth: Emergent Linear Structure in Large Language Model Representations of True/False Datasets — Marks &amp; Tegmark — introduced the mass-mean direction that anchors this paper's methodology. Detecting Strategic Deception Using Linear Probes — Apollo Research — reported strategic-deception probes on Llama-70B at AUC above 0.96 in single-agent roleplaying. Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training — Hubinger et al. — showed deceptive behaviors persist through safety training. This paper extends the line into multi-agent negotiation and tests cross-architecture transfer head-to-head.</p>
+<h3>Subspace dimensionality</h3>
+<p>Truth is Universal: Robust Detection of Lies in LLMs — Bürger et al. — argued that propositional truth lives in a 2-D subspace that transfers across LLaMA-2/3 and Gemma-7B. Improving Causal Interventions in Amnesic Probing with Mean Projection or LEACE — Dobrzeniecka et al. — documented that iterative-removal methods' reported high dimensionality is methodological artifact; the 1-D mass-mean structure here is consistent with this corrected reading.</p>
+<h3>Multi-agent emergent misalignment</h3>
+<p>AI Organizations Can Be More Effective but Less Aligned than Individual Agents — Anthropic Alignment — demonstrated LLM organizations are behaviorally more effective but less aligned than individuals. Towards Ethical Multi-Agent Systems of LLMs: A Mechanistic Interpretability Perspective — Lee et al. — called for paired two-agent activation analysis as an open problem; this paper provides infrastructure but does not test solo-vs-paired comparison.</p>
+<h3>Cognitive scaffolds</h3>
+<p>Chain-of-Thought Is Not Explainability — Barez et al. — and FaithCoT-Bench — called for representation-level tests of whether structured cognitive scaffolds causally affect model representation. The Gemma with-ToM vs. no-ToM cross-direction transfer result touches this; full analysis is a separate paper.</p>
+<h3>Cross-model transfer</h3>
+<p>Three Bets on Model Honesty — Mitra — reported near-zero cosine similarity between honesty directions in Gemma and Qwen. The cross-architecture results replicate this null on strategic negotiation deception rather than sandbagging, extending it across three architectures.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

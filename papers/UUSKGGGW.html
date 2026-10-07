@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>UUSKGGGW</td></tr><tr><th>wiki_id</th><td>UUSKGGGW</td></tr><tr><th>aliases</th><td>[UUSKGGGW]</td></tr><tr><th>slug</th><td>ben-tov-2025-gaslite-retrieval-vulnerabilities</td></tr><tr><th>title</th><td>&quot;GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search&quot;</td></tr><tr><th>authors</th><td>[&quot;Ben-Tov, Matan&quot;, &quot;Sharif, Mahmood&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>empirical-method</td></tr><tr><th>venue</th><td>&quot;CCS &#x27;25 (ACM SIGSAC Conference on Computer and Communications Security)&quot;</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2412.20953&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2412.20953&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2412.20953&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;dense embedding-based retrieval&quot;, &quot;search engine optimization attacks&quot;, &quot;corpus poisoning&quot;, &quot;adversarial passages&quot;, &quot;vulnerability assessment&quot;, &quot;gradient-based optimization&quot;, &quot;embedding space geometry&quot;, &quot;RAG security&quot;]</td></tr><tr><th>updated</th><td>2026-06-25</td></tr></tbody></table>
+<h1>GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search</h1>
+<h2>Contribution</h2>
+<p>The authors propose GASLITE (Gradient-based Approximated Search for maLIcious Text Embeddings), a gradient-based attack method for generating adversarial passages that achieve high retrieval ranking without relying on corpus content or modifying the retriever model. They conduct an extensive robustness evaluation across nine embedding-based retrievers under varied threat models, revealing substantial vulnerability to SEO attacks particularly in concept-specific scenarios. The work identifies key factors contributing to model susceptibility including embedding space anisotropy and the choice of similarity metrics (dot-product vs. cosine similarity).</p>
+<h2>Research Question</h2>
+<p>How vulnerable are dense embedding-based retrievers to corpus-poisoning search-engine optimization attacks, and what factors determine their susceptibility to such attacks?</p>
+<h2>Method</h2>
+<p>GASLITE optimizes adversarial text passages by maximizing the similarity between the passages and a target query distribution without access to the corpus or model weights during the attack itself. The method operates in discrete token space and employs three key enhancements over prior approaches: multi-coordinate greedy search for efficient optimization, gradient averaging over multiple random token substitutions to improve approximation quality, and tokenization validation to ensure passages remain decodable as valid text. The attack constructs adversarial passages as padv := info ⊕ trigger, where info contains the malicious content (fixed) and trigger is optimized to maximize alignment with the centroid of target queries in the embedding space.</p>
+<h2>Setup</h2>
+<p>The authors evaluate nine BERT-base-sized embedding models (MiniLM, E5, Arctic, Contriever variants, ANCE, GTR-T5, MPNet variants) on the MSMARCO passage retrieval dataset containing 8.8M passages and 0.5M queries. They consider three threat models: Knows All (attacking single specific queries), Knows What (attacking concept-specific queries given sample queries), and Knows Nothing (attacking arbitrary diverse queries). Baselines include naive info-only insertion, query stuffing, and Cor.Pois., a prior HotFlip-based retrieval attack. The primary metric is appeared@k, measuring the proportion of target queries for which adversarial passages appear in top-k results. Evaluation uses held-out query sets to measure generalization.</p>
+<h2>Results</h2>
+<p>Single-query attacks (Knows All) are completely solved by GASLITE, achieving 100% appeared@1 across all models. Concept-specific attacks (Knows What) succeed with negligible poisoning rates (10 passages = 0.0001% of corpus), achieving over 50% average appeared@10 for most models and exceeding 70% for some. Notably, Contriever and Contriever-MS exhibit abnormal vulnerability (nearly 100% success with single adversarial passage), while other models show varying susceptibility. Indiscriminate attacks (Knows Nothing) require higher poisoning budgets (0.001% of corpus) but still achieve 5-20% appeared@10 for most models. GASLITE outperforms all baselines by at least 40%, and a hypothetical perfect attack suggests GASLITE achieves near-optimal performance under its framework. Adversarial passages generalize across unseen query sets and transfer across models with moderate success, particularly within model families and for less challenging threat models.</p>
+<h2>Conclusion</h2>
+<p>Dense embedding-based retrievers are highly vulnerable to corpus-poisoning SEO attacks under realistic threat models, with attackers requiring only negligible poisoning rates to achieve content promotion for concept-specific scenarios. The variance in model susceptibility reveals that embedding space properties—particularly embedding anisotropy and similarity metric choice—correlate with vulnerability. These findings establish the necessity of worst-case robustness evaluations and provide empirical grounding for future defense mechanisms against retrieval-based poisoning.</p>
+<h2>Related Work</h2>
+<h3>Embedding Models and Dense Retrieval</h3>
+<p>Dense sentence embeddings have enabled semantic retrieval in applications including search engines (Elasticsearch, Meilsearch, Redis) and retrieval-augmented generation systems (Google AI Overview, Cursor, OpenWebUI). Contrastive learning approaches fine-tune embeddings for ranking relevant passages via vector similarity, though this reliance on public corpora from untrusted sources introduces poisoning vulnerabilities.</p>
+<h3>Text Adversarial Examples and Discrete Optimization</h3>
+<p>HotFlip pioneered gradient-based adversarial text generation by approximating optimal token substitutions via first-order Taylor approximation. This method inspired subsequent work on text adversarial examples for misclassification, toxic text generation, and LLM jailbreaking (GCG, ARCA), which form the mathematical foundation extended by GASLITE. Generating adversarial text in discrete space remains more challenging than continuous perturbations in vision.</p>
+<h3>Corpus Poisoning and Data Poisoning</h3>
+<p>Data poisoning attacks contaminate training data; corpus poisoning attacks insert adversarial samples at inference time without retraining. Prior work demonstrated feasibility of retrieval corpus poisoning and its application to RAG systems by inserting crafted passages without model modification. These studies typically targeted oversimplified threat models (single-query attacks), used weak baseline methods (query repeating or HotFlip), or assumed successful retrieval without rigorous evaluation, limiting understanding of worst-case behavior.</p>
+<h3>Attacking Text Retrieval and RAG Systems</h3>
+<p>Recent work explored corpus poisoning specifically against embedding-based retrievers and its potential to mislead language models in RAG applications. Studies targeted either single queries or indiscriminate query distributions but lacked diversity in evaluated models (focusing on dot-product models like Contriever), potentially biasing results. These works often concentrated on the generative component while relaxing retrieval robustness evaluation, obscuring true model susceptibility.</p>
+<h3>Search Engine Optimization and Content Promotion</h3>
+<p>SEO attacks aim to promote malicious content ranking for specific query distributions, ranging from misinformation in public search to prompt injection in RAG systems. Common SEO goals target concept-related queries rather than single specific queries or entirely arbitrary distributions, but prior evaluations neglected this more realistic threat model.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>VIP29ZR5</td></tr><tr><th>wiki_id</th><td>VIP29ZR5</td></tr><tr><th>aliases</th><td>[VIP29ZR5]</td></tr><tr><th>slug</th><td>koh-2024-visualwebarena-multimodal-agents-web-tasks</td></tr><tr><th>title</th><td>&quot;VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks&quot;</td></tr><tr><th>authors</th><td>[&quot;Koh, Jing Yu&quot;, &quot;Lo, Robert&quot;, &quot;Jang, Lawrence&quot;, &quot;Duvvur, Vikram&quot;, &quot;Lim, Ming Chong&quot;, &quot;Huang, Po-Yu&quot;, &quot;Neubig, Graham&quot;, &quot;Zhou, Shuyan&quot;, &quot;Salakhutdinov, Ruslan&quot;, &quot;Fried, Daniel&quot;]</td></tr><tr><th>year</th><td>2024</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>&quot;arXiv&quot;</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2401.13649&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2401.13649&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2401.13649&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;multimodal agents&quot;, &quot;web navigation&quot;, &quot;visual grounding&quot;, &quot;autonomous agents&quot;, &quot;benchmark&quot;, &quot;vision-language models&quot;, &quot;Set-of-Marks prompting&quot;, &quot;web automation&quot;, &quot;agent evaluation&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks</h1>
+<h2>Contribution</h2>
+<p>VisualWebArena is a benchmark suite of 910 realistic, visually grounded tasks for evaluating multimodal agents on web environments. The benchmark comprises three diverse and complex web-based environments: Classifieds (a new contribution with real-world data scraped from Craigslist), Shopping (adapted from prior work), and Reddit (adapted from prior work). All tasks require visual understanding to effectively solve, addressing a significant gap in prior benchmarks that primarily focused on text-based agents. The authors also introduce a novel observation representation inspired by Set-of-Marks prompting, where interactable webpage elements are automatically annotated with bounding boxes and unique IDs, and demonstrate that this representation improves performance of vision-language models on visually complex sites.</p>
+<h2>Research Question</h2>
+<p>How should multimodal agents be evaluated on realistic web tasks that inherently require both visual and textual understanding? What are the gaps in the capabilities of state-of-the-art vision-language models when applied to visually grounded web navigation, and how can improved representations simplify agent action spaces and improve performance?</p>
+<h2>Task</h2>
+<p>VisualWebArena comprises 910 diverse and realistic tasks distributed across three environments: Classifieds (232 tasks, 25.5%), Shopping (464 tasks, 50.9%), and Reddit (171 tasks, 18.7%), with 45 additional multi-site tasks (4.9%). Each task is human-written with explicit intent templates that were manually expanded to create variations, encouraging annotators to be creative with visual layouts, input images, and cross-site functionalities. Tasks are classified by action difficulty (easy: three or fewer actions; medium: four to nine actions; hard: ten or more) and visual difficulty (easy: basic color and shape identification; medium: pattern and semantic understanding with OCR on longer text; hard: multiple images, small text OCR, or fine details). Tasks range from information-seeking (requiring text output) to navigation and actions that modify environment state. Five percent of tasks (46) are intentionally unachievable to test agent failure detection.</p>
+<h2>Data</h2>
+<p>The Classifieds environment contains 65,955 real-world listings scraped from Craigslist over three weeks, covering the Northeastern United States region. Personally identifiable information was redacted using the scrubadub Python package. The Shopping environment reuses product information from prior work, sourced from Amazon and released in WebShop. The Reddit environment contains 31,464 posts with diverse images across different subreddits. The Wikipedia knowledge base is referenced by several tasks. All observations include webpage URLs, open tabs (with multi-tab support), and the focused tab's content represented in four ways: raw HTML DOM trees, accessibility trees, web screenshots as RGB arrays, and a novel Set-of-Marks representation that automatically labels every interactable element with a bounding box and unique ID. For 25.2% of tasks, the intent includes one or more input images sourced from royalty-free attribution-free sources or MS-COCO.</p>
+<h2>Metrics</h2>
+<p>The benchmark introduces a functional evaluation paradigm with execution-based reward primitives that assess correctness on open-ended tasks. For information-seeking tasks, evaluation functions include exact_match (output must equal ground truth exactly), must_include (output must contain all expected elements), fuzzy_match (GPT-4-Turbo semantic evaluation of output against ground truth), and must_exclude (output must not contain prohibited elements). Visual functions for open-ended tasks include eval_vqa (Vision-Language Model visual question answering with BLIP-2-T5XL), and eval_fuzzy_image_match (structural similarity index measure against a ground-truth image with a configurable threshold). For navigation and action tasks, evaluation uses a locator to identify target objects on the final webpage state and applies the above information-seeking functions to check correctness.</p>
+<h2>Baselines</h2>
+<p>The authors evaluate multiple baseline agents: text-only LLM agents (LLaMA-2-70B, Mixtral-8x7B, Gemini-Pro, GPT-3.5-Turbo, GPT-4-Turbo) provided with accessibility tree representations and three in-context examples; caption-augmented LLM agents combining text-only models with image captions from BLIP-2-T5XL or LLaVA-7B; and multimodal vision-language models (IDEFICS-80B-Instruct, CogVLM, Gemini-Pro, GPT-4V) with two observation settings: image screenshot plus captions plus accessibility tree, and image screenshot plus captions plus Set-of-Marks annotations. All models use prompt-based, in-context learning approaches. Human performance is measured on 230 representative tasks (one per template) with seven college students as raters. The evaluation also includes analysis of recently released models (GPT-4o, Gemini-Pro-1.5, Gemini-Flash-1.5, Llama-3-70B-Instruct) reported after the main submission deadline.</p>
+<h2>Results</h2>
+<p>Text-only LLM agents achieve poor success rates, with the best model (GPT-4-Turbo) at 7.25% overall; caption augmentation significantly improves GPT-4 from 7.25% to 12.75%. Multimodal agents substantially outperform text-only approaches: GPT-4V achieves 15.05% overall success rate, with Gemini-Pro at 6.04%. The Set-of-Marks representation further improves GPT-4V's success rate to 16.37% overall, with particularly large gains on visually dense sites (Classifieds 12.38%→17.14%, Reddit 8.12%→9.83%), though improvements for other multimodal models are negligible. Human raters achieve 88.7% success rate overall (91.07% on Classifieds, 87.10% on Reddit, 88.39% on Shopping), indicating significant headroom. Analysis of task subsets reveals that agents perform worse on tasks requiring OCR (13.4% vs 16.9% for GPT-4V+SoM), perform better on exact image matching (18.9% vs 16.2%), and perform better on tasks with image inputs (19.0% vs 14.9%). Common failure modes include errors over longer horizons where agents undo correct actions, poor performance on seemingly easy tasks, giving up too early without exploring alternatives, getting stuck in loops oscillating between pages, making unnecessary actions, appending text instead of replacing it, and repeating actions when text fields contain unwanted content. Recently released models show improved performance: GPT-4o achieves 19.78% success, while Llama-3-70B-Instruct (caption-augmented) reaches 9.78%.</p>
+<h2>Related Work</h2>
+<h3>Language-Guided Web Agent Benchmarks</h3>
+<p>Earlier works introduced reinforcement learning environments and extended them into web domains. Recent efforts have developed benchmarks with tasks on static internet pages and simulated web environments. AgentBench evaluates agents across database management and operating system functionalities beyond the web. VisualWebArena extends this trajectory with a focus on visual grounding, distinct from WebArena which primarily uses accessibility trees and does not emphasize visual understanding.</p>
+<h3>LLM Agents</h3>
+<p>State-of-the-art Transformer-based LLMs have demonstrated impressive few-shot learning, reasoning, instruction following, and long-context capabilities. Recent work leverages these abilities for web agents through recursive prompting to improve GPT-4 performance on MiniWoB++, orchestrating multiple LLM agents to improve performance on WebShop, and fine-tuning LLaMA-2 on interaction trajectories with instructions. VisualWebArena benchmarks such agents but focuses on the necessity of multimodal processing for tasks where visual information is critical.</p>
+<h3>Vision-Language Models</h3>
+<p>Vision-language models have been developed through frozen visual encoders mapping to LLM embedding spaces, cross-attention mechanisms at larger scales, trainable visual expert modules, and instruction-tuning on image-instruction pairs. Models such as GPT-4V and Gemini enable multimodal processing with interleaved visual and textual inputs. Recent work explores VLMs for mobile-platform and web-based agents. Contemporaneous work on action grounding identifies appropriate HTML elements for agent execution, while VisualWebArena's Set-of-Marks approach uses JavaScript to produce marked-up page representations that agents can directly reference.</p>
+<h2>Conclusion</h2>
+<p>VisualWebArena addresses a critical gap in agent benchmarking by introducing a large-scale suite of visually grounded web tasks where visual understanding is inherently necessary rather than supplementary. The benchmark demonstrates that strong vision-language models substantially outperform text-only LLMs but remain far below human performance, indicating significant room for improvement in agent visual understanding, reasoning, and planning. The Set-of-Marks representation shows promise for simplifying action spaces on visually complex sites, particularly for the strongest VLMs. The benchmark and analysis of failure modes provide a foundation for advancing multimodal web agents toward more capable, reliable autonomous behavior on realistic web interfaces. Future work should address reasoning and planning abilities, improve handling of longer horizons and multi-step tasks, enhance OCR capabilities, and develop more sophisticated tracking of past states and execution history.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

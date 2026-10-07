@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShoppingComp: Are LLMs Really Ready for Your Shopping Cart?</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>72GYW9VP</td></tr><tr><th>wiki_id</th><td>72GYW9VP</td></tr><tr><th>aliases</th><td>[72GYW9VP]</td></tr><tr><th>slug</th><td>tou-2025-shoppingcomp-llms-ready-shopping</td></tr><tr><th>title</th><td>&quot;ShoppingComp: Are LLMs Really Ready for Your Shopping Cart?&quot;</td></tr><tr><th>authors</th><td>[&quot;Tou, Huaixiao&quot;, &quot;Zeng, Ying&quot;, &quot;Li, Yuemeng&quot;, &quot;Ma, Cong&quot;, &quot;Li, Muzhi&quot;, &quot;Li, Minghao&quot;, &quot;Yuan, Weijie&quot;, &quot;Zhang, He&quot;, &quot;Jia, Kai&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>&quot;arXiv&quot;</td></tr><tr><th>url</th><td>&quot;https://arxiv.org/abs/2511.22978&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2511.22978&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/ARXIV.2511.22978&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;shopping agents&quot;, &quot;LLM evaluation&quot;, &quot;product retrieval&quot;, &quot;safety-critical decision making&quot;, &quot;rubric-based evaluation&quot;, &quot;multi-constraint reasoning&quot;, &quot;open-world e-commerce&quot;, &quot;benchmark dataset&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>ShoppingComp: Are LLMs Really Ready for Your Shopping Cart?</h1>
+<h2>Contribution</h2>
+<p>ShoppingComp is a challenging real-world benchmark for evaluating LLM-powered shopping agents on three core capabilities: precise product retrieval under complex multi-constraint queries, expert-level report generation with verifiable reasoning, and safety-critical decision making. The benchmark comprises 145 instances and 558 scenarios curated by 35 experts over 1,000 hours of effort, with each task paired with human-verified product lists, annotated rubrics, and verifiable evidence. Unlike prior e-commerce benchmarks that operate under closed-world product assumptions or lack explicit safety evaluation, ShoppingComp introduces difficult product discovery queries grounded in open-world products and guarantees easy verification of agent outputs through expert-curated ground truth and rubric-based assessment. The authors introduce a unified evaluation framework combining AnswerMatch metrics for retrieval accuracy with fine-grained rubrics for constraint satisfaction, information grounding, reasoning faithfulness, and safety awareness.</p>
+<h2>Research Question</h2>
+<p>How capable are current state-of-the-art LLMs at reliably performing real-world shopping tasks? Specifically, can LLMs accurately retrieve products satisfying complex multi-constraint user needs, generate expert-level comparative reports with faithful reasoning, and recognize and avoid safety-critical risks?</p>
+<h2>Task</h2>
+<p>ShoppingComp evaluates shopping assistants across three complementary tasks. Browse Products assesses whether models can retrieve real products that satisfy complex user needs under search noise, measured through AnswerMatch F1 and Score of Products. Expert-level Report Generation evaluates the ability to produce rubric-aligned product recommendation reports with verifiable reasoning, measured through Scenario Coverage and Rationale Validity. Safety-Critical Decision Making tests whether models recognize and avoid potential product-related risks, measured through a dedicated Safety Rubric Pass Rate. Across all three tasks, each instance is anchored to a user shopping question and includes expert-annotated products, structured rubrics specifying fine-grained requirements and safety conditions, and verifiable supporting evidence.</p>
+<h2>Data</h2>
+<p>The benchmark consists of 145 instances covering 558 scenarios spanning eleven product categories from the Amazon taxonomy, including beauty and personal care, electronics, home and kitchen, tools and home improvement, appliances, health and household, sports and outdoors, pet supplies, patio and lawn, clothing and jewelry, and baby products. The data collection pipeline follows four steps. Step 1 collects shopping questions from three complementary sources: synthesized user questions generated from real products with rich specifications, expert-authored questions covering diverse consumer needs and purchasing scenarios, and safety questions curated by experts embedding potential hazards grounded in real usage contexts. Step 2 generates detailed rubrics from both experts and LLMs, with human annotators performing thorough correctness checks. Step 3 constructs diverse candidate products from multiple sources including web agent retrieval, expert-curated lists, and similarity-based embedding retrieval, linking each to verifiable evidence. Step 4 performs ground-truth verification through human annotators assessing whether candidate products match the rubrics, then removes trivial or redundant questions through three filters: questions with excessive valid products, questions correctly solved by most evaluated agents, and semantically clustered duplicates. The remaining instances undergo expert cross-review to ensure reliability and fairness. Task difficulty is defined by constraint complexity, with 20.7% simple queries (1-3 constraints), 33.8% medium complexity (4-7 constraints), 36.6% high complexity (8-11 constraints), and 9.0% very high complexity (12-15 constraints).</p>
+<h2>Metrics</h2>
+<p>Answer Match measures retrieval performance using Precision, Recall, and F1-score to evaluate the semantic correspondence between predicted and ground-truth products. Score of Products measures the proportion of recommended products that satisfy user requirements as defined by rubrics, averaging the fraction of satisfied requirements across all recommended products. Scenario Coverage evaluates semantic correspondence in set-to-set manner, computing Precision, Recall, and F1-score for whether predicted scenarios correspond to and cover ground-truth scenarios extracted from the original user question. Rationale Validity measures whether rationales provided in reports are factually correct and logically sound, averaging binary validity scores across all requirement rubrics and recommended products. Safety Rubric Pass Rate measures the proportion of safety trap questions for which the model produces a compliant response, computed as the average binary judgment indicating whether each response satisfies its corresponding trap rubric.</p>
+<h2>Baselines</h2>
+<p>The evaluation covers a broad spectrum of models including foundation models accessed via APIs: GPT-5.2, GPT-5, GPT-4o, Gemini-3-Pro, Gemini-2.5-Pro, Gemini-2.5-Flash, Deepseek-v3.2 (with and without extended thinking), and Grok-4. Deep research systems evaluated include ChatGPT DeepResearch and Gemini DeepResearch. Human baselines are provided by domain experts and annotators. Models are equipped with three representative tools: Google Search via SerpAPI, link reader, and link summary using Firecrawl. Each test case is evaluated with five independent runs, reporting average performance rather than best-of-N results to reflect real-world robustness.</p>
+<h2>Results</h2>
+<p>All evaluated models remain far from achieving human-level reliability on shopping tasks. State-of-the-art GPT-5.2 achieves only 17.76% Answer Match F1 and 35.42% Safety Rubric Pass Rate compared to human experts at 30.02% and 77.08% respectively. Performance gaps exist across model generations, with GPT-5 series achieving markedly higher Answer Match F1 (17.76%) than GPT-4o (9.86%), indicating recent models have improved capacity for multi-constraint retrieval. Models exhibit distinct retrieval behaviors across families: Gemini-style models tend to commit early to narrower candidate sets and focus on refining constraint satisfaction (achieving 15.33% precision on Answer Match), while GPT-style models show broader exploration achieving higher recall but lower precision. Interestingly, humans show substantially higher precision than recall, reflecting a constraint-first retrieval strategy, while all evaluated models display the opposite pattern with recall exceeding precision, indicating reliance on semantic expansion and weak filtering rather than joint constraint enforcement. DeepResearch products achieve substantially higher Scenario Coverage F1 scores by leveraging agentic workflows with extensive web browsing, but exhibit lower Rationale Validity compared to strong API-based models, suggesting that expanded retrieval coverage alone does not guarantee faithful synthesis. Safety performance remains alarmingly low across all systems: the strongest models achieve safety pass rates below 40%, with high variance in safety outcomes indicating unstable and non-deterministic safety behavior. Parametric knowledge alone is insufficient for product discovery, with models achieving 1-3% recall without tools; gains from tool access arise almost entirely from recall improvements.</p>
+<h2>Conclusion</h2>
+<p>ShoppingComp reveals systematic limitations of state-of-the-art LLMs across five key dimensions: large-scale retrieval effectiveness, information reliability handling, implicit requirement inference, reasoning faithfulness, and safety awareness. The benchmark exposes a substantial performance gap between current models and human experts, establishing a trust threshold that AI systems must cross before being proactively trusted for reliable real-world shopping decision making. The authors identify promising future directions including scaling task complexity and coverage, extending the benchmark to multilingual settings, and incorporating personalized evaluation where tasks adapt to user profiles and contextual constraints.</p>
+<h2>Related Work</h2>
+<h3>Web Agent and Shopping Benchmarks</h3>
+<p>WebArena and Mind2Web established foundations for general web navigation and incorporated e-commerce as a key sub-domain — Zhou et al. and Deng et al. respectively. GAIA, BrowseComp, and HLE assess high-level tool use and multihop information reasoning including shopping-related tasks — Mialon et al., Wei et al., and Phan et al. respectively. WebShop evaluates instruction following in simulated environments — Yao et al. ShoppingMMLU, eCeLLM, and OPeRA introduce multi-task reasoning and user behavior modeling — Jin et al., Peng et al., and Wang et al. ShoppingBench grounds evaluation in real product catalogs but remains restricted to closed-world settings — Wang et al. The authors position ShoppingComp as distinct through explicit open-world evaluation, multi-constraint reasoning grounded in real user intents, multi-product comparative justification reports, and dedicated safety-critical assessment.</p>
+<h3>Rubric-Based Evaluation</h3>
+<p>Recent work has adopted rubric-based evaluation for fine-grained and interpretable assessment across diverse domains. HealthBench evaluates LLMs toward improved human health — Arora et al. YESciEval provides robust LLM-as-a-judge evaluation for scientific question answering — D'Souza et al. PRbench evaluates high-stakes professional reasoning in finance and law — Akyürek et al. ResearchRubrics, SedArEval, and LLM-rubric apply rubric-based evaluation to general question answering and information-seeking — Sharma et al., Fan et al., and Hashemi et al. respectively. ShoppingComp extends this paradigm to the e-commerce domain with domain-specific safety considerations.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

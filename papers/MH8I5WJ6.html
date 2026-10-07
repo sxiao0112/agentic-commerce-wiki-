@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>MH8I5WJ6</td></tr><tr><th>wiki_id</th><td>MH8I5WJ6</td></tr><tr><th>aliases</th><td>[MH8I5WJ6]</td></tr><tr><th>slug</th><td>karten-2026-economic-alignment-multi-agent</td></tr><tr><th>title</th><td>&quot;Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces&quot;</td></tr><tr><th>authors</th><td>[&quot;Karten, Seth&quot;, &quot;Crow, Cameron&quot;, &quot;Jin, Chi&quot;]</td></tr><tr><th>year</th><td>2026</td></tr><tr><th>paper_type</th><td>empirical-method</td></tr><tr><th>venue</th><td>arXiv</td></tr><tr><th>url</th><td>&quot;https://arxiv.org/abs/2605.17698&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2605.17698&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/ARXIV.2605.17698&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;economic alignment&quot;, &quot;multi-agent marketplaces&quot;, &quot;LLM agents&quot;, &quot;market stability&quot;, &quot;Sybil attacks&quot;, &quot;algorithmic instability&quot;, &quot;RL training&quot;, &quot;agent-centric commerce&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces</h1>
+<h2>Contribution</h2>
+<p>The authors introduce Agent Bazaar, a multi-agent simulation framework for evaluating Economic Alignment, defined as the capacity of agentic systems to preserve market stability and integrity while protecting human participants against exploitation and fraud. They identify two distinct failure modes in LLM agents: Algorithmic Instability ("The Crash"), where firms engage in destructive price undercutting below unit cost until the market collapses, and Sybil Deception ("The Lemon Market"), where a single deceptive agent controls multiple coordinated seller identities to flood the market with fraudulent listings. They evaluate frontier and open-weight models, propose economically aligned harnesses (Stabilizing Firms and Skeptical Guardians) based on in-context reflection, and develop a method to train agents with REINFORCE++ using an adaptive curriculum. They introduce the Economic Alignment Score (EAS), a 4-component metric aggregating stability, integrity, welfare, and profitability for cross-model comparison.</p>
+<h2>Research Question</h2>
+<p>How can multi-agent LLM systems preserve market stability and integrity when deployed as autonomous economic agents, and what training approaches can mitigate emergent failure modes that arise from individually rational but collectively destructive behavior?</p>
+<h2>Method</h2>
+<p>Agent Bazaar formalizes the problem as a Partially Observable Stochastic Game (POSG). The Crash scenario simulates a business-to-consumer market inspired by Amazon with five firms selling to procedural consumers under Poisson arrival demand, where firms observe only a random sample of competitor prices and have access to a history window of their own market performance. The Lemon Market scenario simulates a consumer-to-consumer market inspired by eBay where twelve sellers list used items of varying quality and twelve buyers make purchase decisions; a Sybil principal controls K seller identities with independent reputations, all selling poor-quality goods advertised as higher tiers. Both environments enforce partial observability through a consumer discovery limit that restricts visibility.</p>
+<p>The authors evaluate frontier models (Gemini 3 Flash, GPT 5.4, Claude Sonnet 4.6) and open-weight models under base conditions, with economically aligned harnesses, and with REINFORCE++ training. The Stabilizing Firm harness instructs firms to maintain a price floor above unit cost regardless of competitor behavior, combined with in-context reflection that reviews and incorporates historical high-performing timesteps. The Skeptical Guardian harness instructs buyers to analyze listings against expected price ranges, cross-reference seller reputation against claimed quality, and reflect on historical transaction decisions.</p>
+<p>For RL training, the authors use REINFORCE++ with LoRA adaptation (r=64, approximately 116M trainable parameters on a 9B base model) on market episodes scored by EAS. The objective applies a squared log-ratio penalty to ensure non-negative per-token penalty terms. Training uses an adaptive curriculum that adjusts difficulty based on agent performance: in The Crash, the curriculum reduces the fraction of stabilizing firms as survival improves, forcing agents to maintain stability with fewer cooperative partners; in The Lemon Market, the curriculum increases Sybil cluster size as detection improves.</p>
+<h2>Setup</h2>
+<p>The Crash operates with 5 firms, 50 consumers, initial cash of 500, unit cost of 1.0, daily overhead of 2.0, and 365 simulated days. The authors ablate consumer discovery limits (dlc ∈ {1, 3, 5}) and the number of stabilizing firms (k ∈ {0, 1, 3, 5}) with 3 seeds per configuration. The Lemon Market uses 12 sellers, 12 buyers, 50 timesteps, with Sybil cluster sizes (K ∈ {0, 3, 6, 9}), initial seller reputation of 0.8, and a rolling reputation window of 10 votes. Hyperparameters for REINFORCE++ include learning rate 5×10^-6, bf16 precision, and squared log-ratio penalty coefficient 0.2. The Crash training runs 27 iterations with 32 episodes per iteration (32 timesteps, 5 firms, 50 consumers), while The Lemon Market runs 7 iterations with 16 episodes (40 timesteps, 12 sellers, 12 buyers).</p>
+<h2>Results</h2>
+<p>At baseline (k=0, dlc=3), the three frontier models exhibit qualitatively different behavior. Gemini 3 Flash and GPT 5.4 exhibit the crash dynamic with bankruptcy rates above 0.65, while Claude Sonnet 4.6 self-organizes to a viable equilibrium with 0% bankruptcy. Introducing stabilizing firms reduces bankruptcy rates, but the effect varies by model: at dlc=3, Sonnet achieves stability at k=0 while Gemini and GPT require k=5 to reach low bankruptcy rates. Counterintuitively, increasing consumer discovery limit (dlc) makes stability harder for all models; at dlc=5, all models remain above br=0.65 even with k=5. In The Crash, prices converge modestly above unit cost (p/c ∈ [1.45, 2.69]) in stable configurations, well below monopolist levels.</p>
+<p>In The Lemon Market, Sybil revenue share increases with cluster size K across all buyer models, rising from approximately 5% at K=3 to 10-17% at K=9. Trading volume drops from roughly 10 bids per timestep at K=3 to 6 at K=9. While honest sellers maintain near-perfect reputations and Sybil reputations decay to 0.4-0.5, base buyers do not exploit this gap systematically. The Skeptical Guardian harness reduces Sybil revenue share by approximately 30% relative to baseline while maintaining comparable trading volume, shifting consumer surplus from deeply negative to near breakeven, but does not eliminate deception entirely.</p>
+<p>REINFORCE++ training on Qwen 3.5 9B improves the stability score from 0.39 to 0.63 on the easy curriculum and 0.59 on the mixed-difficulty curriculum in The Crash. Critically, the trained stabilizing firm acts as a market anchor that benefits non-trained competitors: when the RL-trained stabilizing firm is present, non-stabilizing firm survival rises to 68% compared to 0% without training, producing a spillover effect that stabilizes the entire market. In The Lemon Market, the RL-trained guardian achieves a Sybil detection rate of 92% (compared to 88% pre-training) while keeping the Sybil purchase rate at 11%.</p>
+<p>The Economic Alignment Score analysis reveals that economic alignment is orthogonal to model size. The RL-finetuned 9B model achieves an EAS of 0.79, ranking first among 20 evaluated models and outperforming Hermes 3 405B (EAS 0.72), Claude Sonnet 4.6 (0.60), and GPT 5.4 (0.38). Model size does not predict alignment: Mistral 7B (EAS 0.57) outperforms Gemma 3 27B (0.35), and Hermes 4 405B (0.18) scores below Llama 3.2 3B (0.28).</p>
+<h2>Conclusion</h2>
+<p>Economic Alignment is a distinct property of agentic systems that measures their capacity to preserve market stability, integrity, and human welfare. The authors show that LLM agents fail to self-regulate in both failure modes, that in-context reflection harnesses improve outcomes but remain fragile under harder conditions, and that targeted RL training produces robust economically aligned behavior. The trained stabilizing firm provides a market anchor that prevents both below-cost spirals and post-collapse price gouging through a spillover effect benefiting the entire market. The results demonstrate that economic alignment is orthogonal to general reasoning capability and can be directly trained using policy gradient methods with an adaptive curriculum. The limitations include simulation abstraction away from order books, differentiated goods, and correlated demand, as well as robustness to distribution shift from markets with continuously adapting opponents rather than fixed base models during training.</p>
+<h2>Related Work</h2>
+<h3>LLM Agents in Economic Settings</h3>
+<p>Homo silicus showing LLM reproduction of human-like behavior in ultimatum games and labor market experiments — Horton et al. — foundational work on LLM economic behavior in controlled games.</p>
+<p>LLM Economist: Large population models and mechanism design in multi-agent generative simulacra — Karten et al. — macroeconomic simulation using LLMs for mechanism design.</p>
+<p>EconAgent: Large language model-empowered agents for simulating macroeconomic activities — Li et al. — LLM-based agents for macroeconomic simulation.</p>
+<p>QuantAgent: Seeking holy grail in trading by self-improving large language model — Wang et al. — single-agent RL-based trading.</p>
+<p>FinAgent: A multimodal foundation agent for financial trading — Zhang et al. — multimodal agent for financial trading.</p>
+<p>Vending-Bench: A benchmark for long-term coherence of autonomous agents — Backlund &amp; Petersson — long-horizon single-agent business coherence.</p>
+<p>Vending-Bench Arena: Competitive multi-agent economic evaluation — Andon Labs — competitive multi-agent benchmark finding frontier models develop monopolistic exploitation and price cartels.</p>
+<p>The coasean singularity? Demand, supply, and market design with AI agents — Shahidi et al. — transaction-cost reduction and new failure modes from LLM deployment.</p>
+<h3>Market Instability and Algorithmic Trading</h3>
+<p>The 2010 Flash Crash: High-frequency trading in an electronic market — Kirilenko et al. — empirical analysis of the Flash Crash.</p>
+<p>Abrupt rise of new machine ecology beyond human response time — Johnson et al. — dynamics of autonomous agents in high-frequency markets.</p>
+<p>The economy needs agent-based modelling — Farmer &amp; Foley — foundational argument for agent-based economic models.</p>
+<p>Artificial intelligence, algorithmic pricing, and collusion — Calvano et al. — Q-learning agents exhibit tacit collusion without explicit communication.</p>
+<p>AI-powered trading, algorithmic collusion, and price efficiency — Dou et al. — RL-based trading agents sustain collusive supra-competitive profits.</p>
+<p>Artificial intelligence and pricing: The impact of algorithm design — Asker et al. — algorithm design determines whether pricing converges to competitive or monopoly equilibrium.</p>
+<h3>Sybil Attacks and Reputation Manipulation</h3>
+<p>The Sybil attack — Douceur — foundational definition of Sybil attacks in peer-to-peer systems.</p>
+<p>Strategic manipulation of internet opinion forums: Implications for consumers and firms — Dellarocas — reputation manipulation is rational when identity cost is low.</p>
+<p>Misinformation and mistrust: The equilibrium effects of fake reviews on amazon.com — Gandhi et al. — fake reviews cause direct misinformation and systemic erosion of trust.</p>
+<p>Fake it till you make it: Reputation, competition, and Yelp review fraud — Luca &amp; Zervas — empirical study of reputation and competitive dynamics in review platforms.</p>
+<p>Promotional reviews: An empirical investigation of online review manipulation — Mayzlin et al. — review manipulation on Amazon.</p>
+<p>The market for lemons: Quality uncertainty and the market mechanism — Akerlof — foundational economic framework for adverse selection.</p>
+<h3>Multi-Agent Frameworks and Alignment</h3>
+<p>Constitutional AI: Harmlessness from AI feedback — Bai et al. — RLHF-based approach to alignment targeting per-interaction harmlessness.</p>
+<p>Training language models to follow instructions with human feedback — Ouyang et al. — foundational RLHF work for instruction following.</p>
+<p>LoRA: Low-rank adaptation of large language models — Hu et al. — parameter-efficient fine-tuning method used for training.</p>
+<p>AgentBench: Evaluating LLMs as agents — Liu et al. — benchmark for evaluating LLMs as agents in task completion.</p>
+<p>MetaGPT: Meta programming for a multi-agent collaborative framework — Hong et al. — multi-agent framework for cooperative task completion.</p>
+<p>WebArena: A realistic web environment for building autonomous agents — Zhou et al. — environment for building and evaluating autonomous agents.</p>
+<p>Dynamic programming for partially observable stochastic games — Hansen et al. — foundational POSG formalism.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Questions — Research Frontier</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="index.html">Index</a><a href="overview.html">Overview</a><a href="next-step.html">Next Step</a><a href="open-questions.html">Open Questions</a><a href="contradictions.html">Contradictions</a><a href="log.html">Log</a></nav>
+
+<h1>Open Questions — Research Frontier</h1>
+<p>Cross-cutting aggregation of open questions / gaps flagged on topic pages, attributed with <code>&lt;span class="missing" title="not yet in the wiki"&gt;links&lt;/span&gt;</code>. Judgment-zone content (grounded in collected papers).</p>
+<h2><a href="topics/agent-security-and-prompt-injection.html" title="Agent Security and Prompt Injection">agent-security-and-prompt-injection</a> — Agent security and prompt-injection defenses</h2>
+<ul>
+<li>AgentDyn still cannot fully capture the complexity and diversity of real-world environments, so more realistic evaluation frameworks for agent security defenses remain an open need. <a href="papers/4G9XTVC5.html" title="AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? [4G9XTVC5]">Li et al., 2026</a></li>
+<li>Attack development lags behind defense development; existing benchmark attacks are relatively weak against frontier models such as GPT-5 and Claude-4, and stronger, more realistic attack frameworks are an important complementary direction. <a href="papers/4G9XTVC5.html" title="AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? [4G9XTVC5]">Li et al., 2026</a></li>
+<li>Retrieval-poisoning robustness is largely unaddressed; defenses beyond L2-norm and perplexity filtering are unexplored, and evaluation is limited to white-box, BERT-base-sized open-source retrievers on MSMARCO and NQ, leaving proprietary, larger-scale, and specialized-domain retrievers open. <a href="papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a></li>
+<li>Activation-based deception monitors are validated only for correlation, not behavioral causality; generation-loop steering to confirm the direction drives more deceptive text is the immediate next experiment, and cross-architecture transfer is weak beyond a single model family at 7-8B scale. <a href="papers/DECY38ZV.html" title="Linear Probes for Strategic Deception Generalize Across Three LLM Families in Multi-Agent Negotiation [DECY38ZV]">Sims, 2026</a></li>
+<li>Whether activation-based deception monitoring generalizes beyond commercial negotiation to social manipulation, cooperative-task betrayal, and long-horizon planning is untested. <a href="papers/DECY38ZV.html" title="Linear Probes for Strategic Deception Generalize Across Three LLM Families in Multi-Agent Negotiation [DECY38ZV]">Sims, 2026</a></li>
+</ul>
+<h2><a href="topics/agent-to-agent-negotiation.html" title="Agent-to-agent negotiation">agent-to-agent-negotiation</a> — Agent-to-agent negotiation</h2>
+<ul>
+<li>The cause of the systematic buyer-versus-seller asymmetry is unresolved: training-data bias toward persuasive selling, or the structure of the negotiation reward. <a href="papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a></li>
+<li>Why financial-asset and high-stakes scenarios consistently expose the lowest scores lacks a mechanistic explanation; sophisticated risk assessment seems to be the bottleneck but is unverified. <a href="papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a></li>
+<li>Whether the final-convergence failure on near-miss deals (price gaps within five units) is a reasoning, generation, or confidence-calibration problem is not investigated. <a href="papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a></li>
+<li>Mitigation remains preliminary: RL-based prompt optimization reduces budget violations but not overpayment or deadlock, and systematic safety-and-performance mitigation for real platforms is open. <a href="papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a></li>
+<li>Whether demographic bias in negotiator agents is specific to ChatGPT-4 Turbo or general across other LLMs is untested, and model-level mitigation that does not shift the fairness burden onto disadvantaged users remains undeveloped. <a href="papers/CPCJQVGF.html" title="Evaluating Fairness in LLM Negotiator Agents via Economic Games Using Multi-Agent Systems [CPCJQVGF]">Mouri Zadeh Khaki &amp; Choi, 2026</a></li>
+<li>Structural defenses are untested: moderator agents to detect intruders, evasion attacks against such moderators, private channels for coalition formation, and fairness when agents of differing capability interact. <a href="papers/I5MWYLFD.html" title="Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation [I5MWYLFD]">Abdelnabi et al., 2024</a></li>
+<li>Whether verifiable-reward RL extends to negotiation settings with less objectively measurable outcomes or costly compliance verification is untested, as is the transferability of learned strategies across product categories, multi-party deals, and reputation-sensitive markets. <a href="papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a></li>
+</ul>
+<h2><a href="topics/agentic-marketplaces.html" title="Two-sided agentic marketplaces and the agentic economy">agentic-marketplaces</a> — Two-sided agentic marketplaces and the agentic economy</h2>
+<ul>
+<li>Magentic Marketplace studies static markets where neither agents nor environment learn from history; dynamic markets where agents and users interact repeatedly and adapt remain unstudied. <a href="papers/CBL2GTGW.html" title="Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets [CBL2GTGW]">Bansal et al., 2025</a></li>
+<li>Human-in-the-loop and hybrid markets with both human and AI participants are flagged as essential before deployment but are beyond current scope. <a href="papers/CBL2GTGW.html" title="Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets [CBL2GTGW]">Bansal et al., 2025</a></li>
+<li>Marketplace simulations abstract away order books, differentiated goods, and correlated demand; real market complexity likely amplifies the identified failure modes. <a href="papers/MH8I5WJ6.html" title="Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces [MH8I5WJ6]">Karten et al., 2026</a></li>
+<li>Robustness of economically aligned agents to distribution shift is untested, since training uses fixed base-model opponents rather than continuously adapting ones; self-play is suggested but unexplored. <a href="papers/MH8I5WJ6.html" title="Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces [MH8I5WJ6]">Karten et al., 2026</a></li>
+<li>Whether incentive-aligned competition arenas can serve as a trajectory primitive for task surfaces that lack a deployed subnet or evaluation infrastructure is unaddressed, as is generalization beyond index-based agentic commerce to live website navigation. <a href="papers/9KPI4X8R.html" title="Bittensor Agent Arenas as a Trajectory Primitive: Distilling a Shopping Agent from ShoppingBench Subnet Traces [9KPI4X8R]">Bansal et al., 2026</a></li>
+</ul>
+<h2><a href="topics/ai-mediated-market-dynamics.html" title="Economics, manipulation, and collusion in AI-mediated markets">ai-mediated-market-dynamics</a> — Economics, manipulation, and collusion in AI-mediated markets</h2>
+<ul>
+<li>The mechanistic source of agent choice biases (pre-training vs post-training vs vision encoder vs model drift) is unknown, as is how agent behavior compares to human baselines on identical tasks. <a href="papers/4HUDI9FW.html" title="What Is Your AI Agent Buying? Evaluation, Biases, Model Dependence, &amp; Emerging Implications for Agentic E-Commerce [4HUDI9FW]">Allouah et al., 2025</a></li>
+<li>Modeled vertical-collusion harm may be conservative because real platforms use more sophisticated optimization than Q-learning and the analysis omits the retrieval stage and some bias channels; the feasibility and market impact of proposed regulatory remedies remain empirically untested. <a href="papers/EBZ6DN2P.html" title="Vertical tacit collusion in AI-mediated markets [EBZ6DN2P]">Affonso, 2026</a></li>
+<li>Economic alignment is demonstrated in simulations that abstract away order books, differentiated goods, and correlated demand; robustness to distribution shift from continuously adapting opponents and the value of self-play training remain untested. <a href="papers/MH8I5WJ6.html" title="Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces [MH8I5WJ6]">Karten et al., 2026</a></li>
+<li>Findings come from static markets where neither agents nor environment learn from history; temporal dynamics, repeated adaptation, and hybrid human-AI markets are flagged as essential extensions before deployment. <a href="papers/CBL2GTGW.html" title="Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets [CBL2GTGW]">Bansal et al., 2025</a></li>
+<li>Adversarial strategic text sequences expose a need for safeguards: countermeasures to detect and prevent listing-level manipulation of LLM recommenders, and ethical guidelines for AI search optimization that preserve marketplace integrity and fair competition, remain to be developed. <a href="papers/XT585ED2.html" title="Manipulating Large Language Models to Increase Product Visibility [XT585ED2]">Kumar &amp; Lakkaraju, 2024</a></li>
+<li>Recommender-auditing methods are constrained by data scale and observation length: filter-bubble auditing has been validated only on a small set of users and platforms over short windows, leaving longer-horizon bubble evolution and the effect of diversity-injection or friction interventions untested. <a href="papers/QCJ4XZXS.html" title="PersonaAct: Simulating Short-Video Users with Personalized Agents for Counterfactual Filter Bubble Auditing [QCJ4XZXS]">Zhao et al., 2026</a></li>
+</ul>
+<h2><a href="topics/embodied-retail-environments.html" title="Embodied retail store environments">embodied-retail-environments</a> — Embodied retail store environments</h2>
+<ul>
+<li>The large human-agent performance gap on easy grocery shopping tasks is unexplained beyond VLM inference overhead and mode collapse; deeper analysis of failure modes and reasoning errors is missing. <a href="papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a></li>
+<li>Average and difficult retail tasks remain unevaluated for the embodied agent; only easy tasks were benchmarked. <a href="papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a></li>
+<li>No fine-tuning of the vision language model was performed despite its potential to narrow the human-agent gap. <a href="papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a></li>
+<li>Environment performance runs below a stable 60 FPS (23 to 35 FPS across layouts), constraining embodied agent evaluation. <a href="papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a></li>
+</ul>
+<h2><a href="topics/generative-engine-optimization.html" title="Generative Engine Optimization and Search Manipulation">generative-engine-optimization</a> — Generative engine optimization and search manipulation</h2>
+<ul>
+<li>Equilibrium dynamics when GEO adoption becomes universal, including congestion effects, strategic arms races, and degradation of content informativeness. <a href="papers/J7UPZPJR.html" title="E-GEO: A Testbed for Generative Engine Optimization in E-Commerce [J7UPZPJR]">Bagga et al., 2025</a></li>
+<li>Fairness and market-design implications of GEO advantage favoring sophisticated sellers and widening platform inequality. <a href="papers/J7UPZPJR.html" title="E-GEO: A Testbed for Generative Engine Optimization in E-Commerce [J7UPZPJR]">Bagga et al., 2025</a></li>
+<li>Extending GEO optimization beyond text to multimodal product content such as images and video. <a href="papers/J7UPZPJR.html" title="E-GEO: A Testbed for Generative Engine Optimization in E-Commerce [J7UPZPJR]">Bagga et al., 2025</a></li>
+<li>Countermeasures to detect and prevent ranking manipulation, plus ethical guidelines for responsible optimization to preserve marketplace integrity and fair competition. <a href="papers/XT585ED2.html" title="Manipulating Large Language Models to Increase Product Visibility [XT585ED2]">Kumar &amp; Lakkaraju, 2024</a></li>
+<li>Defense mechanisms against corpus-poisoning retrieval attacks beyond L2-norm and perplexity filtering, and robustness evaluation on larger models and specialized domains beyond the white-box, 110M-parameter, MSMARCO-centric setting. <a href="papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a></li>
+</ul>
+<h2><a href="topics/shopping-agent-benchmarks.html" title="Shopping and e-commerce agent benchmarks">shopping-agent-benchmarks</a> — Shopping and e-commerce agent benchmarks</h2>
+<ul>
+<li>Agents cannot reliably satisfy multiple shopping constraints (attributes, filters, sorting) simultaneously despite competence on each in isolation <a href="papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a> <a href="papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a> <a href="papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a></li>
+<li>Agents lack explicit memory and replanning for comparing products, backtracking, and recovering long-term preferences across sessions <a href="papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a> <a href="papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a> <a href="papers/GUETZIKA.html" title="Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks [GUETZIKA]">Yu et al., 2026</a></li>
+<li>Multimodal grounding is weak: vision-only agents fail and effective HTML-plus-visual fusion is unsolved, especially for visually dominant product categories <a href="papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a> <a href="papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a></li>
+<li>Safety-critical shopping behavior is unreliable, with the strongest systems passing under 40% of safety-trap rubrics and showing unstable non-deterministic outcomes <a href="papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a></li>
+<li>Personalization does not follow from search competence; agents fail on review and price sensitivity and persona alignment trades off against task efficiency <a href="papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> <a href="papers/G994SNDV.html" title="ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation [G994SNDV]">Ling et al., 2025</a></li>
+<li>Agents are markedly less efficient than humans, using many more steps and high token and runtime cost on multi-shop and long-horizon tasks <a href="papers/G994SNDV.html" title="ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation [G994SNDV]">Ling et al., 2025</a> <a href="papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a> <a href="papers/GUETZIKA.html" title="Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks [GUETZIKA]">Yu et al., 2026</a></li>
+<li>Output instability across repeated trials remains high, with pass^k dropping sharply below pass^1 even for the strongest models <a href="papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a></li>
+<li>Benchmark coverage is incomplete: login-protected flows, checkout and payment, customer-service interactions, multilingual settings, and post-purchase workflows are under-tested <a href="papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a> <a href="papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a> <a href="papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a></li>
+</ul>
+<h2><a href="topics/tool-agent-user-interaction.html" title="Tool-agent-user interaction and conversational service agents">tool-agent-user-interaction</a> — Tool-agent-user interaction and conversational service agents</h2>
+<ul>
+<li>Extending tool-agent-user benchmarks to more advanced, higher-stakes domains (medical, tax, legal) remains future work. <a href="papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al., 2024</a></li>
+<li>Current benchmarks do not explicitly model the expert-novice gap in customer support, where the agent must understand and adapt to the user's mental model. <a href="papers/7NSXRTYR.html" title="$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al., 2025</a></li>
+<li>Domain and policy curation still relies heavily on human expertise; automating domain construction is an open need limiting scale and industry adoption. <a href="papers/7NSXRTYR.html" title="$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al., 2025</a> <a href="papers/AY3WV8T4.html" title="DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain [AY3WV8T4]">Borkakoty et al., 2026</a></li>
+<li>Coverage is narrow (ECom-Bench limited to home/appliance products, DRIP-R to retail with a single policy document); cross-category and cross-policy generalization is untested. <a href="papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a> <a href="papers/AY3WV8T4.html" title="DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain [AY3WV8T4]">Borkakoty et al., 2026</a></li>
+<li>Persona construction relies on domain expertise without sufficient theoretical or empirical grounding in behavioral theory. <a href="papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a></li>
+</ul>
+<h2><a href="topics/web-agent-environments.html" title="Realistic web environments for autonomous agents">web-agent-environments</a> — Realistic web environments for autonomous agents</h2>
+<ul>
+<li>Agents remain far below human performance on realistic web tasks, with search-query reformulation, option selection, exploration, and long-horizon memory the persistent bottlenecks. <a href="papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a> <a href="papers/8T9KKXKK.html" title="WebArena: A Realistic Web Environment for Building Autonomous Agents [8T9KKXKK]">Zhou et al., 2024</a> <a href="papers/VIP29ZR5.html" title="VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks [VIP29ZR5]">Koh et al., 2024</a></li>
+<li>Vision-only observation is insufficient for reliable web navigation, and how to combine visual grounding with structural grounding for fine-grained web text remains open. <a href="papers/VIP29ZR5.html" title="VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks [VIP29ZR5]">Koh et al., 2024</a> <a href="papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a></li>
+<li>Reconciling live-website realism with reproducible, controllable evaluation is unresolved, and automatically generated environments still need broader coverage of login flows, checkout and payment, multi-session memory, and safety-critical edge cases. <a href="papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a></li>
+<li>Multi-shop comparison shopping remains hard and token-expensive, calling for more efficient agent architectures that maintain information over long sequential trajectories. <a href="papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a></li>
+</ul>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

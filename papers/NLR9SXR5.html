@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>NLR9SXR5</td></tr><tr><th>wiki_id</th><td>NLR9SXR5</td></tr><tr><th>aliases</th><td>[NLR9SXR5]</td></tr><tr><th>slug</th><td>zhu-2025-agent-agent-negotiations-consumer-markets</td></tr><tr><th>title</th><td>&quot;The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets&quot;</td></tr><tr><th>authors</th><td>[&quot;Zhu, Shenzhe&quot;, &quot;Sun, Jiao&quot;, &quot;Nian, Yi&quot;, &quot;South, Tobin&quot;, &quot;Pentland, Alex&quot;, &quot;Pei, Jiaxin&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>arXiv</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2506.00073&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2506.00073&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2506.00073&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;agent-to-agent negotiation&quot;, &quot;consumer markets&quot;, &quot;LLM agents&quot;, &quot;automated transactions&quot;, &quot;negotiation benchmarking&quot;, &quot;financial risks&quot;, &quot;constraint violation&quot;, &quot;overpayment&quot;, &quot;model capability gaps&quot;, &quot;economic disparities&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<h1>The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets</h1>
+<h2>Contribution</h2>
+<p>The paper proposes a comprehensive experimental framework to investigate agent-to-agent negotiation and transaction scenarios where both consumers and merchants authorize AI agents to automate their negotiations. The authors construct a dataset of 100 real-world products spanning three categories (electronic devices, motor vehicles, real estate), each with retail prices and estimated wholesale costs. They benchmark nine advanced language models (GPT series, Qwen series, DeepSeek series) as both buyer and seller agents across different budget configurations. The work identifies that negotiation performance substantially correlates with model general capabilities, and reveals four key behavioral anomalies that translate into tangible financial risks: constraint violation, excessive payment, negotiation deadlock, and early settlement. As a preliminary mitigation approach, the authors demonstrate that reinforcement learning based prompt optimization can reduce out-of-budget errors for vulnerable populations.</p>
+<h2>Research Question</h2>
+<p>What happens when consumers and merchants delegate their negotiations and decision-making to AI agents with varying capabilities, and what are the risks and performance characteristics of fully automated agent-to-agent negotiation in realistic consumer markets?</p>
+<h2>Task</h2>
+<p>The negotiation setting is formulated as an information-incomplete zero-sum game between buyer and seller agents. Each agent receives different background information: the buyer knows the retail price, product features, and their budget constraint; the seller knows the retail price, wholesale cost, and product features. Both agents aim to optimize the final transaction price within feasibility constraints. Buyer agents initiate the conversation and are constrained to not exceed their budget. Seller agents aim to keep prices near retail while maintaining above wholesale cost. A judge model determines whether a deal is accepted, rejected, or negotiation continues, with a maximum of 30 rounds.</p>
+<h2>Data</h2>
+<p>The dataset consists of 100 real consumer products obtained from trustworthy sources with actual retail prices and product specifications. Wholesale costs were estimated using GPT-4o prompted with market norms and industry information. The dataset is distributed across three categories: 40% motor vehicles, 30% electronics, 30% real estate. For each of the 100 products, the authors sampled 50 products randomly, running five trials per product across five distinct budget levels (high: 1.2 times retail; mid: between retail and wholesale; low: 0.8 times wholesale; below wholesale). A total of 9 models were evaluated, each playing both buyer and seller roles against every other model, with 5 budget configurations per pairing, generating extensive negotiation data.</p>
+<h2>Metrics</h2>
+<p>Price Reduction Rate (PRR) quantifies a buyer's ability to negotiate discounts from the retail price, also reflecting seller's success in resisting reductions. Relative Profit (RP) measures total profit achieved relative to the lowest-profit seller (GPT-3.5). Deal Rate reports the proportion of successful negotiations. Profit Rate averages profit margins per successful transaction. Anomaly-specific metrics include Out-of-Budget Rate (OBR): proportion of negotiations where accepted price exceeds buyer budget; Out-of-Wholesale Rate (OWR): proportion where accepted price falls below wholesale cost; Overpayment Rate (OPR): proportion of deals where final price exceeds retail price; Deadlock Rate (DLR): proportion reaching maximum rounds without agreement.</p>
+<h2>Baselines</h2>
+<p>The evaluation encompasses nine models: OpenAI's GPT series (o3, o4-mini, GPT-4.1, GPT-4o-mini, GPT-3.5), DeepSeek series (DeepSeek-v3, DeepSeek-R1), and Qwen series (Qwen2.5-7B, Qwen2.5-14B). The paper treats DeepSeek-R1 as the strongest performer and GPT-3.5 as the weakest for economic impact analysis. Models are evaluated on their inherent negotiation behaviors with minimal prompt tuning.</p>
+<h2>Results</h2>
+<p>Substantial disparities in negotiation capability emerge across models. O3 demonstrates the strongest overall performance with highest price retention as seller and greatest discounts as buyer. GPT-3.5 consistently underperforms. Models with higher parameter counts within the Qwen2.5 family exhibit better negotiation outcomes, supporting scaling laws in this domain. Negotiation capacity correlates very strongly with general task performance on MMLU (r=0.93), substantially with mathematical ability MATH (r=0.87), and moderately with model size (r=0.53). Four key behavioral anomalies are identified: (1) Constraint Violation: weaker models frequently accept deals violating budget constraints, with Qwen2.5-7B breaching budget limits in over 10% of cases and reaching 18.5% out-of-wholesale violations under low budgets; (2) Excessive Payment: buyer agents sometimes overpay beyond retail price when budgets are disclosed early, with most models showing overpayment rates above zero except DeepSeek and strongest GPT models; (3) Negotiation Deadlock: weaker models struggle to recognize negotiation futility, with Qwen2.5-7B showing highest deadlock rates under low-budget conditions; (4) Early Settlement: buyer agents with higher budgets accept seller offers more readily, demonstrating an average 8.9% gap in price reduction rates between highest and lowest budget settings. A multi-armed bandit RL-based prompt optimization reduces out-of-budget errors dramatically (from 18.4% to 1.3% for Qwen2.5-7B) while showing limited gains on overpayment and deadlock. Economic impact analysis reveals clear disparities: weak buyers facing strong sellers overpay by approximately 2%, and weak sellers lose up to 14.13% profit against strong buyers. Model choice asymmetrically affects outcomes, with seller model choice having significantly larger impact on negotiation results than buyer choice.</p>
+<h2>Conclusion</h2>
+<p>The paper demonstrates that fully automated agent-to-agent negotiation in consumer markets is an inherently imbalanced game where parties using less capable models face systematic economic disadvantages. While automation can enhance efficiency, deploying AI agents in consumer settings poses significant risks stemming from LLM behavioral anomalies, including budget constraint violations, excessive payments, deadlocks, and suboptimal settlement strategies. These issues are not merely academic failures but translate into tangible financial losses for both individual users and aggregate market welfare. Users should exercise substantial caution when delegating high-stakes negotiation and transaction authority to AI agents, and practitioners should consider human-in-the-loop approaches, especially for financially vulnerable populations. Future work should move beyond risk diagnosis toward comprehensive mitigation strategies that jointly optimize performance and safety in real-world agent-mediated commerce platforms.</p>
+<h2>Related Work</h2>
+<h3>AI Negotiations</h3>
+<p>How well can LLMs negotiate? Negotiation Arena platform and analysis — Bianchi et al., 2024 — early empirical exploration of LLM negotiation capabilities on a structured negotiation platform.</p>
+<p>Cooperation, competition, and maliciousness: LLM-stakeholders interactive negotiation — Abdelnabi et al., 2024 — investigation of LLM behaviors in multi-stakeholder negotiation settings with competing objectives.</p>
+<p>Game-theoretic LLM: Agent workflow for negotiation games — Hua et al., 2024 — applies game-theoretic principles to structure LLM agent negotiation workflows.</p>
+<p>Negotiating with LLMs: prompt hacks, skill gaps, and reasoning deficits — Schneider et al., 2024 — analyzes failure modes and reasoning limitations in LLM negotiation.</p>
+<p>ACE: A LLM-based negotiation coaching system — Shea et al., 2024 — develops training and guidance system for LLM negotiation agents.</p>
+<p>Autoformalizing and simulating game-theoretic scenarios using LLM-augmented agents — Mensfelt et al., 2024 — uses LLM agents to simulate game-theoretic negotiation scenarios.</p>
+<p>Decoupling strategy and generation in negotiation dialogues — He et al., 2018 — supervised learning approach to separate negotiation strategy from dialogue generation.</p>
+<p>Deal or no deal? end-to-end learning for negotiation dialogues — Lewis et al., 2017 — neural sequence-to-sequence model for end-to-end negotiation dialogue.</p>
+<p>RLBOA: A modular reinforcement learning framework for autonomous negotiating agents — Bakker et al., 2019 — reinforcement learning framework for structured agent negotiation.</p>
+<p>Multiagent reinforcement learning with sparse interactions by negotiation and knowledge transfer — Zhou et al., 2016 — multi-agent RL with negotiation-based coordination.</p>
+<p>Non-cooperative games and game theory foundations — Nash, 2024; Raghavan, 1994 — foundational game theory for modeling strategic interactions.</p>
+<p>Perfect equilibrium in a bargaining model — Rubinstein, 1982 — alternating offers model as foundational bargaining framework.</p>
+<h3>AI Agent in Consumer Settings</h3>
+<p>Exploring the effect of artificial intelligence intellect on consumer decision delegation: The role of trust, task objectivity, and anthropomorphism — Song and Lin, 2024 — examines how AI agent intelligence characteristics shape consumer trust and delegation behavior.</p>
+<p>How do consumers trust and accept ai agents? an extended theoretical framework and empirical evidence — Zhao et al., 2025 — comprehensive framework for understanding consumer acceptance of AI agents.</p>
+<p>AI-extended consumer: technology, consumer, country differences in the formation of demand for ai-empowered consumer products — Frank et al., 2021 — cross-cultural investigation of consumer demand for AI-assisted products.</p>
+<p>Exploring the role of AI algorithmic agents: The impact of algorithmic decision autonomy on consumer purchase decisions — Fan and Liu, 2022 — analyzes how automation level affects consumer purchase decision-making.</p>
+<p>AI-chatbots on the services frontline addressing the challenges and opportunities of agency — Chong et al., 2021 — examines chatbot agents as service intermediaries and their impact on consumer experience.</p>
+<p>AI agents under threat: A survey of key security challenges and future pathways — Deng et al., 2025 — comprehensive survey of security threats to autonomous AI agents.</p>
+<p>Position: Standard benchmarks fail–LLM agents present overlooked risks for financial applications — Zichen Chen et al., 2025 — highlights financial risks of LLM agents absent from standard evaluations.</p>
+<p>Why do multi-agent LLM systems fail? — Cemri et al., 2025 — investigates failure modes in multi-agent LLM systems.</p>
+<p>Exploring expert failures improves LLM agent tuning — Lan et al., 2025 — learning from failure cases to improve agent performance.</p>
+<p>Which agent causes task failures and when? on automated failure attribution of LLM multi-agent systems — Zhang et al., 2025 — attribution analysis for failures in multi-agent systems.</p>
+<p>FishBargain: An LLM-empowered bargaining agent for online fleamarket platform sellers — Kong et al., 2025 — seller-side autonomous bargaining agent for real online marketplace.</p>
+<p>Recommendation agents: an analysis of consumers' risk perceptions toward artificial intelligence — Rohden and Zeferino, 2023 — analyzes consumer risk perception toward autonomous AI agents.</p>
+<p>Intelligent agents and consumer protection — Feliu, 2001 — legal and consumer protection perspectives on autonomous agents.</p>
+<p>Consumer law and artificial intelligence — Jabłonowska et al., 2018 — policy and legal frameworks for AI in consumer contexts.</p>
+<p>Is your LLM-based multi-agent a reliable real-world planner? exploring fraud detection in travel planning — Yao et al., 2025 — evaluates reliability and failure modes in real-world multi-agent planning.</p>
+<p>Fraud-R1: A multi-round benchmark for assessing the robustness of LLM against augmented fraud and phishing inducements — Yang et al., 2025 — benchmark for adversarial robustness of LLM agents.</p>
+<h3>General LLM Capabilities and Scaling</h3>
+<p>The landscape of emerging AI agent architectures for reasoning, planning, and tool calling: A survey — Masterman et al., 2024 — comprehensive survey of modern LLM-based agent architectures.</p>
+<p>Scaling laws for neural language models — Kaplan et al., 2020 — foundational work on scaling laws and their implications for model capabilities.</p>
+<p>Training compute-optimal large language models — Hoffmann et al., 2022 — optimal allocation of compute between model size and training data.</p>
+<p>When scaling meets LLM finetuning: The effect of data, model and finetuning method — Zhang et al., 2024 — interaction effects between model scale and finetuning strategies.</p>
+<p>DeepSeek LLM: Scaling open-source language models with longtermism — Bi et al., 2024 — open-source scaling approach and its implications.</p>
+<p>The agent company: Benchmarking LLM agents on consequential real world tasks — Xu et al., 2024 — large-scale benchmark of LLM agents on real-world task consequences.</p>
+<p>GPT-4o system card — Hurst et al., 2024 — technical documentation of OpenAI GPT-4o capabilities and limitations.</p>
+<p>Qwen2.5 technical report — Yang et al., 2024a — technical report on Alibaba Qwen2.5 model series.</p>
+<p>DeepSeek-V3 technical report — Liu et al., 2024 — technical report on DeepSeek-V3 model.</p>
+<p>DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning — Guo et al., 2025 — reinforcement learning approach to enhance LLM reasoning.</p>
+<p>Measuring massive multitask language understanding — Hendrycks et al., 2020 — MMLU benchmark for general language understanding.</p>
+<p>MATH: A dataset for evaluating mathematical problem solving — Hendrycks et al., 2021 — mathematical reasoning evaluation benchmark.</p>
+<p>GPQA: A graduate-level Google-proof Q&amp;A benchmark — Rein et al., 2024 — challenging scientific reasoning evaluation.</p>
+<p>What makes your model a low-empathy or warmth person: Exploring the origins of personality in LLMs — Yang et al., 2024b — investigation of personality traits and behaviors in LLMs.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>

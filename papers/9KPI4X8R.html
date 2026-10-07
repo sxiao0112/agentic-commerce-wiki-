@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bittensor Agent Arenas as a Trajectory Primitive: Distilling a Shopping Agent from ShoppingBench Subnet Traces</title>
+<style>
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+*{box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
+ box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
+nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
+nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
+nav.subbar a{margin-right:.9rem;}
+nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.1rem;margin-top:1.5rem;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
+pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
+pre code{background:none;padding:0;}
+blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
+th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th{background:#f7f7f7;}
+table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
+table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+ul,ol{padding-left:1.4rem;}
+li{margin:.15rem 0;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+</style>
+</head>
+<body>
+<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<div class="wrap">
+<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../index.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>9KPI4X8R</td></tr><tr><th>wiki_id</th><td>9KPI4X8R</td></tr><tr><th>aliases</th><td>[9KPI4X8R]</td></tr><tr><th>slug</th><td>bansal-2026-bittensor-agent-arenas-trajectory</td></tr><tr><th>title</th><td>&quot;Bittensor Agent Arenas as a Trajectory Primitive: Distilling a Shopping Agent from ShoppingBench Subnet Traces&quot;</td></tr><tr><th>authors</th><td>[&quot;Bansal, Shardul&quot;, &quot;Schilbe, Seth&quot;, &quot;Barnes, Jarrod&quot;]</td></tr><tr><th>year</th><td>2026</td></tr><tr><th>paper_type</th><td>empirical-method</td></tr><tr><th>venue</th><td>arXiv</td></tr><tr><th>url</th><td>&quot;http://arxiv.org/abs/2606.10064&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2606.10064&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/arXiv.2606.10064&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;agentic post-training&quot;, &quot;trajectory data generation&quot;, &quot;Bittensor subnets&quot;, &quot;shopping agents&quot;, &quot;ShoppingBench&quot;, &quot;incentive-aligned data&quot;, &quot;per-trajectory judging&quot;]</td></tr><tr><th>updated</th><td>2026-06-25</td></tr></tbody></table>
+<h1>Bittensor Agent Arenas as a Trajectory Primitive: Distilling a Shopping Agent from ShoppingBench Subnet Traces</h1>
+<h2>Contribution</h2>
+<p>The authors argue that a deliberately engineered incentive-aligned agent arena can be engineered as a trajectory-data generator for small-model agentic post-training, and demonstrate this through ORO Subnet 15 (SN15), a Bittensor deployment of the ShoppingBench benchmark. They characterize Bittensor agent subnets as a new training-data primitive with three structural properties: incentive-aligned diversity from continuous independent competition, per-trajectory judging by an LLM reasoning judge, and rotating held-out problems guarded against memorization. The authors propose a structural-quality filter to convert the raw subnet trajectory firehose into a trainable corpus by selecting agentic trajectories (where the language model itself emits tool calls) and rejecting sub-task trajectories (where tool calls are deterministically generated). They post-train Qwen3-4B on the filtered subnet-generated corpus using a five-stage pipeline closely matched to the published ShoppingBench SFT-then-GRPO recipe, achieving a 24.7-point ASR gain on a leak-cluster-guarded held-out partition.</p>
+<h2>Research Question</h2>
+<p>Can a Bittensor subnet specifically engineered as an agent arena generate the right shape of judged multi-turn trajectories for small-model agentic post-training, and can those trajectories post-train a small open model into a competent shopping agent?</p>
+<h2>Method</h2>
+<p>SN15 combines three mechanisms to produce trainable trajectories. The race mechanism sustains discover-then-share pressure through daily promotion, twelve-hour submission cooldowns, and source-code embargo: many independent teams are continuously paid to discover policies competitors have not found. An LLM reasoning judge independently scores each trajectory on reasoning quality, assigning a coefficient that multiplies outcome scores before aggregation. Rotating held-out problems with leak-cluster guards group paraphrased or attribute-reordered variants of the same underlying problem to defeat surface-form memorization. The structural-quality filter has three stages: a reasoning-coefficient gate drops trajectories below a fixed quality threshold, a format-validity gate hard-rejects malformed traces on five structural invariants, and a deduplication and ranking pass picks one to two trajectories per problem by structural-quality signals (think-and-tool-call depth, search-query reformulation count, verification-step presence, step-shape regularity). An axis-A versus axis-B split retains only agentic trajectories in which the language model itself emits tool calls; axis-B trajectories in which tool calls are deterministically generated are filtered out. The post-training pipeline proceeds in five stages on Qwen3-4B: one-epoch LoRA SFT on the structural-filter corpus, rejection-sampled re-SFT with k=8 rollouts, continued teacher-SFT on Sonnet 4.6 teacher rollouts (substituting step-wise OPD), KTO preference refinement, and Dr. GRPO turn-level RL on top of the post-teacher-SFT checkpoint.</p>
+<h2>Setup</h2>
+<p>The paper evaluates agents against ShoppingBench, a multi-turn tool-use benchmark where agents are given natural-language shopping intents and scored on whether their final recommendation satisfies price, service, SKU, and attribute constraints. The main evaluation is on a 75-problem leak-cluster-guarded held-out partition scored production-strict through a 7-tool ORO ShoppingBench harness. The base model is Qwen3-4B. Training uses common configuration with one epoch LoRA, learning rate sweep over {1e-5, 3e-5, 1e-4}, max-length 14336, SDPA attention, and gradient checkpointing. Rejection-sampled re-SFT samples k=8 rollouts per problem at temperature 0.9. Teacher trajectories come from running Claude Sonnet 4.6 through held-out evaluation on a 498-problem race-bank training set, with roughly 210 scoring under production-strict. KTO uses β=0.02, learning rate 5e-6, one epoch. Dr. GRPO v19 (the reported variant) uses B=8, learning rate 5e-7, β=0.2, with a blended outcome-plus-tool-match reward where the tool-match component grades policy per-step choices against a teacher trajectory.</p>
+<h2>Results</h2>
+<p>On the 75-problem leak-cluster-guarded held-out partition, Qwen3-4B base scores 18.0% ASR. The ORO SFT stack lifts this to 42.7%, approaching the published synthetic-data SFT-only baseline of 43.6% on the same model. The published Qwen3-4B SFT+GRPO bar stands at 48.7%. The SFT stack has measurable pass@k headroom: pass@8=53.3% versus pass@1=34.8% on the held-out partition. KTO refinement on top of the SFT stack produces no net overall lift (both score 32 of 75 problems) but redistributes probability mass within buckets: voucher ASR rises by 4.3 percentage points, product ASR falls by 3.6 percentage points, shop ASR is flat. Dr. GRPO v19 demonstrates process improvement within twenty optimization steps: in-training rule score lifts from 0.02 to 0.42, hallucination count falls from fourteen to zero, partial successes rise from zero to twenty-four of forty-eight on a held-out diagnostic. However, strict exact-match success rate remains zero across all twenty steps. The dominant constraint on the headline number is the axis-A versus axis-B data skew: the daily SN15 firehose (12,000 to 27,000 trajectories per day) is order-of-magnitude dominated by axis-B trajectories, of which only the small minority come from agentic baselines or direct forks.</p>
+<h2>Conclusion</h2>
+<p>Bittensor agent subnets, when deliberately engineered with race mechanics, per-trajectory LLM judging, and rotating held-out problems, produce a structurally distinct shape of training data for agentic post-training that differs from both frontier-synthesized data (which collapses long-tail diversity) and unfiltered production logs (which are unjudged and contaminated by shortcuts). The SN15 subnet produces trajectories with incentive-aligned diversity, per-trajectory reasoning-quality supervision, and genuine held-out evaluation. A small-model agentic post-training pipeline can be matched to such data: the structural-quality filter successfully converts the raw firehose into a trainable corpus, and the filtered corpus successfully post-trains Qwen3-4B to match the published SFT-only baseline performance using a small fraction of a single day of subnet output. The primary leverage for closing the remaining gap to the published SFT+GRPO bar lies on the data side: bringing the order-of-magnitude-larger axis-B firehose into training via corpus-side rewriting or subnet-side incentive rebalancing.</p>
+<h2>Related Work</h2>
+<h3>Agentic post-training corpora</h3>
+<p>ToolLLM and ToolBench: Introduced large-scale API tool-use SFT data generated by frontier-model role-play — one-shot batch generation, outcome-only supervision, offline held-out construction.</p>
+<p>ToolACE: Adds self-evolution loop to frontier-model synthesis.</p>
+<p>Magpie: Generalizes the synthetic-data recipe to alignment data.</p>
+<p>Tulu 3: Demonstrates RLVR with external verifiers outperforms recipes without per-trajectory verification on synthetic data.</p>
+<p>DeepSeek-R1: Demonstrates that verifier-grounded RL materially outperforms recipes that do not include an external verifier.</p>
+<p>Model collapse literature (Shumailov et al.): Published research showing pure self-distillation reliably collapses long-tail data distribution before degrading aggregate quality.</p>
+<h3>Production-trajectory post-training in vertical coding agents</h3>
+<p>Cursor Composer 2.5: Post-trains open base with targeted SFT and on-policy RL against rollouts in controlled coding environment; feeds successful RL trajectories back into SFT pool.</p>
+<p>Cognition SWE-1.5: Matched recipe with three grading mechanisms (test suites, code-quality rubrics, agentic grading via browser testing) in place of single outcome score; explicitly emphasizes that production trajectories, not synthetic data, drive the recipe.</p>
+<h3>Commerce and shopping agents</h3>
+<p>ShoppingBench: Established the Qwen3-4B SFT-then-GRPO recipe and published a synthetic GPT-4.1 trajectory corpus; the baseline this work measures itself against.</p>
+<p>Shopify Flow: Published engineering write-up reporting matched recipe (synthetic trajectories plus LLM judge); explicitly acknowledges offline benchmarks mask substantial real-world failure modes.</p>
+<p>Amazon Rufus: Described in public communications as retrieval-augmented shopping assistant; no published methodology.</p>
+<h3>Incentivised and decentralised data generation</h3>
+<p>LMSYS Chatbot Arena: Crowdsources continuous head-to-head preference judgements; pairwise preference supervision rather than multi-turn judged trajectory; uncompensated population.</p>
+<p>Bittensor sibling subnets: Run continuous competitions on different task surfaces (inference-cost minimisation, pretraining races, crowdsourced annotation); produce data shapes not directly usable as agent trajectories.</p>
+<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+</div>
+</body>
+</html>
