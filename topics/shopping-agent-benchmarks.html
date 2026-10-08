@@ -81,7 +81,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
 
 <h3>Some failed tasks involve facts the agent did not check</h3>
 <p>In <a href="../papers/GUETZIKA.html">Shopping Companion</a>, 39.1% of the 69 failed GPT-5 runs were classified as unverified attributes: the agent asserted product features without confirming them through the product-detail tool. <a href="https://arxiv.org/html/2603.14864v3#A6.SS2">Appendix F.2, Table 7</a>.</p>
-<p>AgenticShop also reports invalid or irrelevant product links, which limit the evidence available for checking recommendations. This measures link quality rather than the agent's checking process. <a href="https://arxiv.org/html/2602.12315v1#S5.SS2">Section 5.2, Table 6</a>.</p>
+<p><a href="../papers/2EGFPT3I.html">AgenticShop</a> also reports invalid or irrelevant product links, which limit the evidence available for checking recommendations. This measures link quality rather than the agent's checking process. <a href="https://arxiv.org/html/2602.12315v1#S5.SS2">Section 5.2, Table 6</a>.</p>
 
 <h3>A recommendation's explanation has its own evaluation</h3>
 <p><a href="../papers/72GYW9VP.html">ShoppingComp</a> separately scores product fit, coverage of shopper demands, and whether each stated reason is factually correct and logically sound. ChatGPT DeepResearch covers more demands than GPT-5.2 but scores lower on explanation validity in this comparison. <a href="https://arxiv.org/html/2511.22978v2#S4.SS2">Section 4.2, Table 2</a>.</p>
@@ -89,11 +89,11 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
 
 <h3>Personalization changes what success must include</h3>
 <p><a href="../papers/G994SNDV.html">ShopperBench</a>'s persona-guided policies have higher reported alignment scores, take more steps, and have slightly lower task success than its task-focused policy. Its separate scores capture both the final choice and how the agent shops.</p>
-<p>AgenticShop checks recommended products against shopper-specific requirements and preferences. Shopping Companion scores preference recovery from past conversations separately, then requires preference matching for overall task success. Personalization can therefore be evaluated separately or included in the task's success conditions.</p>
+<p><a href="../papers/2EGFPT3I.html">AgenticShop</a> checks recommended products against shopper-specific requirements and preferences. <a href="../papers/GUETZIKA.html">Shopping Companion</a> scores preference recovery from past conversations separately, then requires preference matching for overall task success. Personalization can therefore be evaluated separately or included in the task's success conditions.</p>
 
 <h3>Reliable completion and safe advice need different checks</h3>
 <p><a href="../papers/E2XIQ7D7.html">ECom-Bench</a> reports GPT-4o success of 44.03% for one attempt and 16.98% when all three attempts must succeed. This tests repeated reliability in customer support.</p>
-<p>ShoppingComp instead checks whether responses recognize product hazards and satisfy a safety requirement; the tested models score below experts. Repeated task success and safe advice are different evaluation goals.</p>
+<p><a href="../papers/72GYW9VP.html">ShoppingComp</a> instead checks whether responses recognize product hazards and satisfy a safety requirement; the tested models score below experts. Repeated task success and safe advice are different evaluation goals.</p>
 
 <h2>What the studies add about improvement and evaluation</h2>
 <h3>Training can improve one tested workflow without proving general capability</h3>
