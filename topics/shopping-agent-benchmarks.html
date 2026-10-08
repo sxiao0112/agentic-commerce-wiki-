@@ -47,6 +47,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
   .flow li:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-1.65rem;transform:translateX(-50%);}
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto;}}
+.study-results{list-style:none;padding:0;}.study-results>li{margin:1rem 0;padding:1rem;border:1px solid var(--border);border-radius:8px;}.study-results h3{margin:0 0 .6rem;}.study-results p{margin:.45rem 0;}
 </style>
 </head>
 <body>
@@ -84,22 +85,24 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
 <p>This flow summarizes the evaluation design used by WebShop and later benchmarks. Some studies use all four types of record. Other studies use only the records that fit their task.</p>
 </figure>
 
-<h2>Three design choices</h2>
-<ul class="evidence-list">
-<li><h3>Live site or sandbox</h3><p>Live sites contain current content, but the content and layout can change. Sandboxes give repeatable tests, but they contain a fixed set of products. <a href="../papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">ShopGym</a> creates synthetic twin shops from live storefronts. The authors report that agent results on the twins positively track results on the source sites.</p></li>
-<li><h3>Single shop or many shops</h3><p>WebShop tests one simulated store. <a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">WebMall</a> uses four different shops and 91 comparison-shopping tasks. This setup tests search across different product descriptions, category trees, and interfaces.</p></li>
-<li><h3>Simple or compound request</h3><p><a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">DeepShop</a> varies product attributes, filters, and sorting preferences across 600 queries. <a href="../papers/P97GR95W.html" title="ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents [P97GR95W]">ShoppingBench</a> uses 3,310 instructions and intent-specific constraints over more than 2.5 million products.</p></li>
-<li><h3>One score or several scores</h3><p>Task success alone does not show every failure. Later work also measures product relevance, constraint satisfaction, persona fit, path consistency, reasoning validity, safety, and repeated-run success.</p></li>
-</ul>
-
 <h2>What the studies report</h2>
-<p>The studies consistently report large limits, but they measure those limits in different ways.</p>
-<ul>
-<li><strong>WebShop:</strong> The imitation-learning agent reached 29.1% success. Human experts reached 59.6%. The paper identifies product-option selection as the largest measured gap. <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a></li>
-<li><strong>DeepShop:</strong> Browser Use reached 32% overall success. Web-agent performance averaged 10% on the hard queries. Agents often met one requirement but failed to meet attributes, filters, and sorting requirements together. <a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a></li>
-<li><strong>ShoppingBench:</strong> GPT-4.1 stayed below 50% success. The study reports errors in product attributes, user constraints, product availability, and knowledge reasoning. <a href="../papers/P97GR95W.html" title="ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents [P97GR95W]">Wang et al., 2025</a></li>
-<li><strong>WebMall:</strong> The best tested configurations completed 75% of basic tasks and 53% of advanced tasks. Accessibility-tree observations were most important for navigation and task completion in this study. <a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a></li>
-<li><strong>ShoppingComp:</strong> The current paper reports 120 tasks and 1,026 expert-defined scenarios. GPT-5 reached 11.22% on the paper's headline product-retrieval measure. The authors also report fragile safety behavior and a gap between model and human results. <a href="../papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a></li>
+<p>Each study tests a different shopping task. Its results apply to the systems and tasks it evaluated. The percentages below use different measures and should not be compared as a ranking of agents.</p>
+<ul class="study-results">
+<li><h3>WebShop</h3>
+<p><strong>Tests:</strong> Can an AI agent find, select options for, and buy an item that meets a shopper's requirements in a simulated online store?</p>
+<p><strong>Findings:</strong> An agent trained to copy human shopping demonstrations completed 29.1% of tasks. Human experts completed 59.6%. Selecting the correct product options, such as size or color, was the largest measured gap. <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a></p></li>
+<li><h3>DeepShop</h3>
+<p><strong>Tests:</strong> Can AI shopping systems satisfy requests that combine product features, search filters, and sorting preferences on real shopping websites?</p>
+<p><strong>Findings:</strong> Browser Use, a system that operates a web browser, completed 32% of tasks overall. The tested browser-operating agents averaged 10% success on hard requests. Agents often met one requirement but failed to satisfy the product features, filters, and sorting preferences together. <a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a></p></li>
+<li><h3>ShoppingBench</h3>
+<p><strong>Tests:</strong> Can AI agents find products, use background facts to identify what a request refers to, find a seller with several requested items, and apply coupons within a budget? The test uses a simulated shopping environment with real product data.</p>
+<p><strong>Findings:</strong> The GPT-4.1-based agent completed fewer than half of the tasks. Reported errors included selecting products with the wrong features, missing shopper requirements, stopping before finding all requested products, and using incorrect background facts to decide what to buy. <a href="../papers/P97GR95W.html" title="ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents [P97GR95W]">Wang et al., 2025</a></p></li>
+<li><h3>WebMall</h3>
+<p><strong>Tests:</strong> Can AI agents compare products and prices across four simulated online shops and complete shopping tasks, including cart and checkout actions?</p>
+<p><strong>Findings:</strong> The best tested configurations completed 75% of basic tasks and 53% of advanced tasks. Access to a structured description of page elements, called an <em>accessibility tree</em>, was most important for navigation and task completion in this study. <a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a></p></li>
+<li><h3>ShoppingComp</h3>
+<p><strong>Tests:</strong> Can AI shopping assistants find products on the open web that meet several requirements, write evidence-based comparison reports, and recognize product safety risks?</p>
+<p><strong>Findings:</strong> The tested assistants struggled to find products that met all requirements. Their product-finding and safety results remained below those of human experts. The authors also report that safety decisions varied across repeated attempts. <a href="../papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a></p></li>
 </ul>
 
 <h2>Personalization and long tasks</h2>
