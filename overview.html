@@ -39,6 +39,21 @@ ul,ol{padding-left:1.4rem;}
 li{margin:.15rem 0;}
 hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
 footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+
+/* UCP example */
+.flow-note{border-left:4px solid var(--accent);background:#f5f8fd;padding:.85rem 1rem;margin:1rem 0;}
+.flowchart{margin:1.25rem 0;padding:1.1rem;border:1px solid var(--border);border-radius:10px;background:#f8fafc;}
+.flowchart figcaption{font-weight:700;font-size:1.05rem;margin-bottom:.9rem;}
+.flowchart ol{list-style:none;counter-reset:step;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem .85rem;margin:0;padding:0;}
+.flowchart li{counter-increment:step;position:relative;margin:0;padding:.8rem .75rem .75rem 2.75rem;border:1px solid #cbd7e8;border-radius:8px;background:#fff;min-height:8.5rem;}
+.flowchart li::before{content:counter(step);position:absolute;left:.7rem;top:.78rem;width:1.35rem;height:1.35rem;border-radius:50%;background:#143968;color:#fff;text-align:center;line-height:1.35rem;font-size:.78rem;font-weight:700;}
+.flowchart li::after{content:"→";position:absolute;right:-1.05rem;top:42%;font-size:1.3rem;color:#315c90;font-weight:700;}
+.flowchart li:nth-child(3)::after{content:"↓";right:48%;top:auto;bottom:-1.1rem;display:block;}
+.flowchart li:last-child::after{display:none;}
+.flowchart strong{display:block;line-height:1.3;margin-bottom:.35rem;}
+.flowchart span{display:block;font-size:.92rem;line-height:1.45;}
+.flowchart .flow-source{font-size:.8rem;color:var(--muted);margin:.85rem 0 0;}
+@media(max-width:700px){.flowchart ol{grid-template-columns:1fr;gap:1.05rem}.flowchart li{min-height:0}.flowchart li::after{content:"↓";display:block!important;right:48%;top:auto;bottom:-1.1rem}.flowchart li:last-child::after{display:none!important}}
 </style>
 </head>
 <body>
@@ -48,6 +63,33 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-
 
 <h1>Overview — Area Map</h1>
 <p>The map of discovered areas and their topics. Scope: the <strong>Agentic Commerce</strong> Zotero collection. Each topic links to its <code>topics/</code> page. Built incrementally as papers are ingested.</p>
+
+<section id="typical-purchase" aria-labelledby="typical-purchase-title">
+<h2 id="typical-purchase-title">What an agentic purchase can look like</h2>
+<p>A person can ask an AI agent to shop on their behalf. The agent can then use the functions that a business makes available. The <a href="https://ucp.dev/documentation/core-concepts/">Universal Commerce Protocol (UCP) core concepts</a> describe one way to connect these participants. The example below is a UCP-style purchase, not a required path for every agent or store.</p>
+<figure class="flowchart" aria-labelledby="ucp-flow-caption">
+<figcaption id="ucp-flow-caption">Illustrative UCP-style purchase flow</figcaption>
+<ol>
+<li><strong>State the goal</strong><span>A person or organization gives the agent a shopping request and any limits. UCP calls the agent's side the <em>platform</em>.</span></li>
+<li><strong>Discover the business</strong><span>The platform reads the business profile at <code>/.well-known/ucp</code> to learn which services, capabilities, and payment handlers it offers.</span></li>
+<li><strong>Agree on supported functions</strong><span>The business selects matching capabilities and versions from both profiles. It removes extensions whose parent capability is absent.</span></li>
+<li><strong>Shop through supported services</strong><span>The agent can use available catalog, cart, or checkout functions. The business handles each request and reports the active capabilities.</span></li>
+<li><strong>Provide payment details, if needed</strong><span>A credential provider can issue a token or mandate. The platform sends it to the business; the business uses its payment provider to charge.</span></li>
+<li><strong>Complete the transaction</strong><span>The business completes checkout and can expose order events if it supports the order capability.</span></li>
+</ol>
+<p class="flow-source">The sequence is an explanatory synthesis of UCP's roles, discovery, capability negotiation, shopping capabilities, and payment architecture. Actual steps depend on the capabilities and payment handler that both sides support.</p>
+</figure>
+<div class="flow-note"><strong>Who does what:</strong>
+<ul>
+<li><strong>Platform or agent:</strong> acts for a person, organization, or other principal and invokes supported business functions.</li>
+<li><strong>Business:</strong> publishes its profile, processes requests, and usually remains the merchant of record for a purchase.</li>
+<li><strong>Credential provider:</strong> protects sensitive user data and can issue a payment token.</li>
+<li><strong>Payment service provider:</strong> processes the charge for the business.</li>
+</ul>
+</div>
+<p>Some UCP features are optional. A business may offer cart management, fulfillment choices, discounts, identity linking, or consent capture. UCP also supports both human-in-the-loop and fully autonomous agent interactions. The platform can use a service only when the parties support a compatible capability and version.</p>
+</section>
+
 <h2>Areas → Topics</h2>
 <h3>Benchmarks &amp; environments</h3>
 <ul>
