@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Realistic web environments for autonomous agents</title>
 <style>
-:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;--panel:#f7f9fc;--step:#eaf1fc;}
 *{box-sizing:border-box;}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
  line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
@@ -20,65 +20,189 @@ nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
 nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
 nav.subbar a{margin-right:.9rem;}
 nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
-h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
-h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
-h3{font-size:1.1rem;margin-top:1.5rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 .65rem;}
+h2{font-size:1.3rem;margin-top:2.25rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
+h3{font-size:1.08rem;margin:1.4rem 0 .35rem;}
+p{margin:.65rem 0;}
 a{color:var(--accent);text-decoration:none;}
 a:hover{text-decoration:underline;}
+a:focus-visible{outline:3px solid #f2b134;outline-offset:2px;}
 span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
 code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
 pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
 pre code{background:none;padding:0;}
 blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
 table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
-th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
+th,td{border:1px solid var(--border);padding:.55rem .65rem;text-align:left;vertical-align:top;}
 th{background:#f7f7f7;}
 table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
 table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
 ul,ol{padding-left:1.4rem;}
-li{margin:.15rem 0;}
-hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+li{margin:.3rem 0;}
+.lede{font-size:1.05rem;color:#333;max-width:72ch;}
+.key-points{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:.8rem 1rem;margin:1.25rem 0;}
+.key-points h2{font-size:1.08rem;border:0;margin:0 0 .3rem;padding:0;}
+.key-points ul{margin:.3rem 0;}
+.table-scroll{overflow-x:auto;}
+figure.flowchart{margin:1.4rem 0;padding:1rem;background:var(--panel);border:1px solid var(--border);border-radius:8px;}
+.flowchart ol{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.25rem;margin:0;padding:0;counter-reset:flow;}
+.flowchart li{counter-increment:flow;position:relative;background:#fff;border:2px solid #8aa9d8;border-radius:7px;padding:.75rem .65rem .75rem;text-align:center;font-size:.9rem;line-height:1.35;min-height:6.2rem;}
+.flowchart li::before{content:counter(flow);display:block;width:1.55rem;height:1.55rem;line-height:1.55rem;margin:0 auto .4rem;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;}
+.flowchart li:not(:last-child)::after{content:"→";position:absolute;right:-1.05rem;top:42%;color:var(--accent);font-size:1.25rem;font-weight:700;}
+.flowchart strong{display:block;margin-bottom:.18rem;}
+figcaption{margin-top:.8rem;color:var(--muted);font-size:.84rem;}
+.source-note{font-size:.86rem;color:var(--muted);}
 footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+@media (max-width:720px){
+ .flowchart ol{grid-template-columns:1fr;gap:1.25rem;}
+ .flowchart li{min-height:0;text-align:left;padding-left:3.1rem;}
+ .flowchart li::before{position:absolute;left:.75rem;top:.7rem;text-align:center;}
+ .flowchart li:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-1.25rem;}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;}}
 </style>
 </head>
 <body>
 <nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
 <div class="wrap">
-<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<nav class="subbar" aria-label="Wiki sections"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
 
+<main>
 <h1>Realistic web environments for autonomous agents</h1>
-<p>Self-hosted and simulated web environments, with executable tasks and automatic reward functions, for training and evaluating agents that browse, search, and transact like humans.</p>
-<h2>Definition</h2>
-<p>A web environment is a navigable set of websites an agent acts on through browser-like actions, paired with tasks and an automatic check for whether each task actually succeeded. <a href="../papers/8T9KKXKK.html" title="WebArena: A Realistic Web Environment for Building Autonomous Agents [8T9KKXKK]">Zhou et al., 2024</a> builds WebArena as a fully functional, self-hosted environment of four websites spanning e-commerce, a social forum, collaborative software development, and content management, enriched with utility tools and knowledge resources. <a href="../papers/8T9KKXKK.html" title="WebArena: A Realistic Web Environment for Building Autonomous Agents [8T9KKXKK]">Zhou et al., 2024</a> evaluates by functional correctness, checking whether the intended outcome is reached rather than whether the action sequence matches a reference. Tasks that are unachievable are included, and agents are scored on whether they appropriately refuse rather than hallucinate an answer <a href="../papers/8T9KKXKK.html" title="WebArena: A Realistic Web Environment for Building Autonomous Agents [8T9KKXKK]">Zhou et al., 2024</a>.</p>
-<p>The observation an agent sees is a design choice. <a href="../papers/8T9KKXKK.html" title="WebArena: A Realistic Web Environment for Building Autonomous Agents [8T9KKXKK]">Zhou et al., 2024</a> represents pages as accessibility trees with element IDs, so agents select elements by ID. <a href="../papers/VIP29ZR5.html" title="VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks [VIP29ZR5]">Koh et al., 2024</a> extends this to visual grounding with VisualWebArena, 910 tasks where visual understanding is necessary rather than supplementary. <a href="../papers/VIP29ZR5.html" title="VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks [VIP29ZR5]">Koh et al., 2024</a> introduces a Set-of-Marks observation that automatically annotates every interactable element with a bounding box and a unique ID, and shows it improves vision-language models on visually dense sites.</p>
-<p>The earliest large-scale environment in this collection is WebShop. <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a> builds a simulated e-commerce site of 1.18 million real products scraped from Amazon, with 12,087 crowdsourced shopping instructions and an automatically computable reward over attributes, options, price, and product type. <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a> avoids expensive human-in-the-loop evaluation by making the reward programmatic, and demonstrates sim-to-real transfer by deploying WebShop-trained agents directly on Amazon and eBay without fine-tuning.</p>
-<p>Two newer environments target reproducible, controllable evaluation. <a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a> builds WebMall, the first offline multi-shop benchmark, with four electronics shops populated from real Common Crawl product offers and 91 comparison-shopping tasks. <a href="../papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a> builds ShopGym, a framework that converts live storefronts into anonymized sandbox shops through specification synthesis and staged code generation, then synthesizes grounded tasks validated against the generated shops.</p>
-<h2>State of the area (synthesis)</h2>
-<p>The defining tension in this area is realism versus reproducibility. Live websites are diverse and authentic but non-stationary and irreproducible; sandboxes are controllable but capture only a narrow slice of real e-commerce <a href="../papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a>. Each environment in this collection picks a point on that spectrum. <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a> and <a href="../papers/8T9KKXKK.html" title="WebArena: A Realistic Web Environment for Building Autonomous Agents [8T9KKXKK]">Zhou et al., 2024</a> both self-host realistic content while keeping evaluation deterministic and automatic. <a href="../papers/8T9KKXKK.html" title="WebArena: A Realistic Web Environment for Building Autonomous Agents [8T9KKXKK]">Zhou et al., 2024</a> frames the gap it fills as the oversimplification, lack of dynamic interaction, and surface-form scoring of earlier environments.</p>
-<p>Functional, execution-based reward is now the shared evaluation paradigm. <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a> computes reward from matched attributes, options, and price. <a href="../papers/8T9KKXKK.html" title="WebArena: A Realistic Web Environment for Building Autonomous Agents [8T9KKXKK]">Zhou et al., 2024</a> inspects intermediate execution states such as databases, URLs, and page content to verify outcomes. <a href="../papers/VIP29ZR5.html" title="VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks [VIP29ZR5]">Koh et al., 2024</a> adds visual reward primitives, including vision-language question answering and structural image similarity, so open-ended visual tasks can be checked automatically. This lineage moves the field away from action-sequence matching toward did-the-task-succeed scoring.</p>
-<p>Observation modality is a recurring axis of comparison. <a href="../papers/VIP29ZR5.html" title="VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks [VIP29ZR5]">Koh et al., 2024</a> finds multimodal agents substantially outperform text-only agents on visually grounded tasks, and that Set-of-Marks helps the strongest vision-language model on dense sites. <a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a> reports a complementary result for comparison shopping. There the accessibility tree is most important for task completion, screenshots alone are insufficient, and vision-only agents can fail entirely when they cannot map rendered pixels to navigation elements. Read together, these suggest vision helps when tasks are inherently visual, but structural grounding remains essential for reliable navigation <a href="../papers/VIP29ZR5.html" title="VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks [VIP29ZR5]">Koh et al., 2024</a> <a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a>.</p>
-<p>A large and persistent agent-human gap runs through every environment. WebShop agents reach 29% success against 59% for human experts <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a>. WebArena's best agent reaches 11.7% against 78.2% for humans <a href="../papers/8T9KKXKK.html" title="WebArena: A Realistic Web Environment for Building Autonomous Agents [8T9KKXKK]">Zhou et al., 2024</a>. VisualWebArena's best agent reaches 16.4% against 88.7% for humans <a href="../papers/VIP29ZR5.html" title="VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks [VIP29ZR5]">Koh et al., 2024</a>. On the multi-shop tasks of <a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a>, frontier models stay below 65% completion on the hardest categories of cheapest-product and vague-product search. The shared failure modes are concrete. Agents struggle with search-query reformulation, option selection, exploration, and long-horizon memory <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a>. They show observation bias and inconsistency across task variants of the same template <a href="../papers/8T9KKXKK.html" title="WebArena: A Realistic Web Environment for Building Autonomous Agents [8T9KKXKK]">Zhou et al., 2024</a>. They loop between pages and abandon tasks too early <a href="../papers/VIP29ZR5.html" title="VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks [VIP29ZR5]">Koh et al., 2024</a>.</p>
-<p>The newest work shifts from authoring one fixed environment to generating environments at scale. <a href="../papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a> grounds generation in observed real shops, writing an anonymized specification during an exploration phase, then synthesizing calibrated sandbox shops and validated tasks from it. <a href="../papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a> reports that agent success on synthetic twins positively tracks success on the live storefronts they imitate, and that fully synthetic composite shops yield benchmarks of comparable difficulty. This is a methodological answer to the realism-reproducibility tension rather than a new website, and it positions environment construction itself as a research target.</p>
-<p>These environments are the substrate the rest of agentic commerce evaluates against. The e-commerce environments here, especially WebShop and WebMall, anchor the broader space of <a href="shopping-agent-benchmarks.html" title="Shopping and e-commerce agent benchmarks">shopping-agent-benchmarks</a>, while the visual and multi-shop observation findings inform <a href="tool-agent-user-interaction.html" title="Tool-agent-user interaction and conversational service agents">tool-agent-user-interaction</a> and the simulated-market work in <a href="agentic-marketplaces.html" title="Two-sided agentic marketplaces and the agentic economy">agentic-marketplaces</a>. Embodied store simulation in <a href="embodied-retail-environments.html" title="Embodied retail store environments">embodied-retail-environments</a> mirrors the same realism-versus-control tradeoff in a physical rather than web setting.</p>
-<h2>Papers in this field</h2>
+<p class="lede">These environments let researchers test agents on working websites without depending on the live web. Each benchmark provides websites, tasks, browser actions, and a way to check the result.</p>
+
+<aside class="key-points" aria-labelledby="key-points-title">
+<h2 id="key-points-title">Key points</h2>
 <ul>
-<li><a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a> — WebShop, a large-scale simulated e-commerce environment of 1.18M real products with grounded language instructions, automatic reward, and demonstrated sim-to-real transfer to Amazon and eBay.</li>
-<li><a href="../papers/8T9KKXKK.html" title="WebArena: A Realistic Web Environment for Building Autonomous Agents [8T9KKXKK]">Zhou et al., 2024</a> — WebArena, a fully functional self-hosted environment of four realistic websites with 812 long-horizon tasks scored by functional correctness.</li>
-<li><a href="../papers/VIP29ZR5.html" title="VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks [VIP29ZR5]">Koh et al., 2024</a> — VisualWebArena, 910 visually grounded web tasks for multimodal agents, with a Set-of-Marks observation representation that improves vision-language model grounding.</li>
-<li><a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a> — WebMall, the first offline multi-shop benchmark, with four shops of authentic Common Crawl offers and 91 comparison-shopping tasks across heterogeneous interfaces.</li>
-<li><a href="../papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a> — ShopGym, a framework that synthesizes anonymized sandbox shops from live storefronts and generates grounded, validated tasks, bridging live-web realism and sandbox control.</li>
+<li>Self-hosted sites support repeatable tests.</li>
+<li>Most benchmarks check the final result. They do not require one fixed action sequence.</li>
+<li>Text structure and visual content provide different evidence to an agent.</li>
+<li>The reported agents remain below human performance on WebShop, WebArena, and VisualWebArena.</li>
 </ul>
-<h2>Contradictions</h2>
+</aside>
+
+<h2>What is a web agent environment?</h2>
+<p>A web agent environment is a set of websites that an agent can use through browser actions. The environment also defines tasks and success checks. A task can ask an agent to find information, select a product, change a setting, or complete a checkout flow.</p>
+<p>A controlled environment has one main benefit: researchers can reset it and repeat the same test. A live site can change its layout, inventory, or policy at any time. A controlled site is more stable, but it covers only the sites and tasks that its authors built or generated. <a href="../papers/RSVYJVLX.html" title="ShopGym paper page">Savadikar et al. (2026)</a> describe this as a tradeoff between live-site realism and sandbox control.</p>
+
+<h2>How evaluation works</h2>
+<figure class="flowchart" aria-labelledby="flow-title flow-caption">
+<h3 id="flow-title">Common benchmark workflow</h3>
+<ol aria-label="Five evaluation steps">
+<li><strong>Prepare the site</strong>Load fixed or generated site content.</li>
+<li><strong>Define the task</strong>Give the agent a goal and constraints.</li>
+<li><strong>Observe and act</strong>Let the agent read pages and use browser actions.</li>
+<li><strong>Inspect the result</strong>Check page content, a URL, a database, or a selected item.</li>
+<li><strong>Record the score</strong>Apply the benchmark's success rule or reward.</li>
+</ol>
+<figcaption id="flow-caption">This flow summarizes the documented evaluation process in WebShop, WebArena, and VisualWebArena. Each benchmark uses different observations and success checks. See <a href="../papers/NR3QZNJE.html">Yao et al. (2023)</a>, <a href="../papers/8T9KKXKK.html">Zhou et al. (2024)</a>, and <a href="../papers/VIP29ZR5.html">Koh et al. (2024)</a>.</figcaption>
+</figure>
+
+<p>WebShop computes a reward from product type, requested attributes, selected options, and price. WebArena checks the execution state, such as page content, URLs, or database records. VisualWebArena adds checks for visual tasks. These methods measure whether the agent reached the required result. They allow more than one valid action sequence.</p>
+<p>Some tasks cannot be completed. WebArena and VisualWebArena include such tasks to test whether an agent reports the limit instead of giving an unsupported answer.</p>
+
+<h2>What the main environments test</h2>
+<div class="table-scroll" role="region" aria-label="Benchmark comparison" tabindex="0">
+<table>
+<thead>
+<tr><th scope="col">Environment</th><th scope="col">Scope</th><th scope="col">Main evidence for the agent</th><th scope="col">How the benchmark checks success</th></tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row"><a href="../papers/NR3QZNJE.html">WebShop</a><br><span class="source-note">Yao et al., 2023</span></th>
+<td>One simulated shop with 1.18 million products and 12,087 shopping instructions.</td>
+<td>Page text, product data, and available actions.</td>
+<td>A programmatic reward checks product type, attributes, options, and price.</td>
+</tr>
+<tr>
+<th scope="row"><a href="../papers/8T9KKXKK.html">WebArena</a><br><span class="source-note">Zhou et al., 2024</span></th>
+<td>Four self-hosted sites plus tools and knowledge resources; 812 tasks.</td>
+<td>Accessibility trees with element IDs.</td>
+<td>Functions check answers and site state. The benchmark includes achievable and unachievable tasks.</td>
+</tr>
+<tr>
+<th scope="row"><a href="../papers/VIP29ZR5.html">VisualWebArena</a><br><span class="source-note">Koh et al., 2024</span></th>
+<td>Three web environments and 910 tasks that require visual understanding.</td>
+<td>Screenshots, accessibility trees, captions, or marked interactive elements, depending on the baseline.</td>
+<td>Text, site-state, and visual checks evaluate the final result.</td>
+</tr>
+<tr>
+<th scope="row"><a href="../papers/WZ5CP8MZ.html">WebMall</a><br><span class="source-note">Peeters et al., 2025</span></th>
+<td>Four simulated electronics shops with Common Crawl product offers and 91 tasks.</td>
+<td>Accessibility trees, screenshots, or both.</td>
+<td>Task completion, precision, recall, and F1 measure product retrieval and shopping actions.</td>
+</tr>
+<tr>
+<th scope="row"><a href="../papers/RSVYJVLX.html">ShopGym</a><br><span class="source-note">Savadikar et al., 2026</span></th>
+<td>A framework that generates sandbox shops and grounded tasks from live seed stores.</td>
+<td>Accessibility trees or screenshots with accessibility trees, depending on the test harness.</td>
+<td>Structural analysis and agent-based evaluation compare generated shops with source shops.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>What the evidence shows</h2>
+
+<h3>Controlled sites improve repeatability</h3>
+<p>WebShop, WebArena, VisualWebArena, and WebMall use fixed environments. Researchers can reset the sites and run the same tasks again. ShopGym extends this approach. It generates self-contained sandbox shops from anonymized specifications of live seed stores. The ShopGym authors report results from 224 tasks across six generated shops. They also report a positive correlation between agent performance on synthetic shops and performance on live source shops. This result supports their validation set. It does not establish that every generated shop will match its source.</p>
+
+<h3>Final-state checks support valid alternative paths</h3>
+<p>WebArena checks functional correctness. It can inspect page content, URLs, and database state. VisualWebArena uses related checks and adds visual reward functions. WebShop uses a graded product reward. These methods avoid exact action-sequence matching, which would reject a different but valid route.</p>
+
+<h3>Visual and structural observations serve different tasks</h3>
+<p>VisualWebArena reports that its strongest multimodal baseline outperformed its text-only baseline on visually grounded tasks. Its Set-of-Marks representation improved the reported GPT-4V result from 15.05% to 16.37% overall. The gains were larger on some visually dense sites and small for other models.</p>
+<p>WebMall reports a different result for comparison shopping. In its tested configurations, accessibility-tree observations were more useful than screenshots alone. The paper reports that its Qwen vision-only agent failed all task groups. These findings do not conflict: visual information can be necessary for a visual task, while structural information can remain necessary for reliable navigation.</p>
+
+<h3>Large gaps remain in the reported baseline tests</h3>
+<div class="table-scroll" role="region" aria-label="Reported agent and human success rates" tabindex="0">
+<table>
+<thead><tr><th scope="col">Benchmark</th><th scope="col">Reported agent result</th><th scope="col">Reported human result</th><th scope="col">Scope note</th></tr></thead>
+<tbody>
+<tr><th scope="row">WebShop</th><td>About 29% success</td><td>About 59% success</td><td>Best reported trained model and human experts.</td></tr>
+<tr><th scope="row">WebArena</th><td>11.70% success</td><td>78.24% success</td><td>GPT-4 with chain-of-thought in the reported benchmark setup. The paper also reports 14.41% on achievable tasks after it changes the instruction.</td></tr>
+<tr><th scope="row">VisualWebArena</th><td>16.37% success</td><td>88.7% success</td><td>GPT-4V with Set-of-Marks and human raters in the reported study.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Do not compare these percentages as a model ranking. The environments use different tasks, observations, baselines, and human studies. Within each study, the results show a substantial gap between the tested agent and human group.</p>
+
+<h2>Common failure modes</h2>
 <ul>
-<li>None directly flagged among collected papers.</li>
+<li><strong>Weak search and product selection.</strong> WebShop agents had difficulty with query reformulation, option selection, and exploration.</li>
+<li><strong>Missed page details.</strong> WebArena reports observation bias and inconsistent results across task variants.</li>
+<li><strong>Loops and early stopping.</strong> VisualWebArena agents sometimes moved between pages repeatedly or stopped before they had explored enough.</li>
+<li><strong>Long task histories.</strong> WebMall reports that difficult comparison tasks consume many steps and tokens.</li>
 </ul>
-<h2>Open questions / gaps</h2>
+
+<h2>Limits and open questions</h2>
 <ul>
-<li>Agents remain far below human performance on realistic web tasks, with search-query reformulation, option selection, exploration, and long-horizon memory the persistent bottlenecks <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a> <a href="../papers/8T9KKXKK.html" title="WebArena: A Realistic Web Environment for Building Autonomous Agents [8T9KKXKK]">Zhou et al., 2024</a> <a href="../papers/VIP29ZR5.html" title="VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks [VIP29ZR5]">Koh et al., 2024</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Vision-only observation is insufficient for reliable navigation, and how to combine visual grounding with structural grounding for fine-grained web text remains open <a href="../papers/VIP29ZR5.html" title="VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks [VIP29ZR5]">Koh et al., 2024</a> <a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Reconciling live-website realism with reproducible, controllable evaluation is unresolved, and automatically generated environments still need broader coverage of login flows, checkout and payment, multi-session memory, and safety-critical edge cases <a href="../papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Multi-shop comparison shopping remains hard and token-expensive, calling for more efficient agent architectures that maintain information over long sequential trajectories <a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
+<li><strong>Coverage:</strong> A fixed sandbox represents a limited set of layouts, catalogs, policies, and failure cases.</li>
+<li><strong>Transfer:</strong> WebShop reports transfer to Amazon and eBay. ShopGym reports correlated results for synthetic and live shops. More sites and longer tests are needed to determine how broadly these findings apply.</li>
+<li><strong>Observation design:</strong> Research has not settled how to combine screenshots, text, accessibility data, and interaction history for all task types.</li>
+<li><strong>Scoring:</strong> Automatic checks can inspect known outcomes. Open-ended or safety-sensitive tasks remain harder to score reliably.</li>
+<li><strong>Long tasks:</strong> Agents still need better search, memory, recovery, and stopping decisions.</li>
 </ul>
+<p>These questions also appear on the wiki's <a href="../open-questions.html" title="Open Questions — Research Frontier">Open Questions</a> page.</p>
+
+<h2>Related topics</h2>
+<ul>
+<li><a href="shopping-agent-benchmarks.html">Shopping and e-commerce agent benchmarks</a></li>
+<li><a href="tool-agent-user-interaction.html">Tool-agent-user interaction and conversational service agents</a></li>
+<li><a href="agentic-marketplaces.html">Two-sided agentic marketplaces and the agentic economy</a></li>
+<li><a href="embodied-retail-environments.html">Embodied retail store environments</a></li>
+</ul>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="../papers/NR3QZNJE.html">Yao et al. (2023), WebShop</a> — <a href="https://arxiv.org/abs/2207.01206">original paper</a>.</li>
+<li><a href="../papers/8T9KKXKK.html">Zhou et al. (2024), WebArena</a> — <a href="https://arxiv.org/abs/2307.13854">original paper</a>.</li>
+<li><a href="../papers/VIP29ZR5.html">Koh et al. (2024), VisualWebArena</a> — <a href="https://arxiv.org/abs/2401.13649">original paper</a>.</li>
+<li><a href="../papers/WZ5CP8MZ.html">Peeters et al. (2025), WebMall</a> — <a href="https://arxiv.org/abs/2508.13024">original paper</a>.</li>
+<li><a href="../papers/RSVYJVLX.html">Savadikar et al. (2026), ShopGym</a> — <a href="https://arxiv.org/abs/2605.16116">original paper</a>.</li>
+</ul>
+</main>
+
 <footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
 </div>
 </body>

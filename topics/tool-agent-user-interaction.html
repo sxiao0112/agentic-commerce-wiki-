@@ -5,81 +5,136 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tool-agent-user interaction and conversational service agents</title>
 <style>
-:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;--panel:#f7f9fc;--arrow:#68768d;}
 *{box-sizing:border-box;}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
- line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
 .wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
-nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
- box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;box-shadow:0 1px 4px rgba(0,0,0,.15);}
 nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
 nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
 nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
 nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
-nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
 nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
 nav.subbar a{margin-right:.9rem;}
 nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
 h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
 h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
-h3{font-size:1.1rem;margin-top:1.5rem;}
+h3{font-size:1.08rem;margin-top:1.5rem;}
 a{color:var(--accent);text-decoration:none;}
 a:hover{text-decoration:underline;}
-span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
-code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
-pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
-pre code{background:none;padding:0;}
-blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
-table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
-th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
-th{background:#f7f7f7;}
-table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
-table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+p{max-width:75ch;}
 ul,ol{padding-left:1.4rem;}
-li{margin:.15rem 0;}
-hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+li{margin:.35rem 0;}
+.lead{font-size:1.05rem;max-width:70ch;}
+.summary{background:var(--panel);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:6px;padding:.8rem 1rem;margin:1.2rem 0;}
+.summary p{margin:.15rem 0 .55rem;}
+.summary ul{margin:.35rem 0;}
+.flowchart{margin:1.4rem 0;padding:1rem;border:1px solid var(--border);border-radius:8px;background:var(--panel);}
+.flowchart h3{margin:0 0 .25rem;}
+.flowchart .flow{list-style:none;margin:1rem 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.15rem;counter-reset:flow;}
+.flowchart .flow li{position:relative;min-height:9.5rem;padding:.8rem .7rem;border:1px solid #b8c4d6;border-radius:6px;background:#fff;counter-increment:flow;}
+.flowchart .flow li::before{content:counter(flow);display:block;width:1.7rem;height:1.7rem;line-height:1.7rem;text-align:center;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;margin-bottom:.45rem;}
+.flowchart .flow li:not(:last-child)::after{content:"→";position:absolute;right:-1rem;top:45%;color:var(--arrow);font-size:1.25rem;font-weight:700;}
+.flowchart strong{display:block;line-height:1.25;margin-bottom:.25rem;}
+.flowchart span{display:block;font-size:.88rem;line-height:1.4;color:#404854;}
+figcaption{font-size:.84rem;color:var(--muted);margin-top:.6rem;}
+.note{color:var(--muted);font-size:.92rem;}
+.paper-list strong{font-weight:650;}
 footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+@media (max-width:760px){.flowchart .flow{grid-template-columns:1fr;gap:1.6rem}.flowchart .flow li{min-height:auto}.flowchart .flow li:not(:last-child)::after{content:"↓";right:50%;top:auto;bottom:-1.45rem;transform:translateX(50%)}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;}}
 </style>
 </head>
 <body>
 <nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
 <div class="wrap">
-<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<nav class="subbar" aria-label="Wiki sections"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
 
+<main>
 <h1>Tool-agent-user interaction and conversational service agents</h1>
-<p>Benchmarks for language agents that hold multi-turn conversations with users, call programmatic tools and APIs, and follow domain policies while resolving customer-service and retail tasks.</p>
-<h2>Definition</h2>
-<p>Tool-agent-user interaction names a setting where a language agent must do three things at once: talk with a human user over multiple turns, call programmatic APIs, and adhere to domain-specific policies. <a href="../papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al., 2024</a> introduces this framing through τ-bench and formulates each task as a partially observable Markov decision process whose state combines a database and a user state. The user instruction is hidden from the agent, so the agent must gather information through conversation rather than receive it upfront. Success is judged objectively by comparing the final database state to an annotated ground-truth outcome, and by checking that the agent conveys the required information back to the user.</p>
-<p>A central concept from <a href="../papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al., 2024</a> is reliability rather than discovery. The pass^k metric measures the probability that all k independent trials succeed, capturing whether an agent behaves consistently across variations in conversation flow. This is distinct from pass@k, which measures whether at least one trial succeeds.</p>
-<p><a href="../papers/7NSXRTYR.html" title="$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al., 2025</a> extends this setting to a dual-control environment where both the agent and the simulated user can call tools and modify a shared world state. Where the τ-bench user is passive and supplies information only, the dual-control user possesses its own tool affordances. The interaction is modeled as a decentralized partially observable Markov decision process, and this formalism isolates communication and coordination as a bottleneck separate from pure reasoning.</p>
-<p><a href="../papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a> frames the same interaction for e-commerce customer support, adding multimodal content and persona-driven users. Agents are evaluated with Model Context Protocol tools and must handle product inquiries, order management, returns, and image-based tasks. The persona profiles encode emotion, patience, trust, and communication style, grounding the simulated user in consumer-behavior characteristics drawn from real customer interactions.</p>
-<p><a href="../papers/AY3WV8T4.html" title="DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain [AY3WV8T4]">Borkakoty et al., 2026</a> adds policy ambiguity as a defining concept. The authors draw on value pluralism, the premise that conflicting legitimate values can admit no universally correct resolution, and define policy ambiguity as the coexistence of multiple valid interpretations of a policy clause. Under such ambiguity, the benchmark accepts that no single correct outcome may exist for a customer-service task.</p>
-<h2>State of the area (synthesis)</h2>
-<p>The four collected papers form a single line of work that pushes the tool-agent-user setting toward greater realism, one dimension at a time. <a href="../papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al., 2024</a> establishes the base: a modular environment of databases, domain APIs, policy documents, and a language-model user simulator, evaluated by database-state comparison. Its headline result is that even strong function-calling agents like gpt-4o succeed on under half of the airline tasks, and that pass^k drops sharply as k grows, exposing poor consistency. The same paper finds that removing domain policies hurts airline tasks far more than retail, suggesting agents struggle most with complex ad-hoc rules.</p>
-<p><a href="../papers/7NSXRTYR.html" title="$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al., 2025</a> keeps the retail and airline domains from τ-bench and adds a telecom domain with a compositional task generator that builds verifiable tasks from atomic components. Its most informative result comes from ablations. A no-user autonomous mode isolates reasoning and scores far higher than the default; an oracle-plan mode that supplies the ground-truth action sequence scores higher still. The gap between these modes and full dual-control operation, roughly a 20% pass^1 penalty, locates the difficulty in coordination and communication rather than reasoning. Performance also collapses as the required action count grows, with near-zero pass rates beyond seven actions.</p>
-<p><a href="../papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a> moves the setting into e-commerce customer support and adds two things the earlier benchmarks lacked: multimodal tasks and personas built from real customer behavior. It reports the same reliability problem from a different domain. GPT-4o leads at 44% pass^1 but falls steeply at higher k, and a decoupled approach that treats a multimodal model as a tool beats an end-to-end multimodal planner. The persona findings reinforce a thread running through this area: simulated-user characteristics such as emotional state, patience, and communication style materially shift agent behavior, so user simulation is not a neutral backdrop but part of what is being measured.</p>
-<p><a href="../papers/AY3WV8T4.html" title="DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain [AY3WV8T4]">Borkakoty et al., 2026</a> targets the policy layer that the earlier benchmarks held simple. Where τ-bench and τ²-bench use purpose-built, unambiguous policies, DRIP-R grounds its tasks in Amazon's real return policy and deliberately builds in ambiguous clauses. Its central finding is disagreement: across four frontier models, only 4.2% of scenarios produce a fully shared outcome, while 13.3% produce four different outcomes. This recasts low benchmark scores in a new light. Some of the inconsistency that τ-bench measured as unreliability may, under genuinely ambiguous policy, reflect an absence of any single correct answer rather than a model failure.</p>
-<p>Several methods recur across all four papers and mark the shared toolkit of this area. The pass^k consistency metric introduced by <a href="../papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al., 2024</a> is adopted by <a href="../papers/7NSXRTYR.html" title="$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al., 2025</a> and <a href="../papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a>. Database-state comparison is the common backbone of evaluation, augmented with information-retrieval and output checks. The Dec-POMDP dual-control formalism of <a href="../papers/7NSXRTYR.html" title="$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al., 2025</a> is reused by <a href="../papers/AY3WV8T4.html" title="DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain [AY3WV8T4]">Borkakoty et al., 2026</a>, which gives the agent tool access while the user simulator has none. Language-model user simulators are universal, though their fidelity is a known weak point: <a href="../papers/7NSXRTYR.html" title="$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al., 2025</a> reports its telecom user simulator errs only 16% of the time against 40 to 47% in the retail and airline domains it inherits.</p>
-<p>The collected error analyses converge on a shared failure taxonomy. <a href="../papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al., 2024</a> and <a href="../papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a> both separate wrong arguments, wrong decisions, and partial resolution of compound requests. <a href="../papers/AY3WV8T4.html" title="DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain [AY3WV8T4]">Borkakoty et al., 2026</a> adds a behavior-decision gap, finding that agents' in-conversation policy adherence exceeds their final resolution adherence, largest under coordination ambiguity. Taken together, the area shows that current agents can reason in isolation but falter when they must coordinate with an active user, follow non-trivial rules, and stay consistent across runs. This setting is the conversational, policy-bound counterpart to the task-completion focus of <a href="shopping-agent-benchmarks.html" title="Shopping and e-commerce agent benchmarks">shopping-agent-benchmarks</a> and the page-navigation focus of <a href="web-agent-environments.html" title="Realistic web environments for autonomous agents">web-agent-environments</a>, both of which share WebShop and WebArena as common reference points.</p>
+<p class="lead">These benchmarks test service agents in multi-turn conversations. The agent must collect information, use tools, and follow a domain policy.</p>
+
+<aside class="summary" aria-labelledby="key-points">
+<p id="key-points"><strong>Key points</strong></p>
+<ul>
+<li>Task success depends on the final result, not on a fixed dialogue script.</li>
+<li><span aria-label="pass to the power k">pass<sup>k</sup></span> measures whether an agent succeeds in every repeated trial.</li>
+<li>Active users, multimodal inputs, and ambiguous policies add separate sources of difficulty.</li>
+<li>The benchmarks use simulated users. Simulator errors can affect the measured agent score.</li>
+</ul>
+</aside>
+
+<h2>What the setting tests</h2>
+<p><a href="../papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al. (2024)</a> define the base setting in τ-bench. An agent talks with a simulated user and calls domain APIs. The agent also receives a policy document.</p>
+<p>The user has a private task instruction. The agent must ask for the information that it needs. The agent cannot see the database directly. It reads or changes the database through tools.</p>
+<p>τ-bench checks two outputs. First, it compares the final database state with an annotated goal state. Second, it checks whether the agent gave the required information to the user. The authors note that this rule-based check can miss some policy violations, such as action without required user confirmation.</p>
+
+<figure class="flowchart" aria-labelledby="flow-title flow-caption">
+<h3 id="flow-title">How a τ-bench episode is evaluated</h3>
+<ol class="flow">
+<li><strong>Set the task</strong><span>The simulator receives a private user instruction. The agent receives the domain policy and tool list.</span></li>
+<li><strong>Start the dialogue</strong><span>The user states a request. The agent asks questions and gives information.</span></li>
+<li><strong>Use tools</strong><span>The agent reads or changes the database through APIs. The dialogue can continue between tool calls.</span></li>
+<li><strong>Check the result</strong><span>The benchmark checks the final database state and the required information in the agent messages.</span></li>
+<li><strong>Repeat the task</strong><span>Repeated trials show whether the agent succeeds consistently. The benchmark reports <span aria-label="pass to the power k">pass<sup>k</sup></span>.</span></li>
+</ol>
+<figcaption id="flow-caption">This flow summarizes the τ-bench task and reward process. Later benchmarks change the user, input, or policy conditions.</figcaption>
+</figure>
+
+<h2>How the benchmarks extend the setting</h2>
+
+<h3>τ-bench: conversation, tools, and rules</h3>
+<p>τ-bench contains retail and airline tasks. GPT-4o with function calling reached 61.2% <span aria-label="pass to the power one">pass<sup>1</sup></span> in retail and 35.2% in airline. Its retail <span aria-label="pass to the power eight">pass<sup>8</sup></span> was about 25%. These results show a large gap between one successful trial and repeated success.</p>
+<p><span aria-label="pass to the power k">pass<sup>k</sup></span> is different from pass@k. Pass@k asks whether at least one of k trials succeeds. <span aria-label="pass to the power k">pass<sup>k</sup></span> asks whether all k trials succeed.</p>
+
+<h3>τ²-bench: the user can act</h3>
+<p><a href="../papers/7NSXRTYR.html" title="τ²-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al. (2025)</a> add a telecom setting in which both parties can use tools. For example, the agent can inspect support data while the user changes phone settings. The task therefore requires communication and coordinated action.</p>
+<p>The authors compare full dual control with a no-user condition. They report a decrease of about 20 percentage points in <span aria-label="pass to the power one">pass<sup>1</sup></span> when the agent must guide a user. This ablation supports their conclusion that communication and coordination cause distinct failures.</p>
+<p>User simulation remains a measurement risk. In the authors’ manual sample, the telecom simulator had a 16% total error rate. The inherited retail and airline simulators had error rates of 40% and 47%. The samples were small, and only some errors made a task impossible to complete.</p>
+
+<h3>ECom-Bench: multimodal support and personas</h3>
+<p><a href="../papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al. (2025)</a> focus on e-commerce support. Their tasks include text and image inputs. The simulated users have persona data based on e-commerce customer interactions.</p>
+<p>GPT-4o reached 44.03% <span aria-label="pass to the power one">pass<sup>1</sup></span> and 16.98% <span aria-label="pass to the power three">pass<sup>3</sup></span>. In the reported architecture comparison, GPT-4o used a multimodal model as a tool and scored higher than two end-to-end multimodal planners. This comparison covers different models as well as different architectures, so it does not isolate architecture alone.</p>
+
+<h3>DRIP-R: ambiguous policy</h3>
+<p><a href="../papers/AY3WV8T4.html" title="DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain [AY3WV8T4]">Borkakoty et al. (2026)</a> study return policies that allow more than one valid interpretation. DRIP-R uses 40 return tasks and 10 customer personas, for 400 scenarios. The authors derived the tasks from one Amazon return-policy document.</p>
+<p>The four tested models gave the same resolution in 4.2% of scenarios. They gave four different resolutions in 13.3%. The other 82.4% had partial agreement. These figures measure agreement, not correctness, because the benchmark is designed around policy ambiguity.</p>
+<p>The customer simulator is stochastic. The authors state that it contributes to measured variation. They leave agent-only variance, based on fixed customer turns, for future work.</p>
+
+<h2>What the evidence supports</h2>
+<ul>
+<li><strong>Repeated success is difficult.</strong> τ-bench and ECom-Bench report large score decreases as k increases.</li>
+<li><strong>User action adds difficulty.</strong> τ²-bench reports lower performance when the agent must guide an active user.</li>
+<li><strong>The simulator is part of the test.</strong> A simulator can omit a constraint, stop too early, or add unsupported details.</li>
+<li><strong>Policy design changes the meaning of success.</strong> τ-bench creates tasks with one intended outcome. DRIP-R creates tasks that can have several valid outcomes.</li>
+<li><strong>Results do not transfer automatically across benchmarks.</strong> The domains, tools, models, user simulators, and scoring methods differ.</li>
+</ul>
+
 <h2>Papers in this field</h2>
-<ul>
-<li><a href="../papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al., 2024</a> — τ-bench: a benchmark measuring whether agents can interact consistently with simulated users and programmatic APIs while following domain-specific policies, with a pass^k metric for reliability.</li>
-<li><a href="../papers/7NSXRTYR.html" title="$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al., 2025</a> — τ²-bench: a dual-control benchmark where both the agent and the simulated user can call tools and modify a shared state, isolating coordination and communication as bottlenecks.</li>
-<li><a href="../papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a> — ECom-Bench: the first open-source framework for evaluating multimodal LLM agents with MCP tools on real-world e-commerce customer-support issues using persona-driven user simulation.</li>
-<li><a href="../papers/AY3WV8T4.html" title="DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain [AY3WV8T4]">Borkakoty et al., 2026</a> — DRIP-R: a benchmark for LLM conversational agents operating under realistic, ambiguous retail policies, with multi-dimensional evaluation and evidence of cross-model disagreement on resolutions.</li>
+<ul class="paper-list">
+<li><strong><a href="../papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al. (2024)</a>.</strong> τ-bench tests multi-turn tool use, policy use, and repeated reliability in retail and airline tasks.</li>
+<li><strong><a href="../papers/7NSXRTYR.html" title="τ²-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al. (2025)</a>.</strong> τ²-bench gives tools to both the agent and the simulated user in a telecom support environment.</li>
+<li><strong><a href="../papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al. (2025)</a>.</strong> ECom-Bench adds e-commerce personas, image-based tasks, and multimodal tools.</li>
+<li><strong><a href="../papers/AY3WV8T4.html" title="DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain [AY3WV8T4]">Borkakoty et al. (2026)</a>.</strong> DRIP-R tests decisions when a retail policy supports several interpretations.</li>
 </ul>
-<h2>Contradictions</h2>
+
+<h2>A key difference in benchmark design</h2>
+<p>τ-bench creates each task so that the policy and user request lead to one goal state. It can then score the final database state against that goal.</p>
+<p>DRIP-R starts with ambiguous policy clauses. It does not assume that every scenario has one correct resolution. It uses several evaluation dimensions and reports model agreement.</p>
+<p>These designs answer different questions. A low τ-bench score shows failure against its annotated goal. Disagreement in DRIP-R shows resolution instability under its ambiguous policies. The current studies do not show how much ambiguity explains failures in τ-bench.</p>
+
+<h2>Open questions</h2>
 <ul>
-<li>Whether benchmark policies should be simplified or ambiguous. <a href="../papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al., 2024</a> and <a href="../papers/7NSXRTYR.html" title="$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al., 2025</a> evaluate agents against purpose-built, unambiguous policies and treat inconsistent outcomes as agent unreliability. <a href="../papers/AY3WV8T4.html" title="DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain [AY3WV8T4]">Borkakoty et al., 2026</a> argues this misses an inherent feature of real-world deployment, grounds its tasks in real ambiguous policy, and shows frontier models fundamentally disagree on resolutions where no single correct outcome exists, reframing some apparent unreliability as irreducible decision ambiguity.</li>
+<li>How should researchers separate agent failures from user-simulator failures?</li>
+<li>How can benchmarks test expert-to-novice guidance without assuming that users share the agent’s mental model?</li>
+<li>Can domain and policy construction scale without extensive manual work?</li>
+<li>Do results generalize beyond the current retail, airline, telecom, and home-appliance settings?</li>
+<li>How should a benchmark score a valid decision when a policy permits several outcomes?</li>
+<li>How can persona design use stronger behavioral evidence and avoid unfair differences in service outcomes?</li>
 </ul>
-<h2>Open questions / gaps</h2>
-<ul>
-<li>Extending these benchmarks to more advanced, higher-stakes domains such as medical, tax, and legal remains future work <a href="../papers/3EZFC3NR.html" title="τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains [3EZFC3NR]">Yao et al., 2024</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Current benchmarks do not explicitly model the expert-novice gap in customer support, where the agent must understand and adapt to the user's mental model <a href="../papers/7NSXRTYR.html" title="$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Domain and policy curation still relies heavily on human expertise, limiting scale and industry adoption; automating domain construction is an open need <a href="../papers/7NSXRTYR.html" title="$τ^2$-Bench: Evaluating Conversational Agents in a Dual-Control Environment [7NSXRTYR]">Barres et al., 2025</a> <a href="../papers/AY3WV8T4.html" title="DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain [AY3WV8T4]">Borkakoty et al., 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Coverage is narrow: ECom-Bench is confined to home and appliance products and DRIP-R to retail with a single primary policy document; cross-category and cross-policy generalization is untested <a href="../papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a> <a href="../papers/AY3WV8T4.html" title="DRIP-R: A Benchmark for Decision-Making and Reasoning Under Real-World Policy Ambiguity in the Retail Domain [AY3WV8T4]">Borkakoty et al., 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Persona construction relies on domain expertise without sufficient theoretical or empirical grounding in behavioral theory <a href="../papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-</ul>
+<p class="note">These questions come from the limitations and future-work sections of the cited papers. See the wiki’s <a href="../open-questions.html" title="Open Questions — Research Frontier">Open Questions</a> page for the wider list.</p>
+</main>
+
 <footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
 </div>
 </body>

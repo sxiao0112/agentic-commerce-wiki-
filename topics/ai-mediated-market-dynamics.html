@@ -5,85 +5,193 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Economics, manipulation, and collusion in AI-mediated markets</title>
 <style>
-:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+:root{--fg:#1a1a1a;--muted:#5b6470;--bg:#fff;--accent:#2456a6;--border:#d9dee7;--soft:#f5f7fb;--barbg:#0f1b33;--barfg:#eaf0fb;--risk:#8a3d16;--riskbg:#fff5ed;}
 *{box-sizing:border-box;}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
- line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.62;color:var(--fg);background:var(--bg);margin:0;}
 .wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
-nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
- box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;box-shadow:0 1px 4px rgba(0,0,0,.15);}
 nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
 nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
 nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
-nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
-nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.sitebar a:hover,nav.sitebar a:focus-visible{color:#fff;border-bottom-color:#86aef2;}
 nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
 nav.subbar a{margin-right:.9rem;}
 nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
-h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
-h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
-h3{font-size:1.1rem;margin-top:1.5rem;}
-a{color:var(--accent);text-decoration:none;}
-a:hover{text-decoration:underline;}
-span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
-code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
-pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
-pre code{background:none;padding:0;}
-blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
-table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
-th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
-th{background:#f7f7f7;}
-table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
-table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+h1{font-size:clamp(1.7rem,4vw,2.15rem);line-height:1.2;margin:.2rem 0 .65rem;}
+h2{font-size:1.35rem;line-height:1.3;margin-top:2.3rem;border-bottom:1px solid var(--border);padding-bottom:.35rem;}
+h3{font-size:1.08rem;line-height:1.35;margin-top:1.5rem;}
+p{max-width:76ch;}
+.lede{font-size:1.08rem;color:#343b45;margin-top:0;}
+.scope{background:var(--soft);border-left:4px solid var(--accent);padding:.8rem 1rem;margin:1.2rem 0;}
+a{color:var(--accent);text-decoration-thickness:.08em;text-underline-offset:.14em;}
+a:hover{text-decoration-thickness:.13em;}
+a:focus-visible{outline:3px solid #f0b44d;outline-offset:2px;border-radius:2px;}
 ul,ol{padding-left:1.4rem;}
-li{margin:.15rem 0;}
-hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+li{margin:.4rem 0;}
+.key-findings li{margin:.65rem 0;}
+.flowchart{margin:1.6rem 0;padding:1rem;border:1px solid var(--border);border-radius:10px;background:var(--soft);}
+.flowchart h2{margin:.1rem 0 .4rem;border:0;padding:0;font-size:1.2rem;}
+.flowchart .flow-intro{margin:.25rem 0 1rem;color:var(--muted);}
+.flowchart ol{list-style:none;counter-reset:flow;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.8rem;}
+.flowchart li{counter-increment:flow;position:relative;margin:0;padding:.9rem .85rem .85rem;border:1px solid #bac5d6;border-radius:8px;background:#fff;min-height:9.5rem;}
+.flowchart li::before{content:counter(flow);display:grid;place-items:center;width:1.75rem;height:1.75rem;margin-bottom:.55rem;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;}
+.flowchart li:not(:last-child)::after{content:"→";position:absolute;right:-1.45rem;top:45%;font-size:1.4rem;color:var(--accent);font-weight:700;}
+.flowchart strong{display:block;line-height:1.25;margin-bottom:.35rem;}
+.flowchart span{display:block;font-size:.88rem;line-height:1.45;color:#3e4753;}
+.flowchart figcaption{margin-top:1rem;color:var(--muted);font-size:.86rem;}
+.evidence-list{display:grid;grid-template-columns:1fr 1fr;gap:.8rem 1.2rem;padding:0;list-style:none;}
+.evidence-list li{margin:0;padding:.85rem 1rem;border:1px solid var(--border);border-radius:8px;}
+.evidence-list strong{display:block;margin-bottom:.2rem;}
+.caution{border:1px solid #e8c5ae;background:var(--riskbg);padding:.8rem 1rem;border-radius:8px;}
+.source-list li{margin:.7rem 0;}
+.source-list small{display:block;color:var(--muted);margin-top:.12rem;}
 footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+@media (max-width:760px){
+ .flowchart ol{grid-template-columns:1fr;gap:1.65rem;}
+ .flowchart li{min-height:0;}
+ .flowchart li:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-1.45rem;transform:translateX(-50%);}
+ .evidence-list{grid-template-columns:1fr;}
+}
+@media (prefers-contrast:more){
+ :root{--muted:#333;--border:#777;--accent:#123f88;}
+}
+@media print{
+ nav.sitebar{position:static;}
+ .flowchart li{break-inside:avoid;}
+}
 </style>
 </head>
 <body>
-<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<nav class="sitebar" aria-label="Site"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
 <div class="wrap">
-<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<nav class="subbar" aria-label="Wiki sections"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
 
+<main>
 <h1>Economics, manipulation, and collusion in AI-mediated markets</h1>
-<p>How autonomous AI shopping and trading agents reshape market outcomes, including the biases, manipulation, collusion, and instability that emerge when agents mediate economic decisions.</p>
-<h2>Definition</h2>
-<p>AI-mediated markets are consumer markets where AI agents select products, negotiate, and transact on behalf of users, creating a demand surface that differs from human-centric commerce. <a href="../papers/4HUDI9FW.html" title="What Is Your AI Agent Buying? Evaluation, Biases, Model Dependence, &amp; Emerging Implications for Agentic E-Commerce [4HUDI9FW]">Allouah et al., 2025</a> characterize this as a fundamentally different demand surface, with market shares that are volatile, highly model-dependent, and susceptible to upstream model updates acting as exogenous demand shocks. <a href="../papers/EBZ6DN2P.html" title="Vertical tacit collusion in AI-mediated markets [EBZ6DN2P]">Affonso, 2026</a> formalizes such a market as a repeated game between platforms, sellers, and an AI agent, where the platform sets the information architecture and sellers choose manipulation intensity.</p>
-<p>A central concept is that AI agents are not perfectly rational economic actors but exhibit systematic, exploitable biases. <a href="../papers/4HUDI9FW.html" title="What Is Your AI Agent Buying? Evaluation, Biases, Model Dependence, &amp; Emerging Implications for Agentic E-Commerce [4HUDI9FW]">Allouah et al., 2025</a> document strong position biases, choice homogeneity, sensitivity to platform endorsements, and penalization of sponsored tags across frontier models. <a href="../papers/EBZ6DN2P.html" title="Vertical tacit collusion in AI-mediated markets [EBZ6DN2P]">Affonso, 2026</a> treats these biases as a shared exploitable target, modeling four bias channels: position effects, endorsements, seller manipulation effectiveness, and decoys. <a href="../papers/CBL2GTGW.html" title="Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets [CBL2GTGW]">Bansal et al., 2025</a> name first-proposal bias as the dominant behavioral pattern distorting agentic markets, where speed of response beats quality.</p>
-<p>Seller-side manipulation is a concrete attack on these biases, not just an abstract lever. <a href="../papers/XT585ED2.html" title="Manipulating Large Language Models to Increase Product Visibility [XT585ED2]">Kumar &amp; Lakkaraju, 2024</a> demonstrate strategic text sequences: token strings optimized by an adversarial attack and inserted into a product's information to push that product to the top of an LLM's recommendations. They frame this as the AI-era successor to search engine optimization, but potentially more effective, because the vendor manipulates the model's choice directly rather than a ranking signal.</p>
-<p>Vertical tacit collusion is the market failure that <a href="../papers/EBZ6DN2P.html" title="Vertical tacit collusion in AI-mediated markets [EBZ6DN2P]">Affonso, 2026</a> identifies: platforms controlling rankings and sellers controlling descriptions independently learn to exploit AI biases through profit maximization, with no communication or agreement between them. This is distinguished from horizontal algorithmic collusion, which requires coordination among competitors at the same market position.</p>
-<p>Economic alignment is the property <a href="../papers/MH8I5WJ6.html" title="Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces [MH8I5WJ6]">Karten et al., 2026</a> define: the capacity of agentic systems to preserve market stability and integrity while protecting human participants against exploitation and fraud. They frame it as distinct from general reasoning capability and orthogonal to model size.</p>
-<h2>State of the area (synthesis)</h2>
-<p>The papers here converge on one finding from different angles: deploying AI agents into markets introduces failure modes that uncoordinated, individually rational behavior produces. The clearest documentation of the underlying vulnerability comes from <a href="../papers/4HUDI9FW.html" title="What Is Your AI Agent Buying? Evaluation, Biases, Model Dependence, &amp; Emerging Implications for Agentic E-Commerce [4HUDI9FW]">Allouah et al., 2025</a>. Their ACES framework runs randomized experiments on a controllable mock platform and causally isolates how product attributes and platform levers move agent choice. Frontier agents assign large utility premiums to top-row placement, with position changes yielding 5-7 fold swings in selection probability. The direction of position bias differs sharply across providers, so much that GPT-4.1 and GPT-5.1 exhibit almost opposite preferences. Agents penalize sponsored tags but reward platform overall-pick endorsements with a 3-5x selection lift. These biases persist in headless settings with no images and resist correction by explicit prompting, suggesting they are deep model properties rather than surface artifacts.</p>
-<p><a href="../papers/XT585ED2.html" title="Manipulating Large Language Models to Increase Product Visibility [XT585ED2]">Kumar &amp; Lakkaraju, 2024</a> show how a seller can weaponize this kind of vulnerability directly. Using the Greedy Coordinate Gradient adversarial algorithm, they optimize a strategic text sequence and embed it in a target product's listing in a catalog of ten coffee machines ranked by Llama-2. The sequence elevates a product that never appeared in recommendations to the top choice within roughly one hundred iterations, and lifts a product that ranked second to first with high probability. Optimizing the sequence under random permutations of the product list makes the advantage robust to ordering. This gives the abstract seller-manipulation channel a concrete mechanism: the listing optimization that <a href="../papers/4HUDI9FW.html" title="What Is Your AI Agent Buying? Evaluation, Biases, Model Dependence, &amp; Emerging Implications for Agentic E-Commerce [4HUDI9FW]">Allouah et al., 2025</a> flag as a vulnerability and that <a href="../papers/EBZ6DN2P.html" title="Vertical tacit collusion in AI-mediated markets [EBZ6DN2P]">Affonso, 2026</a> treats as a strategic variable can be realized as an adversarial text attack on the model itself, which connects this market-level concern to the search-manipulation methods in <a href="generative-engine-optimization.html" title="Generative Engine Optimization and Search Manipulation">generative-engine-optimization</a>.</p>
-<p><a href="../papers/CBL2GTGW.html" title="Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets [CBL2GTGW]">Bansal et al., 2025</a> reach a complementary behavioral finding in a two-sided market where assistant agents face service agents. First proposals achieve selection rates of 60 to 100 percent while third proposals see near-zero selection, a 10-30 fold advantage for speed over quality. They also surface a paradox of choice: expanding the consideration set can reduce welfare, with some models dropping 44-65 percent. On manipulation, their result is more reassuring than alarming. Frontier models resist traditional psychological tactics like authority, social proof, and loss aversion, keeping payments to manipulative businesses low. Smaller open-source models remain vulnerable, and some frontier models show degradation under strong prompt injection. This places the manipulation-resistance question alongside the security framing in <a href="agent-security-and-prompt-injection.html" title="Agent Security and Prompt Injection">agent-security-and-prompt-injection</a>.</p>
-<p><a href="../papers/EBZ6DN2P.html" title="Vertical tacit collusion in AI-mediated markets [EBZ6DN2P]">Affonso, 2026</a> takes the documented biases as given and asks what market structure does with them. The answer is the paper's core claim. When both the platform and sellers learn to exploit AI biases, consumer surplus falls 37.1 percent, far above the 17.4 percent predicted if the two effects were independent. This 19.7 percentage point gap is strategic complementarity, harm that exists only because both parties adapt at once. The mechanism is a gatekeeper: the platform's ranking choice acts as a binary switch. Under quality-based ranking, seller manipulation correlates with quality and can even help consumers, but abandoning quality-based ranking unlocks catastrophic harm. Position bias is the dominant channel, accounting for 79 percent of the full effect, and a falsification test with debiased agents removes 96 percent of the complementarity. The biases ACES measures are thus the necessary fuel for the collusion Affonso models, a direct evidential link that Affonso draws by citing the ACES selection asymmetries and the first-proposal bias from <a href="../papers/CBL2GTGW.html" title="Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets [CBL2GTGW]">Bansal et al., 2025</a>.</p>
-<p><a href="../papers/MH8I5WJ6.html" title="Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces [MH8I5WJ6]">Karten et al., 2026</a> shift the unit of failure from consumer harm to market integrity. Their Agent Bazaar simulation exposes two emergent failure modes. In the Crash, firms undercut each other below unit cost until the market collapses; at baseline, Gemini 3 Flash and GPT 5.4 show bankruptcy rates above 0.65 while Claude Sonnet 4.6 self-organizes to a viable equilibrium. In the Lemon Market, a single deceptive principal controls multiple Sybil seller identities to flood the market with fraudulent listings, raising its revenue share as cluster size grows. In-context harnesses help but stay fragile under harder conditions. Targeted REINFORCE++ training is more robust, and a trained stabilizing firm acts as a market anchor whose benefit spills over to untrained competitors, raising their survival from 0 to 68 percent. Their Economic Alignment Score shows alignment is orthogonal to model size: an RL-finetuned 9B model ranks first among 20 models, ahead of much larger ones.</p>
-<p>Two cross-cutting tensions organize the area. First, the same behavioral phenomenon recurs across independent environments: position and first-proposal biases appear in <a href="../papers/4HUDI9FW.html" title="What Is Your AI Agent Buying? Evaluation, Biases, Model Dependence, &amp; Emerging Implications for Agentic E-Commerce [4HUDI9FW]">Allouah et al., 2025</a>, <a href="../papers/CBL2GTGW.html" title="Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets [CBL2GTGW]">Bansal et al., 2025</a>, and as the engine of harm in <a href="../papers/EBZ6DN2P.html" title="Vertical tacit collusion in AI-mediated markets [EBZ6DN2P]">Affonso, 2026</a>, which strengthens confidence that these are real properties of deployed agents rather than artifacts of any one testbed. Second, the failures arise without coordination. Affonso's collusion needs no agreement, and Karten's crash and lemon dynamics emerge from individually rational play, both echoing the algorithmic-collusion literature each cites where Q-learning sellers reach supra-competitive outcomes without communication. The shared implication is governance, and a recurring lever is auditing. <a href="../papers/4HUDI9FW.html" title="What Is Your AI Agent Buying? Evaluation, Biases, Model Dependence, &amp; Emerging Implications for Agentic E-Commerce [4HUDI9FW]">Allouah et al., 2025</a> call for algorithmic economic auditing and public agent-choice dashboards, <a href="../papers/EBZ6DN2P.html" title="Vertical tacit collusion in AI-mediated markets [EBZ6DN2P]">Affonso, 2026</a> argues current antitrust frameworks built to detect communication cannot reach tacit vertical exploitation, and <a href="../papers/MH8I5WJ6.html" title="Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces [MH8I5WJ6]">Karten et al., 2026</a> treat economic alignment as a trainable safety target. Auditing the curation layer that shapes what users see is a related concern: <a href="../papers/QCJ4XZXS.html" title="PersonaAct: Simulating Short-Video Users with Personalized Agents for Counterfactual Filter Bubble Auditing [QCJ4XZXS]">Zhao et al., 2026</a> use persona-conditioned multimodal agents as a scalable, privacy-preserving way to audit recommender filter bubbles, measuring how content diversity narrows and how strongly platform algorithms resist a user's attempt to escape. The marketplace environments that host these dynamics are developed further in <a href="agentic-marketplaces.html" title="Two-sided agentic marketplaces and the agentic economy">agentic-marketplaces</a>, and the negotiation behaviors that drive some of them connect to <a href="agent-to-agent-negotiation.html" title="Agent-to-agent negotiation">agent-to-agent-negotiation</a>.</p>
-<h2>Papers in this field</h2>
+<p class="lede">AI agents can search, compare, recommend, negotiate, or buy for people. Their choices can change demand. Platforms and sellers can also shape the information that these agents receive.</p>
+
+<div class="scope">
+<strong>Scope.</strong> This page summarizes controlled experiments and simulations. Most studies do not observe live markets at scale. Results apply to the tested models, prompts, interfaces, products, and simulation rules.
+</div>
+
+<h2>What is an AI-mediated market?</h2>
+<p>In an AI-mediated market, an AI agent takes part in an economic decision for a person or firm. The agent can act as a buyer, seller, service provider, or market participant.</p>
+<p>The papers on this page study three levels:</p>
 <ul>
-<li><a href="../papers/EBZ6DN2P.html" title="Vertical tacit collusion in AI-mediated markets [EBZ6DN2P]">Affonso, 2026</a> — identifies and models vertical tacit collusion in AI-mediated markets, showing platforms and sellers independently learn to exploit AI cognitive biases and produce super-additive consumer harm that evades traditional antitrust detection.</li>
-<li><a href="../papers/4HUDI9FW.html" title="What Is Your AI Agent Buying? Evaluation, Biases, Model Dependence, &amp; Emerging Implications for Agentic E-Commerce [4HUDI9FW]">Allouah et al., 2025</a> — develops ACES, a provider-agnostic framework auditing how frontier AI shopping agents choose products, revealing strong position biases, choice homogeneity, model-dependent volatility, and exploitable vulnerability to seller listing optimization.</li>
-<li><a href="../papers/MH8I5WJ6.html" title="Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces [MH8I5WJ6]">Karten et al., 2026</a> — introduces Agent Bazaar and the concept of economic alignment, exposing Algorithmic Instability and Sybil Deception failure modes in LLM agents and showing targeted RL training mitigates both orthogonally to model size.</li>
-<li><a href="../papers/CBL2GTGW.html" title="Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets [CBL2GTGW]">Bansal et al., 2025</a> — builds Magentic Marketplace and empirically shows frontier agents can approach optimal welfare under ideal search yet exhibit severe first-proposal bias, paradox-of-choice welfare loss, and variable manipulation resistance.</li>
-<li><a href="../papers/XT585ED2.html" title="Manipulating Large Language Models to Increase Product Visibility [XT585ED2]">Kumar &amp; Lakkaraju, 2024</a> — demonstrates that strategic text sequences optimized via an adversarial attack and inserted into a product listing can manipulate an LLM's e-commerce recommendations to push a target product to the top, threatening fair market competition.</li>
-<li><a href="../papers/QCJ4XZXS.html" title="PersonaAct: Simulating Short-Video Users with Personalized Agents for Counterfactual Filter Bubble Auditing [QCJ4XZXS]">Zhao et al., 2026</a> — builds PersonaAct, persona-conditioned multimodal agents that simulate short-video users to enable scalable, privacy-preserving auditing of filter bubbles, revealing platform-dependent content narrowing and escape potential.</li>
+<li><strong>Agent choice:</strong> How an agent selects among products or proposals.</li>
+<li><strong>Strategic influence:</strong> How a platform or seller changes what the agent sees.</li>
+<li><strong>Market outcomes:</strong> How many agents interact under market rules.</li>
 </ul>
-<h2>Contradictions</h2>
+<p>These levels are related, but they are not interchangeable. A measured choice bias does not by itself prove market-wide harm. A simulated market failure does not show that the same failure already occurs in a live market.</p>
+
+<figure class="flowchart" aria-labelledby="flow-title flow-caption">
+<h2 id="flow-title">Evidence map: where market effects can enter</h2>
+<p class="flow-intro">Read the nodes as stages in an agent-mediated purchase. Each node lists findings that researchers tested at that stage.</p>
+<ol>
+<li><strong>Market presents options</strong><span>Platforms control ranking, badges, search, and which offers are visible. Sellers control listing text and offers.</span></li>
+<li><strong>Agent evaluates options</strong><span>Controlled tests find model-specific sensitivity to position, endorsements, price, ratings, and proposal order.</span></li>
+<li><strong>Agent chooses or pays</strong><span>Some experiments find concentrated choices, first-proposal advantages, or higher visibility after listing changes.</span></li>
+<li><strong>Researchers measure outcomes</strong><span>Separate simulations test consumer surplus, price instability, fraud, welfare, and market integrity.</span></li>
+</ol>
+<figcaption id="flow-caption">This is an evidence map, not a claim that every market follows one causal sequence. The studies use different agents, tasks, and environments. Sources: Allouah et al.; Bansal et al.; Kumar and Lakkaraju; Affonso; Karten et al.</figcaption>
+</figure>
+
+<h2>What the evidence shows</h2>
+
+<h3>Agent choices depend on model and interface</h3>
+<p><a href="../papers/4HUDI9FW.html">Allouah et al. (2025)</a> introduce ACES, a controlled shopping environment. Their current arXiv version is v3 from December 2025. The authors randomize product and platform features to measure how they affect agent choice.</p>
+<ul class="key-findings">
+<li>The tested agents often concentrate demand on a small set of products.</li>
+<li>Model updates can change the selected products and the direction of position effects.</li>
+<li>Position effects remain in text-only tests. Instructions to ignore position reduce some effects but do not remove all of them.</li>
+<li>The tested agents penalize sponsored labels and favor platform endorsements.</li>
+<li>Seller-side description changes sometimes increase market share. The effect varies by model and product category.</li>
+</ul>
+<p>These results support continuous testing. They do not establish one stable preference pattern for all shopping agents.</p>
+
+<h3>Proposal order can outweigh service quality</h3>
+<p><a href="../papers/CBL2GTGW.html">Bansal et al. (2025)</a> introduce Magentic Marketplace. The environment connects assistant agents for consumers with service agents for businesses.</p>
+<p>Frontier models approach high welfare under favorable search conditions in the reported experiments. Performance falls as the market becomes larger. All tested models also show a strong first-proposal bias. The paper reports a 10 to 30 times advantage for response speed over quality in its setting.</p>
+<p>The paper also tests manipulation. Frontier models resist some traditional persuasion tactics better than smaller models. This result has a narrow scope. It does not test every form of structural, textual, or prompt-based manipulation.</p>
+
+<h3>Listing text can manipulate recommendations</h3>
+<p><a href="../papers/XT585ED2.html">Kumar and Lakkaraju (2024)</a> test a catalog of fictitious coffee machines with Llama 2. They add an optimized strategic text sequence to a product page.</p>
+<p>The added text makes the target product more likely to appear as the top recommendation. The result demonstrates a specific attack in a controlled setting. It does not measure prevalence on current commercial systems.</p>
+<p>This attack differs from ordinary persuasion. It optimizes text against a model. It also differs from the simple seller description edits in ACES. See <a href="generative-engine-optimization.html">generative engine optimization and search manipulation</a> for related work.</p>
+
+<h3>Platforms and sellers can create super-additive harm in simulation</h3>
+<p><a href="../papers/EBZ6DN2P.html">Affonso (2026)</a> models a platform, sellers, and an AI shopping agent. The platform selects rankings. Sellers select how strongly they manipulate descriptions. The simulation calibrates agent biases from prior empirical work.</p>
+<p>The paper calls the result <strong>vertical tacit collusion</strong>. The platform and sellers do not communicate or make an agreement. They independently optimize profit. Joint exploitation causes more consumer harm than the sum of the separately modeled effects.</p>
+<p>This is a simulated market mechanism. It is not evidence of a specific legal violation. The paper argues that antitrust tools focused on communication may miss this type of aligned behavior.</p>
+
+<h3>Multi-agent simulations reveal instability and deception</h3>
+<p><a href="../papers/MH8I5WJ6.html">Karten et al. (2026)</a> introduce Agent Bazaar and define <strong>economic alignment</strong> as the ability of agentic systems to preserve market stability and integrity.</p>
+<p>The paper studies two simulated failures:</p>
 <ul>
-<li>Manipulation resistance of frontier agents: <a href="../papers/CBL2GTGW.html" title="Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets [CBL2GTGW]">Bansal et al., 2025</a> find frontier models robustly resist traditional psychological manipulation and keep payments to manipulative businesses low, whereas <a href="../papers/4HUDI9FW.html" title="What Is Your AI Agent Buying? Evaluation, Biases, Model Dependence, &amp; Emerging Implications for Agentic E-Commerce [4HUDI9FW]">Allouah et al., 2025</a>, <a href="../papers/EBZ6DN2P.html" title="Vertical tacit collusion in AI-mediated markets [EBZ6DN2P]">Affonso, 2026</a>, and <a href="../papers/XT585ED2.html" title="Manipulating Large Language Models to Increase Product Visibility [XT585ED2]">Kumar &amp; Lakkaraju, 2024</a> find frontier agents remain substantially exploitable through seller-side listing optimization, information-architecture manipulation, and adversarial strategic text sequences. The tension is one of attack surface: psychological persuasion tactics in conversation versus structural and adversarial exploitation of position, endorsement, and description channels.</li>
+<li><strong>The Crash:</strong> Seller agents undercut prices until firms can fail.</li>
+<li><strong>The Lemon Market:</strong> One deceptive actor controls several seller identities and offers low-quality goods.</li>
 </ul>
-<h2>Open questions / gaps</h2>
+<p>Results vary by model. Prompt-based harnesses improve some outcomes but remain fragile under harder conditions. Targeted reinforcement learning improves the authors’ Economic Alignment Score in the tested environments. A trained 9B model ranks above the larger tested models on that score.</p>
+<p>The simulations omit many features of real markets. These include order books, differentiated goods, correlated demand, and continuously adapting opponents.</p>
+
+<h2>How the findings fit together</h2>
+<ul class="evidence-list">
+<li><strong>Repeated observation</strong>Position or order affects choices in both ACES and Magentic Marketplace. The studies use different tasks and measures.</li>
+<li><strong>Concrete attack</strong>Kumar and Lakkaraju show that optimized listing text can change one model’s recommendations.</li>
+<li><strong>Market mechanism</strong>Affonso uses measured agent biases as inputs to a simulated platform-and-seller game.</li>
+<li><strong>System risk</strong>Agent Bazaar tests instability and deception when autonomous agents interact over time.</li>
+</ul>
+<p class="caution"><strong>Do not combine the estimates directly.</strong> Each paper uses a different market, model set, outcome measure, and experimental design.</p>
+
+<h2>A real tension in the literature</h2>
+<h3>Are frontier agents resistant to manipulation?</h3>
+<p>The answer depends on the attack surface.</p>
 <ul>
-<li>The mechanistic source of agent biases is unresolved: whether position and choice biases come from pre-training, post-training, the vision encoder, or model drift, and how agent behavior compares to human baselines on identical tasks <a href="../papers/4HUDI9FW.html" title="What Is Your AI Agent Buying? Evaluation, Biases, Model Dependence, &amp; Emerging Implications for Agentic E-Commerce [4HUDI9FW]">Allouah et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Real platforms and sellers use more sophisticated optimization than Q-learning, and the analysis omits the retrieval stage and some bias channels, so modeled vertical-collusion harm may be conservative; the feasibility and market impact of the proposed regulatory remedies remain empirically untested <a href="../papers/EBZ6DN2P.html" title="Vertical tacit collusion in AI-mediated markets [EBZ6DN2P]">Affonso, 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Economic alignment is shown in simulations that abstract away order books, differentiated goods, and correlated demand; robustness to distribution shift from continuously adapting opponents rather than fixed base models, and self-play as a more robust training alternative, remain untested <a href="../papers/MH8I5WJ6.html" title="Agent Bazaar: Enabling Economic Alignment in Multi-Agent Marketplaces [MH8I5WJ6]">Karten et al., 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Current findings come from static markets where neither agents nor environment learn from history; temporal dynamics, repeated adaptation, and hybrid human-AI markets are flagged as essential extensions before deployment <a href="../papers/CBL2GTGW.html" title="Magentic Marketplace: An Open-Source Environment for Studying Agentic Markets [CBL2GTGW]">Bansal et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Adversarial strategic text sequences expose a need for safeguards: countermeasures to detect and prevent listing-level manipulation of LLM recommenders, and ethical guidelines for AI search optimization that preserve marketplace integrity and fair competition, remain to be developed <a href="../papers/XT585ED2.html" title="Manipulating Large Language Models to Increase Product Visibility [XT585ED2]">Kumar &amp; Lakkaraju, 2024</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Recommender-auditing methods are constrained by data scale and observation length: filter-bubble auditing has been validated only on a small set of users and platforms over short windows, leaving longer-horizon bubble evolution and the effect of diversity-injection or friction interventions untested <a href="../papers/QCJ4XZXS.html" title="PersonaAct: Simulating Short-Video Users with Personalized Agents for Counterfactual Filter Bubble Auditing [QCJ4XZXS]">Zhao et al., 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
+<li>Bansal et al. report that frontier agents resist several conversational persuasion tactics in their service marketplace.</li>
+<li>Allouah et al. report sensitivity to position, endorsements, and description changes.</li>
+<li>Kumar and Lakkaraju report successful model-targeted manipulation with strategic text.</li>
+<li>Affonso assumes exploitable bias in a calibrated simulation and tests its market effects.</li>
 </ul>
-<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+<p>These findings do not form a direct contradiction. The studies test different interventions. Resistance to one persuasion tactic does not establish resistance to ranking design, listing optimization, or adversarial text.</p>
+
+<h2>Auditing and mitigation</h2>
+<p>The papers propose or test several responses:</p>
+<ul>
+<li>Run repeated, randomized audits across models and model versions.</li>
+<li>Publish agent choice profiles or other monitoring results.</li>
+<li>Test platform rankings, badges, and search rules as separate variables.</li>
+<li>Evaluate seller content for model-targeted manipulation.</li>
+<li>Measure market stability, integrity, welfare, and profitability together.</li>
+<li>Train agents for economic outcomes and test them under harder market conditions.</li>
+</ul>
+<p>These are research directions. The papers do not establish a complete governance standard. Recommender-system audits are related, but they measure a different market layer. <a href="../papers/QCJ4XZXS.html">Zhao et al. (2026)</a> use persona-conditioned multimodal agents to audit short-video filter bubbles. Their initial study uses two users and 1,719 interactions, so its platform findings need broader validation.</p>
+
+<h2>Open questions</h2>
+<ul>
+<li>Which parts of training or inference produce position and order effects?</li>
+<li>How do agent choices compare with human choices in the same interface?</li>
+<li>Do results persist during retrieval, long tasks, and repeated purchases?</li>
+<li>How often do sellers use model-targeted listing techniques in live markets?</li>
+<li>How do adapting buyers, sellers, and platforms affect long-term outcomes?</li>
+<li>Which audits predict consumer harm outside a controlled environment?</li>
+<li>Which interventions improve outcomes without creating new manipulation channels?</li>
+<li>How should law distinguish tacit optimization, platform design, and an agreement?</li>
+</ul>
+<p>See the wiki’s <a href="../open-questions.html">research frontier</a>, <a href="agentic-marketplaces.html">agentic marketplaces</a>, <a href="agent-to-agent-negotiation.html">agent-to-agent negotiation</a>, and <a href="agent-security-and-prompt-injection.html">agent security and prompt injection</a>.</p>
+
+<h2>Sources and version scope</h2>
+<ul class="source-list">
+<li><a href="../papers/4HUDI9FW.html">Allouah et al. — wiki paper page</a> · <a href="https://arxiv.org/abs/2508.02630">original paper</a><small>arXiv:2508.02630v3, revised 17 December 2025.</small></li>
+<li><a href="../papers/EBZ6DN2P.html">Affonso — wiki paper page</a> · <a href="https://arxiv.org/abs/2601.03061">original paper</a><small>arXiv:2601.03061v1, submitted 6 January 2026.</small></li>
+<li><a href="../papers/CBL2GTGW.html">Bansal et al. — wiki paper page</a> · <a href="https://arxiv.org/abs/2510.25779">original paper</a><small>arXiv:2510.25779v1, submitted 27 October 2025.</small></li>
+<li><a href="../papers/XT585ED2.html">Kumar and Lakkaraju — wiki paper page</a> · <a href="https://arxiv.org/abs/2404.07981">original paper</a><small>arXiv:2404.07981v2, revised 2 September 2024.</small></li>
+<li><a href="../papers/MH8I5WJ6.html">Karten et al. — wiki paper page</a> · <a href="https://arxiv.org/abs/2605.17698">original paper</a><small>arXiv:2605.17698v1, submitted 17 May 2026.</small></li>
+<li><a href="../papers/QCJ4XZXS.html">Zhao et al. — wiki paper page</a> · <a href="https://arxiv.org/abs/2601.22547">original paper</a><small>arXiv:2601.22547v1, submitted 30 January 2026.</small></li>
+</ul>
+<p><small>This page uses plain-language technical writing principles from ASD-STE100 where practical. It does not claim formal ASD-STE100 compliance.</small></p>
+</main>
+
+<footer>Agentic Commerce Wiki — static export. Links resolve within this site.</footer>
 </div>
 </body>
 </html>

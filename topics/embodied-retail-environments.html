@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Embodied retail store environments</title>
 <style>
-:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+:root{--fg:#1a1a1a;--muted:#5b6470;--bg:#fff;--accent:#2457a7;--border:#d8dee8;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;--panel:#f7f9fc;--node:#fff;--human:#eaf4ff;--agent:#f4efff;}
 *{box-sizing:border-box;}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
  line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
@@ -16,13 +16,14 @@ nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:f
 nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
 nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
 nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a:focus-visible,a:focus-visible{outline:3px solid #f0b429;outline-offset:3px;}
 nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
 nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
 nav.subbar a{margin-right:.9rem;}
 nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
 h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
 h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
-h3{font-size:1.1rem;margin-top:1.5rem;}
+h3{font-size:1.08rem;margin-top:1.5rem;}
 a{color:var(--accent);text-decoration:none;}
 a:hover{text-decoration:underline;}
 span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
@@ -36,40 +37,149 @@ th{background:#f7f7f7;}
 table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
 table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
 ul,ol{padding-left:1.4rem;}
-li{margin:.15rem 0;}
+li{margin:.3rem 0;}
+.note{background:var(--panel);border-left:4px solid var(--accent);padding:.75rem 1rem;margin:1rem 0;}
+.flowchart{margin:1.5rem 0;padding:1rem;background:var(--panel);border:1px solid var(--border);border-radius:8px;}
+.flowchart h3{margin:.1rem 0 .35rem;}
+.flowchart .flow-intro{color:var(--muted);margin:.2rem 0 1rem;}
+.flowchart ol{list-style:none;padding:0;margin:0;counter-reset:flow;}
+.flowchart li{counter-increment:flow;position:relative;background:var(--node);border:2px solid #8da2bf;border-radius:7px;padding:.75rem .9rem .75rem 3.2rem;margin:0 auto 1.6rem;max-width:680px;}
+.flowchart li::before{content:counter(flow);position:absolute;left:.8rem;top:.75rem;width:1.65rem;height:1.65rem;border-radius:50%;display:grid;place-items:center;background:var(--barbg);color:#fff;font-weight:700;}
+.flowchart li:not(:last-child)::after{content:"↓";position:absolute;left:50%;bottom:-1.55rem;transform:translateX(-50%);color:#4d6280;font-size:1.25rem;font-weight:700;}
+.flowchart li.tracks{padding-bottom:.9rem;}
+.flowchart .track-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.65rem;}
+.flowchart .track{border:1px solid var(--border);border-radius:6px;padding:.65rem;}
+.flowchart .track:first-child{background:var(--human);}
+.flowchart .track:last-child{background:var(--agent);}
+.flowchart .track strong{display:block;}
+.flowchart figcaption{font-size:.88rem;color:var(--muted);margin-top:.9rem;}
+.source-list li{margin-bottom:.55rem;}
 hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
 footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+@media (max-width:620px){
+ .flowchart .track-grid{grid-template-columns:1fr;}
+ .flowchart li{padding-left:3rem;}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;}}
 </style>
 </head>
 <body>
-<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<nav class="sitebar" aria-label="Site"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
 <div class="wrap">
-<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<nav class="subbar" aria-label="Wiki sections"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
 
+<main>
 <h1>Embodied retail store environments</h1>
-<p>Photorealistic 3D simulation environments where embodied agents navigate, inspect, and manipulate products to complete retail shopping tasks.</p>
-<h2>Definition</h2>
-<p>This field studies embodied agents that perceive and act inside a simulated physical store, rather than browsing an e-commerce website. <a href="../papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a> frame the core problem as how embodied agents can be trained and evaluated on retail-specific tasks in a photorealistic simulation environment. They define three foundational research tasks adapted from embodied AI: visual exploration, which gathers environmental data through motion and perception; visual navigation, which achieves goals through movement; and embodied question answering, which navigates and then answers a question. The retail setting adds shopping-specific demands on top of these: finding a single item, retrieving it and scanning it at checkout, and comparing products to make conditional decisions such as choosing the item with lower sugar content.</p>
-<p><a href="../papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a> introduce Sari Sandbox as a high-fidelity photorealistic 3D virtual retail store with 250 interactive grocery items across three store layouts and a Python API for agent control. They distinguish difficulty tiers by the capabilities each task exercises. Easy tasks require perception, navigation, and manipulation. Average tasks add memory and task execution through retrieval plus checkout. Difficult tasks add decision-making and comprehension by requiring product comparison and conditional actions.</p>
-<h2>State of the area (synthesis)</h2>
-<p>The area currently rests on a single environment-and-benchmark contribution. <a href="../papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a> position retail as an under-explored domain for embodied agents, arguing that prior simulators concentrate on household or industrial settings rather than stores. Their environment pairs photorealistic product models with rich annotations: category, name, price, net weight, ingredients, nutritional facts, allergens, and manufacturing origin. Alongside it they release SariBench, a human demonstration dataset of 100 videos from 20 participants completing seven tasks each via VR, capturing head and hand pose, grip state, hovered or held items at 10 Hz, and transcribed think-aloud reasoning.</p>
-<p>The central empirical finding is a large human-agent performance gap. <a href="../papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a> report human completion of easy tasks in 47 to 73 seconds with 88.88 to 100 percent success. Their baseline embodied agent, built on Gemini 2.5 Pro with a ReAct framework adapted for retail, completes easy tasks in 420 to 780 seconds with 33.33 to 68.63 percent success. Humans are up to 16 times faster than the agent on easy tasks. The authors attribute the gap to vision language model reasoning and decision-making limits, computational overhead of VLM inference, and mode collapse where the agent gets lost. They present the agent as proof-of-concept and evaluate it only on easy tasks.</p>
-<p>This embodied, in-store framing sits apart from the web-facing strands of agentic shopping. The shopping tasks themselves overlap with item search, comparison, and checkout studied in <a href="shopping-agent-benchmarks.html" title="Shopping and e-commerce agent benchmarks">shopping-agent-benchmarks</a>, but here those tasks are grounded in physical navigation and manipulation rather than DOM actions. Likewise, <a href="web-agent-environments.html" title="Realistic web environments for autonomous agents">web-agent-environments</a> supplies realistic simulated settings for autonomous agents, yet those environments are browser-based whereas Sari Sandbox is a 3D physical store. <a href="../papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a> adopt the ReAct reasoning-action loop and a CoALA-style memory design, tools shared with broader LLM-agent work, but apply them to perception, locomotion, and object manipulation in a retail aisle.</p>
-<h2>Papers in this field</h2>
+<p>Embodied retail environments are 3D simulations of physical stores. Agents move through the store, inspect products, and manipulate objects to complete shopping tasks.</p>
+
+<div class="note" role="note">
+<strong>Evidence scope.</strong> This page covers one collected paper: Sari Sandbox. The paper has one arXiv version, dated August 1, 2025. The authors also state that the paper was accepted at the ICCV 2025 RetailVision workshop. Results on this page refer to that version.
+</div>
+
+<h2>What this area studies</h2>
+<p>This area studies agents that act in a simulated physical store. The agent uses visual observations and physical actions. This setting differs from a shopping website, where an agent acts through page controls and a document object model.</p>
+<p>The Sari Sandbox paper connects retail tasks to three established embodied AI tasks:</p>
 <ul>
-<li><a href="../papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a> — introduces Sari Sandbox, the first retail-specific photorealistic embodied simulation, plus the SariBench human demonstration dataset and a VLM baseline agent benchmarked against humans on grocery shopping tasks.</li>
+<li><strong>Visual exploration:</strong> The agent moves and gathers information about the environment.</li>
+<li><strong>Visual navigation:</strong> The agent moves to a goal location.</li>
+<li><strong>Embodied question answering:</strong> The agent navigates and answers a question about the environment.</li>
 </ul>
-<h2>Contradictions</h2>
+<p>Retail tasks can combine these abilities with product handling. A task can ask an agent to find an item, pick it up, scan it, or compare product information.</p>
+
+<h2>Current evidence</h2>
+<p>The collected evidence comes from <a href="../papers/L8JI9K24.html" title="Wiki summary of Sari Sandbox">Gajo et al. (2025)</a>. The authors present Sari Sandbox and SariBench.</p>
+
+<h3>Sari Sandbox</h3>
 <ul>
-<li>None directly flagged among collected papers.</li>
+<li>It is a Unity-based 3D convenience-store simulation.</li>
+<li>It contains 250 products in 11 food categories.</li>
+<li>It provides three store layouts.</li>
+<li>It includes shelves, refrigeration cabinets, and a self-checkout counter.</li>
+<li>It stores product data such as price, weight, ingredients, nutrition facts, allergens, and manufacturing origin.</li>
+<li>It provides a Python client and a Unity server. They communicate through WebSocket messages.</li>
+<li>It supports VR interaction for people and API control for agents.</li>
 </ul>
-<h2>Open questions / gaps</h2>
+<p>The authors describe the environment as photorealistic and high fidelity. These are the authors’ descriptions. The paper reports an OCR test on product labels, but it does not provide a broad independent measure of realism.</p>
+
+<h3>SariBench</h3>
+<p>SariBench groups shopping tasks into three levels:</p>
 <ul>
-<li>The large human-agent gap on easy tasks is unexplained beyond VLM overhead and mode collapse; deeper analysis of failure modes and reasoning errors is missing <a href="../papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Average and difficult tasks remain unevaluated; only easy tasks were benchmarked for the embodied agent <a href="../papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>No fine-tuning of the VLM was performed despite its potential to narrow the human-agent gap <a href="../papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Environment performance runs below a stable 60 FPS (23 to 35 FPS across layouts), constraining agent evaluation <a href="../papers/L8JI9K24.html" title="Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents [L8JI9K24]">Gajo et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
+<li><strong>Easy:</strong> Find and pick up one product.</li>
+<li><strong>Average:</strong> Retrieve a product and use checkout. These tasks add memory and task execution.</li>
+<li><strong>Difficult:</strong> Compare product information and take a conditional action. These tasks add decision-making and comprehension.</li>
 </ul>
+<p>The paper reports 100 human demonstration videos from 20 participants. It says each participant received three easy tasks, two average tasks, and two difficult tasks. The recordings include head pose, hand pose, grip state, and hovered or held items at 10 frames per second. The researchers also transcribed participants’ spoken thoughts.</p>
+
+<figure class="flowchart" aria-labelledby="flow-title flow-caption">
+<h3 id="flow-title">Evaluation structure in Sari Sandbox v1</h3>
+<p class="flow-intro">The diagram shows the study structure reported by the paper. It does not show a general causal model for embodied retail agents.</p>
+<ol>
+<li><strong>Use one simulated retail environment.</strong><br>Sari Sandbox supplies three layouts, 250 products, VR controls, and an agent API.</li>
+<li><strong>Use three task levels.</strong><br>SariBench defines easy, average, and difficult retail tasks.</li>
+<li class="tracks"><strong>Run two evaluation tracks.</strong>
+<div class="track-grid">
+<div class="track"><strong>Human track</strong>Participants received tasks from all three levels. The paper reports 108 assigned evaluation tasks.</div>
+<div class="track"><strong>Agent track</strong>The proof-of-concept agent received easy tasks only. Harder agent tasks remain future work.</div>
+</div>
+</li>
+<li><strong>Report results by layout.</strong><br>The paper reports average completion time and completion rate. It compares people and the agent only for easy tasks.</li>
+</ol>
+<figcaption id="flow-caption">Figure 1. Study structure from Gajo et al., arXiv:2508.00400v1, Sections 3.5 and 4.3. The human and agent tracks have different task coverage.</figcaption>
+</figure>
+
+<h2>Reported results</h2>
+
+<h3>Human and agent performance</h3>
+<p>The paper compares people with one proof-of-concept agent on easy tasks. The agent uses Gemini 2.5 Pro preview 05-06. It uses a ReAct-style loop and does not use model fine-tuning.</p>
+<ul>
+<li>People completed easy tasks in 47 to 73 seconds on average across the three layouts.</li>
+<li>Human completion rates for easy tasks ranged from 88.88% to 100%.</li>
+<li>The agent completed successful easy tasks in 420 to 780 seconds on average.</li>
+<li>Agent completion rates ranged from 33.33% to 68.63%.</li>
+<li>The longest reported agent average was about 16 times the matching human average.</li>
+</ul>
+<p>The paper defines agent success as completion within 45 minutes. It defines failure as exceeding that limit or getting lost. The authors call the agent a solvability proof of concept. They do not present it as an optimized benchmark.</p>
+
+<h3>Environment and label tests</h3>
+<p>The paper reports 26.73 frames per second for Layout 1, 23.23 for Layout 2, and 35.14 for Layout 3. The test computer used an Intel i7-8700 CPU and an NVIDIA GTX 1080 GPU. These results are hardware-specific.</p>
+<p>The paper also tests PaddleOCR on product label text. It reports 0.986 precision, 0.943 recall, and a 0.014 character error rate. The authors note weaker results for rotated and stylized text.</p>
+
+<h2>What the results support</h2>
+<ul>
+<li>The environment can support human VR interaction and API-controlled agent interaction.</li>
+<li>The proof-of-concept agent can complete some easy tasks.</li>
+<li>People performed the reported easy tasks faster and more often than the tested agent.</li>
+<li>The published agent evaluation does not cover average or difficult tasks.</li>
+</ul>
+<p>The results do not establish performance for other models, other hardware, or physical stores. The paper evaluates one environment and one agent design.</p>
+
+<h2>Links to related wiki topics</h2>
+<ul>
+<li><a href="shopping-agent-benchmarks.html">Shopping and e-commerce agent benchmarks</a> also cover search, comparison, and checkout. Those benchmarks may use web interfaces instead of physical movement.</li>
+<li><a href="web-agent-environments.html">Web agent environments</a> simulate browser-based work. Embodied retail environments simulate movement and object interaction in a store.</li>
+</ul>
+
+<h2>Open questions</h2>
+<ul>
+<li>How well do agents perform on the average and difficult SariBench tasks?</li>
+<li>Which errors come from perception, navigation, manipulation, memory, or planning?</li>
+<li>How much can model choice, context design, or fine-tuning improve performance?</li>
+<li>Can the environment reach a stable 60 frames per second on the target class of computers?</li>
+<li>How well do results transfer to other store layouts, product sets, and physical retail settings?</li>
+<li>How should later work reconcile the paper’s reported counts? The paper reports 100 demonstration videos, 108 assigned human evaluation tasks, and seven assigned tasks per participant.</li>
+</ul>
+
+<h2>Contradictions and limits</h2>
+<p>No direct contradiction appears among the collected papers because this topic currently contains one paper.</p>
+<p>The paper calls Sari Sandbox a retail-specific contribution and says retail simulation is underexplored. It does not establish that no other retail simulator exists. The authors discuss earlier retail digital twins and the Future Convenience Store Challenge.</p>
+
+<h2>Paper in this field</h2>
+<ul class="source-list">
+<li><a href="../papers/L8JI9K24.html" title="Wiki summary of Sari Sandbox">Gajo et al. (2025), wiki paper page</a> — repository summary and metadata.</li>
+<li><a href="https://arxiv.org/abs/2508.00400" title="Sari Sandbox on arXiv">Gajo et al. (2025), Sari Sandbox: A Virtual Retail Store Environment for Embodied AI Agents</a> — primary paper record. This page uses arXiv version 1.</li>
+</ul>
+</main>
+
 <footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
 </div>
 </body>

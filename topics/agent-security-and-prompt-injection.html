@@ -5,13 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Agent Security and Prompt Injection</title>
 <style>
-:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;--panel:#f7f9fc;}
 *{box-sizing:border-box;}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
- line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
 .wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
-nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
- box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;box-shadow:0 1px 4px rgba(0,0,0,.15);}
 nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
 nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
 nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
@@ -20,67 +18,126 @@ nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
 nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
 nav.subbar a{margin-right:.9rem;}
 nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
-h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
+h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 .65rem;}
 h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
 h3{font-size:1.1rem;margin-top:1.5rem;}
 a{color:var(--accent);text-decoration:none;}
 a:hover{text-decoration:underline;}
-span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+a:focus-visible{outline:3px solid #f2b84b;outline-offset:3px;}
 code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
-pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
-pre code{background:none;padding:0;}
-blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
-table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
-th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
-th{background:#f7f7f7;}
-table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
-table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
 ul,ol{padding-left:1.4rem;}
-li{margin:.15rem 0;}
-hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+li{margin:.3rem 0;}
+.lede{font-size:1.05rem;color:#333;max-width:72ch;}
+.note{border-left:4px solid var(--accent);background:var(--panel);padding:.8rem 1rem;margin:1rem 0;}
+.flowchart{margin:1.5rem 0;padding:1rem;background:var(--panel);border:1px solid var(--border);border-radius:8px;}
+.flowchart figcaption{font-weight:700;margin-bottom:.85rem;}
+.flowchart-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem;counter-reset:step;}
+.flowchart-list li{position:relative;margin:0;padding:1rem;border:1px solid #c9d5e8;border-radius:7px;background:#fff;counter-increment:step;}
+.flowchart-list li::before{content:counter(step);display:inline-grid;place-items:center;width:1.7rem;height:1.7rem;margin-right:.4rem;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;}
+.flowchart-list li:not(:last-child)::after{content:"→";position:absolute;right:-1.55rem;top:50%;transform:translateY(-50%);font-size:1.5rem;color:var(--accent);}
+.flowchart-list strong{display:inline;}
+.flowchart-list span{display:block;margin-top:.55rem;color:#333;font-size:.94rem;}
+.chart-note{margin:.9rem 0 0;color:var(--muted);font-size:.9rem;}
+.source-list li{margin:.6rem 0;}
 footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+@media (max-width:700px){.flowchart-list{grid-template-columns:1fr;gap:2rem}.flowchart-list li:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-1.75rem;transform:translateX(-50%);}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;}}
 </style>
 </head>
 <body>
 <nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
 <div class="wrap">
-<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<nav class="subbar" aria-label="Wiki sections"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
 
+<main>
 <h1>Agent Security and Prompt Injection</h1>
-<p>How autonomous LLM agents are attacked through the content they read, whether the defenses meant to stop those attacks hold up in realistic settings, and how an agent's own behavior might be monitored at runtime.</p>
-<h2>Definition</h2>
-<p>Prompt injection is the central security threat in this field. Malicious instructions placed in content the agent reads can hijack its behavior, divert it from the user task, or leak data. <a href="../papers/4G9XTVC5.html" title="AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? [4G9XTVC5]">Li et al., 2026</a> frames the deployment-facing version of this problem: an agent security defense must block injected attacker goals while still letting the agent complete open-ended user tasks.</p>
-<p><a href="../papers/4G9XTVC5.html" title="AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? [4G9XTVC5]">Li et al., 2026</a> organizes existing defenses into four categories. Prompting-based defenses rewrite the prompt to keep the model focused on the original user instruction, for example by repeating trusted instructions after each tool call or by delimiting untrusted tool outputs. Filtering-based defenses use a separate classifier to detect and remove injection attempts in external data. Alignment-based defenses fine-tune the model itself to prioritize the user query over instructions found in external content. System-level defenses constrain execution through tool isolation, information-flow control, or dynamic privilege policies.</p>
-<p>A defense is judged on both security and utility. <a href="../papers/4G9XTVC5.html" title="AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? [4G9XTVC5]">Li et al., 2026</a> reports three metrics: benign utility (task completion with no attack), utility under attack, and attack success rate (the fraction of cases where the attacker's goal succeeds). The failure mode opposite to insecurity is overdefense, where a defense suppresses attacks but also blocks the benign instructions an agent needs to finish its task.</p>
-<p>The injection an agent reads has to reach the agent first, and for retrieval-augmented agents the attacker can target that delivery channel directly. <a href="../papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a> studies corpus poisoning against dense embedding-based retrievers, the search component that many agents and RAG systems use to fetch context. A corpus-poisoning attack inserts crafted adversarial passages into the searchable corpus at inference time, without retraining the model, so that they rank highly and are retrieved for chosen queries. This is the upstream surface on which an injected payload then rides into the agent's context.</p>
-<p>The defenses above all act on what the agent reads. A separate line watches what the agent does. <a href="../papers/DECY38ZV.html" title="Linear Probes for Strategic Deception Generalize Across Three LLM Families in Multi-Agent Negotiation [DECY38ZV]">Sims, 2026</a> studies activation-based behavioral monitoring: a runtime monitor that detects strategic deception by reading the agent's own residual-stream activations rather than its inputs. The probe is a linear classifier trained on residual-stream activations to decode whether the agent is being deceptive on a given turn. This is a behavioral defense layer rather than an injection defense, and it targets misbehavior that originates inside the agent rather than in the content it reads.</p>
-<h2>State of the area (synthesis)</h2>
-<p>The wiki holds three papers here. Two trace one attack path: getting malicious content in front of the agent, and getting the agent to obey it. The third opens a separate defense layer that watches the agent's own behavior at runtime.</p>
-<p>The downstream stage of the attack path is defense evaluation. <a href="../papers/4G9XTVC5.html" title="AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? [4G9XTVC5]">Li et al., 2026</a> observes that defenses now reach near-perfect scores on current benchmarks, yet argues this hides a gap between benchmark results and real-world deployment. Its contribution is AgentDyn, a manually designed benchmark built to expose that gap. AgentDyn differs from prior benchmarks along three deliberate axes. Tasks require dynamic planning, so the agent must adapt as the environment responds rather than follow a fixed script. Each task embeds at least one benign, necessary helpful instruction in the critical path, so a defense cannot simply discard all external instructions. Tasks are longer and span multiple integrated applications, with trajectories of roughly six to nine steps across two to four application scenarios. The three suites cover Shopping, GitHub, and Daily Life across seven application types, combining 60 user tasks with 28 injection tasks into 560 security test cases. The threat model places injections in realistic surfaces such as advertisement banners rather than direct page manipulation.</p>
-<p>The empirical result is that defenses which look solved are not. <a href="../papers/4G9XTVC5.html" title="AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? [4G9XTVC5]">Li et al., 2026</a> evaluates ten state-of-the-art defenses across twelve commercial and open-source agents and finds that almost all either lack security or suffer severe overdefense. Filtering-based defenses struggle to separate helpful instructions from malicious ones. Planning-dependent methods lose utility sharply in dynamic scenarios. The strongest defense in the study, the alignment-based Meta SecAlign, reaches only 53.4% utility on AgentDyn versus 80% on the prior AgentDojo benchmark. The takeaway is a mismatch between benchmark conditions and deployment conditions.</p>
-<p>The upstream stage is the retrieval channel itself. <a href="../papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a> shows that the dense retrievers feeding agent context are highly vulnerable to corpus poisoning. Its attack, GASLITE, is a gradient-based method that optimizes an adversarial passage to maximize embedding similarity with a target query distribution, without access to the corpus content or the retriever weights. The poisoning rates needed are negligible. Concept-specific attacks succeed with about ten inserted passages, roughly 0.0001% of an 8.8M-passage corpus, exceeding 50% average appeared@10 for most of nine evaluated retrievers. Single-query attacks are fully solved. The susceptibility varies sharply by model, which <a href="../papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a> traces to embedding space anisotropy and the choice of similarity metric. The same mechanism the authors use to promote content is the one indirect prompt injection rides into RAG systems, so retrieval robustness is a precondition for any downstream injection defense to matter.</p>
-<p>The two attack-path papers also share a methodological complaint: prior work made its target look safer than it is. <a href="../papers/4G9XTVC5.html" title="AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? [4G9XTVC5]">Li et al., 2026</a> argues benchmarks understate the threat by testing static, single-application tasks. <a href="../papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a> argues prior retrieval-attack evaluations understated vulnerability by using oversimplified single-query threat models and weak baselines, and both call for worst-case evaluation under realistic threat models.</p>
-<p>Behavioral monitoring is the complementary defense layer, watching the agent rather than its inputs. <a href="../papers/DECY38ZV.html" title="Linear Probes for Strategic Deception Generalize Across Three LLM Families in Multi-Agent Negotiation [DECY38ZV]">Sims, 2026</a> trains linear probes on residual-stream activations from three instruction-tuned models and detects strategic deception in two-agent commercial negotiation at AUC above 0.93 on 11 of 12 model-scenario combinations. The deception signal concentrates in a single mass-mean direction; projecting that direction out collapses AUC by 0.30 to 0.44, so the bulk of the signal is one-dimensional. The deployment case is cheap monitoring: a probe trained on explicit instructed deception detects emergent, incentive-driven deception in the same model at AUC 0.70 to 0.77, so synthetic instructed examples can train a monitor for the harder emergent case. This matters for agentic commerce because the scenarios are negotiation settings where an agent is rewarded for misrepresenting a walkaway price, professing loyalty while planning defection, or withholding a known defect. A behavioral monitor here is a defense against agent misbehavior in transactions, distinct from the input-side injection defenses <a href="../papers/4G9XTVC5.html" title="AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? [4G9XTVC5]">Li et al., 2026</a> evaluates.</p>
-<p>The honest limit of this monitoring layer is portability across architectures. <a href="../papers/DECY38ZV.html" title="Linear Probes for Strategic Deception Generalize Across Three LLM Families in Multi-Agent Negotiation [DECY38ZV]">Sims, 2026</a> finds within-model-family transfer strong but cross-family transfer weak. A direction trained on Gemma with theory-of-mind context projects onto the same model without that context at AUC 0.918, but cross-family transfer between Llama and Mistral collapses to 0.51 to 0.56. The practical guidance is to recalibrate per architecture rather than assume a probe ports. The paper also flags that it establishes correlation, not behavioral causality: logit-level steering shows a monotone dose-response, but generation-loop steering to confirm that the direction drives more deceptive text is left as the immediate next experiment. The deception studied is also internal misbehavior under incentive, not an injected attacker goal, so this layer addresses a threat the injection defenses do not, and vice versa.</p>
-<p>This security work connects to the broader wiki. The corpus-poisoning channel is the adversarial counterpart of the ranking-manipulation studied in <a href="generative-engine-optimization.html" title="Generative Engine Optimization and Search Manipulation">generative-engine-optimization</a>, where the goal is promoting chosen content into model-mediated retrieval. The realism axis AgentDyn pushes on mirrors concerns in <a href="web-agent-environments.html" title="Realistic web environments for autonomous agents">web-agent-environments</a> about whether agent environments capture real interactive dynamics. Its Shopping suite situates injection threats inside the same purchasing workflows studied in <a href="shopping-agent-benchmarks.html" title="Shopping and e-commerce agent benchmarks">shopping-agent-benchmarks</a>, drawing its environment design partly from WebArena. The deception-monitoring layer sits beside <a href="agent-to-agent-negotiation.html" title="Agent-to-agent negotiation">agent-to-agent-negotiation</a>, where the negotiating behaviors it watches are studied as a capability rather than a risk.</p>
+<p class="lede">Agents read external content and use tools. An attacker can place instructions in that content. The agent can then follow the attacker’s goal instead of the user’s goal.</p>
+
+<h2>What this topic covers</h2>
+<p><strong>Indirect prompt injection</strong> is an instruction in third-party content, such as a webpage or email. The instruction tries to change the agent’s behavior. It can redirect a task or cause an unauthorized action.</p>
+<p>This topic also covers two related risks. An attacker can promote chosen content in a retrieval system. An agent can also act deceptively because of its own incentives. These risks need different tests and controls.</p>
+
+<figure class="flowchart" aria-labelledby="security-layers-caption">
+<figcaption id="security-layers-caption">Three security layers in the collected evidence</figcaption>
+<ol class="flowchart-list">
+<li><strong>Test retrieval exposure</strong><span>Measure whether attacker-chosen passages enter the top search results. GASLITE tests this layer.</span></li>
+<li><strong>Test agent response</strong><span>Measure task success and attack success when an agent reads injected instructions. AgentDyn tests this layer.</span></li>
+<li><strong>Test agent behavior</strong><span>Measure whether a monitor detects strategic deception in model activations. Sims tests this separate layer.</span></li>
+</ol>
+<p class="chart-note">The numbers give a review order. They do not show a causal sequence that the three papers tested together.</p>
+</figure>
+
+<h2>How defenses are evaluated</h2>
+<p><a href="../papers/4G9XTVC5.html" title="AgentDyn paper summary">Li et al. (2026)</a> evaluate prompt injection defenses with three measures:</p>
+<ul>
+<li><strong>Benign utility:</strong> The agent completes the task when no attack is present.</li>
+<li><strong>Utility under attack:</strong> The agent completes the user’s task when an attack is present.</li>
+<li><strong>Attack success rate:</strong> The attacker’s goal succeeds.</li>
+</ul>
+<p>A defense can stop attacks and still be unusable. This occurs when the defense also blocks helpful external instructions. AgentDyn calls this problem <strong>overdefense</strong>.</p>
+
+<h3>Four defense types</h3>
+<ul>
+<li><strong>Prompting defenses</strong> mark untrusted content or repeat trusted instructions.</li>
+<li><strong>Filtering defenses</strong> use a detector to find suspected injections.</li>
+<li><strong>Alignment defenses</strong> train the model to give priority to the user’s instruction.</li>
+<li><strong>System defenses</strong> restrict tools, privileges, or information flows.</li>
+</ul>
+
+<h2>What the papers found</h2>
+
+<h3>AgentDyn: defenses lose security or utility on harder tasks</h3>
+<p>AgentDyn contains 60 open-ended tasks and 560 injection test cases. The tasks cover Shopping, GitHub, and Daily Life. They require dynamic planning and include helpful third-party instructions.</p>
+<p>The authors evaluate ten defenses on twelve agents. They report that almost all defenses are either not secure enough or cause significant overdefense. This result applies to AgentDyn. It does not prove performance in all deployed systems.</p>
+<p>AgentDyn is more demanding than the benchmarks that the authors compare against. It still has limits. It includes three task suites and cannot reproduce the full range of real environments.</p>
+
+<h3>GASLITE: a small number of passages can change retrieval results</h3>
+<p><a href="../papers/UUSKGGGW.html" title="GASLITE paper summary">Ben-Tov and Sharif (2025)</a> study corpus poisoning in dense retrieval. Their attack inserts crafted passages into a corpus. It does not retrain or modify the retrieval model.</p>
+<p>The authors test nine dense retrievers. For concept-specific queries, a poisoning rate of at most 0.0001% makes adversarial passages appear in the top ten results for 61% to 100% of unseen queries against most tested models.</p>
+<div class="note"><strong>Evidence boundary:</strong> GASLITE measures content promotion in retrieval. It does not measure whether an agent follows a prompt injection in the retrieved passage. The result identifies a possible exposure channel, not a complete prompt injection attack.</div>
+
+<h3>Linear probes: deception signals do not transfer reliably across model families</h3>
+<p><a href="../papers/DECY38ZV.html" title="Linear probes paper summary">Sims (2026)</a> trains linear classifiers on model activations. The study uses three instruction-tuned models in three commercial negotiation scenarios.</p>
+<p>At the best tested layer, the probes reach an area under the receiver operating characteristic curve above 0.93 in 11 of 12 model and scenario combinations. Probes trained on instructed deception detect incentive-driven deception in the same model with values from 0.70 to 0.77.</p>
+<p>Transfer between model families is weak. Tests between Llama and Mistral produce values from 0.51 to 0.56. A monitor therefore needs validation for each architecture.</p>
+<div class="note"><strong>Evidence boundary:</strong> The study finds a correlation between activations and labeled deception. It does not show that steering the activation direction changes deceptive behavior in generated text. The study also does not test prompt injection.</div>
+
+<h2>What the evidence means</h2>
+<ul>
+<li>Evaluate security and task completion together.</li>
+<li>Include helpful external instructions in prompt injection tests.</li>
+<li>Test retrieval separately from the agent’s response to retrieved content.</li>
+<li>Validate activation monitors on the model family and setting where they will run.</li>
+<li>State the tested scope before you apply a result to a deployed system.</li>
+</ul>
+
+<h2>Open questions</h2>
+<ul>
+<li>How well do prompt injection defenses work in longer tasks and more varied applications?</li>
+<li>Can evaluations use stronger attacks without creating unrealistic threat models?</li>
+<li>Which controls stop corpus poisoning in proprietary and larger retrieval systems?</li>
+<li>Can activation monitors predict deceptive behavior outside commercial negotiation?</li>
+<li>Can researchers show that an activation intervention changes generated behavior?</li>
+</ul>
+
 <h2>Papers in this field</h2>
-<ul>
-<li><a href="../papers/4G9XTVC5.html" title="AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? [4G9XTVC5]">Li et al., 2026</a> — AgentDyn, a benchmark showing that state-of-the-art prompt-injection defenses fail on realistic dynamic agent tasks despite near-perfect scores on existing benchmarks.</li>
-<li><a href="../papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a> — GASLITE, a gradient-based corpus-poisoning attack showing that dense embedding-based retrievers feeding agents and RAG systems are highly vulnerable to adversarial passages at negligible poisoning rates.</li>
-<li><a href="../papers/DECY38ZV.html" title="Linear Probes for Strategic Deception Generalize Across Three LLM Families in Multi-Agent Negotiation [DECY38ZV]">Sims, 2026</a> — linear probes on residual-stream activations detect strategic deception in multi-agent negotiation across three model families, validating cheap within-family runtime monitors but revealing that cross-architecture transfer collapses.</li>
+<ul class="source-list">
+<li><a href="../papers/4G9XTVC5.html">Li et al. (2026), AgentDyn</a> — Tests ten prompt injection defenses on dynamic tasks with helpful external instructions. <a href="https://arxiv.org/abs/2602.03117">Original paper</a>.</li>
+<li><a href="../papers/UUSKGGGW.html">Ben-Tov and Sharif (2025), GASLITEing the Retrieval</a> — Tests corpus poisoning against nine dense retrievers. <a href="https://arxiv.org/abs/2412.20953">Original paper</a>.</li>
+<li><a href="../papers/DECY38ZV.html">Sims (2026), Linear Probes for Strategic Deception</a> — Tests activation-based deception detection in multi-agent negotiation. <a href="https://openreview.net/pdf?id=eW9WF3sZVR">Original paper</a>.</li>
 </ul>
-<h2>Contradictions</h2>
+
+<h2>Related wiki topics</h2>
 <ul>
-<li>None directly flagged among collected papers.</li>
+<li><a href="generative-engine-optimization.html">Generative Engine Optimization and Search Manipulation</a></li>
+<li><a href="web-agent-environments.html">Realistic Web Environments for Autonomous Agents</a></li>
+<li><a href="shopping-agent-benchmarks.html">Shopping and E-commerce Agent Benchmarks</a></li>
+<li><a href="agent-to-agent-negotiation.html">Agent-to-Agent Negotiation</a></li>
 </ul>
-<h2>Open questions / gaps</h2>
-<ul>
-<li>AgentDyn still cannot fully capture the complexity and diversity of real-world environments, so more realistic evaluation frameworks remain an open need <a href="../papers/4G9XTVC5.html" title="AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? [4G9XTVC5]">Li et al., 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Attack development lags behind defense development; the benchmark's existing attacks are relatively weak against frontier models such as GPT-5 and Claude-4, and building stronger, more realistic attack frameworks is identified as an important complementary direction <a href="../papers/4G9XTVC5.html" title="AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? [4G9XTVC5]">Li et al., 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Retrieval-poisoning robustness is largely unaddressed by defenses; <a href="../papers/UUSKGGGW.html" title="GASLITEing the Retrieval: Exploring Vulnerabilities in Dense Embedding-based Search [UUSKGGGW]">Ben-Tov &amp; Sharif, 2025</a> explores only L2-norm and perplexity filtering and assumes white-box, BERT-base-sized open-source retrievers evaluated mainly on MSMARCO and NQ, leaving proprietary, larger-scale, and specialized-domain retrievers open. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Activation-based deception monitors are validated only for correlation, not behavioral causality; generation-loop steering to confirm the direction drives more deceptive text is left as the immediate next experiment, and cross-architecture transfer is weak beyond a single model family at 7-8B scale <a href="../papers/DECY38ZV.html" title="Linear Probes for Strategic Deception Generalize Across Three LLM Families in Multi-Agent Negotiation [DECY38ZV]">Sims, 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Whether activation-based deception monitoring generalizes beyond commercial negotiation to social manipulation, cooperative-task betrayal, and long-horizon planning is untested <a href="../papers/DECY38ZV.html" title="Linear Probes for Strategic Deception Generalize Across Three LLM Families in Multi-Agent Negotiation [DECY38ZV]">Sims, 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-</ul>
+
+<p class="note"><strong>Writing note:</strong> This page uses selected clarity principles from ASD-STE100, including short sentences, direct wording, active voice, and consistent terms. It does not claim formal ASD-STE100 compliance or certification.</p>
+</main>
+
 <footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
 </div>
 </body>

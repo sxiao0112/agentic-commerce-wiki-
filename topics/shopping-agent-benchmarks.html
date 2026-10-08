@@ -5,89 +5,156 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shopping and e-commerce agent benchmarks</title>
 <style>
-:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+:root{--fg:#1a1a1a;--muted:#5f6368;--bg:#fff;--accent:#2a5db0;--border:#d9dee7;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;--panel:#f7f9fc;--focus:#ffbf47;}
 *{box-sizing:border-box;}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
- line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
 .wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
-nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
- box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;box-shadow:0 1px 4px rgba(0,0,0,.15);}
 nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
 nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
 nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
 nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
+nav.sitebar a:focus-visible,a:focus-visible{outline:3px solid var(--focus);outline-offset:3px;}
 nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
 nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
 nav.subbar a{margin-right:.9rem;}
 nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
-h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
-h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
-h3{font-size:1.1rem;margin-top:1.5rem;}
-a{color:var(--accent);text-decoration:none;}
-a:hover{text-decoration:underline;}
-span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
-code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
-pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
-pre code{background:none;padding:0;}
-blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
-table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
-th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
-th{background:#f7f7f7;}
-table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
-table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
+h1{font-size:1.8rem;line-height:1.25;margin:.2rem 0 .65rem;}
+h2{font-size:1.32rem;line-height:1.3;margin-top:2.2rem;border-bottom:1px solid var(--border);padding-bottom:.35rem;}
+h3{font-size:1.08rem;line-height:1.35;margin:.2rem 0 .35rem;}
+p{margin:.65rem 0;}
+.lede{font-size:1.05rem;max-width:74ch;}
+.note{border-left:4px solid var(--accent);background:var(--panel);padding:.75rem 1rem;margin:1rem 0;}
+a{color:var(--accent);text-decoration:underline;text-decoration-thickness:.08em;text-underline-offset:.15em;}
+a:hover{text-decoration-thickness:.14em;}
 ul,ol{padding-left:1.4rem;}
-li{margin:.15rem 0;}
-hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+li{margin:.35rem 0;}
+.evidence-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;list-style:none;padding:0;margin:1rem 0;}
+.evidence-list li{border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;margin:0;background:#fff;}
+.flowchart{margin:1.25rem 0;padding:1rem;border:1px solid var(--border);border-radius:10px;background:var(--panel);}
+.flowchart figcaption{font-weight:700;margin-bottom:.9rem;}
+.flow{counter-reset:step;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.4rem;list-style:none;padding:0;margin:0;}
+.flow li{counter-increment:step;position:relative;min-height:9.5rem;border:2px solid #9bb4db;border-radius:8px;background:#fff;padding:.8rem;}
+.flow li::before{content:counter(step);display:inline-grid;place-items:center;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--barbg);color:#fff;font-weight:700;margin-bottom:.5rem;}
+.flow li:not(:last-child)::after{content:"→";position:absolute;right:-1.2rem;top:42%;font-size:1.4rem;font-weight:700;color:var(--accent);}
+.flow p{font-size:.9rem;line-height:1.45;margin:.3rem 0 0;}
+.source-list li{margin-bottom:.65rem;}
 footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+@media (max-width:720px){
+  .evidence-list{grid-template-columns:1fr;}
+  .flow{grid-template-columns:1fr;gap:1.8rem;}
+  .flow li{min-height:auto;}
+  .flow li:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-1.65rem;transform:translateX(-50%);}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto;}}
 </style>
 </head>
 <body>
 <nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
 <div class="wrap">
-<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<nav class="subbar" aria-label="Wiki sections"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
 
+<main>
 <h1>Shopping and e-commerce agent benchmarks</h1>
-<p>Benchmarks and evaluation environments that measure how well LLM-based agents can search, compare, personalize, and purchase products in realistic e-commerce settings.</p>
-<h2>Definition</h2>
-<p>This field builds benchmarks that test autonomous agents on shopping tasks rather than static NLP tasks. The defining work is WebShop <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a>. It frames online shopping as a sequential decision-making problem where an agent reads a natural-language instruction, navigates search, results, and item pages, selects options, and completes a purchase. WebShop pairs 1.18 million real Amazon products with crowdsourced instructions and an automatically computable reward, so evaluation needs no human in the loop <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a>. That automatic-reward design is what makes the benchmark scalable, and most later e-commerce benchmarks inherit the same instruction-to-purchase task shape.</p>
-<p>A central design axis is realism versus reproducibility. Offline simulated environments give controlled, repeatable conditions but a fixed slice of product diversity, while live-website evaluation gives realism at the cost of non-stationary layouts and inventories <a href="../papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a>. ShopGym <a href="../papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a> names this tradeoff explicitly and tries to occupy the middle ground by synthesizing anonymized sandbox shops from live storefronts. DeepShop <a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a> takes the opposite side, evaluating agents directly on live e-commerce sites to capture dynamic real-world content.</p>
-<p>A second axis is task complexity. WebShop instructions specify a target product plus a few attributes, options, and a price cap <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a>. Later benchmarks argue this is too simple. DeepShop evolves queries through progressive enhancement of product attributes, search filters, and sorting preferences, producing queries far longer than earlier online benchmarks <a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a>. ShoppingBench grounds instructions in real product catalogs and organizes them into intent categories such as Products Finder, Knowledge, Multi-products Seller, and Coupon and Budget <a href="../papers/P97GR95W.html" title="ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents [P97GR95W]">Wang et al., 2025</a>. WebMall adds multi-shop comparison shopping, requiring agents to search and compare offers across several heterogeneous shops <a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a>.</p>
-<p>A third axis is what counts as success. Many benchmarks measure task success or product-relevance against ground truth, but several add finer dimensions. ShopperBench scores persona fidelity and path consistency alongside task success <a href="../papers/G994SNDV.html" title="ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation [G994SNDV]">Ling et al., 2025</a>. AgenticShop uses a checklist-driven personalization score grounded in verifiable product information <a href="../papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a>. ShoppingComp adds rubric-based safety-critical decision making and reasoning faithfulness to retrieval accuracy <a href="../papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a>.</p>
-<h2>State of the area (synthesis)</h2>
-<p>The dominant finding across this field is that current agents perform well below humans on realistic shopping tasks. WebShop set the template: its best IL+RL agent reached 29% success against 59% for human experts, with option selection the primary bottleneck <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a>. Every later benchmark that raises task realism reproduces a large gap. On DeepShop, the strongest web agent reached 32% overall success and dropped toward zero on hard multi-constraint queries <a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a>. On ShoppingBench, the best untrained agent (GPT-4.1) stayed below 50% success <a href="../papers/P97GR95W.html" title="ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents [P97GR95W]">Wang et al., 2025</a>. On WebMall, frontier models completed under 65% of tasks in the hardest categories <a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a>. ShoppingComp reports the starkest gap: state-of-the-art GPT-5.2 reached only 17.76% answer-match F1 against 30.02% for human experts <a href="../papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a>.</p>
-<p>The benchmarks agree on where agents break down, which gives the field a shared diagnosis. The first recurring failure is search and constraint satisfaction. WebShop agents struggle to formulate and reformulate queries and to match noisy product text <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a>. ShoppingComp finds models lean on semantic expansion with weak filtering, producing recall above precision, the opposite of the constraint-first strategy humans use <a href="../papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a>. DeepShop shows agents can satisfy attributes, filters, or sorting in isolation but rarely all at once <a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a>. The second recurring failure is memory and replanning. WebShop agents lack the explicit memory humans use to compare products and backtrack <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a>, and DeepShop attributes failures partly to an inability to assess state and reformulate strategy <a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a>. Shopping Companion isolates this directly by burying preference evidence as a needle within 15 to 50 turn conversation histories; even GPT-5 reaches only 64.5% success, with unverified attributes and preference hallucination as dominant error modes <a href="../papers/GUETZIKA.html" title="Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks [GUETZIKA]">Yu et al., 2026</a>.</p>
-<p>Grounding modality is a settled empirical question within this collection. Structural grounding through accessibility trees beats vision-only observation. WebMall reports that the accessibility tree is most important for task completion and that screenshots alone are insufficient, with vision-only Qwen agents failing every task group <a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a>. DeepShop similarly finds vision-based approaches fail on visually dominant Fashion and Sports categories <a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a>. This connects the topic to <a href="web-agent-environments.html" title="Realistic web environments for autonomous agents">web-agent-environments</a>, where VisualWebArena and WebArena study the same observation-space tradeoffs.</p>
-<p>Personalization is an emerging sub-strand that splits success into task completion and preference alignment. ShopperBench conditions tasks on ten shopper personas grounded in consumer-behavior theory and finds a trade-off: a task-focused policy gets the highest success rate but the lowest persona alignment, while tighter persona constraints improve behavioral fidelity at the cost of longer trajectories <a href="../papers/G994SNDV.html" title="ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation [G994SNDV]">Ling et al., 2025</a>. AgenticShop evaluates personalized curation across the open web and finds good product search does not translate into good personalization; systems handle brand preferences but fail on review and price sensitivity, and roughly 20% of product references are hallucinated <a href="../papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a>. Shopping Companion adds the cross-session dimension, requiring agents to recover long-term preferences before recommending <a href="../papers/GUETZIKA.html" title="Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks [GUETZIKA]">Yu et al., 2026</a>. Across all three, agents remain markedly less efficient than humans, with ShopperBench reporting humans need 62.5% fewer steps <a href="../papers/G994SNDV.html" title="ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation [G994SNDV]">Ling et al., 2025</a>.</p>
-<p>Two benchmarks extend the field beyond product search into adjacent commerce tasks. ECom-Bench evaluates multimodal agents on e-commerce customer support, including order modification, returns, and logistics, using persona-driven user simulation and a pass^k robustness metric; even GPT-4o reaches only 44% pass^1 and instability across repeated trials is the headline result <a href="../papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a>. This places it close to <a href="tool-agent-user-interaction.html" title="Tool-agent-user interaction and conversational service agents">tool-agent-user-interaction</a>, where τ-bench and τ²-Bench formalize the same tool-agent-user setup that ECom-Bench and several shopping benchmarks build on. ShoppingComp pushes the other adjacent direction, adding safety-critical decision making where agents must recognize product hazards; safety pass rates stay below 40% across all systems, with high variance <a href="../papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a>.</p>
-<p>The field is now self-reflective about its own evaluation methodology. ShopGym formalizes a five-property target for benchmarks, realistic, diverse, controllable, inspectable, and reproducible, and validates that agent performance on synthetic twin shops tracks performance on the live storefronts they were derived from <a href="../papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a>. Several benchmarks adopt rubric-based or checklist-based LLM-as-judge evaluation to make scoring fine-grained and verifiable <a href="../papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a> <a href="../papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> <a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a>. A parallel methodological move is training, not just evaluating: ShoppingBench distills GPT-4.1 trajectories into a 4B model that matches it <a href="../papers/P97GR95W.html" title="ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents [P97GR95W]">Wang et al., 2025</a>, and Shopping Companion introduces annotation-free tool-wise rewards that let a 4B agent approach GPT-5 <a href="../papers/GUETZIKA.html" title="Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks [GUETZIKA]">Yu et al., 2026</a>. Both results suggest that closing the human gap may come from better process-level supervision rather than larger models alone.</p>
+<p class="lede">These benchmarks test agents that search for products, compare choices, use shopper preferences, or complete commerce tasks. Each benchmark measures a different part of the shopping process.</p>
+
+<div class="note">
+<strong>Read results in context.</strong> The benchmarks use different websites, tasks, models, and scoring rules. A score from one benchmark is not directly comparable with a score from another benchmark.
+</div>
+
+<h2>What these benchmarks test</h2>
+<ul>
+<li><strong>Product search:</strong> Find items that meet product, price, and option constraints.</li>
+<li><strong>Comparison:</strong> Compare products or offers across one or more shops.</li>
+<li><strong>Personalization:</strong> Use a persona, purchase history, reviews, or prior conversations.</li>
+<li><strong>Web action:</strong> Use search, filters, product pages, carts, checkout forms, or support tools.</li>
+<li><strong>Safety and reliability:</strong> Avoid unsafe choices, verify product facts, and complete the same task consistently.</li>
+</ul>
+<p><a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">WebShop</a> established an influential task format. An agent receives a shopping instruction, searches a simulated store, selects a product and its options, and makes a purchase. Its environment contains 1.18 million products taken from Amazon. An automatic reward checks product attributes, options, type, and price.</p>
+
+<h2>How evaluation works</h2>
+<figure class="flowchart" aria-labelledby="evaluation-flow-title">
+<figcaption id="evaluation-flow-title">A common shopping-agent evaluation flow</figcaption>
+<ol class="flow">
+<li><h3>Set the task</h3><p>The benchmark gives the agent a request, product constraints, a persona, or a support case.</p></li>
+<li><h3>Run the agent</h3><p>The agent searches, opens pages, uses tools, compares items, or changes a cart or order.</p></li>
+<li><h3>Record the result</h3><p>The benchmark records the selected products, final answer, tool calls, path, or database state.</p></li>
+<li><h3>Apply the score</h3><p>The benchmark checks task success and may also check constraints, preference fit, safety, cost, or consistency.</p></li>
+</ol>
+<p>This flow summarizes the evaluation design used by WebShop and later benchmarks. Some studies use all four types of record. Other studies use only the records that fit their task.</p>
+</figure>
+
+<h2>Three design choices</h2>
+<ul class="evidence-list">
+<li><h3>Live site or sandbox</h3><p>Live sites contain current content, but the content and layout can change. Sandboxes give repeatable tests, but they contain a fixed set of products. <a href="../papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">ShopGym</a> creates synthetic twin shops from live storefronts. The authors report that agent results on the twins positively track results on the source sites.</p></li>
+<li><h3>Single shop or many shops</h3><p>WebShop tests one simulated store. <a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">WebMall</a> uses four different shops and 91 comparison-shopping tasks. This setup tests search across different product descriptions, category trees, and interfaces.</p></li>
+<li><h3>Simple or compound request</h3><p><a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">DeepShop</a> varies product attributes, filters, and sorting preferences across 600 queries. <a href="../papers/P97GR95W.html" title="ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents [P97GR95W]">ShoppingBench</a> uses 3,310 instructions and intent-specific constraints over more than 2.5 million products.</p></li>
+<li><h3>One score or several scores</h3><p>Task success alone does not show every failure. Later work also measures product relevance, constraint satisfaction, persona fit, path consistency, reasoning validity, safety, and repeated-run success.</p></li>
+</ul>
+
+<h2>What the studies report</h2>
+<p>The studies consistently report large limits, but they measure those limits in different ways.</p>
+<ul>
+<li><strong>WebShop:</strong> The imitation-learning agent reached 29.1% success. Human experts reached 59.6%. The paper identifies product-option selection as the largest measured gap. <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a></li>
+<li><strong>DeepShop:</strong> Browser Use reached 32% overall success. Web-agent performance averaged 10% on the hard queries. Agents often met one requirement but failed to meet attributes, filters, and sorting requirements together. <a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a></li>
+<li><strong>ShoppingBench:</strong> GPT-4.1 stayed below 50% success. The study reports errors in product attributes, user constraints, product availability, and knowledge reasoning. <a href="../papers/P97GR95W.html" title="ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents [P97GR95W]">Wang et al., 2025</a></li>
+<li><strong>WebMall:</strong> The best tested configurations completed 75% of basic tasks and 53% of advanced tasks. Accessibility-tree observations were most important for navigation and task completion in this study. <a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a></li>
+<li><strong>ShoppingComp:</strong> The current paper reports 120 tasks and 1,026 expert-defined scenarios. GPT-5 reached 11.22% on the paper's headline product-retrieval measure. The authors also report fragile safety behavior and a gap between model and human results. <a href="../papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a></li>
+</ul>
+
+<h2>Personalization and long tasks</h2>
+<p>Personalized shopping adds a second goal. The agent must complete the task and use the shopper information correctly.</p>
+<ul>
+<li><a href="../papers/G994SNDV.html" title="ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation [G994SNDV]">ShopperBench</a> measures task success, persona fidelity, query alignment, and path consistency. Its task-focused policy had the highest task success but the lowest persona alignment. Human paths used 62.5% fewer steps than the best agent policy.</li>
+<li><a href="../papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">AgenticShop</a> checks each recommendation against a personalization checklist and product-page evidence. The study found that product search quality did not always predict personalization quality. About 20% of product references were invalid or irrelevant in its tests.</li>
+<li><a href="../papers/GUETZIKA.html" title="Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks [GUETZIKA]">Shopping Companion</a> asks agents to recover preferences from earlier conversations. GPT-5 reached 64.5% average success in the reported zero-shot setting. The paper identifies weak attribute verification and tool-call errors as major failure sources.</li>
+</ul>
+
+<h2>Other commerce tasks</h2>
+<p>Some benchmarks move beyond product selection.</p>
+<ul>
+<li><a href="../papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">ECom-Bench</a> tests customer-support tasks such as order management and multimodal content handling. GPT-4o reached 44.03% pass<sup>1</sup> and 16.98% pass<sup>3</sup>. The lower repeated-run score shows that success was not stable across trials.</li>
+<li><a href="../papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">ShoppingComp</a> tests open-web retrieval, report quality, and safety-critical product decisions. Its current paper reports weak product retrieval and fragile safety behavior across the tested systems.</li>
+</ul>
+<p>These tasks also connect to <a href="tool-agent-user-interaction.html" title="Tool-agent-user interaction and conversational service agents">tool-agent-user interaction</a>. The observation design connects to <a href="web-agent-environments.html" title="Realistic web environments for autonomous agents">web-agent environments</a>.</p>
+
+<h2>Training results</h2>
+<p>Two studies use benchmark traces or tool rewards to train smaller agents.</p>
+<ul>
+<li>ShoppingBench filters GPT-4.1 trajectories and uses them to train a 4B model. The paper reports performance comparable to GPT-4.1 on its benchmark.</li>
+<li>Shopping Companion adds rewards for memory and product-tool use. Its trained 4B agent reached 63.5% average success, compared with 64.5% for GPT-5 in the reported zero-shot setting.</li>
+</ul>
+<p>These are results within two benchmark setups. They do not show that one training method will transfer to every store or task.</p>
+
 <h2>Papers in this field</h2>
-<ul>
-<li><a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a> — WebShop, a simulated e-commerce environment with 1.18M real products and automatic rewards for training and evaluating grounded language agents that shop on the web.</li>
-<li><a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a> — DeepShop, a benchmark of progressively complex live-website shopping queries that evolve along product attributes, search filters, and sorting preferences.</li>
-<li><a href="../papers/P97GR95W.html" title="ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents [P97GR95W]">Wang et al., 2025</a> — ShoppingBench, a 3,310-instruction intent-grounded benchmark over 2.5M real products with intent-specific metrics and a trajectory-distillation training strategy.</li>
-<li><a href="../papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a> — ShopGym, a framework that synthesizes anonymized sandbox shops from live storefronts and grounded tasks, bridging live realism and sandbox reproducibility.</li>
-<li><a href="../papers/G994SNDV.html" title="ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation [G994SNDV]">Ling et al., 2025</a> — ShopperBench, a persona-conditioned shopping benchmark that measures persona fidelity and path consistency alongside task success.</li>
-<li><a href="../papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a> — ShoppingComp, an expert-curated open-world benchmark covering multi-constraint retrieval, expert-level report generation, and safety-critical decision making.</li>
-<li><a href="../papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> — AgenticShop, the first benchmark for personalized product curation across the open web with a checklist-driven personalization evaluation grounded in verifiable product information.</li>
-<li><a href="../papers/GUETZIKA.html" title="Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks [GUETZIKA]">Yu et al., 2026</a> — Shopping Companion, a long-horizon cross-session benchmark requiring agents to recover long-term preferences, plus annotation-free tool-wise rewards for training lightweight agents.</li>
-<li><a href="../papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a> — ECom-Bench, the first open-source benchmark for multimodal LLM agents with MCP tools in e-commerce customer support, using persona-driven user simulation.</li>
-<li><a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a> — WebMall, the first offline reproducible multi-shop benchmark requiring comparison shopping across heterogeneous shops populated with real Common Crawl offers.</li>
+<ul class="source-list">
+<li><a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a> — WebShop: a simulated store with 1.18 million products and automatic rewards.</li>
+<li><a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a> — DeepShop: 600 live-site queries with attributes, filters, and sorting preferences.</li>
+<li><a href="../papers/P97GR95W.html" title="ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents [P97GR95W]">Wang et al., 2025</a> — ShoppingBench: 3,310 intent-based instructions in a large shopping sandbox.</li>
+<li><a href="../papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a> — ShopGym: synthetic twin shops made from live storefronts.</li>
+<li><a href="../papers/G994SNDV.html" title="ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation [G994SNDV]">Ling et al., 2025</a> — ShopperBench: persona-based shopping with behavior and path scores.</li>
+<li><a href="../papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a> — ShoppingComp: open-web retrieval, reports, and safety checks.</li>
+<li><a href="../papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> — AgenticShop: personalized product curation with evidence-based checklists.</li>
+<li><a href="../papers/GUETZIKA.html" title="Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks [GUETZIKA]">Yu et al., 2026</a> — Shopping Companion: cross-session preference recovery and shopping.</li>
+<li><a href="../papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a> — ECom-Bench: multimodal customer support with commerce tools.</li>
+<li><a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a> — WebMall: 91 tasks across four offline shops.</li>
 </ul>
-<h2>Contradictions</h2>
+
+<h2>What the evidence does not settle</h2>
+<p>The collected papers do not report a direct contradiction. They test different systems and scopes. For example, one study uses a live site, while another uses a fixed sandbox. One measures exact product matches, while another measures persona fit or safety. These design differences can produce different results without a true conflict.</p>
+
+<h2>Open questions</h2>
 <ul>
-<li>None directly flagged among collected papers. The benchmarks broadly agree on the human-agent gap and on accessibility-tree grounding over vision-only observation; differences are in scope and design (offline versus live, single-shop versus multi-shop, task-success versus personalization-aware scoring) rather than conflicting empirical claims.</li>
+<li>How can an agent meet many constraints at the same time? <a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">DeepShop</a> and <a href="../papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">ShoppingComp</a> show weak joint constraint handling.</li>
+<li>How should an agent store comparisons, revise a search, and recover long-term preferences? <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">WebShop</a> and <a href="../papers/GUETZIKA.html" title="Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks [GUETZIKA]">Shopping Companion</a> identify these limits.</li>
+<li>How should an agent combine page structure with visual evidence? DeepShop reports failures in visually important categories. WebMall reports poor results for screenshot-only agents.</li>
+<li>How can benchmarks test safety with stable results? ShoppingComp reports fragile safety behavior. ECom-Bench reports lower pass rates when the same task must succeed several times.</li>
+<li>How can personalization use prices, reviews, and prior behavior without inventing facts? AgenticShop and Shopping Companion report weak verification and preference grounding.</li>
+<li>How well do results transfer to changed stores, languages, checkout systems, and post-purchase tasks? Current coverage remains limited.</li>
 </ul>
-<h2>Open questions / gaps</h2>
-<ul>
-<li>Agents cannot reliably satisfy multiple constraints (attributes, filters, sorting) simultaneously despite competence on each in isolation <a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a> <a href="../papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a> <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Agents lack explicit memory and replanning for comparing products, backtracking, and recovering long-term preferences across sessions <a href="../papers/NR3QZNJE.html" title="WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents [NR3QZNJE]">Yao et al., 2023</a> <a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a> <a href="../papers/GUETZIKA.html" title="Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks [GUETZIKA]">Yu et al., 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Multimodal grounding remains weak: vision-only agents fail and effective fusion of HTML and visual signals is unsolved, especially for visually dominant product categories <a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a> <a href="../papers/YJ7N97U7.html" title="DeepShop: A Benchmark for Deep Research Shopping Agents [YJ7N97U7]">Lyu et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Safety-critical shopping behavior is unreliable, with the strongest systems passing under 40% of safety-trap rubrics and showing unstable, non-deterministic safety outcomes <a href="../papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Personalization does not follow from search competence; agents handle brand preferences but fail on review and price sensitivity, and persona alignment trades off against task efficiency <a href="../papers/2EGFPT3I.html" title="AgenticShop: Benchmarking Agentic Product Curation for Personalized Web Shopping [2EGFPT3I]">Kim et al., 2026</a> <a href="../papers/G994SNDV.html" title="ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation [G994SNDV]">Ling et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Agents are markedly less efficient than humans, using many more steps and high token and runtime cost on multi-shop and long-horizon tasks <a href="../papers/G994SNDV.html" title="ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation [G994SNDV]">Ling et al., 2025</a> <a href="../papers/WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a> <a href="../papers/GUETZIKA.html" title="Shopping Companion: Benchmarking and Training LLM Agents for Long-Horizon Preference-Grounded E-Commerce Tasks [GUETZIKA]">Yu et al., 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Output instability across repeated trials remains high, with pass^k dropping sharply below pass^1 even for the strongest models <a href="../papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Benchmark coverage is incomplete: login-protected flows, checkout and payment, customer-service interactions, multilingual settings, and post-purchase workflows are under-tested <a href="../papers/RSVYJVLX.html" title="ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents [RSVYJVLX]">Savadikar et al., 2026</a> <a href="../papers/E2XIQ7D7.html" title="ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues? [E2XIQ7D7]">Wang et al., 2025</a> <a href="../papers/72GYW9VP.html" title="ShoppingComp: Are LLMs Really Ready for Your Shopping Cart? [72GYW9VP]">Tou et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-</ul>
+<p>See the shared <a href="../open-questions.html" title="Open Questions — Research Frontier">open questions</a> page for the wider research list.</p>
+</main>
+
 <footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
 </div>
 </body>

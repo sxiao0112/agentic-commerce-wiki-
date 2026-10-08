@@ -5,87 +5,158 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Agent-to-agent negotiation</title>
 <style>
-:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+:root{--fg:#1a1a1a;--muted:#5d6470;--bg:#fff;--accent:#2a5db0;--accent-dark:#173f7a;--border:#d9dee7;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;--panel:#f7f9fc;--risk:#8a3b12;}
 *{box-sizing:border-box;}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
- line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
 .wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
-nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
- box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;box-shadow:0 1px 4px rgba(0,0,0,.15);}
 nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
 nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
 nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
 nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
-nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.sitebar a:focus-visible,a:focus-visible{outline:3px solid #f3b63a;outline-offset:3px;}
 nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
 nav.subbar a{margin-right:.9rem;}
 nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
-h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
-h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
-h3{font-size:1.1rem;margin-top:1.5rem;}
-a{color:var(--accent);text-decoration:none;}
-a:hover{text-decoration:underline;}
-span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
+h1{font-size:1.85rem;line-height:1.25;margin:.2rem 0 .55rem;}
+h2{font-size:1.35rem;line-height:1.3;margin-top:2.2rem;border-bottom:1px solid var(--border);padding-bottom:.35rem;}
+h3{font-size:1.08rem;line-height:1.35;margin-top:1.45rem;}
+p{max-width:76ch;}
+.lede{font-size:1.08rem;color:#303742;margin-top:0;}
+.scope-note{border-left:4px solid var(--accent);background:var(--panel);padding:.75rem 1rem;margin:1.25rem 0;}
+a{color:var(--accent-dark);text-decoration:underline;text-decoration-thickness:.08em;text-underline-offset:.13em;}
+a:hover{text-decoration-thickness:.14em;}
 code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
-pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
-pre code{background:none;padding:0;}
-blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
-table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
-th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
-th{background:#f7f7f7;}
-table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
-table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
 ul,ol{padding-left:1.4rem;}
-li{margin:.15rem 0;}
-hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+li{margin:.35rem 0;}
+.flowchart{margin:1.35rem 0 1.8rem;padding:1rem;background:var(--panel);border:1px solid var(--border);border-radius:10px;}
+.flowchart h3{margin:.1rem 0 1rem;}
+.flowchart ol{list-style:none;counter-reset:step;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.65rem;margin:0;padding:0;}
+.flowchart li{counter-increment:step;position:relative;min-height:9.5rem;padding:.85rem .8rem .8rem;border:2px solid #b9c9e2;border-radius:8px;background:#fff;}
+.flowchart li::before{content:counter(step);display:flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;margin-bottom:.55rem;border-radius:50%;background:var(--accent-dark);color:#fff;font-weight:700;}
+.flowchart li:not(:last-child)::after{content:"→";position:absolute;right:-1.35rem;top:44%;color:var(--accent-dark);font-size:1.45rem;font-weight:700;}
+.flowchart strong{display:block;line-height:1.3;margin-bottom:.35rem;}
+.flowchart span{display:block;color:#424b57;font-size:.9rem;line-height:1.45;}
+.flowchart figcaption{margin-top:1rem;color:var(--muted);font-size:.88rem;}
+.evidence-list strong{color:#222;}
+.paper-list li{margin-bottom:.85rem;}
+.source-links{display:block;font-size:.88rem;margin-top:.15rem;}
+.uncertain{border-left:4px solid #c47a33;background:#fff8ef;padding:.75rem 1rem;margin:1rem 0;}
 footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+@media (max-width:760px){.flowchart ol{grid-template-columns:1fr;gap:1.8rem}.flowchart li{min-height:0}.flowchart li:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-1.65rem;transform:translateX(-50%)}nav.sitebar{position:static}}
+@media print{nav.sitebar{position:static}.flowchart{break-inside:avoid}a{color:#111}}
 </style>
 </head>
 <body>
-<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<nav class="sitebar" aria-label="Site"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
 <div class="wrap">
-<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<nav class="subbar" aria-label="Wiki sections"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
 
+<main>
 <h1>Agent-to-agent negotiation</h1>
-<p>Autonomous LLM agents bargaining and transacting on behalf of buyers and sellers, and the benchmarks that measure their negotiation skill, risks, and safety.</p>
-<h2>Definition</h2>
-<p>Agent-to-agent negotiation studies what happens when both sides of a deal delegate their bargaining to AI agents that exchange natural-language messages to reach an agreement <a href="../papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a>.</p>
-<p>The core setting is a multi-round language game grounded in structured economic outcomes <a href="../papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a>. Agents hold private information their counterparts cannot see. A buyer knows its budget or maximum willingness-to-pay; a seller knows its wholesale cost or minimum acceptable price <a href="../papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a> <a href="../papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a>. They negotiate through multi-turn dialogue, and a deal forms when the proposed prices fall within the bargaining zone <a href="../papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a>.</p>
-<p>The interaction is commonly framed as competitive. Zhu et al. model buyer-seller negotiation as an information-incomplete zero-sum game where each side optimizes the final transaction price within feasibility constraints <a href="../papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a>. Liu et al. instead score deals by welfare, rewarding outcomes where both parties benefit and surplus is split evenly, alongside role-specific buyer and seller utility <a href="../papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a>.</p>
-<p>Negotiation also extends beyond two parties. Abdelnabi et al. define scorable multi-party games where five to seven agents with secret scoring systems and acceptance thresholds must agree on multi-issue deals, with a default fallback payoff when no agreement is reached <a href="../papers/I5MWYLFD.html" title="Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation [I5MWYLFD]">Abdelnabi et al., 2024</a>. In this view negotiation is a composite skill: it demands arithmetic, theory-of-mind inference of other agents' preferences, multi-turn planning, and resistance to manipulation <a href="../papers/I5MWYLFD.html" title="Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation [I5MWYLFD]">Abdelnabi et al., 2024</a>.</p>
-<h2>State of the area (synthesis)</h2>
-<p>The collected papers converge on one finding. Negotiation ability tracks general model capability. Zhu et al. report that negotiation capacity correlates very strongly with MMLU (r=0.93) and substantially with mathematical ability (r=0.87), and that larger models within a family negotiate better <a href="../papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a>. Liu et al. find the same gap: proprietary frontier models substantially outperform smaller open-weight models, which time out and fail to converge far more often <a href="../papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a>. Abdelnabi et al. show GPT-4 reaching agreement in 81% of base-game runs while GPT-3.5 reaches only 20%, with weaker models failing on arithmetic and theory of mind <a href="../papers/I5MWYLFD.html" title="Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation [I5MWYLFD]">Abdelnabi et al., 2024</a>.</p>
-<p>This capability gap is not a benign quality difference. It is an economic one. Zhu et al. frame automated agent-to-agent negotiation as an inherently imbalanced game where the party using the weaker model loses money <a href="../papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a>. Weak buyers facing strong sellers overpay; weak sellers lose up to roughly 14% profit against strong buyers <a href="../papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a>. The same asymmetry appears in mixed populations elsewhere: Abdelnabi et al. find that the same agent role earns lower payoffs when paired with weaker models, and that including a GPT-3.5 agent lowers success for everyone <a href="../papers/I5MWYLFD.html" title="Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation [I5MWYLFD]">Abdelnabi et al., 2024</a>.</p>
-<p>The capability gap need not be permanent, and training can close it. Liu et al. show that a mid-sized model trained with reinforcement learning from verifiable economic rewards beats frontier-scale models on the same bilateral bargaining task <a href="../papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a>. Their reward is grounded in objective outcomes rather than human preferences: for a successful transaction it equals the buyer's surplus normalized by the gap between budget and seller cost, scaled to a fixed range, so the signal rewards surplus extraction and penalizes deals that exceed the buyer's budget <a href="../papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a>. Training a Qwen3-30B buyer with Group Relative Policy Optimization against a regulated seller, they reach a reward of 0.7664 on held-out products, nearly double the strongest frontier baseline and more than double larger reasoning models <a href="../papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a>. This challenges the notion that strong negotiation belongs only to the largest models, complicating the bigger-is-better picture the benchmarks report <a href="../papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a>.</p>
-<p>Both benchmarks of bilateral consumer bargaining also surface concrete failure modes rather than just lower scores. Zhu et al. name four behavioral anomalies that translate into financial risk: constraint violation (accepting deals over budget or below wholesale), excessive payment (overpaying past retail when budgets are disclosed early), negotiation deadlock, and early settlement by buyers with slack budgets <a href="../papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a>. Liu et al. independently report a final-convergence problem: over 40% of open-weight failures occur when the remaining price gap is within five units, a deficiency in closing rather than in understanding the bargaining space <a href="../papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a>. Liu et al.'s RL training directly targets two of these anomalies: it cuts the trained buyer's price-overshoot rate to 0.10% from 10.35% for the untrained baseline, and it suppresses the politeness-driven concessions and artificial empathy that lead instruction-tuned models to give value away <a href="../papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a>.</p>
-<p>Disparities in outcome can also track who the counterpart is, not just how capable each model is. Mouri Zadeh Khaki &amp; Choi run a buyer-seller game adapted from NegotiationArena where one side is told the other's gender and race, and find that demographic awareness alone produces systematically unequal deals <a href="../papers/CPCJQVGF.html" title="Evaluating Fairness in LLM Negotiator Agents via Economic Games Using Multi-Agent Systems [CPCJQVGF]">Mouri Zadeh Khaki &amp; Choi, 2026</a>. A seller aware of buyer demographics extracts higher profit margins from Latino and female buyers than from White and male buyers, with the seller's initial offer strongly predicting the final price <a href="../papers/CPCJQVGF.html" title="Evaluating Fairness in LLM Negotiator Agents via Economic Games Using Multi-Agent Systems [CPCJQVGF]">Mouri Zadeh Khaki &amp; Choi, 2026</a>. The bias surfaces as subtle shifts in offers, counteroffers, and concession timing rather than any explicit discriminatory language in the reasoning traces, which the authors attribute to hidden gender and social biases in training data <a href="../papers/CPCJQVGF.html" title="Evaluating Fairness in LLM Negotiator Agents via Economic Games Using Multi-Agent Systems [CPCJQVGF]">Mouri Zadeh Khaki &amp; Choi, 2026</a>. This adds a demographic dimension to the economic stakes the bilateral benchmarks already raise: the weaker party is not the only one who can lose money.</p>
-<p>A persistent and unexplained pattern is a buyer-versus-seller asymmetry. Liu et al. find systematically higher seller scores than buyer scores across every model and in cross-play, a universal buyer disadvantage they cannot yet attribute to either training-data bias toward persuasive selling or to the structure of the reward <a href="../papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a>. Zhu et al. report a complementary effect from the market side: the seller model choice affects outcomes more than the buyer model choice <a href="../papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a>. Mouri Zadeh Khaki &amp; Choi see a role-dependent advantage too, finding that the side made aware of the other's demographics gains, so buyers told the seller's demographics beat the blind baseline across every seller subpopulation <a href="../papers/CPCJQVGF.html" title="Evaluating Fairness in LLM Negotiator Agents via Economic Games Using Multi-Agent Systems [CPCJQVGF]">Mouri Zadeh Khaki &amp; Choi, 2026</a>. The papers describe these asymmetries in different terms and none resolves its cause.</p>
-<p>Trained strategy also appears to generalize rather than overfit its training opponent. Liu et al. find their RL-trained buyer keeps a positive edge against an unseen stronger frontier seller, and holds positive surplus extraction against adversarial seller personas that beg, insult, or refuse to yield <a href="../papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a>. They trace the strategy's emergence through a four-phase behavioral evolution: aggressive anchoring, temporary deadlock, rational concession, and finally multi-turn linguistic persuasion at a high deal rate <a href="../papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a>. This positions verifiable-reward RL as one route to the strategic rationality and manipulation resistance that the multi-party safety line also prizes <a href="../papers/I5MWYLFD.html" title="Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation [I5MWYLFD]">Abdelnabi et al., 2024</a>.</p>
-<p>The papers diverge on whether more agents help or harm. Liu et al. find that deal welfare counter-intuitively increases with greater buyer and seller multiplicity, attributing it to market liquidity that lets agents find compatible partners <a href="../papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a>. Abdelnabi et al. instead find that adding parties and tightening the feasible-deal ratio sharply degrades success, dropping GPT-4 from 81% to 30% as feasible deals shrink <a href="../papers/I5MWYLFD.html" title="Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation [I5MWYLFD]">Abdelnabi et al., 2024</a>. The settings differ: liquidity in a price-only market eases matching, while multi-issue games with veto parties make agreement combinatorially harder.</p>
-<p>Safety is the distinctive concern of the multi-party line. Abdelnabi et al. show that a single greedy agent biases final deals toward its own preferences and that an adversarial agent instructed to sabotage can depress group success and target specific parties for worse outcomes <a href="../papers/I5MWYLFD.html" title="Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation [I5MWYLFD]">Abdelnabi et al., 2024</a>. This connects negotiation to broader worries about manipulation and adversarial agents studied under <a href="agent-security-and-prompt-injection.html" title="Agent Security and Prompt Injection">agent-security-and-prompt-injection</a>. Their score-leakage metric, measuring whether agents reveal confidential thresholds, also makes confidentiality a negotiation property, with GPT-4 leaking nothing and GPT-3.5 leaking in a quarter of cases <a href="../papers/I5MWYLFD.html" title="Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation [I5MWYLFD]">Abdelnabi et al., 2024</a>.</p>
-<p>On mitigation, the field divides between prompt-level and training-level fixes, and the training side now looks stronger. Zhu et al. show that reinforcement-learning-based prompt optimization sharply cuts out-of-budget errors for a weak model, from 18.4% to 1.3%, but barely helps with overpayment or deadlock <a href="../papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a>. They recommend human-in-the-loop oversight for financially vulnerable users <a href="../papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a>. Liu et al. push further, updating model parameters rather than prompts, and report that verifiable-reward RL both internalizes strategic discipline and nearly eliminates the budget violations that prompt tuning only partly reduces <a href="../papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a>. Mouri Zadeh Khaki &amp; Choi test persona-based conditioning, where a disadvantaged buyer is told to appear desperate and plead, and find it substantially improves buyer outcomes yet leaves the relative demographic disparities intact, so conditioning enhances performance within a biased system rather than removing the bias <a href="../papers/CPCJQVGF.html" title="Evaluating Fairness in LLM Negotiator Agents via Economic Games Using Multi-Agent Systems [CPCJQVGF]">Mouri Zadeh Khaki &amp; Choi, 2026</a>. They warn that this shifts the burden of fairness onto disadvantaged users and argue for model-level fixes such as dataset curation and demographic masking <a href="../papers/CPCJQVGF.html" title="Evaluating Fairness in LLM Negotiator Agents via Economic Games Using Multi-Agent Systems [CPCJQVGF]">Mouri Zadeh Khaki &amp; Choi, 2026</a>. Abdelnabi et al. point instead to structural defenses such as moderator agents and coalition-aware mechanisms <a href="../papers/I5MWYLFD.html" title="Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation [I5MWYLFD]">Abdelnabi et al., 2024</a>. The economic stakes of these capability gaps link this field to <a href="ai-mediated-market-dynamics.html" title="Economics, manipulation, and collusion in AI-mediated markets">ai-mediated-market-dynamics</a> and to the two-sided settings of <a href="agentic-marketplaces.html" title="Two-sided agentic marketplaces and the agentic economy">agentic-marketplaces</a>.</p>
+<p class="lede">Language model agents can exchange offers for buyers, sellers, or other parties. Research benchmarks test their outcomes, failures, and safety.</p>
+
+<div class="scope-note">
+<strong>Scope.</strong> Most evidence on this page comes from simulations. It does not establish performance in live consumer markets.
+</div>
+
+<h2>What the term means</h2>
+<p>In agent-to-agent negotiation, software agents bargain for people or organizations. The agents use natural-language messages to propose and discuss terms.</p>
+<p>Many studies give each agent private limits. A buyer can receive a maximum price. A seller can receive a minimum price or cost.</p>
+<p>The studies then record agreements, prices, utility, rule violations, or timeouts. The exact rules and measures differ across benchmarks.</p>
+
+<h2>How benchmark negotiations work</h2>
+<figure class="flowchart" aria-labelledby="benchmark-flow-title benchmark-flow-caption">
+<h3 id="benchmark-flow-title">Typical bilateral benchmark flow</h3>
+<ol>
+<li><strong>Assign private limits</strong><span>The buyer receives a budget. The seller receives a cost or minimum price.</span></li>
+<li><strong>Exchange messages</strong><span>The agents make offers and counteroffers in natural language.</span></li>
+<li><strong>Apply stop rules</strong><span>The benchmark stops after agreement, rejection, a rule violation, or the round limit.</span></li>
+<li><strong>Score the recorded outcome</strong><span>Measures can include deal rate, price, utility, welfare, efficiency, or constraint violations.</span></li>
+</ol>
+<figcaption id="benchmark-flow-caption">This flow summarizes bilateral protocols in Zhu et al. and AgenticPay. Each study uses its own stop rules and metrics.</figcaption>
+</figure>
+<p>Multi-party benchmarks use a different structure. Several agents negotiate over several issues. Some agents can also have veto power or adversarial goals.</p>
+
+<h2>What the studies report</h2>
+<ul class="evidence-list">
+<li><strong>Model performance varies.</strong> Zhu et al. report a correlation between negotiation scores and general benchmark scores. AgenticPay also reports large gaps between tested models.</li>
+<li><strong>Weak performance can affect prices.</strong> In Zhu et al., weaker agents had more rule violations and worse financial outcomes in the simulated market.</li>
+<li><strong>Some agents fail near agreement.</strong> AgenticPay reports that more than 40% of two open-weight models' failures ended within five price units.</li>
+<li><strong>Multi-party negotiation adds safety risks.</strong> Abdelnabi et al. show that greedy or adversarial agents can change group outcomes in their games.</li>
+<li><strong>Demographic information can change outcomes.</strong> Mouri Zadeh Khaki and Choi report unequal prices across tested demographic conditions.</li>
+</ul>
+
+<h3>Capability and economic outcomes</h3>
+<p>Zhu et al. tested nine models on consumer-product simulations. They report a correlation of 0.93 between negotiation capacity and MMLU scores.</p>
+<p>The same study reports four failure types. These are constraint violations, overpayment, deadlock, and early settlement.</p>
+<p>In one comparison, weak sellers lost up to 14.13% of profit against strong buyers. This result applies to the study's models and setup.</p>
+<p>AgenticPay tested more than 110 tasks. Its proprietary models scored above the tested open-weight models. Smaller models also had more timeouts.</p>
+
+<h3>Role asymmetry</h3>
+<p>AgenticPay reports higher seller scores than buyer scores for every tested model. The cause remains unknown.</p>
+<p>Zhu et al. also found that seller model choice affected outcomes more than buyer model choice. These studies use different scoring systems.</p>
+
+<h3>Training and prompts</h3>
+<p>Zhu et al. optimized prompts for one weaker model. Its out-of-budget rate fell from 18.4% to 1.3%.</p>
+<p>The prompt change gave limited improvement for overpayment and deadlock. The authors therefore describe this mitigation as preliminary.</p>
+<p>Liu et al. trained a 30B buyer with reinforcement learning and verifiable economic rewards. The trained buyer scored 0.7664 on held-out products.</p>
+<p>The strongest reported frontier baseline scored 0.4021 in that experiment. The result is specific to the paper's buyer task and reward.</p>
+<p>The trained buyer also faced unseen and adversarial seller models. The paper reports positive surplus extraction in those tests.</p>
+
+<h3>Fairness and confidentiality</h3>
+<p>Mouri Zadeh Khaki and Choi tested ChatGPT-4 Turbo in 540 simulated negotiations. The agents received race and gender labels in some conditions.</p>
+<p>Seller margins were higher for Latino buyers than for White buyers. They were also higher for female buyers than for male buyers.</p>
+<p>Persona instructions improved buyer outcomes but did not remove relative disparities. The study did not test other model families.</p>
+<p>Abdelnabi et al. also measured disclosure of private scores. GPT-4 disclosed none in their runs. GPT-3.5 disclosed scores in 25% of cases.</p>
+
+<h2>Results that depend on the setting</h2>
+<p>More agents did not have one consistent effect across studies.</p>
+<ul>
+<li>AgenticPay reports higher welfare with more buyers and sellers. The authors attribute this result to more matching opportunities.</li>
+<li>Abdelnabi et al. report lower agreement rates in harder multi-party games. Their games had several issues, thresholds, and veto parties.</li>
+</ul>
+<p>These results are not a direct contradiction. The tasks change different parts of the negotiation problem.</p>
+
+<h2>Limits of the evidence</h2>
+<div class="uncertain">
+<ul>
+<li>The studies use simulated agents and benchmark rules.</li>
+<li>Most studies test a limited set of models, prompts, products, and opponent types.</li>
+<li>Different papers use different measures of a good deal.</li>
+<li>Observed associations do not identify the cause of each behavior.</li>
+<li>Results can change when model versions, prompts, or market rules change.</li>
+</ul>
+</div>
+
 <h2>Papers in this field</h2>
-<ul>
-<li><a href="../papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a> — models and benchmarks agent-to-agent negotiation and transactions in consumer markets, showing automation is an imbalanced game where weaker-model parties face systematic economic losses through four behavioral anomalies.</li>
-<li><a href="../papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a> — a scalable benchmark of 110+ language-mediated negotiation tasks from bilateral bargaining to many-to-many markets, revealing capability gaps, a universal buyer disadvantage, and final-convergence deficiencies in open-weight models.</li>
-<li><a href="../papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a> — a reinforcement-learning framework grounded in verifiable economic rewards that trains a 30B LLM buyer to negotiate strategically, more than doubling surplus extraction over frontier models, eliminating budget violations, and generalizing to stronger and adversarial sellers.</li>
-<li><a href="../papers/I5MWYLFD.html" title="Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation [I5MWYLFD]">Abdelnabi et al., 2024</a> — a scorable multi-party, multi-issue negotiation benchmark testing cooperation, competition, and maliciousness, showing that even GPT-4 struggles on constrained and adversarial games and that greedy or rogue agents can unfairly alter outcomes.</li>
-<li><a href="../papers/CPCJQVGF.html" title="Evaluating Fairness in LLM Negotiator Agents via Economic Games Using Multi-Agent Systems [CPCJQVGF]">Mouri Zadeh Khaki &amp; Choi, 2026</a> — a multi-agent buyer-seller game evaluating demographic fairness in ChatGPT-4 Turbo negotiators, showing that gender and racial awareness produces systematically unequal outcomes through subtle behavioral shifts and that persona-based conditioning mitigates but does not remove the disparity.</li>
+<ul class="paper-list">
+<li><a href="../papers/NLR9SXR5.html">Zhu et al., 2025</a> study bilateral consumer-market simulations and four financial failure types.<span class="source-links"><a href="https://arxiv.org/abs/2506.00073">Original paper</a></span></li>
+<li><a href="../papers/YA9UTHZP.html">Liu, Gu, and Song, 2026</a> introduce AgenticPay for bilateral and multi-agent buyer-seller tasks.<span class="source-links"><a href="https://arxiv.org/abs/2602.06008">Original paper</a></span></li>
+<li><a href="../papers/G9BXGJ79.html">Liu et al., 2026</a> train a buyer with reinforcement learning and verifiable economic rewards.<span class="source-links"><a href="https://arxiv.org/abs/2604.09855">Original paper</a></span></li>
+<li><a href="../papers/I5MWYLFD.html">Abdelnabi et al., 2024</a> test multi-party negotiation, private scores, and adversarial agents.<span class="source-links"><a href="https://arxiv.org/abs/2309.17234">Original paper</a></span></li>
+<li><a href="../papers/CPCJQVGF.html">Mouri Zadeh Khaki and Choi, 2026</a> test demographic fairness in a buyer-seller game.<span class="source-links"><a href="https://doi.org/10.3390/math14030458">Original paper</a></span></li>
 </ul>
-<h2>Contradictions</h2>
+
+<h2>Open questions</h2>
 <ul>
-<li>Effect of more agents on agreement: Liu et al. find deal welfare rises with greater buyer and seller multiplicity due to market liquidity <a href="../papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a>, whereas Abdelnabi et al. find that adding parties and tightening feasible-deal ratios sharply lowers agreement success <a href="../papers/I5MWYLFD.html" title="Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation [I5MWYLFD]">Abdelnabi et al., 2024</a>. The settings differ (price-only matching versus multi-issue games with veto parties), so the disagreement is contextual rather than direct.</li>
+<li>What causes the buyer disadvantage reported by AgenticPay?</li>
+<li>Why do some models fail when only a small price gap remains?</li>
+<li>Which safeguards work across models and market rules?</li>
+<li>Do demographic disparities appear in other models and settings?</li>
+<li>Can moderator agents detect sabotage without blocking valid negotiation?</li>
+<li>Do verifiable-reward methods transfer to deals with subjective or long-term value?</li>
 </ul>
-<h2>Open questions / gaps</h2>
+<p>See the wiki's <a href="../open-questions.html">research questions</a> and <a href="../contradictions.html">contradictions</a> for related entries.</p>
+
+<h2>Related topics</h2>
 <ul>
-<li>The cause of the systematic buyer-versus-seller asymmetry is unresolved: whether it stems from training-data bias toward persuasive selling or from the negotiation reward structure <a href="../papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Why financial-asset and high-stakes scenarios consistently expose the lowest scores lacks a mechanistic explanation; sophisticated risk assessment seems to be the bottleneck but is unverified <a href="../papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Whether the final-convergence failure on near-miss deals is a reasoning, generation, or confidence-calibration problem is not investigated <a href="../papers/YA9UTHZP.html" title="AgenticPay: A Multi-Agent LLM Negotiation System for Buyer-Seller Transactions [YA9UTHZP]">Liu et al., 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Mitigation remains preliminary: RL-based prompt optimization reduces budget violations but not overpayment or deadlock, and systematic safety-and-performance mitigation for real platforms is open <a href="../papers/NLR9SXR5.html" title="The Automated but Risky Game: Modeling and Benchmarking Agent-to-Agent Negotiations and Transactions in Consumer Markets [NLR9SXR5]">Zhu et al., 2025</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Whether demographic bias in negotiator agents is specific to ChatGPT-4 Turbo or general across other LLMs is untested, and model-level mitigation that does not shift the fairness burden onto disadvantaged users remains undeveloped <a href="../papers/CPCJQVGF.html" title="Evaluating Fairness in LLM Negotiator Agents via Economic Games Using Multi-Agent Systems [CPCJQVGF]">Mouri Zadeh Khaki &amp; Choi, 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Structural defenses are untested: moderator agents to detect intruders, evasion attacks against such moderators, private channels for coalition formation, and fairness when agents of differing capability interact <a href="../papers/I5MWYLFD.html" title="Cooperation, Competition, and Maliciousness: LLM-Stakeholders Interactive Negotiation [I5MWYLFD]">Abdelnabi et al., 2024</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
-<li>Whether verifiable-reward RL extends to negotiation settings with less objectively measurable outcomes or costly compliance verification is untested, as is the transferability of learned strategies across product categories, multi-party deals, and reputation-sensitive markets <a href="../papers/G9BXGJ79.html" title="Instructing LLMs to Negotiate using Reinforcement Learning with Verifiable Rewards [G9BXGJ79]">Liu et al., 2026</a>. Mirrored in <a href="../open-questions.html" title="Open Questions — Research Frontier">open-questions</a>.</li>
+<li><a href="agent-security-and-prompt-injection.html">Agent security and prompt injection</a></li>
+<li><a href="ai-mediated-market-dynamics.html">AI-mediated market dynamics</a></li>
+<li><a href="agentic-marketplaces.html">Agentic marketplaces</a></li>
 </ul>
+</main>
+
 <footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
 </div>
 </body>
