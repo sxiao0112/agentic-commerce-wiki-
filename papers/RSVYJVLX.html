@@ -3,74 +3,214 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents</title>
+<title>ShopGym — evidence card</title>
 <style>
-:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
-*{box-sizing:border-box;}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
- line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
-.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
-nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
- box-shadow:0 1px 4px rgba(0,0,0,.15);}
-nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
-nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
-nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
-nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
-nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
-nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
-nav.subbar a{margin-right:.9rem;}
-nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
-h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
-h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
-h3{font-size:1.1rem;margin-top:1.5rem;}
-a{color:var(--accent);text-decoration:none;}
-a:hover{text-decoration:underline;}
-span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
-code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
-pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
-pre code{background:none;padding:0;}
-blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
-table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
-th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
-th{background:#f7f7f7;}
-table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
-table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
-ul,ol{padding-left:1.4rem;}
-li{margin:.15rem 0;}
-hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
-footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+:root{--ink:#172033;--muted:#596579;--bg:#f4f7fb;--paper:#fff;--nav:#101d35;--navfg:#edf3ff;--blue:#245ba7;--line:#d8e0eb;--soft:#eef4fb;--warn:#fff5df;--warnline:#b36b00;--good:#eaf7f0;--goodline:#27734d;--code:#f0f3f7}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:var(--bg);font:16px/1.58 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--blue);text-underline-offset:.14em}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible{outline:3px solid #f2b84b;outline-offset:3px;border-radius:2px}
+.sitebar{background:var(--nav);color:var(--navfg)}
+.sitebar .inner{max-width:1040px;margin:auto;padding:.75rem 1.25rem}
+.sitebar a{color:var(--navfg);font-weight:750;text-decoration:none}
+.wrap{max-width:1040px;margin:auto;padding:1.25rem 1.25rem 4rem}
+.subbar{display:flex;flex-wrap:wrap;gap:.35rem 1rem;padding:0 0 1rem;margin-bottom:1.5rem;border-bottom:1px solid var(--line);font-size:.9rem}
+.subbar .sublabel{color:var(--muted);font-size:.75rem;font-weight:750;letter-spacing:.06em;text-transform:uppercase}
+.hero{background:linear-gradient(135deg,#fff 0%,#edf4ff 100%);border:1px solid var(--line);border-radius:16px;padding:clamp(1.25rem,4vw,2.25rem);box-shadow:0 8px 24px rgba(31,55,90,.07)}
+.eyebrow{margin:0 0 .4rem;color:var(--blue);font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+h1{max-width:23ch;margin:.1rem 0 .65rem;font-size:clamp(2rem,5vw,3.35rem);line-height:1.08;letter-spacing:-.025em}
+.dek{max-width:72ch;margin:.5rem 0;color:#35445b;font-size:1.1rem}
+.meta{display:flex;flex-wrap:wrap;gap:.45rem .7rem;margin:1.1rem 0 0;padding:0;list-style:none;color:var(--muted);font-size:.87rem}
+.meta li{padding:.25rem .55rem;background:#fff;border:1px solid var(--line);border-radius:999px}
+.jump{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 0}
+.jump a{padding:.35rem .6rem;border-radius:7px;background:#fff;border:1px solid var(--line);font-size:.86rem;text-decoration:none}
+main>section{margin-top:2rem}
+h2{margin:0 0 .9rem;font-size:1.45rem;line-height:1.25}
+h3{margin:.1rem 0 .4rem;font-size:1.03rem;line-height:1.3}
+p{margin:.4rem 0 .8rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:.9rem}
+.card{min-width:0;padding:1rem;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+.card p:last-child,.card ul:last-child{margin-bottom:0}
+.label{display:block;margin-bottom:.25rem;color:var(--muted);font-size:.75rem;font-weight:800;letter-spacing:.055em;text-transform:uppercase}
+.key{border-left:4px solid var(--goodline);background:var(--good)}
+.caution{border-left:4px solid var(--warnline);background:var(--warn)}
+.flow{margin:0;padding:1rem;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+.flow figcaption{margin-bottom:1rem;font-weight:800}
+.flow ol{display:grid;grid-template-columns:1fr;gap:1.4rem;max-width:48rem;margin:0 auto;padding:0;list-style:none;counter-reset:step}
+.flow li{position:relative;counter-increment:step;margin:0;padding:1rem 1rem 1rem 3.25rem;border:1px solid #c9d5e5;border-radius:10px;background:#fff}
+.flow li::before{content:counter(step);position:absolute;top:1rem;left:1rem;display:grid;place-items:center;width:1.55rem;height:1.55rem;border-radius:50%;color:#fff;background:var(--blue);font-size:.82rem;font-weight:800}
+.flow li::after{content:"↓";position:absolute;left:50%;bottom:-1.35rem;color:var(--blue);font-size:1.25rem;font-weight:900}
+.flow li:last-child::after{display:none}
+.flow strong{display:block;margin-bottom:.25rem}
+.flow small{display:block;color:var(--muted);font-size:.88rem}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:11px;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:.91rem}
+caption{padding:.8rem 1rem;text-align:left;font-weight:800}
+th,td{padding:.65rem .75rem;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+thead th{background:var(--soft);border-top:0}
+tbody th{width:22%;font-weight:700}
+.formula{display:block;margin:.4rem 0;padding:.7rem;border-radius:8px;background:var(--code);font:500 .9rem/1.45 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}
+.source{color:var(--muted);font-size:.82rem}
+ul,ol{padding-left:1.25rem}
+li{margin:.3rem 0}
+dl{margin:.25rem 0}
+dt{font-weight:800}
+dd{margin:0 0 .8rem}
+code{padding:.1rem .3rem;border-radius:4px;background:var(--code);font-size:.9em}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+@media(max-width:560px){.wrap{padding-inline:.85rem}.hero{border-radius:12px}.card{padding:.85rem}th,td{padding:.55rem}.subbar{gap:.3rem .7rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<nav class="sitebar" aria-label="Site"><div class="inner"><a href="../index.html">Agentic Commerce Wiki</a></div></nav>
 <div class="wrap">
-<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
-<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>RSVYJVLX</td></tr><tr><th>wiki_id</th><td>RSVYJVLX</td></tr><tr><th>aliases</th><td>[RSVYJVLX]</td></tr><tr><th>slug</th><td>savadikar-2026-shopgym-framework-e-commerce</td></tr><tr><th>title</th><td>&quot;ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents&quot;</td></tr><tr><th>authors</th><td>[&quot;Savadikar, Chinmay&quot;, &quot;Zhao, Mingyu&quot;, &quot;Zhu, Yuanzheng&quot;, &quot;Li, Han&quot;, &quot;Xie, Shuang&quot;, &quot;Castelo, Alberto&quot;, &quot;Wu, Tianfu&quot;, &quot;Wang, Lingyun&quot;]</td></tr><tr><th>year</th><td>2026</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>arXiv</td></tr><tr><th>url</th><td>&quot;https://arxiv.org/abs/2605.16116&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2605.16116&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/ARXIV.2605.16116&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;e-commerce web agents&quot;, &quot;environment simulation&quot;, &quot;benchmark construction&quot;, &quot;ShopArena&quot;, &quot;ShopGuru&quot;, &quot;task generation&quot;, &quot;agent evaluation&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
-<h1>ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents</h1>
-<h2>Contribution</h2>
-<p>ShopGym is an integrated framework comprising two complementary components: ShopArena, which converts live storefronts into self-contained, anonymized sandbox shops through specification synthesis and staged code generation; and ShopGuru, which synthesizes grounded benchmark tasks that are valid against the generated shops. The framework addresses a core methodological gap in e-commerce agent evaluation: existing approaches force a tradeoff between live-website realism (which is non-stationary and irreproducible) and sandbox control (which lacks diversity). ShopGym produces evaluation artifacts that are simultaneously realistic, diverse, controllable, inspectable, and reproducible.</p>
-<h2>Research Question</h2>
-<p>How can the field systematically construct evaluation environments for e-commerce web agents that preserve meaningful task structure and agent-evaluation signals from live storefronts while enabling controllable, reproducible, and scalable scientific comparison?</p>
-<h2>Conclusion</h2>
-<p>ShopGym addresses a central methodological gap by combining realistic simulation with controlled benchmarking. Generated shops are structurally comparable to real storefronts and preserve meaningful behavioral signal for agent evaluation. Agent performance on synthetic twins positively tracks performance on live storefronts, while fully synthetic composite shops yield benchmarks of comparable difficulty. The framework provides a practical middle ground between live-web realism and sandbox control, offering a scalable foundation for more reproducible and interpretable evaluation of e-commerce web agents.</p>
-<h2>Task</h2>
-<p>ShopGym produces grounded benchmark tasks organized around seven skill categories: Product Discovery (exact search, substitute search), Filter-Selection (collection browse, collection filter), Information-Seeking (shipping policy lookup, returns policy lookup), and E2E shopping journeys. Short-horizon tasks are generated deterministically and evaluate primitive capabilities. Long-horizon journeys are LLM-authored using few-shot prompts grounded in human-shopper behavior patterns, including multi-step intents that combine navigation, filtering, information seeking, and cart actions. A post-generation validation pipeline ensures all generated tasks are feasible against the shop's actual catalog, collections, and page structure.</p>
-<h2>Data</h2>
-<p>ShopArena generates synthetic sandbox shops from live seed storefronts through an exploration-specification-generation pipeline. The exploration phase browses seed storefronts and writes anonymized specifications capturing navigation structure, affordances, page organization, and catalog statistics. Specifications are composed from multiple seeds when provided, enabling a single sandbox shop to span structural and behavioral diversity that no individual source storefront would cover. The framework generated six shops for validation: three constructed with synthetic product data and three with real product data (twins). Synthetic product names, descriptions, and imagery are generated rather than copied, maintaining anonymity while preserving structural alignment with source storefronts. The validation corpus includes 224 generated tasks across the six shops.</p>
-<h2>Metrics</h2>
-<p>Structural validity is evaluated using three axes: observation and interaction complexity (measured by accessibility-tree depth and counts of interactive elements), state-transition complexity (using directed graph metrics of distinct UI states and transitions), and behavioral consistency (comparing agent success rates across models and harnesses on real vs. synthetic twin shops). Agent evaluation uses LLM-as-judge scoring of task completion across three frontier models (GPT-5-mini, Gemini 3 Flash, GPT-5) in two harnesses (BrowserGym with accessibility trees; internal harness with screenshots and accessibility trees). Behavioral validation shows that agent performance on synthetic twins positively correlates with performance on live storefronts.</p>
-<h2>Baselines</h2>
-<p>The paper evaluates three frontier LLM models as agent baselines: GPT-5-mini, Gemini 3 Flash, and GPT-5. On short-horizon tasks in the internal harness, success rates range from 70-77% (GPT-5-mini to GPT-5). On long-horizon tasks, success rates range from 54-57% (GPT-5-mini to GPT-5), indicating that the benchmark generates meaningfully hard tasks. The BrowserGym harness shows similar patterns, with short-horizon success rates around 76-86% and long-horizon rates around 48-62%.</p>
-<h2>Related Work</h2>
-<h3>Static web environments and benchmarks</h3>
-<p>Mind2Web — Online dataset providing large-scale offline traces from real websites, emphasizing breadth and cross-site generalization. OPeRA — Dataset of human shopping observations, personas, rationales, and actions from real Amazon sessions. WebArena — Self-hosted, fully functional websites with executable tasks and reproducible evaluation. VisualWebArena — Extension of WebArena to visually grounded tasks. WebShop — Synthetic storefront with 1.25M products and grounded language agent interactions. ShoppingBench — Large shopping sandbox with API-based interaction, focused on intent grounding. ShopSimulator — Chinese web environment for multi-turn shopping dialog and fine-grained product differentiation. WebMall — Four simulated shops with authentic product offers and comparison-shopping tasks. These existing benchmarks enable controlled evaluation but are tied to fixed sets of layouts, taxonomies, and policies, capturing only a limited slice of real-world e-commerce diversity.</p>
-<h3>Live-website evaluation</h3>
-<p>Online-Mind2Web — Agent evaluation directly on live websites with real shopping domains. WebVoyager — End-to-end web agent evaluated on live shopping sites. DeepShop — Shopping assistant benchmark evaluated directly on live websites. These approaches improve diversity and realism but depend on external sites whose layouts, inventories, and policies may change without notice, making reproducibility difficult.</p>
-<h3>Automated environment and task generation</h3>
-<p>Gym-Anything — Multi-agent pipeline treating environment setup as installation and configuration, producing 10K+ tasks. WebArena-Infinity — Generates synthetic web apps from user manuals. WebForge — Plan/Generate/Refine/Validate pipeline for creating self-contained web environments at scale. VeriEnv — Constructs executable synthetic versions of real websites with deterministic rewards. Go-Browse — Multi-agent pipeline for generating tasks and trajectories via website navigation while maintaining a visited URL graph. These approaches sacrifice fidelity by deriving environments from manuals or ungrounded LLM design choices. ShopArena grounds generation in observed real shops through an exploration phase that produces an anonymized shop manual, then synthesizes calibrated sandbox shops from that manual while preserving diversity and determinism.</p>
-<h3>LLM-based agentic systems and agent evaluation</h3>
-<p>Shopping companion — Memory-augmented LLM agent for real-world e-commerce tasks. Customer-r1 — Personalized simulation of human behaviors via RL-based LLM agent. See, think, act — Online shopper behavior simulation with vision-language model agents. LLASA — Large language and e-commerce shopping assistant. ProductResearch — Training e-commerce deep research agents via multi-agent synthetic trajectory distillation. Simgym — Traffic-grounded browser agents for offline A/B testing. AgentA/B — Automated and scalable web A/B testing with interactive LLM agents. These works address agent training, simulation, and evaluation in e-commerce, complementing ShopGym's focus on environment construction and controlled benchmarking.</p>
-<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+<nav class="subbar" aria-label="Wiki sections"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+
+<header class="hero">
+<p class="eyebrow">Benchmark and environment evidence card</p>
+<h1>ShopGym</h1>
+<p class="dek">A framework that turns live storefront evidence into stable sandbox shops, then generates tasks that are grounded in each shop’s catalog, navigation, filters, and policies.</p>
+<ul class="meta" aria-label="Paper metadata">
+<li>Savadikar et al.</li><li>2026 preprint</li><li>arXiv:2605.16116v1</li><li>224 tasks</li><li>6 sandbox shops</li><li>Wiki ID RSVYJVLX</li>
+</ul>
+<nav class="jump" aria-label="On this page"><a href="#question">Question</a><a href="#pipeline">Pipeline</a><a href="#study">Study design</a><a href="#metrics">Metrics</a><a href="#results">Results</a><a href="#limits">Limits</a><a href="#terms">Terms</a></nav>
+</header>
+
+<main>
+<section id="question" aria-labelledby="question-title">
+<h2 id="question-title">What question does the paper ask?</h2>
+<div class="cards">
+<article class="card key"><span class="label">Research question</span><p>Can a scalable pipeline make e-commerce test environments that retain useful structure and agent-evaluation signals from live shops, while making experiments stable, inspectable, resettable, and reproducible?</p></article>
+<article class="card"><span class="label">Unit of evaluation</span><p>The paper defines a task as <strong>T = (E, s<sub>0</sub>, p, V)</strong>: environment <em>E</em>, initial state <em>s<sub>0</sub></em>, natural-language intent <em>p</em>, and verifier <em>V</em>. The verifier maps an agent trajectory to binary success.</p><p class="source"><a href="https://arxiv.org/html/2605.16116v1#S2">§2</a></p></article>
+<article class="card caution"><span class="label">Scope of the claim</span><p>ShopGym tests agents under stabilized conditions. The authors do not present it as a full replacement for live-web evaluation.</p><p class="source"><a href="https://arxiv.org/html/2605.16116v1#S3">§3</a>; <a href="https://arxiv.org/html/2605.16116v1#A3">Appendix C</a></p></article>
+</div>
+</section>
+
+<section id="pipeline" aria-labelledby="pipeline-title">
+<h2 id="pipeline-title">How does ShopGym produce an evaluation?</h2>
+<figure class="flow" aria-labelledby="flow-caption">
+<figcaption id="flow-caption">Ordered flow from live evidence to a scored rollout</figcaption>
+<ol>
+<li><strong>Explore seed storefronts</strong><span>ShopArena prefetched canonical pages and product data. A planning agent then assigned focused browsing work to specification agents.</span><small>Input: one or more live shops.</small></li>
+<li><strong>Write an anonymous specification</strong><span>Agents recorded layout, navigation, affordances, catalog statistics, and policies. They omitted brand names, product names, people, and absolute URLs. A merge step combined fragments and, when used, multiple seeds.</span><small>Control surface: human-readable specification M.</small></li>
+<li><strong>Generate a sandbox shop</strong><span>The pipeline generated synthetic catalog data and shop code in a fixed order: shell and home page, collections, product page, cart, search and filters, policy pages, then integration.</span><small>Checks: build, type, route, visual, and functional verification.</small></li>
+<li><strong>Generate grounded tasks</strong><span>Rule-based generators made short tasks. An LLM made long journeys from shop data and eight few-shot patterns. A validator checked references and feasibility; up to two polish rounds repaired flagged tasks.</span><small>Output: easy short-horizon and hard long-horizon bundles.</small></li>
+<li><strong>Run an agent</strong><span>One of three models acted through BrowserGym or the internal harness. The task ended when the agent declared completion or reached a budget.</span><small>No task crossed from cart to checkout.</small></li>
+<li><strong>Score the trajectory</strong><span>GPT-5 judged the intent, success criteria, action record, URL path, and termination. A budget exit forced failure. BrowserGym also treated the required URL substring as a hard gate.</span><small>Output per rollout: success = 1 or failure = 0.</small></li>
+</ol>
+<p class="source">Sources: <a href="https://arxiv.org/html/2605.16116v1#S2.SS1">§2.1</a>, <a href="https://arxiv.org/html/2605.16116v1#S2.SS2">§2.2</a>, and <a href="https://arxiv.org/html/2605.16116v1#A2">Appendix B</a>.</p>
+</figure>
+</section>
+
+<section id="tasks" aria-labelledby="tasks-title">
+<h2 id="tasks-title">What tasks are in the benchmark?</h2>
+<div class="table-wrap">
+<table>
+<caption>Seven skill categories in four groups</caption>
+<thead><tr><th>Group</th><th>Exact task types</th><th>How tasks are made</th><th>Grounding and control</th></tr></thead>
+<tbody>
+<tr><th>Product discovery</th><td>Exact-title search; substitute search</td><td>Deterministic generator samples at most one product per product type.</td><td>Excludes inactive products, gift cards, and products without an available variant.</td></tr>
+<tr><th>Filter selection</th><td>Collection browse; collection filter</td><td>Deterministic generator selects a populated, non-generic collection.</td><td>Filter pairs come from products in that collection. Vendor and product type are fallbacks.</td></tr>
+<tr><th>Information seeking</th><td>Shipping-policy lookup; returns-policy lookup</td><td>Deterministic generator searches extracted pages by policy keywords.</td><td>It records custom-page and platform-policy URL alternatives.</td></tr>
+<tr><th>E2E journey</th><td>LLM-authored multi-step intent</td><td>GPT-5 or Gemini 3 Pro uses shop data and eight few-shot human-shopping patterns.</td><td>Validator checks products, collections, options, memberships, filters, and pages. Failed builds stop.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="source">Sources: <a href="https://arxiv.org/html/2605.16116v1#S2.SS2">§2.2</a>, <a href="https://arxiv.org/html/2605.16116v1#A8">Appendix H</a>, and <a href="https://arxiv.org/html/2605.16116v1#A11">Appendix K</a>.</p>
+</section>
+
+<section id="study" aria-labelledby="study-title">
+<h2 id="study-title">What did the experiments compare?</h2>
+<div class="cards">
+<article class="card"><span class="label">Corpus</span><p><strong>224 generated tasks across six sandbox shops.</strong> Three shops used synthetic product data. Three “twin” shops used real product data and added visual matching to their source shops.</p><p>The paper does not give task counts for each shop or bundle.</p></article>
+<article class="card"><span class="label">Structural study</span><p><strong>7 real shops versus 3 synthetic shops.</strong> This comparison is explicitly unpaired. It compares accessibility-tree and state-transition graph statistics.</p><p>Therefore, it does not estimate how closely each generated shop matches one specific seed.</p></article>
+<article class="card"><span class="label">Behavioral study</span><p><strong>3 real storefronts versus their 3 twins.</strong> The paper uses paired tasks and compares aggregate success-rate bars for each model, task horizon, and harness.</p><p>The paper does not report the number of paired tasks used in Figure 6.</p></article>
+<article class="card"><span class="label">Agent models</span><p>GPT-5 mini, Gemini 3 Flash, and GPT-5. Medium reasoning effort was used where supported. Transient API calls could be retried up to three times.</p></article>
+<article class="card"><span class="label">Harness A</span><p>BrowserGym supplied accessibility trees without screenshots. It allowed 20 actions and at most 30 steps. Reaching the budget counted as failure.</p></article>
+<article class="card"><span class="label">Harness B</span><p>The internal harness supplied a DOM/accessibility projection plus a screenshot. It allowed at most 40 steps or 850 seconds and ran three independent rollouts per task × model × environment cell.</p></article>
+</div>
+<p class="source">Sources: abstract, <a href="https://arxiv.org/html/2605.16116v1#S3">§3</a>, and <a href="https://arxiv.org/html/2605.16116v1#A2">Appendix B</a>.</p>
+</section>
+
+<section id="metrics" aria-labelledby="metrics-title">
+<h2 id="metrics-title">How are the metrics defined?</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Metric</th><th>Definition and denominator</th><th>What it can show</th></tr></thead>
+<tbody>
+<tr><th>Binary success</th><td>For rollout <em>i</em>, y<sub>i</sub> = 1 when the judge and hard gates accept completion; otherwise y<sub>i</sub> = 0.</td><td>Completion under the specified task, harness, judge, and budget.</td></tr>
+<tr><th>Success rate</th><td><span class="formula">100 × (Σ yᵢ) / N rollouts</span>The internal per-bundle rate pools all tasks in that bundle and all three repeats. The paper does not state the task denominator for each plotted bundle.</td><td>Average pass frequency. It does not identify why an agent passed or failed.</td></tr>
+<tr><th>Standard error</th><td><span class="formula">SEM = sample standard deviation / √3</span>Figures 6b and 7b show the per-cell standard error across the internal harness’s three repeats.</td><td>Repeat-to-repeat variation for a cell. Three repeats provide a limited uncertainty estimate.</td></tr>
+<tr><th>Accessibility-tree depth</th><td>Depth of the simplified BrowserGym accessibility tree, used as a proxy for nesting complexity.</td><td>How much hierarchical page content an agent may need to parse.</td></tr>
+<tr><th>Interactive-element count</th><td>Number of unique elements that support fill, click, or choice/select actions.</td><td>Available action affordances, not their semantic difficulty.</td></tr>
+<tr><th>State graph</th><td>Each node is a distinct page or alternate UI state; each directed edge is an action-triggered transition. Mean out-degree is total outgoing edges divided by node count.</td><td>Scale and branching of explored UI transitions.</td></tr>
+<tr><th>“Correlation” in this paper</th><td>The text says twin performance “positively tracks” live performance. Figure 6 shows paired aggregate success-rate bars. The paper gives no Pearson or Spearman coefficient, p-value, confidence interval, or per-shop correlation sample size.</td><td>Qualitative aggregate alignment only. It is not a reported correlation estimate.</td></tr>
+</tbody>
+</table>
+</div>
+<p class="source">Sources: <a href="https://arxiv.org/html/2605.16116v1#S3.SS1">§3.1</a>, <a href="https://arxiv.org/html/2605.16116v1#S3.SS2">§3.2</a>, and <a href="https://arxiv.org/html/2605.16116v1#A2.SS3">Appendix B.3</a>.</p>
+</section>
+
+<section id="results" aria-labelledby="results-title">
+<h2 id="results-title">What results are supported?</h2>
+<div class="cards">
+<article class="card key"><span class="label">Structural result</span><p>The synthetic shops had similar accessibility-tree depth, interactive-element counts, and graph node counts to the real-shop group. They had fewer edges and lower mean out-degree. The authors attribute part of that gap to excluded external links, marketing pages, and auxiliary components.</p></article>
+<article class="card key"><span class="label">Live versus twin result</span><p>Across the bars in Figure 6, real and twin aggregate success rates were similar and moved in the same broad direction across the tested models. This is evidence that the twins retained some evaluation signal under these tasks and harnesses.</p></article>
+<article class="card caution"><span class="label">Live versus twin uncertainty</span><p>No numerical Figure 6 values, correlation coefficient, significance test, confidence interval, or paired-task denominator are reported in the paper text. Only the internal-harness panel has SEM error bars, based on three repeats.</p></article>
+</div>
+
+<div class="table-wrap" style="margin-top:1rem">
+<table>
+<caption>Figure 7: success rates (%) on the three fully synthetic shops</caption>
+<thead><tr><th>Harness and bundle</th><th>GPT-5 mini</th><th>Gemini 3 Flash</th><th>GPT-5</th></tr></thead>
+<tbody>
+<tr><th>BrowserGym, short</th><td>76.1</td><td>77.2</td><td>86.1</td></tr>
+<tr><th>BrowserGym, long</th><td>47.9</td><td>59.0</td><td>62.5</td></tr>
+<tr><th>Internal, short</th><td>72.7</td><td>70.9</td><td>76.7</td></tr>
+<tr><th>Internal, long</th><td>54.0</td><td>52.5</td><td>57.5</td></tr>
+</tbody>
+</table>
+</div>
+<p>Long-horizon tasks had lower pass rates than short-horizon tasks for every model and harness shown. This supports the claim that the generated long tasks are harder in this setup. It does not establish that they measure every capability needed on a live store.</p>
+<p class="source">Sources: <a href="https://arxiv.org/html/2605.16116v1#S3">§3 and Figures 5–6</a>; <a href="https://arxiv.org/html/2605.16116v1#S4">§4 and Figure 7</a>.</p>
+</section>
+
+<section id="limits" aria-labelledby="limits-title">
+<h2 id="limits-title">What should readers not conclude?</h2>
+<div class="cards">
+<article class="card caution"><h3>No quantified correlation</h3><p>“Positively correlated” is the authors’ summary of aggregate bars. The paper does not supply a coefficient or a test. Do not cite it as a measured value.</p></article>
+<article class="card caution"><h3>No identical failure modes</h3><p>Similar aggregate pass rates do not show that live and twin shops exercise the same hidden capabilities or cause the same errors. The authors state this limit.</p></article>
+<article class="card caution"><h3>Proxy measures</h3><p>Tree depth, action counts, and graph statistics do not fully measure visual fidelity, semantic ambiguity, content quality, or user-facing variation.</p></article>
+<article class="card caution"><h3>Stabilized setting</h3><p>The sandboxes remove inventory churn, personalization, A/B tests, third-party services, latency variation, and other operational noise.</p></article>
+<article class="card caution"><h3>Task coverage</h3><p>The suite excludes login, checkout and payment, recommendation and sponsored modules, customer service, cross-store comparison, post-purchase work, multi-session memory, multilingual use, and safety-critical edge cases.</p></article>
+<article class="card caution"><h3>Comparison limits</h3><p>The structural study is unpaired and small. The behavioral study covers three twins, three models, two harnesses, and one GPT-5 judge. The paper does not report judge validation or agreement with human labels.</p></article>
+</div>
+<p class="source"><a href="https://arxiv.org/html/2605.16116v1#A3">Appendix C: Limitations</a></p>
+</section>
+
+<section id="terms" aria-labelledby="terms-title">
+<h2 id="terms-title">Plain-language terms</h2>
+<div class="cards">
+<dl class="card"><dt>Accessibility tree</dt><dd>A text-like hierarchy of page elements and their roles. An agent can use it instead of, or with, pixels.</dd><dt>Affordance</dt><dd>An action the interface makes possible, such as click, fill, or select.</dd><dt>Sandbox shop</dt><dd>A self-contained test storefront that can be reset and inspected.</dd></dl>
+<dl class="card"><dt>Twin shop</dt><dd>A sandbox built with real product data and extra visual matching to one live source shop. It replaces identifying shop details with mock data.</dd><dt>Short horizon</dt><dd>A task focused on one primitive skill and relatively few steps.</dd><dt>Long horizon</dt><dd>A journey that combines several skills across more steps.</dd></dl>
+<dl class="card"><dt>Harness</dt><dd>The software that shows observations to the model, executes actions, enforces budgets, and records a trajectory.</dd><dt>Trajectory</dt><dd>The ordered record of pages, observations, actions, and outcomes during one rollout.</dd><dt>LLM as judge</dt><dd>A language model that reads the task and trajectory and returns a pass or fail verdict.</dd></dl>
+</div>
+</section>
+
+<section id="source" aria-labelledby="source-title">
+<h2 id="source-title">Primary source and citation</h2>
+<div class="card">
+<p><strong>Pinned source:</strong> Savadikar, C., Zhao, M., Zhu, Y., Li, H., Xie, S., Castelo, A., Wu, T., &amp; Wang, L. (2026). <em>ShopGym: An Integrated Framework for Realistic Simulation and Scalable Benchmarking of E-Commerce Web Agents.</em> arXiv:2605.16116v1, 15 May 2026.</p>
+<p><a href="https://arxiv.org/abs/2605.16116v1">Abstract record</a> · <a href="https://arxiv.org/html/2605.16116v1">Full HTML</a> · <a href="https://arxiv.org/pdf/2605.16116v1">PDF</a> · DOI: <a href="https://doi.org/10.48550/arXiv.2605.16116">10.48550/arXiv.2605.16116</a></p>
+<p class="source">Paper type: benchmark and dataset · Text source checked: full v1 HTML and PDF · Page revised: 2026-10-08 · Zotero key and wiki ID: RSVYJVLX · Slug: savadikar-2026-shopgym-framework-e-commerce</p>
+</div>
+</section>
+</main>
+
+<footer>Agentic Commerce Wiki — static export. Internal navigation is preserved. This card separates reported measurements from interpretation.</footer>
 </div>
 </body>
 </html>

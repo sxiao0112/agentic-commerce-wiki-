@@ -5,70 +5,267 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ShoppingComp: Are LLMs Really Ready for Your Shopping Cart?</title>
 <style>
-:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
+:root{--fg:#172033;--muted:#5b6475;--bg:#fff;--accent:#2458a6;--accent-dark:#163e78;--border:#dce2ea;--soft:#f5f8fc;--warm:#fff8e8;--barbg:#0f1b33;--barfg:#eaf0fb;--good:#17653a;--warn:#8a4b08;}
 *{box-sizing:border-box;}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
- line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
-.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
-nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
- box-shadow:0 1px 4px rgba(0,0,0,.15);}
-nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.62;color:var(--fg);background:var(--bg);margin:0;}
+.wrap{max-width:920px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;box-shadow:0 1px 4px rgba(0,0,0,.15);}
+nav.sitebar .inner{max-width:920px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
 nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
 nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
-nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
-nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
+nav.sitebar a:hover,nav.sitebar a:focus-visible{color:#fff;border-bottom-color:#8db4f2;}
 nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
 nav.subbar a{margin-right:.9rem;}
 nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
-h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
-h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
-h3{font-size:1.1rem;margin-top:1.5rem;}
-a{color:var(--accent);text-decoration:none;}
-a:hover{text-decoration:underline;}
-span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
-code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
-pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
-pre code{background:none;padding:0;}
-blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
-table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
-th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
-th{background:#f7f7f7;}
-table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
-table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
-ul,ol{padding-left:1.4rem;}
-li{margin:.15rem 0;}
-hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+h1{font-size:clamp(1.7rem,4vw,2.2rem);line-height:1.2;margin:.2rem 0 .65rem;}
+h2{font-size:1.35rem;margin-top:2.3rem;border-bottom:1px solid var(--border);padding-bottom:.35rem;}
+h3{font-size:1.08rem;margin:0 0 .35rem;}
+p{margin:.65rem 0 1rem;}
+a{color:var(--accent);text-decoration-thickness:.08em;text-underline-offset:.15em;}
+a:hover,a:focus-visible{color:var(--accent-dark);}
+code{background:#eef2f7;padding:.08rem .3rem;border-radius:3px;font-size:.9em;}
+ul,ol{padding-left:1.35rem;}
+li{margin:.3rem 0;}
+.lede{font-size:1.08rem;color:#344057;max-width:49rem;}
+.byline{color:var(--muted);margin:.2rem 0;}
+.source-line{font-size:.92rem;margin:.7rem 0 1.4rem;}
+.pill{display:inline-block;border:1px solid #b9c8dc;border-radius:999px;padding:.12rem .55rem;margin:.12rem .3rem .12rem 0;background:var(--soft);font-size:.8rem;font-weight:650;color:#314663;}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1rem 0;}
+.card{border:1px solid var(--border);border-radius:10px;padding:1rem;background:#fff;box-shadow:0 2px 8px rgba(28,44,69,.05);}
+.card p:last-child,.card ul:last-child{margin-bottom:0;}
+.card.wide{grid-column:1/-1;}
+.callout{border-left:4px solid var(--accent);background:var(--soft);padding:.85rem 1rem;margin:1rem 0;}
+.callout.warning{border-left-color:#d68a18;background:var(--warm);}
+.metric{font-size:1.55rem;font-weight:750;line-height:1.1;color:var(--accent-dark);display:block;margin-bottom:.25rem;}
+.mini{font-size:.86rem;color:var(--muted);}
+.meta{display:grid;grid-template-columns:max-content 1fr;gap:.25rem .8rem;margin:1rem 0 1.4rem;padding:.85rem 1rem;background:var(--soft);border:1px solid var(--border);border-radius:8px;font-size:.9rem;}
+.meta dt{font-weight:700;color:#45536a;}
+.meta dd{margin:0;}
+.flowchart{margin:1.2rem 0;padding:1.1rem;border:1px solid var(--border);border-radius:10px;background:var(--soft);}
+.flowchart figcaption{font-weight:750;font-size:1.06rem;margin-bottom:1rem;}
+.flowchart ol{list-style:none;counter-reset:step;display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem;max-width:49rem;margin:0 auto;padding:0;}
+.flowchart li{counter-increment:step;position:relative;margin:0;padding:.85rem .85rem .85rem 3rem;border:1px solid #c7d3e3;border-radius:8px;background:#fff;}
+.flowchart li::before{content:counter(step);position:absolute;left:.8rem;top:.85rem;width:1.45rem;height:1.45rem;border-radius:50%;background:var(--accent-dark);color:#fff;text-align:center;line-height:1.45rem;font-size:.8rem;font-weight:750;}
+.flowchart li::after{content:"\2193";position:absolute;left:50%;bottom:-1.25rem;transform:translateX(-50%);font-size:1.3rem;color:var(--accent);font-weight:750;}
+.flowchart li:last-child::after{display:none;}
+.flowchart strong{display:block;line-height:1.3;margin-bottom:.25rem;}
+.flowchart span{display:block;font-size:.93rem;line-height:1.48;}
+.flow-source{font-size:.82rem;color:var(--muted);margin:.9rem 0 0;}
+.formula{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#eef2f7;border-radius:6px;padding:.8rem;overflow-wrap:anywhere;}
+.table-wrap{overflow-x:auto;margin:1rem 0;}
+table{border-collapse:collapse;width:100%;font-size:.9rem;}
+caption{text-align:left;font-weight:700;margin-bottom:.5rem;}
+th,td{border:1px solid var(--border);padding:.5rem .6rem;text-align:left;vertical-align:top;}
+th{background:#eef3f9;}
+tbody tr:nth-child(even){background:#fafbfd;}
+.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.source-tag{font-size:.78rem;color:var(--muted);font-weight:500;}
+.result-note{color:var(--good);font-weight:650;}
+.limit-list strong{color:#3a465b;}
 footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+@media(max-width:680px){.cards{grid-template-columns:1fr}.card.wide{grid-column:auto}.meta{grid-template-columns:1fr}.meta dd{margin-bottom:.35rem}.wrap{padding-left:1rem;padding-right:1rem}.flowchart{padding:.8rem}th,td{padding:.45rem}.table-wrap{border-right:1px solid var(--border)}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;}}
 </style>
 </head>
 <body>
-<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
-<div class="wrap">
-<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
-<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>72GYW9VP</td></tr><tr><th>wiki_id</th><td>72GYW9VP</td></tr><tr><th>aliases</th><td>[72GYW9VP]</td></tr><tr><th>slug</th><td>tou-2025-shoppingcomp-llms-ready-shopping</td></tr><tr><th>title</th><td>&quot;ShoppingComp: Are LLMs Really Ready for Your Shopping Cart?&quot;</td></tr><tr><th>authors</th><td>[&quot;Tou, Huaixiao&quot;, &quot;Zeng, Ying&quot;, &quot;Li, Yuemeng&quot;, &quot;Ma, Cong&quot;, &quot;Li, Muzhi&quot;, &quot;Li, Minghao&quot;, &quot;Yuan, Weijie&quot;, &quot;Zhang, He&quot;, &quot;Jia, Kai&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>&quot;arXiv&quot;</td></tr><tr><th>url</th><td>&quot;https://arxiv.org/abs/2511.22978&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2511.22978&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/ARXIV.2511.22978&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;shopping agents&quot;, &quot;LLM evaluation&quot;, &quot;product retrieval&quot;, &quot;safety-critical decision making&quot;, &quot;rubric-based evaluation&quot;, &quot;multi-constraint reasoning&quot;, &quot;open-world e-commerce&quot;, &quot;benchmark dataset&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
+<nav class="sitebar" aria-label="Site"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<main class="wrap">
+<nav class="subbar" aria-label="Wiki sections"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+
+<article>
+<header>
+<span class="pill">Benchmark and dataset</span><span class="pill">Open-world shopping</span><span class="pill">Safety evaluation</span>
 <h1>ShoppingComp: Are LLMs Really Ready for Your Shopping Cart?</h1>
-<h2>Contribution</h2>
-<p>ShoppingComp is a challenging real-world benchmark for evaluating LLM-powered shopping agents on three core capabilities: precise product retrieval under complex multi-constraint queries, expert-level report generation with verifiable reasoning, and safety-critical decision making. The benchmark comprises 145 instances and 558 scenarios curated by 35 experts over 1,000 hours of effort, with each task paired with human-verified product lists, annotated rubrics, and verifiable evidence. Unlike prior e-commerce benchmarks that operate under closed-world product assumptions or lack explicit safety evaluation, ShoppingComp introduces difficult product discovery queries grounded in open-world products and guarantees easy verification of agent outputs through expert-curated ground truth and rubric-based assessment. The authors introduce a unified evaluation framework combining AnswerMatch metrics for retrieval accuracy with fine-grained rubrics for constraint satisfaction, information grounding, reasoning faithfulness, and safety awareness.</p>
-<h2>Research Question</h2>
-<p>How capable are current state-of-the-art LLMs at reliably performing real-world shopping tasks? Specifically, can LLMs accurately retrieve products satisfying complex multi-constraint user needs, generate expert-level comparative reports with faithful reasoning, and recognize and avoid safety-critical risks?</p>
-<h2>Task</h2>
-<p>ShoppingComp evaluates shopping assistants across three complementary tasks. Browse Products assesses whether models can retrieve real products that satisfy complex user needs under search noise, measured through AnswerMatch F1 and Score of Products. Expert-level Report Generation evaluates the ability to produce rubric-aligned product recommendation reports with verifiable reasoning, measured through Scenario Coverage and Rationale Validity. Safety-Critical Decision Making tests whether models recognize and avoid potential product-related risks, measured through a dedicated Safety Rubric Pass Rate. Across all three tasks, each instance is anchored to a user shopping question and includes expert-annotated products, structured rubrics specifying fine-grained requirements and safety conditions, and verifiable supporting evidence.</p>
-<h2>Data</h2>
-<p>The benchmark consists of 145 instances covering 558 scenarios spanning eleven product categories from the Amazon taxonomy, including beauty and personal care, electronics, home and kitchen, tools and home improvement, appliances, health and household, sports and outdoors, pet supplies, patio and lawn, clothing and jewelry, and baby products. The data collection pipeline follows four steps. Step 1 collects shopping questions from three complementary sources: synthesized user questions generated from real products with rich specifications, expert-authored questions covering diverse consumer needs and purchasing scenarios, and safety questions curated by experts embedding potential hazards grounded in real usage contexts. Step 2 generates detailed rubrics from both experts and LLMs, with human annotators performing thorough correctness checks. Step 3 constructs diverse candidate products from multiple sources including web agent retrieval, expert-curated lists, and similarity-based embedding retrieval, linking each to verifiable evidence. Step 4 performs ground-truth verification through human annotators assessing whether candidate products match the rubrics, then removes trivial or redundant questions through three filters: questions with excessive valid products, questions correctly solved by most evaluated agents, and semantically clustered duplicates. The remaining instances undergo expert cross-review to ensure reliability and fairness. Task difficulty is defined by constraint complexity, with 20.7% simple queries (1-3 constraints), 33.8% medium complexity (4-7 constraints), 36.6% high complexity (8-11 constraints), and 9.0% very high complexity (12-15 constraints).</p>
-<h2>Metrics</h2>
-<p>Answer Match measures retrieval performance using Precision, Recall, and F1-score to evaluate the semantic correspondence between predicted and ground-truth products. Score of Products measures the proportion of recommended products that satisfy user requirements as defined by rubrics, averaging the fraction of satisfied requirements across all recommended products. Scenario Coverage evaluates semantic correspondence in set-to-set manner, computing Precision, Recall, and F1-score for whether predicted scenarios correspond to and cover ground-truth scenarios extracted from the original user question. Rationale Validity measures whether rationales provided in reports are factually correct and logically sound, averaging binary validity scores across all requirement rubrics and recommended products. Safety Rubric Pass Rate measures the proportion of safety trap questions for which the model produces a compliant response, computed as the average binary judgment indicating whether each response satisfies its corresponding trap rubric.</p>
-<h2>Baselines</h2>
-<p>The evaluation covers a broad spectrum of models including foundation models accessed via APIs: GPT-5.2, GPT-5, GPT-4o, Gemini-3-Pro, Gemini-2.5-Pro, Gemini-2.5-Flash, Deepseek-v3.2 (with and without extended thinking), and Grok-4. Deep research systems evaluated include ChatGPT DeepResearch and Gemini DeepResearch. Human baselines are provided by domain experts and annotators. Models are equipped with three representative tools: Google Search via SerpAPI, link reader, and link summary using Firecrawl. Each test case is evaluated with five independent runs, reporting average performance rather than best-of-N results to reflect real-world robustness.</p>
-<h2>Results</h2>
-<p>All evaluated models remain far from achieving human-level reliability on shopping tasks. State-of-the-art GPT-5.2 achieves only 17.76% Answer Match F1 and 35.42% Safety Rubric Pass Rate compared to human experts at 30.02% and 77.08% respectively. Performance gaps exist across model generations, with GPT-5 series achieving markedly higher Answer Match F1 (17.76%) than GPT-4o (9.86%), indicating recent models have improved capacity for multi-constraint retrieval. Models exhibit distinct retrieval behaviors across families: Gemini-style models tend to commit early to narrower candidate sets and focus on refining constraint satisfaction (achieving 15.33% precision on Answer Match), while GPT-style models show broader exploration achieving higher recall but lower precision. Interestingly, humans show substantially higher precision than recall, reflecting a constraint-first retrieval strategy, while all evaluated models display the opposite pattern with recall exceeding precision, indicating reliance on semantic expansion and weak filtering rather than joint constraint enforcement. DeepResearch products achieve substantially higher Scenario Coverage F1 scores by leveraging agentic workflows with extensive web browsing, but exhibit lower Rationale Validity compared to strong API-based models, suggesting that expanded retrieval coverage alone does not guarantee faithful synthesis. Safety performance remains alarmingly low across all systems: the strongest models achieve safety pass rates below 40%, with high variance in safety outcomes indicating unstable and non-deterministic safety behavior. Parametric knowledge alone is insufficient for product discovery, with models achieving 1-3% recall without tools; gains from tool access arise almost entirely from recall improvements.</p>
-<h2>Conclusion</h2>
-<p>ShoppingComp reveals systematic limitations of state-of-the-art LLMs across five key dimensions: large-scale retrieval effectiveness, information reliability handling, implicit requirement inference, reasoning faithfulness, and safety awareness. The benchmark exposes a substantial performance gap between current models and human experts, establishing a trust threshold that AI systems must cross before being proactively trusted for reliable real-world shopping decision making. The authors identify promising future directions including scaling task complexity and coverage, extending the benchmark to multilingual settings, and incorporating personalized evaluation where tasks adapt to user profiles and contextual constraints.</p>
-<h2>Related Work</h2>
-<h3>Web Agent and Shopping Benchmarks</h3>
-<p>WebArena and Mind2Web established foundations for general web navigation and incorporated e-commerce as a key sub-domain — Zhou et al. and Deng et al. respectively. GAIA, BrowseComp, and HLE assess high-level tool use and multihop information reasoning including shopping-related tasks — Mialon et al., Wei et al., and Phan et al. respectively. WebShop evaluates instruction following in simulated environments — Yao et al. ShoppingMMLU, eCeLLM, and OPeRA introduce multi-task reasoning and user behavior modeling — Jin et al., Peng et al., and Wang et al. ShoppingBench grounds evaluation in real product catalogs but remains restricted to closed-world settings — Wang et al. The authors position ShoppingComp as distinct through explicit open-world evaluation, multi-constraint reasoning grounded in real user intents, multi-product comparative justification reports, and dedicated safety-critical assessment.</p>
-<h3>Rubric-Based Evaluation</h3>
-<p>Recent work has adopted rubric-based evaluation for fine-grained and interpretable assessment across diverse domains. HealthBench evaluates LLMs toward improved human health — Arora et al. YESciEval provides robust LLM-as-a-judge evaluation for scientific question answering — D'Souza et al. PRbench evaluates high-stakes professional reasoning in finance and law — Akyürek et al. ResearchRubrics, SedArEval, and LLM-rubric apply rubric-based evaluation to general question answering and information-seeking — Sharma et al., Fan et al., and Hashemi et al. respectively. ShoppingComp extends this paradigm to the e-commerce domain with domain-specific safety considerations.</p>
-<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+<p class="byline">Huaixiao Tou, Ying Zeng, Yuemeng Li, Cong Ma, Muzhi Li, Minghao Li, Weijie Yuan, He Zhang, and Kai Jia</p>
+<p class="lede">ShoppingComp tests whether a shopping agent can find real products, explain its choices, and detect unsafe requests. Each question contains several requirements. Human reviewers link those requirements to products and evidence. The benchmark then measures retrieval, report quality, and safety.</p>
+<p class="source-line"><strong>Primary source:</strong> <a href="https://arxiv.org/html/2511.22978v2">arXiv v2 full text</a> (8 February 2026; pinned for every count and result on this page) · <a href="https://arxiv.org/pdf/2511.22978v2">v2 PDF</a> · <a href="https://arxiv.org/abs/2511.22978v2">v2 record</a> · <a href="https://arxiv.org/abs/2511.22978v1">v1 record</a> (superseded snapshot)</p>
+</header>
+
+<dl class="meta">
+<dt>Wiki ID</dt><dd>72GYW9VP</dd>
+<dt>Zotero key</dt><dd>72GYW9VP</dd>
+<dt>Published</dt><dd>arXiv preprint, 2026</dd>
+<dt>Identifiers</dt><dd><a href="https://doi.org/10.48550/arXiv.2511.22978">DOI 10.48550/arXiv.2511.22978</a> · slug: <code>tou-2025-shoppingcomp-llms-ready-shopping</code></dd>
+<dt>Paper version used</dt><dd>arXiv:2511.22978v2. Submitted 8 February 2026.</dd>
+<dt>Artifact type</dt><dd>Expert-curated benchmark, product evidence, rubrics, and evaluation framework</dd>
+<dt>Wiki record</dt><dd>Full text from PDF · keywords: shopping agents, LLM evaluation, product retrieval, safety, rubric-based evaluation, multi-constraint reasoning · record updated 2026-10-08</dd>
+</dl>
+
+<section aria-labelledby="quick-read">
+<h2 id="quick-read">Quick read</h2>
+<div class="cards">
+<section class="card"><h3>Research question</h3><p>Can current LLM shopping agents retrieve products that satisfy many constraints, write accurate reports, and recognize safety risks?</p></section>
+<section class="card"><h3>Test set</h3><span class="metric">145 instances</span><p>The instances contain 558 scenarios in 11 Amazon product categories.</p></section>
+<section class="card"><h3>Best standard LLM retrieval</h3><span class="metric">17.76% F1</span><p>GPT-5.2 has this Answer Match result. Human experts reach 30.02%.</p></section>
+<section class="card"><h3>Safety result</h3><span class="metric">35.42%</span><p>GPT-5.2 passes this share of safety rubrics, with a reported standard deviation of 6.18 points. Experts reach 77.08%.</p></section>
 </div>
+<div class="callout"><strong>Main lesson:</strong> a fluent report does not prove that the agent found the right products. Several systems have high Rationale Validity and low Answer Match F1.</div>
+</section>
+
+<section aria-labelledby="terms">
+<h2 id="terms">Terms used in the paper</h2>
+<div class="cards">
+<section class="card"><h3>Instance</h3><p>One user shopping question and its annotations. The paper also calls an instance a task in some descriptions.</p></section>
+<section class="card"><h3>Scenario</h3><p>One distinct demand that the evaluator extracts from a question. A question can contain several scenarios.</p></section>
+<section class="card"><h3>Rubric</h3><p>An atomic, verified requirement or standard. A rubric converts a broad user need into a check that the verifier can apply.</p></section>
+<section class="card"><h3>Satisfying product</h3><p>A real product that human annotators verified against the rubrics. The product has supporting text, URLs, or images.</p></section>
+<section class="card"><h3>Safety trap</h3><p>A question that contains a hazard or misuse risk. The response must identify the risk and give a warning or a safer option.</p></section>
+<section class="card"><h3>Open-world search</h3><p>The agent searches the live web. The agent does not select from a fixed catalog that the benchmark gives to it.</p></section>
+</div>
+</section>
+
+<section aria-labelledby="task-flow">
+<h2 id="task-flow">How one benchmark item becomes a score</h2>
+<figure class="flowchart" aria-labelledby="flow-caption">
+<figcaption id="flow-caption">Documented ShoppingComp construction and evaluation flow</figcaption>
+<ol>
+<li><strong>Collect a shopping question</strong><span>The source is a product-based synthesis, a domain expert, or an expert-written safety case.</span></li>
+<li><strong>Write and verify rubrics</strong><span>Experts and LLMs propose requirements. Human annotators check each requirement and make the final rubric set.</span></li>
+<li><strong>Build a candidate pool</strong><span>Web agents, experts, and embedding retrieval supply relevant and misleading products.</span></li>
+<li><strong>Verify products and evidence</strong><span>Annotators decide which products satisfy the rubrics. They attach official specifications, trusted reviews, URLs, text, or images.</span></li>
+<li><strong>Filter the benchmark</strong><span>The authors remove questions with more than 10 valid products, questions that most evaluated agents solve, and semantic duplicates. Experts cross-review the remainder.</span></li>
+<li><strong>Run the shopping agent</strong><span>The agent uses search and page-reading tools. It returns products and a recommendation report. Each API model runs five times per test case.</span></li>
+<li><strong>Verify and aggregate</strong><span>LLM judges compare products, scenarios, rationales, and safety actions with the rubrics. The evaluation reports mean scores across runs.</span></li>
+</ol>
+<p class="flow-source">Source: v2 §§3.2, 4.1, 5.1, Figure 3, and Appendix D. The ordered list preserves the process for screen readers and small screens.</p>
+</figure>
+</section>
+
+<section aria-labelledby="benchmark">
+<h2 id="benchmark">Benchmark contents</h2>
+<div class="cards">
+<section class="card"><h3>Question sources</h3><p>55 product-based synthesized instances, 42 expert-written instances, and 48 safety-critical instances. Total: 145.</p></section>
+<section class="card"><h3>Human work</h3><p>35 vetted domain experts contributed more than 1,000 person-hours. A team of 15 annotators contributed more than 3,000 person-hours.</p></section>
+<section class="card"><h3>Constraint levels</h3><p>30 questions have 1–3 constraints. 49 have 4–7. 53 have 8–11. 13 have 12–15.</p></section>
+<section class="card"><h3>Largest categories</h3><p>Beauty and Personal Care has 44 instances. Electronics has 39. Home and Kitchen has 18. The other eight categories contain 44 instances in total.</p></section>
+</div>
+
+<div class="table-wrap" role="region" aria-label="ShoppingComp tasks" tabindex="0">
+<table>
+<caption>Three evaluated tasks <span class="source-tag">v2 §3.1</span></caption>
+<thead><tr><th scope="col">Task</th><th scope="col">Required output</th><th scope="col">Main measures</th></tr></thead>
+<tbody>
+<tr><th scope="row">Browse Products</th><td>Real products that satisfy the question under web-search noise.</td><td>Answer Match precision, recall, and F1; Score of Products (SoP).</td></tr>
+<tr><th scope="row">Expert-level Report Generation</th><td>A report that identifies the user’s scenarios and gives evidence-grounded reasons for each product.</td><td>Scenario Coverage precision, recall, and F1; Rationale Validity (RV).</td></tr>
+<tr><th scope="row">Safety-Critical Decision Making</th><td>A response that detects the embedded risk and gives a suitable warning or safer action.</td><td>Safety Rubric Pass Rate.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section aria-labelledby="metrics">
+<h2 id="metrics">Metrics and denominators</h2>
+<p>Let <code>P</code> be the set of verified satisfying products and <code>P&#770;</code> be the predicted products. Let <code>S</code> be the verified scenarios and <code>S&#770;</code> be the predicted scenarios. The paper uses an LLM judge to decide semantic matches.</p>
+<div class="cards">
+<section class="card wide"><h3>Answer Match</h3><p><strong>Precision = matched predicted products ÷ |P&#770;|.</strong> <strong>Recall = covered satisfying products ÷ |P|.</strong> <strong>F1 = 2 × precision × recall ÷ (precision + recall).</strong> The paper states that it uses these standard metrics after judge-based semantic matching. It does not specify a separate duplicate-matching rule.</p></section>
+<section class="card"><h3>Score of Products (SoP)</h3><p>For <code>J</code> recommended products and <code>N</code> rubrics, <code>c(n,j)=1</code> when product <code>j</code> satisfies rubric <code>n</code>.</p><p class="formula">SoP = (1 / J) × Σj [(1 / N) × Σn c(n,j)]</p><p>The denominator is <code>N × J</code> binary product-rubric checks.</p></section>
+<section class="card"><h3>Scenario Coverage</h3><p><strong>Precision = matched predicted scenarios ÷ |S&#770;|.</strong> <strong>Recall = covered verified scenarios ÷ |S|.</strong> F1 is their harmonic mean. The judge checks both directions of the set comparison.</p></section>
+<section class="card"><h3>Rationale Validity (RV)</h3><p>For <code>J</code> recommended products and <code>N</code> requirement rubrics, <code>v(n,j)=1</code> when the rationale is factually and logically valid.</p><p class="formula">RV = Σn Σj v(n,j) / (N × J)</p><p>The denominator is all rubric-product rationale checks.</p></section>
+<section class="card"><h3>Safety Rubric Pass Rate</h3><p>Let <code>Qs</code> be the safety questions. Each question has one trap rubric and one binary pass value <code>v(i)</code>.</p><p class="formula">Safety pass rate = Σi v(i) / |Qs|</p><p>The denominator is the number of safety questions.</p></section>
+</div>
+<div class="callout warning"><strong>Judge reliability:</strong> the Product Verifier agrees with humans on 81% of rubric decisions and 84% of question decisions. The Report Verifier agrees on 94.5% of rubric decisions and 75.6% of question decisions. Scores therefore include judge error.</div>
+</section>
+
+<section aria-labelledby="experiments">
+<h2 id="experiments">Exact experiments and baselines</h2>
+<div class="cards">
+<section class="card"><h3>API model group</h3><p>GPT-5.2-2025-12-11, GPT-5-2025-08-07, GPT-4o-2024-11-20, Gemini-3-Pro, Gemini-2.5-Pro, Gemini-2.5-Flash, DeepSeek-v3.2-251201 with and without thinking, and Grok-4.</p></section>
+<section class="card"><h3>Deep Research group</h3><p>ChatGPT DeepResearch and Gemini DeepResearch. The researchers collected final answers manually from each web interface.</p></section>
+<section class="card"><h3>Human references</h3><p>Domain experts and annotators provide two human performance rows. The paper labels these rows as requiring more time.</p></section>
+<section class="card"><h3>Tool condition</h3><p>Models can call Google Search through SerpAPI. They can also call Firecrawl-based <code>link_reader</code> and <code>link_summary</code> tools.</p></section>
+<section class="card"><h3>Run protocol</h3><p>Each API test case has five independent runs. Tables report the mean and standard deviation. Deep Research and human rows do not have repeated-run standard deviations.</p></section>
+<section class="card"><h3>Automatic judges</h3><p>The main Product Verifier and Report Verifier use Gemini-2.5-Pro with Google Search. An ablation also uses DeepSeek-v3.2 and GPT-5 as SoP judges.</p></section>
+</div>
+<p class="mini">Source: v2 §§4.1 and 5.1, Tables 2–3, and Appendices C–D. Appendix D does not give a dated Grok-4 identifier, although Table 2 includes Grok-4.</p>
+</section>
+
+<section aria-labelledby="results">
+<h2 id="results">Supported findings</h2>
+<div class="table-wrap" role="region" aria-label="Selected ShoppingComp results" tabindex="0">
+<table>
+<caption>Selected v2 results <span class="source-tag">Tables 2–3; percentages</span></caption>
+<thead><tr><th scope="col">Evaluator</th><th scope="col" class="num">Answer Match F1</th><th scope="col" class="num">SoP</th><th scope="col" class="num">Scenario F1</th><th scope="col" class="num">RV</th><th scope="col" class="num">Safety pass</th></tr></thead>
+<tbody>
+<tr><th scope="row">Experts</th><td class="num">30.02</td><td class="num">68.19</td><td class="num">97.90</td><td class="num">90.96</td><td class="num">77.08</td></tr>
+<tr><th scope="row">Annotators</th><td class="num">27.25</td><td class="num">67.90</td><td class="num">98.45</td><td class="num">85.17</td><td class="num">60.41</td></tr>
+<tr><th scope="row">GPT-5.2</th><td class="num"><strong>17.76 ± 1.08</strong></td><td class="num">52.08 ± 1.10</td><td class="num">88.21 ± 0.12</td><td class="num">91.73 ± 0.36</td><td class="num">35.42 ± 6.18</td></tr>
+<tr><th scope="row">GPT-5</th><td class="num">17.19 ± 1.48</td><td class="num">48.67 ± 0.47</td><td class="num">86.18 ± 1.08</td><td class="num"><strong>92.35 ± 0.44</strong></td><td class="num">36.67 ± 5.02</td></tr>
+<tr><th scope="row">Gemini-3-Pro</th><td class="num">15.82 ± 1.11</td><td class="num"><strong>57.12 ± 1.44</strong></td><td class="num">84.50 ± 1.15</td><td class="num">87.98 ± 0.79</td><td class="num">28.33 ± 3.49</td></tr>
+<tr><th scope="row">ChatGPT DeepResearch</th><td class="num">22.47</td><td class="num">59.29</td><td class="num"><strong>92.81</strong></td><td class="num">83.07</td><td class="num">37.86</td></tr>
+<tr><th scope="row">Gemini DeepResearch</th><td class="num"><strong>22.66</strong></td><td class="num"><strong>62.35</strong></td><td class="num">86.71</td><td class="num">87.69</td><td class="num">34.12</td></tr>
+</tbody>
+</table>
+</div>
+<p class="mini">Bold values mark the best value within the standard LLM rows or within the Deep Research rows for that column. They do not merge the two system groups. Human results remain separate reference rows.</p>
+
+<div class="cards">
+<section class="card"><h3>Retrieval remains the main gap</h3><p>GPT-5.2 reaches 17.76% Answer Match F1. Experts reach 30.02%. This comparison supports a retrieval gap on this benchmark. The paper does not report a significance test.</p></section>
+<section class="card"><h3>Precision and recall reverse</h3><p>Experts have 38.52% precision and 24.58% recall. Annotators have 39.41% precision and 20.83% recall. Every evaluated model in Table 2 has recall above precision. The authors connect this pattern to broad semantic expansion and weak joint constraint filtering.</p></section>
+<section class="card"><h3>Reports can look stronger than retrieval</h3><p>GPT-5 has 92.35% RV but only 17.19% Answer Match F1. GPT-5.2 has 91.73% RV and 17.76% F1. A valid explanation for a recommended item does not measure whether the system found enough correct products.</p></section>
+<section class="card"><h3>Deep Research improves coverage</h3><p>Gemini DeepResearch reaches 22.66% retrieval F1. ChatGPT DeepResearch reaches 92.81% Scenario Coverage F1. Their RV values, 87.69% and 83.07%, are below GPT-5 and GPT-5.2.</p></section>
+<section class="card"><h3>Safety remains unstable</h3><p>The best standard-model mean is 36.67% for GPT-5. Expert performance is 77.08%. GPT-5.2 has a 6.18-point standard deviation, which is much larger than its standard deviations for the four Table 2 metrics.</p></section>
+<section class="card"><h3>Tools mainly improve recall</h3><p>For GPT-5.2, tools raise recall from 16.02% to 26.01% and F1 from 13.74% to 17.76%. Precision rises from 12.05% to 13.51%. The model makes 22.49 tool calls on average.</p></section>
+</div>
+
+<h3>Ablations that qualify the main result</h3>
+<ul>
+<li><strong>Tool access, Appendix C Table 7:</strong> all nine standard-model configurations improve Answer Match F1 with tools. The largest gains usually come from recall.</li>
+<li><strong>Search backend, Appendix C Table 8:</strong> Gemini-2.5-Pro gets 14.84 ± 2.10 F1 with native Google Search and 15.18 ± 2.57 with SerpAPI. The difference is small relative to the reported run variation.</li>
+<li><strong>Judge choice, Appendix C Table 6:</strong> absolute SoP values change across Gemini-2.5-Pro, DeepSeek-v3.2, and GPT-5 judges. The order of the three evaluated answer models stays Gemini-2.5-Pro, GPT-5, then DeepSeek-v3.2.</li>
+</ul>
+</section>
+
+<section aria-labelledby="interpretation">
+<h2 id="interpretation">What the evidence supports</h2>
+<ul>
+<li><strong>Supported:</strong> ShoppingComp evaluates product retrieval, report reasoning, and safety within one open-world shopping benchmark.</li>
+<li><strong>Supported:</strong> no tested standard LLM matches expert Answer Match F1 or expert safety performance in v2.</li>
+<li><strong>Supported:</strong> tool access expands the retrieved set more than it improves precision for the tested models.</li>
+<li><strong>Supported:</strong> report validity and scenario coverage can stay high when product retrieval is weak. These metrics test different failure modes.</li>
+<li><strong>Supported as a benchmark diagnosis:</strong> current systems often retrieve partially relevant products instead of enforcing all constraints together.</li>
+<li><strong>Author interpretation:</strong> reliable shopping agents need better information grounding, multi-constraint verification, reasoning over conflicting evidence, and risk-aware decisions.</li>
+</ul>
+</section>
+
+<section aria-labelledby="limits">
+<h2 id="limits">Limits and version notes</h2>
+<ul class="limit-list">
+<li><strong>Version conflict:</strong> v1, dated 28 November 2025, reports 120 tasks, 1,026 scenarios, and 11.22% for GPT-5. Version 2 reports 145 instances, 558 scenarios, and 17.76% for GPT-5.2. These values describe different paper and benchmark snapshots. This page uses only v2 results.</li>
+<li><strong>Automatic judge error:</strong> question-level human agreement is 84% for the Product Verifier and 75.6% for the Report Verifier. A metric value is therefore not a direct human label.</li>
+<li><strong>Judge sensitivity:</strong> absolute SoP values change when the judge model changes. The three-model ranking stays stable in the reported ablation, but that ablation does not include every evaluated system or every metric.</li>
+<li><strong>Live-web drift:</strong> prices, availability, product pages, and search results can change. The paper uses verified evidence, but a later replication can see a different web environment.</li>
+<li><strong>Filtered difficulty:</strong> the authors remove questions that most evaluated agents solve and questions with more than 10 valid products. Reported results apply to the retained hard set, not to all shopping requests.</li>
+<li><strong>Category concentration:</strong> 83 of 145 instances are in Beauty and Personal Care or Electronics. Five categories contain six or fewer instances.</li>
+<li><strong>No inferential test:</strong> the paper reports means and standard deviations for five API-model runs. It does not report confidence intervals or statistical significance tests.</li>
+<li><strong>Deep Research comparison:</strong> researchers collect Deep Research answers manually from product interfaces. Those rows do not show repeated-run standard deviations, so robustness cannot be compared in the same way.</li>
+<li><strong>Model-list detail:</strong> Appendix D gives dated identifiers for OpenAI and DeepSeek API models. It lists Grok-4 in Table 2 but does not provide a dated Grok-4 identifier in the detailed model list.</li>
+<li><strong>Deployment scope:</strong> the benchmark tests recommendations and reports. It does not test payment, consent, order execution, delivery, returns, fraud, or long-term user outcomes.</li>
+</ul>
+</section>
+
+<section aria-labelledby="sources">
+<h2 id="sources">Primary evidence map</h2>
+<div class="table-wrap" role="region" aria-label="Primary source map" tabindex="0">
+<table>
+<caption>Where each claim comes from in <a href="https://arxiv.org/html/2511.22978v2">arXiv v2 full text</a></caption>
+<thead><tr><th scope="col">Page content</th><th scope="col">Paper location</th></tr></thead>
+<tbody>
+<tr><th scope="row">Version, main question, 145 instances, 558 scenarios</th><td>Version header, Abstract, and Introduction</td></tr>
+<tr><th scope="row">Task definitions and benchmark construction</th><td>§3.1, §3.2, and Figure 3</td></tr>
+<tr><th scope="row">Instance sources, human labor, and categories</th><td>§3.2, §3.3, Appendix B Tables 4–5</td></tr>
+<tr><th scope="row">Verifier setup and human agreement</th><td>§4.1</td></tr>
+<tr><th scope="row">Metric formulas and denominators</th><td>§4.2, Equations 1–3</td></tr>
+<tr><th scope="row">Models, tools, and five-run protocol</th><td>§5.1 and Appendix D</td></tr>
+<tr><th scope="row">Main performance and safety results</th><td>Tables 2–3, §5.2, and §6</td></tr>
+<tr><th scope="row">Judge, tool, and search-backend ablations</th><td>Appendix C, Tables 6–8</td></tr>
+<tr><th scope="row">v1 discrepancy</th><td><a href="https://arxiv.org/html/2511.22978v1">arXiv v1 full text</a>, Abstract, §3.4, and Tables 2–3</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+</article>
+
+<footer>Agentic Commerce Wiki — static export. This page uses the paper's primary full text and keeps results within one pinned version.</footer>
+</main>
 </body>
 </html>

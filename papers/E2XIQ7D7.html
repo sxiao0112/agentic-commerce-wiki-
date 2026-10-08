@@ -3,90 +3,219 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues?</title>
+<title>ECom-Bench: Can an LLM Agent Resolve E-commerce Support Issues?</title>
 <style>
-:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
-*{box-sizing:border-box;}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
- line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
-.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
-nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
- box-shadow:0 1px 4px rgba(0,0,0,.15);}
-nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
-nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
-nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
-nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
-nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
-nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
-nav.subbar a{margin-right:.9rem;}
-nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
-h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
-h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
-h3{font-size:1.1rem;margin-top:1.5rem;}
-a{color:var(--accent);text-decoration:none;}
-a:hover{text-decoration:underline;}
-span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
-code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
-pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
-pre code{background:none;padding:0;}
-blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
-table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
-th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
-th{background:#f7f7f7;}
-table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
-table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
-ul,ol{padding-left:1.4rem;}
-li{margin:.15rem 0;}
-hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
-footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+:root{--fg:#18212b;--muted:#5b6672;--bg:#f5f7f8;--paper:#fff;--accent:#1d5f74;--accent-soft:#eaf4f6;--border:#d8e0e4;--code:#f1f4f5;--barbg:#0f1b33;--barfg:#eaf0fb;--good:#285c44;--warn:#7b4b14;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.62;color:var(--fg);background:var(--bg);margin:0}
+.wrap{max-width:980px;margin:0 auto;padding:1.4rem 1.25rem 5rem}
+nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;box-shadow:0 1px 4px rgba(0,0,0,.16)}
+nav.sitebar .inner{max-width:980px;margin:0 auto;padding:.62rem 1.25rem;display:flex;align-items:center}
+nav.sitebar .brand{font-weight:700;letter-spacing:.02em;color:#fff;text-decoration:none}
+nav.subbar{font-size:.84rem;color:var(--muted);margin:1rem 0 1.4rem;padding-bottom:.65rem;border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap;gap:.35rem 1rem}
+nav.subbar a{color:var(--accent)}
+.sublabel{color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-size:.72rem;margin-right:.2rem}
+main{display:block}
+h1{font-size:clamp(1.75rem,4vw,2.55rem);line-height:1.14;letter-spacing:-.025em;margin:.25rem 0 .65rem;max-width:850px}
+h2{font-size:1.35rem;line-height:1.25;margin:2.4rem 0 .85rem;padding-bottom:.35rem;border-bottom:1px solid var(--border)}
+h3{font-size:1.04rem;margin:1.35rem 0 .45rem}
+p{margin:.65rem 0}
+a{color:var(--accent);text-decoration-thickness:.08em;text-underline-offset:.16em}
+a:hover{text-decoration-thickness:.14em}
+.lede{font-size:1.12rem;max-width:790px;color:#34414c;margin:.55rem 0 1.15rem}
+.meta{display:flex;flex-wrap:wrap;gap:.45rem .7rem;margin:0 0 1.4rem;padding:0;list-style:none;color:var(--muted);font-size:.86rem}
+.meta li{border-right:1px solid var(--border);padding-right:.7rem}
+.meta li:last-child{border-right:0}
+.card,.note{background:var(--paper);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem;margin:.9rem 0;box-shadow:0 1px 2px rgba(16,35,48,.04)}
+.question{border-left:5px solid var(--accent);font-size:1.06rem}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem}
+.stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem;margin:1rem 0}
+.stat{background:var(--accent-soft);border-radius:8px;padding:.8rem}
+.stat strong{display:block;font-size:1.45rem;color:var(--accent);line-height:1.15}
+.stat span{font-size:.82rem;color:var(--muted)}
+.source{font-size:.82rem;color:var(--muted)}
+.flow{list-style:none;counter-reset:step;padding:0;margin:1rem 0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.3rem}
+.flow li{counter-increment:step;position:relative;background:var(--paper);border:1px solid var(--border);border-top:4px solid var(--accent);border-radius:8px;padding:.8rem;min-height:150px}
+.flow li::before{content:"Step " counter(step);display:block;color:var(--accent);font-weight:700;font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.35rem}
+.flow li:not(:last-child)::after{content:"→";position:absolute;right:-1.05rem;top:45%;font-size:1.35rem;color:var(--accent);font-weight:700}
+.flow strong{display:block;margin-bottom:.25rem}
+.flow span{display:block;font-size:.84rem;color:var(--muted)}
+.formula{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--code);border:1px solid var(--border);border-radius:7px;padding:.8rem;overflow:auto;font-size:.94rem}
+.metric-compare{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.9rem 0}
+.metric-compare strong{display:block;margin-bottom:.3rem}
+.passk{border-top:4px solid var(--good)}
+.passat{border-top:4px solid var(--warn)}
+.table-wrap{overflow-x:auto;margin:.9rem 0}
+table{border-collapse:collapse;width:100%;background:var(--paper);font-size:.9rem}
+caption{text-align:left;font-weight:700;padding:0 0 .45rem}
+th,td{border:1px solid var(--border);padding:.5rem .62rem;text-align:left;vertical-align:top}
+th{background:#edf2f4}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.best{font-weight:700;color:var(--good)}
+.callout{background:#fff8ec;border-left:5px solid #c47b25}
+dl.compact{display:grid;grid-template-columns:max-content 1fr;gap:.35rem .8rem;margin:.5rem 0}
+dt{font-weight:700}
+dd{margin:0}
+ul,ol{padding-left:1.3rem}
+li{margin:.25rem 0}
+.takeaway{font-size:1.05rem;background:#eef7f1;border-color:#c8dfd0}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted)}
+@media(max-width:760px){.grid,.metric-compare{grid-template-columns:1fr}.stat-grid{grid-template-columns:repeat(2,1fr)}.flow{grid-template-columns:1fr;gap:.75rem}.flow li{min-height:0}.flow li:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-1.25rem}.meta li{border-right:0}.wrap{padding-left:1rem;padding-right:1rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<nav class="sitebar" aria-label="Site"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
 <div class="wrap">
-<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
-<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>E2XIQ7D7</td></tr><tr><th>wiki_id</th><td>E2XIQ7D7</td></tr><tr><th>aliases</th><td>[E2XIQ7D7]</td></tr><tr><th>slug</th><td>wang-2025-ecom-bench-llm-agent</td></tr><tr><th>title</th><td>&quot;ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues?&quot;</td></tr><tr><th>authors</th><td>[&quot;Wang, Haoxin&quot;, &quot;Peng, Xianhan&quot;, &quot;Huang, Xucheng&quot;, &quot;Huang, Yizhe&quot;, &quot;Gong, Ming&quot;, &quot;Yang, Chenghan&quot;, &quot;Liu, Yang&quot;, &quot;Jiang, Ling&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>arXiv</td></tr><tr><th>url</th><td>&quot;https://arxiv.org/abs/2507.05639&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2507.05639&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/ARXIV.2507.05639&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;LLM agents&quot;, &quot;e-commerce customer support&quot;, &quot;multimodal benchmark&quot;, &quot;user simulation&quot;, &quot;persona-driven evaluation&quot;, &quot;tool use&quot;, &quot;MCP&quot;, &quot;agent evaluation&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
-<h1>ECom-Bench: Can LLM Agent Resolve Real-World E-commerce Customer Support Issues?</h1>
-<h2>Contribution</h2>
-<p>ECom-Bench is the first open-source benchmark framework for evaluating multimodal LLM agents with Model Context Protocol (MCP) tools in e-commerce customer support scenarios. The benchmark introduces three components: a dataset of persona information meticulously collected from real e-commerce customer interactions, a dataset of realistic task instances derived from authentic e-commerce dialogues, and a comprehensive evaluation platform that assesses agent capabilities across diverse business scenarios including product inquiries, order management, and multimodal content recognition.</p>
-<h2>Research Question</h2>
-<p>Traditional rule-based customer service systems encounter performance bottlenecks and lack context understanding, tool-calling ability, and multimodal processing. Current LLM-based evaluation frameworks fall short in comprehensively assessing agent capabilities in e-commerce scenarios, either lacking e-commerce-specific tasks, supporting only single-turn dialogues, or omitting multimodal task evaluation. What benchmark framework can comprehensively evaluate multimodal LLM agents across realistic, complex e-commerce customer support interactions?</p>
-<h2>Task</h2>
-<p>The benchmark evaluates agents on 53 manually verified task instances derived from authentic e-commerce dialogues, with 18 involving multimodal interactions. Tasks span a wide range of business scenarios aligned with real business requirements, including product inquiries, order modification, returns and exchanges, logistics tracking, and price protection requests.</p>
-<h2>Data</h2>
-<p>The benchmark dataset comprises persona profiles, task instances, database records, domain documentation, and tools. Persona profiles are grounded in consumer psychology and behavioral studies, encompassing consumer types, personality traits such as emotion, attention to detail, patience, trust, and rights awareness, and behavioral traits including questioning style, communication style, and interaction patterns. Data classes include products, logistics, orders, invoices, and other essential e-commerce entities. All data are based on historical online dialogues primarily sourced from conversations related to home and appliance products. LLMs generated preliminary content, which was then reviewed by humans to ensure consistency and authenticity. The dataset includes 53 task instances across various business scenarios with manual annotations to represent authentic business operations.</p>
-<h2>Metrics</h2>
-<p>Evaluation assesses each task across three rule-based dimensions: database state compared against the ground truth expected state, verification of required information retrieval tool invocation, and examination of output keywords. The pass^k metric measures agent robustness across k independent and identically distributed trials for the same problem, with k ranging from 1 to 3 in main results. A task is considered successful when the database reaches the expected ground truth state and all required information-retrieval tools are invoked. The framework also evaluates consistency and robustness by running tasks multiple times and introducing dimensional evaluation metrics: Action (database operation results), Search (tool hallucination phenomena), and Output (keyword generation and multimodal tool invocation).</p>
-<h2>Baselines</h2>
-<p>The benchmark evaluates proprietary models including GPT-4o, DeepSeek-V3, Doubao-1.5-Pro-32k, Qwen-Max, and Moonshot-V1-32k, as well as Multimodal Large Language Models (MLLMs) including Qwen-VLMax and Doubao-Pro-Vision. Agents are built using LangGraph incorporating the ReAct framework, limited to 20 turns and 600 seconds per task with temperature set to 0.3. Results show GPT-4o achieves the highest pass^1 score of 44.03% and pass^3 score of 16.98%, while Qwen-Max achieves 15.09% and 5.66% respectively, and Qwen-VL-Max achieves 8.18% and 3.77%. A decoupled MLLM-as-Tool approach outperforms end-to-end MLLM-as-Planner architectures. Error analysis identifies three main error categories: Wrong Argument (correct tool invocation but incorrect argument filling), Wrong Decision (failure to choose appropriate tools or process incorrect objects), and Partially Resolved (agent solves only part of the problem).</p>
-<h2>Conclusion</h2>
-<p>Current large language models remain unstable when addressing identical problems, with pass^8 scores significantly lower than pass^1 scores even for the strongest models. The benchmark demonstrates that persona characteristics such as emotional states, patience levels, and communication styles significantly influence agent reactions, underscoring the importance of accurate user behavior simulation. Agents show higher failure rates in the Action dimension due to inherent difficulty of database modification tasks. Advanced models like GPT-4o exhibit lower error rates across all dimensions and demonstrate greater tendency to obtain information through external tool invocation rather than direct generation, with stronger tool usage awareness and factual consistency.</p>
-<h2>Related Work</h2>
-<h3>Benchmark and Evaluation Environments</h3>
-<p>Agent Evaluation Frameworks and Task-Oriented Environments — ALFWorld: Aligning Text and Embodied Environments for Interactive Learning — Shridhar et al., 2021 — benchmark for interactive learning in text and embodied environments.</p>
-<p>ToolBench: On the tool manipulation capability of open-source large language models — Xu et al., 2023 — tool manipulation evaluation framework lacking e-commerce-specific tasks.</p>
-<p>WebShop: Towards scalable real-world web interaction with grounded language agents — Yao et al., 2022 — real-world web interaction environment supporting only single-turn dialogues.</p>
-<p>InterCode: Standardizing and benchmarking interactive coding with execution feedback — Yang et al., 2023 — interactive coding evaluation benchmark.</p>
-<p>τ-Bench: A benchmark for tool-agent-user interaction in real-world domains — Yao et al., 2024 — multi-domain dynamic interaction benchmark including retail but omitting multimodal task evaluations.</p>
-<p>EcomScriptBench: A multi-task benchmark for e-commerce script planning via step-wise intention-driven product association — Wang et al., 2025 — e-commerce evaluation benchmark focusing on script planning.</p>
-<h3>User Simulation and Persona-Driven Methods</h3>
-<p>MultiWOZ - A Large-Scale Multi-Domain Wizard-of-Oz Dataset for Task-Oriented Dialogue Modelling — Budzianowski et al., 2018 — large-scale task-oriented dialogue dataset.</p>
-<p>RecAgent: A Novel Simulation Paradigm for Recommender Systems — Wang et al., 2023 — multi-agent simulation in sandbox environments with personality traits.</p>
-<p>Scaling Synthetic Data Creation with 1,000,000,000 Personas — Chan et al., 2024 — persona-driven synthetic data for training and testing.</p>
-<p>SimUser: Generating usability feedback by simulating various users interacting with mobile applications — Xiang et al., 2024 — user simulation focusing on user preferences.</p>
-<h3>Domain-Specific LLM Evaluation</h3>
-<p>Challenges and Opportunities in E-commerce Operations: A Systematic Review — Zhang et al., 2021 — systematic review of e-commerce operational challenges.</p>
-<p>Automating Customer Service Using Langchain: Building Custom Open-Source GPT Chatbot for Organizations — Pandya and Holia, 2023 — LLM-based customer service solutions.</p>
-<p>MedMCQA: A Large-Scale Multi-Subject Multi-Choice Dataset for Medical Domain Question Answering — Pal et al., 2022 — medical domain evaluation dataset.</p>
-<p>DSTC-11: Speech Aware Task-Oriented Dialog Modeling Track — Soltau et al., 2023 — dialogue system technology challenge.</p>
-<p>LegalBench: A Collaboratively Built Benchmark for Measuring Legal Reasoning in Large Language Models — Guha et al., 2023 — legal domain reasoning benchmark.</p>
-<p>SaullM-7B: A Pioneering Large Language Model for Law — Colombo et al., 2024 — legal domain language model.</p>
-<p>TelBench: A Benchmark for Evaluating Telco-Specific Large Language Models — Lee et al., 2024 — telecommunications domain evaluation benchmark.</p>
-<p>Tool Learning with Foundation Models — Qin et al., 2023 — tool learning evaluation framework.</p>
-<p>WebArena: A Realistic Web Environment for Building Autonomous Agents — Zhou et al., 2023 — realistic web environment for agent evaluation.</p>
-<h3>Reasoning and Chain-of-Thought Methods</h3>
-<p>Chain-of-Thought Prompting Elicits Reasoning in Large Language Models — Wei et al., 2022 — chain-of-thought prompting technique for improving reasoning.</p>
-<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+<nav class="subbar" aria-label="Wiki sections"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+<main>
+<header>
+<h1>ECom-Bench: Can an LLM agent resolve real-world e-commerce support issues?</h1>
+<p class="lede">A compact technical reading of a benchmark for multi-turn customer support, tool use, database changes, and image understanding.</p>
+<ul class="meta" aria-label="Paper metadata">
+<li>Wang et al.</li><li>EMNLP 2025 main conference</li><li>arXiv:2507.05639v2</li><li>9 Nov 2025</li><li>Wiki ID: E2XIQ7D7</li>
+</ul>
+<p class="source"><a href="https://arxiv.org/abs/2507.05639v2">Pinned record</a> · <a href="https://arxiv.org/html/2507.05639v2">Primary full text</a> · <a href="https://github.com/XiaoduoAILab/ECom-Bench">Code and data</a></p>
+</header>
+
+<section aria-labelledby="question">
+<h2 id="question">Research question</h2>
+<div class="card question"><strong>How reliably can an LLM agent complete realistic e-commerce support tasks when it must converse with a simulated customer, follow domain rules, call tools, change database state, and sometimes interpret an image?</strong></div>
+<p>The paper treats reliability as repeated success on the same task. A model that succeeds once but fails on a repeat is less useful for customer support. This choice drives the benchmark’s <span aria-label="pass to the power k">pass<sup>k</sup></span> metric. <span class="source">Primary source: <a href="https://arxiv.org/html/2507.05639v2#S1">§1</a> and <a href="https://arxiv.org/html/2507.05639v2#S3">§3</a>.</span></p>
+</section>
+
+<section aria-labelledby="task">
+<h2 id="task">Task and environment</h2>
+<div class="stat-grid" aria-label="Benchmark scale">
+<div class="stat"><strong>53</strong><span>manually verified tasks</span></div>
+<div class="stat"><strong>18</strong><span>tasks with multimodal interaction</span></div>
+<div class="stat"><strong>21</strong><span>tool categories</span></div>
+<div class="stat"><strong>3</strong><span>rule-check dimensions</span></div>
+</div>
+<div class="grid">
+<article class="card"><h3>What the agent receives</h3><p>Domain operation documents and a tool interface over product, logistics, order, invoice, return, exchange, and related records. An image-processing tool supports multimodal tasks.</p></article>
+<article class="card"><h3>Who plays the customer</h3><p>Qwen-Max simulates a user from a persona and a task goal. Persona fields cover consumer type, emotion, attention, patience, trust, rights awareness, question style, communication style, and interaction pattern.</p></article>
+<article class="card"><h3>Where tasks come from</h3><p>Trained customer-service staff extracted customer intents from historical online dialogues. LLMs generated preliminary benchmark data, and humans reviewed it. The source domain is mainly home appliances and furniture.</p></article>
+<article class="card"><h3>What counts as evidence</h3><p>The evaluator checks the final database state, whether required retrieval tools were called, and whether the final output contains required keywords. These are rule checks, not a model judge.</p></article>
+</div>
+<p class="source">Primary source: <a href="https://arxiv.org/html/2507.05639v2#S3">§3, Benchmark Construction</a>.</p>
+
+<h3 id="flow">One evaluation trajectory</h3>
+<ol class="flow" aria-label="Evaluation flow from task selection to repeated-run aggregation">
+<li><strong>Select task and persona</strong><span>Input: one task goal, database state, user guide, and persona.</span></li>
+<li><strong>Start the dialogue</strong><span>Qwen-Max acts as the customer. The tested model acts as support agent.</span></li>
+<li><strong>Reason and use tools</strong><span>The agent follows ReAct, calls MCP tools, and can ask the image tool for visual content.</span></li>
+<li><strong>Apply three rule checks</strong><span>Compare database state; check required retrieval calls; check required output keywords.</span></li>
+<li><strong>Repeat and aggregate</strong><span>Run the task independently and report the share of all-success run subsets as pass<sup>k</sup>.</span></li>
+</ol>
+</section>
+
+<section aria-labelledby="metric">
+<h2 id="metric">Metric: pass<sup>k</sup> measures repeated success</h2>
+<p>For one task, let <em>n</em> be the number of independent trials and <em>c</em> the number that succeed. For a chosen <em>k</em>, the paper uses:</p>
+<div class="formula" role="math" aria-label="pass to the power k equals the average across tasks of c choose k divided by n choose k">pass<sup>k</sup> = E<sub>task</sub>[ C(c, k) / C(n, k) ]</div>
+<dl class="compact card">
+<dt>Numerator C(c,k)</dt><dd>The number of size-<em>k</em> subsets in which every selected run succeeded.</dd>
+<dt>Denominator C(n,k)</dt><dd>All size-<em>k</em> subsets available from the task’s <em>n</em> runs.</dd>
+<dt>Outer average</dt><dd>The mean of that ratio across benchmark tasks. A result such as 16.98 is a percentage: 16.98%.</dd>
+<dt>Task denominator</dt><dd>The main benchmark average covers 53 tasks; the persona study covers 20 selected tasks. The eight-run analysis states <em>n</em> = 8. The paper does not state <em>n</em> explicitly for Table 2 in its setup text.</dd>
+</dl>
+<div class="metric-compare">
+<div class="card passk"><strong>pass<sup>k</sup>: all <em>k</em> runs succeed</strong><span>C(c,k) / C(n,k). The score falls as repeated reliability becomes harder.</span></div>
+<div class="card passat"><strong>pass@k: at least one of <em>k</em> runs succeeds</strong><span>1 − C(n−c,k) / C(n,k). This common code-generation metric answers a different question and usually rises with <em>k</em>.</span></div>
+</div>
+<p class="source">Formula and interpretation: <a href="https://arxiv.org/html/2507.05639v2#S3">§3, Evaluation</a> and <a href="https://arxiv.org/html/2507.05639v2#S4">§4</a>. The pass@k formula is shown only to clarify the name; it is not an ECom-Bench result.</p>
+</section>
+
+<section aria-labelledby="experiments">
+<h2 id="experiments">Experiments and controls</h2>
+<div class="card">
+<dl class="compact">
+<dt>Agent scaffold</dt><dd>LangGraph with ReAct.</dd>
+<dt>Limits</dt><dd>20 turns and 600 seconds per task.</dd>
+<dt>Temperature</dt><dd>0.3.</dd>
+<dt>User model</dt><dd>Qwen-Max.</dd>
+<dt>Image tool</dt><dd>Moonshot-V1-128k-Vision-Preview.</dd>
+<dt>Text agent models</dt><dd>GPT-4o, DeepSeek-V3, Doubao-1.5-Pro-32k, Qwen-Max, Moonshot-V1-32k.</dd>
+<dt>End-to-end multimodal agents</dt><dd>Doubao-Pro-Vision and Qwen-VL-Max.</dd>
+</dl>
+</div>
+<p>The main comparison holds the stated scaffold, limits, temperature, simulated-user model, and image-tool model fixed for the text-agent runs. The paper does not report model snapshot dates, prompt variants, uncertainty intervals, or significance tests. <span class="source">Primary source: <a href="https://arxiv.org/html/2507.05639v2#S4.SS1">§4.1, Setup</a>.</span></p>
+
+<div class="table-wrap">
+<table>
+<caption>Overall model results (%), reproduced from Table 2</caption>
+<thead><tr><th scope="col">Agent model</th><th scope="col">Architecture</th><th scope="col" class="num">pass<sup>1</sup></th><th scope="col" class="num">pass<sup>2</sup></th><th scope="col" class="num">pass<sup>3</sup></th></tr></thead>
+<tbody>
+<tr><td>GPT-4o</td><td>Text planner + image tool</td><td class="num best">44.03</td><td class="num best">26.42</td><td class="num best">16.98</td></tr>
+<tr><td>Doubao-1.5-Pro-32k</td><td>Text planner + image tool</td><td class="num">38.99</td><td class="num">23.90</td><td class="num best">16.98</td></tr>
+<tr><td>DeepSeek-V3</td><td>Text planner + image tool</td><td class="num">36.48</td><td class="num">21.38</td><td class="num">15.09</td></tr>
+<tr><td>Qwen-Max</td><td>Text planner + image tool</td><td class="num">15.09</td><td class="num">8.81</td><td class="num">5.66</td></tr>
+<tr><td>Moonshot-V1-32k</td><td>Text planner + image tool</td><td class="num">14.47</td><td class="num">7.55</td><td class="num">5.66</td></tr>
+<tr><td>Doubao-Pro-Vision</td><td>End-to-end multimodal planner</td><td class="num">20.75</td><td class="num">13.21</td><td class="num">11.32</td></tr>
+<tr><td>Qwen-VL-Max</td><td>End-to-end multimodal planner</td><td class="num">8.18</td><td class="num">4.40</td><td class="num">3.77</td></tr>
+</tbody>
+</table>
+</div>
+<p class="source">Primary source: <a href="https://arxiv.org/html/2507.05639v2#S4.SS2.SSS1">§4.2.1 and Table 2</a>. “Text planner + image tool” reflects the paper’s decoupled MLLM-as-tool description.</p>
+
+<h3>Persona study</h3>
+<p>The paper tests all eight combinations of emotion (calm or angry), patience (high or low), and style (clear or vague). Qwen-Max remains the user, GPT-4o remains the agent, the user-model temperature remains 0.3, and the study uses 20 tasks selected because persona settings significantly affect them. There is no no-persona control.</p>
+<div class="table-wrap">
+<table>
+<caption>Persona-condition results (%), reproduced from Table 3</caption>
+<thead><tr><th scope="col">Emotion</th><th scope="col">Patience</th><th scope="col">Style</th><th scope="col" class="num">pass<sup>1</sup></th><th scope="col" class="num">pass<sup>2</sup></th><th scope="col" class="num">pass<sup>3</sup></th></tr></thead>
+<tbody>
+<tr><td>Calm</td><td>High</td><td>Clear</td><td class="num">58.3</td><td class="num">40.0</td><td class="num best">30.0</td></tr>
+<tr><td>Angry</td><td>High</td><td>Clear</td><td class="num">55.0</td><td class="num">38.3</td><td class="num best">30.0</td></tr>
+<tr><td>Calm</td><td>Low</td><td>Clear</td><td class="num">48.1</td><td class="num">31.0</td><td class="num">20.0</td></tr>
+<tr><td>Calm</td><td>High</td><td>Vague</td><td class="num">45.0</td><td class="num">29.9</td><td class="num">20.0</td></tr>
+<tr><td>Angry</td><td>Low</td><td>Clear</td><td class="num">46.6</td><td class="num">29.9</td><td class="num">25.0</td></tr>
+<tr><td>Angry</td><td>High</td><td>Vague</td><td class="num">45.0</td><td class="num">29.9</td><td class="num best">30.0</td></tr>
+<tr><td>Calm</td><td>Low</td><td>Vague</td><td class="num">45.0</td><td class="num">26.7</td><td class="num">20.0</td></tr>
+<tr><td>Angry</td><td>Low</td><td>Vague</td><td class="num">40.0</td><td class="num">20.0</td><td class="num">10.0</td></tr>
+</tbody>
+</table>
+</div>
+<p class="source">Primary source: <a href="https://arxiv.org/html/2507.05639v2#S5">§5 and Table 3</a>.</p>
+</section>
+
+<section aria-labelledby="findings">
+<h2 id="findings">What the results establish</h2>
+<div class="grid">
+<article class="card"><h3>Single-run success stays below half</h3><p>GPT-4o leads Table 2 at 44.03% pass<sup>1</sup>. No tested model resolves a majority of tasks in a single run under this setup.</p></article>
+<article class="card"><h3>Reliability falls sharply</h3><p>In the eight-run analysis, GPT-4o records 43.87% pass<sup>1</sup> and 7.55% pass<sup>8</sup>. Only a small share of tasks succeed in every one of eight runs.</p></article>
+<article class="card"><h3>Actions are the weakest dimension</h3><p>The paper reports higher failure rates for database-changing actions than for search or output checks across all agents.</p></article>
+<article class="card"><h3>Wrong decisions dominate one error sample</h3><p>For 159 Doubao-1.5-Pro-32k trajectories (53 tasks × 3), the paper groups failures as wrong argument, wrong decision, or partially resolved, and reports wrong decision as most common.</p></article>
+</div>
+<div class="card takeaway"><strong>Reading:</strong> The gap between pass<sup>1</sup> and pass<sup>k</sup> exposes operational variance that one-shot accuracy hides. For deployment, a support agent must execute the full workflow correctly each time, including state changes.</div>
+<p class="source">Primary source: <a href="https://arxiv.org/html/2507.05639v2#S4.SS2.SSS3">§4.2.3</a>, <a href="https://arxiv.org/html/2507.05639v2#S4.SS2.SSS4">§4.2.4</a>, and <a href="https://arxiv.org/html/2507.05639v2#S4.SS2.SSS5">§4.2.5</a>.</p>
+</section>
+
+<section aria-labelledby="limits">
+<h2 id="limits">Limits and interpretation boundaries</h2>
+<ul>
+<li><strong>Narrow domain:</strong> the benchmark covers home appliances and furniture. Cross-category generalization is untested.</li>
+<li><strong>Partly synthetic data:</strong> commercial-data sensitivity led to LLM-based synthesis. Human review does not make the data fully authentic.</li>
+<li><strong>Small environment:</strong> 53 tasks and a relatively small database with simplified operations limit coverage.</li>
+<li><strong>Simulated users:</strong> persona dimensions rely mainly on domain expertise and lack sufficient theoretical validation and empirical analysis. LLM behavior may miss real conversational dynamics.</li>
+<li><strong>Selected persona subset:</strong> the persona experiment uses 20 tasks chosen for sensitivity to persona settings. It does not estimate an average effect over all 53 tasks.</li>
+<li><strong>Architecture comparison is confounded:</strong> the decoupled system uses GPT-4o plus Moonshot-V1-128k-Vision-Preview, while the end-to-end planners are different model families. The observed difference cannot isolate architecture from model capability.</li>
+<li><strong>Incomplete reproducibility detail:</strong> the paper gives model names and shared runtime settings, but not model snapshot IDs, full prompts, uncertainty intervals, or significance tests.</li>
+<li><strong>Binary success rule is underspecified:</strong> the paper names the three rule-check dimensions, but its prose does not formally state how those checks combine into one successful or failed trial.</li>
+</ul>
+<div class="note callout"><strong>Do not read 16.98% pass<sup>3</sup> as pass@3.</strong> It estimates success in all three selected runs, averaged over tasks. It does not mean that one of three attempts succeeds 16.98% of the time.</div>
+<p class="source">Author-stated limitations: <a href="https://arxiv.org/html/2507.05639v2#S6">Limitations</a>. The selected-subset and architecture-confound points are direct methodological readings of <a href="https://arxiv.org/html/2507.05639v2#S5.SS1">§5.1</a> and <a href="https://arxiv.org/html/2507.05639v2#S4.SS2.SSS2">§4.2.2</a>.</p>
+</section>
+
+<section aria-labelledby="version">
+<h2 id="version">Version note</h2>
+<p>This page uses <strong>arXiv v2, dated 9 November 2025</strong>. The benchmark setup, numeric tables, findings, and stated limitations are unchanged from v1 in the available full text. V2 updates the abstract from a future open-source promise to a public code-and-data link; the arXiv record also marks the paper as accepted to the EMNLP 2025 main conference.</p>
+<p class="source">Compare <a href="https://arxiv.org/html/2507.05639v1">v1 full text</a>, <a href="https://arxiv.org/html/2507.05639v2">v2 full text</a>, and the <a href="https://arxiv.org/abs/2507.05639v2">v2 record</a>.</p>
+</section>
+</main>
+<footer>Agentic Commerce Wiki — static export. Technical card revised from the pinned primary full text on 8 Oct 2026.</footer>
 </div>
 </body>
 </html>

@@ -3,74 +3,233 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation</title>
+<title>ShopperBench — paper card</title>
 <style>
-:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
-*{box-sizing:border-box;}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
- line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
-.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
-nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
- box-shadow:0 1px 4px rgba(0,0,0,.15);}
-nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
-nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
-nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
-nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
-nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
-nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
-nav.subbar a{margin-right:.9rem;}
-nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
-h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
-h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
-h3{font-size:1.1rem;margin-top:1.5rem;}
-a{color:var(--accent);text-decoration:none;}
-a:hover{text-decoration:underline;}
-span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
-code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
-pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
-pre code{background:none;padding:0;}
-blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
-table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
-th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
-th{background:#f7f7f7;}
-table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
-table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
-ul,ol{padding-left:1.4rem;}
-li{margin:.15rem 0;}
-hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
-footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+:root{--ink:#172033;--muted:#586174;--paper:#fff;--wash:#f5f7fb;--line:#d9dfeb;--nav:#0f1b33;--link:#164fa3;--blue:#eaf2ff;--green:#e9f7ef;--amber:#fff5d8;--red:#fff0ef;--radius:14px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.62}
+a{color:var(--link);text-underline-offset:.16em}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible{outline:3px solid #ffbf47;outline-offset:3px;border-radius:3px}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:#000;padding:.7rem;z-index:100}
+.skip:focus{left:.5rem;top:.5rem}
+.sitebar{position:sticky;top:0;z-index:20;background:var(--nav);color:#eef4ff;box-shadow:0 2px 8px #0002}
+.sitebar .inner{max-width:1080px;margin:auto;padding:.68rem 1.25rem;display:flex;align-items:center;gap:1rem}
+.sitebar a{color:#eef4ff;text-decoration:none}
+.brand{font-weight:750;letter-spacing:.015em}
+.wrap{max-width:1080px;margin:auto;padding:1.25rem 1.25rem 5rem}
+.subbar{display:flex;gap:.35rem 1rem;flex-wrap:wrap;padding:.15rem 0 1rem;border-bottom:1px solid var(--line);font-size:.86rem}
+.subbar .sublabel{color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-size:.72rem;align-self:center}
+.hero{padding:2.2rem 0 1.25rem;max-width:900px}
+.kicker{margin:0 0 .45rem;color:#315a93;font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.08;margin:0 0 .9rem;letter-spacing:-.035em}
+.deck{font-size:1.18rem;line-height:1.5;color:#38445a;max-width:780px;margin:.5rem 0 1.1rem}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}
+.meta span,.meta a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3rem .7rem;background:var(--wash);font-size:.84rem;text-decoration:none}
+.jump{display:flex;flex-wrap:wrap;gap:.45rem;margin:1.2rem 0 0}
+.jump a{font-size:.84rem;background:var(--blue);padding:.35rem .7rem;border-radius:7px;text-decoration:none}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+.card{grid-column:span 12;border:1px solid var(--line);border-radius:var(--radius);padding:1.25rem;background:#fff}
+.card.tint{background:var(--wash)}
+.card.half{grid-column:span 6}
+.card.third{grid-column:span 4}
+.card h2,.section h2{font-size:1.35rem;line-height:1.25;margin:0 0 .7rem}
+.card h3{font-size:1rem;margin:1rem 0 .35rem}
+.eyebrow{margin:0 0 .4rem;color:var(--muted);font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.big{font-size:1.7rem;line-height:1.2;font-weight:780;margin:.2rem 0}
+.section{margin-top:2.5rem;scroll-margin-top:5rem}
+.section>header{max-width:780px;margin-bottom:1rem}
+.section>header p{color:var(--muted);margin:.3rem 0}
+.callout{border-left:5px solid #2e6fc2;background:var(--blue);padding:1rem 1.15rem;border-radius:0 var(--radius) var(--radius) 0}
+.warning{border-left-color:#a35b00;background:var(--amber)}
+.limit{border-left-color:#ad3434;background:var(--red)}
+.flow{list-style:none;padding:0;margin:1.2rem 0;counter-reset:flow;display:grid;gap:.65rem}
+.flow li{counter-increment:flow;position:relative;border:1px solid var(--line);border-radius:12px;padding:1rem 1rem 1rem 4rem;background:#fff}
+.flow li:before{content:counter(flow);position:absolute;left:1rem;top:1rem;width:2rem;height:2rem;border-radius:50%;display:grid;place-items:center;background:var(--nav);color:#fff;font-weight:800}
+.flow li:not(:last-child):after{content:"↓";position:absolute;left:1.65rem;bottom:-1.12rem;z-index:2;color:#315a93;font-weight:900}
+.flow strong{display:block}
+.flow small{display:block;color:var(--muted);margin-top:.2rem}
+table{border-collapse:collapse;width:100%;font-size:.91rem;margin:.75rem 0}
+caption{text-align:left;font-weight:750;margin-bottom:.45rem}
+th,td{border-bottom:1px solid var(--line);padding:.62rem .55rem;text-align:left;vertical-align:top}
+thead th{background:var(--wash);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.best{background:var(--green);font-weight:750}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+.table-wrap table{margin:0;min-width:620px}
+dl{margin:.5rem 0}
+dt{font-weight:760;margin-top:.8rem}
+dd{margin:.18rem 0 0;color:#3f4a5e}
+.formula{display:block;background:#10182a;color:#f4f7ff;border-radius:8px;padding:.75rem 1rem;margin:.5rem 0;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.9rem}
+.source{font-size:.82rem;color:var(--muted)}
+ul,ol{padding-left:1.35rem}
+li+li{margin-top:.35rem}
+footer{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
+@media(max-width:760px){.card.half,.card.third{grid-column:span 12}.wrap{padding-inline:1rem}.sitebar .inner{padding-inline:1rem}.flow li{padding-left:3.7rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{.sitebar,.jump,.subbar{display:none}.wrap{max-width:none}.card{break-inside:avoid}}
 </style>
 </head>
 <body>
-<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
-<div class="wrap">
-<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
-<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>G994SNDV</td></tr><tr><th>wiki_id</th><td>G994SNDV</td></tr><tr><th>aliases</th><td>[G994SNDV]</td></tr><tr><th>slug</th><td>ling-2025-shopperbench-personalized-shopping-benchmark</td></tr><tr><th>title</th><td>&quot;ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation&quot;</td></tr><tr><th>authors</th><td>[&quot;Ling, Yuan&quot;, &quot;Yuan, Chunqing&quot;, &quot;Dong, Shujing&quot;, &quot;Yang, Yongjian&quot;, &quot;Mocherla, Nataraj&quot;, &quot;Goyal, Ayush&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>&quot;&quot;</td></tr><tr><th>url</th><td>&quot;&quot;</td></tr><tr><th>arxiv</th><td>&quot;&quot;</td></tr><tr><th>doi</th><td>&quot;&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;shopping agents&quot;, &quot;persona-guided simulation&quot;, &quot;personalization&quot;, &quot;benchmark&quot;, &quot;adaptive behavior&quot;, &quot;user personas&quot;, &quot;e-commerce&quot;, &quot;agent evaluation&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
-<h1>ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation</h1>
-<h2>Contribution</h2>
-<p>ShopperBench extends the WebShop dataset and τ²-Bench environment with persona-conditioned evaluation for shopping agents. The key contribution is a benchmark that assesses agents' ability to adapt their search and purchase strategies to distinct user archetypes. The work introduces a scalable LLM-assisted method for generating persona-conditioned shopping trajectories, designs three ShopperAgent policy variants that demonstrate different approaches to persona integration, and proposes novel evaluation metrics—Persona Fidelity Score, Persona-Query Alignment, and Path Consistency—alongside task success measures.</p>
-<h2>Research Question</h2>
-<p>The authors ask whether shopping agents can adapt their strategies to diverse user behaviors and how strictly persona information should be integrated into agent reasoning. Specifically, they investigate whether agents can interpret explicit persona profiles to guide search and purchase decisions, and what trade-offs emerge between task efficiency and persona-aligned behavior.</p>
-<h2>Task</h2>
-<p>ShopperBench evaluates agents on persona-conditioned shopping tasks where each episode is defined by a persona profile p, a natural-language instruction I describing the targeted product or purchase intent, structured goal facets G encoding constraints and persona-relevant preferences, and an environment state E containing the product catalog and metadata. Agents must navigate the WebShop environment using tools (search_products, open_product, apply_filters, add_to_cart) to find and add the correct item to their cart while respecting persona-specific behavioral patterns.</p>
-<h2>Data</h2>
-<p>The dataset consists of 240 persona-conditioned tasks drawn from 60 query clusters in WebShop. The authors constructed a taxonomy of ten shopper personas grounded in consumer behavior theory spanning three behavioral axes: planner versus explorer (structured versus open-ended search), value seeker versus trend seeker (utility versus style and novelty), and goal-driven versus serendipitous (task completion versus discovery browsing). The personas are Price-Conscious Planner, Quality-Focused Evaluator, Brand-Loyal Minimalist, Eco-Aware Minimalist, Trend-Seeking Explorer, Urgent Task Finisher, Gift-Giver, Comparison Enthusiast, Health-Conscious Explorer, and Comfort-Focused Evaluator. Dataset construction uses a three-stage LLM-assisted pipeline: sampling from query clusters, persona-conditioned task generation with instruction refinement and goal facet injection, and oracle trajectory extraction from WebShop human trajectories.</p>
-<h2>Metrics</h2>
-<p>Task Success Rate (TSR) measures whether the correct item or an acceptable equivalent is added to cart. Persona Fidelity Score (PFS) uses a judge-LLM to evaluate whether agent actions and tool calls reflect persona-specific behavior patterns, measuring behavioral adherence independent of linguistic alignment. Persona-Query Alignment (PQA) evaluates whether the agent's interpretation of instructions and search queries are consistent with the persona. Path Consistency (PC) measures whether the trajectory remains consistent with both the persona's behavioral expectations and the final purchase decision.</p>
-<h2>Baselines</h2>
-<p>ShopperBench introduces three policy variants representing different strategies for persona integration. Task-Focused (TF) receives only the natural-language instruction and goal facets with no persona signal, serving as a persona-agnostic control baseline. Persona-Adaptive (PA) receives the persona card, persona-refined instruction, and persona-conditioned goal facets but no procedural rules, testing whether an LLM can internalize persona cues without explicit constraints. Persona-Constrained (PC) adds persona-specific operational rules translating persona motives into concrete behavioral preferences (e.g., price thresholds for price-conscious shoppers). All three use Claude Haiku 4.5 as the underlying LLM.</p>
-<h2>Results</h2>
-<p>Task-Focused policy achieves the highest TSR (0.640) but shows the lowest persona alignment. Persona-Adaptive policy demonstrates balanced performance with TSR of 0.624 and PFS of 0.758, sacrificing only 2.5% task success while achieving comparable persona fidelity. Persona-Constrained policy maximizes persona metrics (PFS = 0.762, PC = 0.662, PQA = 0.881) but requires longer interaction trajectories. Per-persona analysis reveals heterogeneous responses: Eco-Aware Minimalist shows superior performance (mean 0.860), Quality-Focused Evaluator achieves highest PFS (0.908–0.969) but lower Path Consistency (0.492–0.569), and behavioral personas demonstrate greater sensitivity to policy variations than constraint-based personas. Human trajectories require 62.5% fewer steps than the best-performing agent policy, indicating substantial room for improvement in agent efficiency while maintaining persona awareness.</p>
-<h2>Conclusion</h2>
-<p>ShopperBench establishes a foundation for developing and evaluating adaptive e-commerce assistants that must balance task completion with behavioral personalization. The results demonstrate fundamental trade-offs between persona fidelity and task efficiency; tighter persona integration through explicit constraints yields stronger behavioral alignment but introduces longer and more variable trajectories relative to human behavior. The benchmark provides a controlled testbed for studying personalized and context-aware shopping intelligence in multi-agent interaction frameworks.</p>
-<h2>Related Work</h2>
-<h3>Benchmarks for Shopping Agents</h3>
-<p>WebShop - Yao et al., 2022 - pioneered goal-oriented task completion in simulated e-commerce by establishing the first interactive benchmark for evaluating web shopping agents. AgentBench - Liu et al., 2023 - extends interactive benchmarks for agent evaluation. ShoppingBench - Wang et al., 2024 - increases environmental complexity through larger catalogs and nuanced intents. DeepShop - Shao et al., 2024 - provides a benchmark for deep research shopping agents. WebMall - Afzal et al., 2024 - evaluates web agents across multiple shopping platforms. τ²-Bench - Barres et al., 2025 - evaluates conversational agents in dual-control environments, which ShopperBench builds upon.</p>
-<h3>Persona in User Simulation</h3>
-<p>Persona-driven recommendation systems - M.H and Koshy, 2018 - improve e-commerce recommendations through user persona integration. Automated customer profile generation - Tien et al., 2024 - applies personas to e-commerce contexts. PAARS - Yao et al., 2024 - explores direct persona-behavior alignment in agentic retail systems. ECom-Bench - Huang et al., 2024 - leverages persona-driven simulators for customer service evaluation. PersonaBench - Pitis et al., 2023 - measures LLM capacity for persona-consistent text generation. PersoBench - Thakur et al., 2024 - benchmarks personalized response generation in LLMs.</p>
-<h3>Behavioral and Consumer Theory</h3>
-<p>Information Processing Theory - Peterson et al., 1979 - describes systematic differences in how consumers seek and evaluate information. Fogg's Behavior Model - Fogg, 2009 - highlights interplay between motivation, ability, and triggers in shaping online actions. Goal-directed persona theory - Miller et al., 2017 - emphasizes capturing behavioral goals rather than demographic characteristics in understanding consumer behavior.</p>
-<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+<a class="skip" href="#main">Skip to paper summary</a>
+<nav class="sitebar" aria-label="Site"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<main class="wrap" id="main">
+<nav class="subbar" aria-label="Wiki sections"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+
+<header class="hero">
+<p class="kicker">Benchmark · EACL 2026 Industry Track</p>
+<h1>ShopperBench</h1>
+<p class="deck">Can a shopping agent finish a product search and also act like the shopper it represents? ShopperBench tests that question with persona-conditioned WebShop tasks and trajectory-level judgments.</p>
+<div class="meta" aria-label="Paper metadata">
+<span>Ling et al.</span><span>March 2026</span><span>Pages 837–846</span><span>240 tasks</span><span>10 personas</span>
+<a href="https://doi.org/10.18653/v1/2026.eacl-industry.62">DOI</a>
+<a href="https://aclanthology.org/2026.eacl-industry.62/">ACL record</a>
+<a href="https://aclanthology.org/2026.eacl-industry.62.pdf">Full paper (PDF)</a>
 </div>
+<nav class="jump" aria-label="On this page"><a href="#question">Question</a><a href="#setup">Setup</a><a href="#experiment">Experiment</a><a href="#metrics">Metrics</a><a href="#results">Results</a><a href="#limits">Limits</a></nav>
+</header>
+
+<section class="grid" aria-label="At a glance">
+<article class="card half">
+<p class="eyebrow">What the paper adds</p>
+<p class="big">Persona alignment for an entire shopping path</p>
+<p>The benchmark scores search queries, tool actions, and the final choice. It separates task completion from three kinds of persona alignment. This is the paper’s distinct contribution.</p>
+</article>
+<article class="card half tint">
+<p class="eyebrow">Main result</p>
+<p class="big">More persona guidance gives small alignment gains and longer paths</p>
+<p>Persona-Constrained has the best three persona scores. Task-Focused has the best task success and the shortest agent median path. <a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=4">See §5.1 and Table 1</a>.</p>
+</article>
+</section>
+
+<section class="section" id="question">
+<header><p class="eyebrow">Research question</p><h2>Does explicit persona guidance change how an agent shops?</h2></header>
+<div class="callout"><strong>Operational question.</strong> Can one base language model adapt its search and purchase strategy to a shopper persona, and what happens to task success and interaction length when persona guidance becomes stricter?</div>
+<p class="source">Supported by the paper’s stated experiment goals in <a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=4">§5, page 840</a>.</p>
+</section>
+
+<section class="section" id="setup">
+<header><p class="eyebrow">Task and data</p><h2>One episode joins a persona, a request, goals, and a store state</h2><p>A persona is a short profile of shopping behavior. A goal facet is a structured product attribute, constraint, or preference.</p></header>
+<div class="grid">
+<article class="card third"><h3>Episode</h3><p><strong>(p, I, G, E)</strong></p><p><strong>p</strong>: persona profile<br><strong>I</strong>: natural-language instruction<br><strong>G</strong>: structured goal facets<br><strong>E</strong>: catalog, item metadata, and page context</p></article>
+<article class="card third"><h3>Scale</h3><p><strong>240</strong> persona-conditioned tasks from <strong>60</strong> human-created WebShop query clusters.</p></article>
+<article class="card third"><h3>Environment</h3><p>A user simulator and a ShopperAgent interact through the τ²-Bench style loop. The agent can search, open a product, apply filters, and add an item to the cart.</p></article>
+</div>
+<p class="source">Definitions: <a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=2">§3.1</a>, dataset composition: <a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=3">§3.3</a>, interaction: <a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=3">§4.1</a>.</p>
+
+<h3 id="pipeline">Construction flow</h3>
+<ol class="flow" aria-label="ShopperBench construction and evaluation flow">
+<li><strong>Sample a source task</strong>Select a WebShop query cluster, representative query, persona, and instruction.<small>Input: c, q, p, I</small></li>
+<li><strong>Extract goal facets</strong>Parse the instruction and product metadata into attributes, constraints, and relevant preferences.<small>Output: initial G</small></li>
+<li><strong>Inject the persona</strong>Keep persona-relevant constraints and remove inconsistent ones. Rewrite the instruction without changing the original product intent.<small>Output: refined I′ and persona-aware G</small></li>
+<li><strong>Create evaluation assertions</strong>Generate natural-language checks for task success, persona fidelity, query alignment, and path consistency.<small>Output: task specification T = (I′, G, A)</small></li>
+<li><strong>Convert the human path</strong>Map the WebShop human trajectory to the agent tool interface. This becomes the oracle human trajectory.<small>Tools include search_products, open_product, and add_to_cart</small></li>
+<li><strong>Run one policy in the dual-agent loop</strong>The user simulator gives persona-conditioned cues. The ShopperAgent responds or makes one tool call. The loop continues to a cart decision.<small>Policies: TF, PA, or PC</small></li>
+<li><strong>Score outcome and path</strong>Report task success plus three persona-alignment scores. Compare interaction steps with the oracle human paths.<small>Aggregate over persona task counts</small></li>
+</ol>
+<p class="source">Steps 1–5 follow <a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=3">§3.3 and Algorithm 1</a>. Steps 6–7 follow <a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=3">§4</a>.</p>
+
+<div class="table-wrap">
+<table>
+<caption>Persona distribution (Appendix Table 2)</caption>
+<thead><tr><th>Persona</th><th class="num">Tasks</th><th>Behavior in one phrase</th></tr></thead>
+<tbody>
+<tr><td>Quality-Focused Evaluator</td><td class="num">65</td><td>Durability and performance</td></tr>
+<tr><td>Price-Conscious Planner</td><td class="num">61</td><td>Low price and value</td></tr>
+<tr><td>Brand-Loyal Minimalist</td><td class="num">37</td><td>Trusted brands; little clutter</td></tr>
+<tr><td>Eco-Aware Minimalist</td><td class="num">25</td><td>Sustainable, durable, low waste</td></tr>
+<tr><td>Trend-Seeking Explorer</td><td class="num">20</td><td>New, stylish, trending products</td></tr>
+<tr><td>Urgent Task Finisher</td><td class="num">14</td><td>Speed and availability</td></tr>
+<tr><td>Gift-Giver</td><td class="num">10</td><td>Recipient and occasion fit</td></tr>
+<tr><td>Comparison Enthusiast</td><td class="num">4</td><td>Features and trade-offs</td></tr>
+<tr><td>Health-Conscious Explorer</td><td class="num">3</td><td>Health, safety, and comfort</td></tr>
+<tr><td>Comfort-Focused Evaluator</td><td class="num">1</td><td>Ergonomic and soft products</td></tr>
+</tbody>
+<tfoot><tr><th>Total</th><th class="num">240</th><td></td></tr></tfoot>
+</table>
+</div>
+<p class="source"><a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=8">Appendix A, Table 2</a>.</p>
+</section>
+
+<section class="section" id="experiment">
+<header><p class="eyebrow">Exact experiment</p><h2>One base model, three prompt policies</h2><p>All policies use Claude Haiku 4.5. The paper says the policies differ in how they receive persona information.</p></header>
+<div class="table-wrap">
+<table>
+<caption>Compared policies</caption>
+<thead><tr><th>Policy</th><th>Inputs stated in §4.2</th><th>Role in the comparison</th></tr></thead>
+<tbody>
+<tr><td><strong>Task-Focused (TF)</strong></td><td>Instruction I and goal facets G; no persona signal</td><td>Persona-agnostic control that aims to find the product in few steps</td></tr>
+<tr><td><strong>Persona-Adaptive (PA)</strong></td><td>Persona card, refined instruction I′, and persona-conditioned G; no procedural rules</td><td>Tests whether the model can internalize persona cues</td></tr>
+<tr><td><strong>Persona-Constrained (PC)</strong></td><td>Same inputs as PA, plus persona-specific operational rules</td><td>Tests explicit rules that shape tool choice and trajectory planning</td></tr>
+</tbody>
+</table>
+</div>
+<p>The available tools are <code>search_products</code>, <code>open_product</code>, <code>apply_filters</code>, and <code>add_to_cart</code>. The paper does not compare another model, a retrieval method, or a learned personalization method.</p>
+<p class="source">Policy definitions: <a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=4">§4.2</a>. Base model: <a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=4">§5</a>. Prompt frameworks: <a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=8">Appendix B</a>.</p>
+</section>
+
+<section class="section" id="metrics">
+<header><p class="eyebrow">Metrics and denominators</p><h2>The paper defines what each score means, but not how the judge computes it</h2></header>
+<dl class="card">
+<dt>Task Success Rate (TSR)</dt><dd>Whether the correct item, or an acceptable equivalent, is added to the cart.</dd>
+<dt>Persona Fidelity Score (PFS)</dt><dd>A judge LLM assesses whether actions and tool calls match persona behavior. This concerns behavior, not wording.</dd>
+<dt>Persona–Query Alignment (PQA)</dt><dd>The judge assesses whether the interpretation and search queries match the persona.</dd>
+<dt>Path Consistency (PC)</dt><dd>The judge assesses whether the full trajectory agrees with the persona and the final purchase.</dd>
+</dl>
+<h3>Aggregation that can be verified</h3>
+<p>The Appendix gives a score <em>M<sub>p</sub></em> and task count <em>n<sub>p</sub></em> for each persona. Each Table 1 value is the task-count-weighted mean:</p>
+<span class="formula" role="math" aria-label="Overall metric equals the sum over personas of task count times persona metric, divided by 240">M overall = (Σp np × Mp) / (Σp np) = (Σp np × Mp) / 240</span>
+<p>Example: this calculation gives TF TSR = 0.6402, which Table 1 rounds to 0.640. It also reproduces the other eleven headline values.</p>
+<div class="callout warning"><strong>Missing measurement detail.</strong> The paper gives no explicit primitive formula for PFS, PQA, or PC. It does not name the judge model, show the judge prompt, define the score scale, state the number of trials, or report seeds. It also does not define “acceptable equivalent.” Some persona TSR values cannot result from one binary observation per listed task. For example, 0.583 with n = 10 is not an integer success count divided by 10. The lower-level denominator or repeated-run procedure is therefore unclear.</div>
+<p class="source">Metric descriptions: <a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=4">§4.3</a>. Persona scores and n: <a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=10">Appendix Tables 3–5</a>.</p>
+</section>
+
+<section class="section" id="results">
+<header><p class="eyebrow">Evidence</p><h2>Persona scores rise by 0.023 to 0.043; task success falls by 0.009</h2><p>The comparison below uses PC minus TF for the stated change. These are absolute score-point differences.</p></header>
+<div class="table-wrap">
+<table>
+<caption>Main results, averaged over all 240 persona-conditioned tasks</caption>
+<thead><tr><th>Policy</th><th class="num">TSR ↑</th><th class="num">PFS ↑</th><th class="num">Path consistency ↑</th><th class="num">PQA ↑</th><th class="num">Median steps ↓</th></tr></thead>
+<tbody>
+<tr><td>Task-Focused</td><td class="num best">0.640</td><td class="num">0.719</td><td class="num">0.623</td><td class="num">0.858</td><td class="num best">16</td></tr>
+<tr><td>Persona-Adaptive</td><td class="num">0.624</td><td class="num">0.758</td><td class="num">0.637</td><td class="num">0.875</td><td class="num">17</td></tr>
+<tr><td>Persona-Constrained</td><td class="num">0.631</td><td class="num best">0.762</td><td class="num best">0.662</td><td class="num best">0.881</td><td class="num">18</td></tr>
+<tr><th>PC − TF</th><th class="num">−0.009</th><th class="num">+0.043</th><th class="num">+0.039</th><th class="num">+0.023</th><th class="num">+2</th></tr>
+</tbody>
+</table>
+</div>
+<div class="grid" style="margin-top:1rem">
+<article class="card third"><p class="eyebrow">Task–persona trade-off</p><h3>Small headline differences</h3><p>PC leads all persona metrics. TF leads TSR. The paper reports no confidence intervals or significance tests, so the stability of these differences is unknown.</p></article>
+<article class="card third"><p class="eyebrow">Efficiency</p><h3>Humans use fewer steps</h3><p>Human trajectories require 62.5% fewer steps than TF, the shortest agent policy. Step variability increases in the order TF, PA, PC.</p></article>
+<article class="card third"><p class="eyebrow">Heterogeneity</p><h3>Persona results differ</h3><p>Quality-Focused has PFS 0.908–0.969 but path consistency 0.492–0.569. Urgent Task Finisher PFS rises from 0.143 under TF to 0.429 under PA.</p></article>
+</div>
+<p>The top-five-persona analysis covers 174 of 240 tasks (72.5%). The paper reports that Eco-Aware Minimalist has mean 0.860 overall and 0.878 with PC. Health-Conscious Explorer has PQA 1.000 under all policies, but n = 3.</p>
+<p class="source">Headline scores: <a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=4">Table 1 and §5.1</a>. Persona analysis: <a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=5">§5.2</a>. Steps: <a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=5">§5.3</a>.</p>
+</section>
+
+<section class="section" id="limits">
+<header><p class="eyebrow">What the evidence does not establish</p><h2>Limits and one documentation inconsistency</h2></header>
+<div class="grid">
+<article class="card half"><h3>Limits stated by the authors</h3><ul><li>The ten personas may not cover real shopping behavior.</li><li>The task distribution is uneven. Three personas have only 1–4 tasks.</li><li>An LLM judge can add bias to persona-alignment scores.</li></ul><p class="source"><a href="https://aclanthology.org/2026.eacl-industry.62.pdf#page=5">§7, Limitations</a>.</p></article>
+<article class="card half"><h3>Details needed for replication</h3><ul><li>Judge model, prompt, rubric, and score scale</li><li>Trial count, sampling settings, and random seeds</li><li>Uncertainty or significance tests</li><li>Rule for “acceptable equivalent” and raw evaluation denominator</li><li>Public dataset or code location</li></ul><p>The paper does not report these items in its ten pages.</p></article>
+</div>
+<div class="callout limit" style="margin-top:1rem"><strong>Policy description conflict.</strong> §4.2 says PA has no procedural rules and PC adds persona-specific operational rules. Appendix B.2, however, lists concrete PA adaptations such as price sorting and 10–20% budget flexibility. Appendix B.3 mostly lists generic action, cart, budget, and availability rules. This makes the exact treatment difference hard to reconstruct from the paper alone.</div>
+</section>
+
+<section class="section" id="takeaway">
+<header><p class="eyebrow">Reading</p><h2>What ShopperBench supports</h2></header>
+<p>The study supports a narrow conclusion: with Claude Haiku 4.5 in this 240-task simulated benchmark, stronger persona prompting improves the reported persona scores and adds interaction steps. It does not yet show that these policies generalize to live stores, new models, or real users. The missing judge and run details also prevent an independent reconstruction of the score generation process.</p>
+</section>
+
+<section class="section" id="source">
+<header><p class="eyebrow">Version pin</p><h2>Primary source</h2></header>
+<p>Yuan Ling, Chunqing Yuan, Shujing Dong, Yongjian Yang, Nataraj Mocherla, and Ayush Goyal. “ShopperBench: A Benchmark for Personalized Shopping with Persona-Guided Simulation.” In <em>Proceedings of the 19th Conference of the European Chapter of the Association for Computational Linguistics, Volume 5: Industry Track</em>, pages 837–846. Association for Computational Linguistics, March 2026.</p>
+<p><a href="https://aclanthology.org/2026.eacl-industry.62.pdf">Read the authoritative full paper</a> · <a href="https://aclanthology.org/2026.eacl-industry.62/">ACL Anthology record</a> · <a href="https://doi.org/10.18653/v1/2026.eacl-industry.62">DOI 10.18653/v1/2026.eacl-industry.62</a></p>
+<p class="source">Card checked against the ACL Anthology PDF on 2026-10-08. Zotero key and wiki ID: G994SNDV.</p>
+</section>
+
+<footer>Agentic Commerce Wiki — static export. Links resolve within this site.</footer>
+</main>
 </body>
 </html>

@@ -5,72 +5,261 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents</title>
 <style>
-:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
-*{box-sizing:border-box;}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
- line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
-.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
-nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
- box-shadow:0 1px 4px rgba(0,0,0,.15);}
-nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
-nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
-nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
-nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
-nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
-nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
-nav.subbar a{margin-right:.9rem;}
-nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
-h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
-h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
-h3{font-size:1.1rem;margin-top:1.5rem;}
-a{color:var(--accent);text-decoration:none;}
-a:hover{text-decoration:underline;}
-span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
-code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
-pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
-pre code{background:none;padding:0;}
-blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
-table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
-th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
-th{background:#f7f7f7;}
-table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
-table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
-ul,ol{padding-left:1.4rem;}
-li{margin:.15rem 0;}
-hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
-footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+:root{
+  --ink:#17202a;--muted:#52606d;--paper:#fffdf8;--panel:#ffffff;--soft:#f3f7f6;
+  --line:#d6dfdc;--accent:#075985;--accent-dark:#0c3f5b;--warm:#9a3412;
+  --bar:#102a43;--bar-text:#f4f8fb;--ok:#166534;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.62}
+a{color:var(--accent);text-underline-offset:.16em}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible{outline:3px solid #f59e0b;outline-offset:3px;border-radius:2px}
+.sitebar{position:sticky;top:0;z-index:10;background:var(--bar);color:var(--bar-text);box-shadow:0 2px 8px #0002}
+.sitebar .inner{max-width:1040px;margin:auto;padding:.68rem 1.25rem;display:flex;align-items:center}
+.sitebar .brand{color:#fff;font-weight:750;text-decoration:none;letter-spacing:.01em}
+.wrap{max-width:1040px;margin:auto;padding:1.2rem 1.25rem 4rem}
+.subbar{display:flex;flex-wrap:wrap;gap:.45rem 1rem;padding:.7rem 0 1rem;border-bottom:1px solid var(--line);font-size:.88rem}
+.subbar .sublabel{color:var(--muted);font-size:.74rem;font-weight:750;letter-spacing:.08em;text-transform:uppercase}
+.hero{padding:2.2rem 0 1rem}
+.eyebrow{margin:0 0 .45rem;color:var(--warm);font-size:.78rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+h1{max-width:900px;margin:0;font-size:clamp(2rem,5vw,3.35rem);line-height:1.08;letter-spacing:-.035em}
+.dek{max-width:780px;margin:1rem 0;color:#344451;font-size:1.15rem}
+.source-links{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.1rem 0}
+.source-links a{display:inline-block;padding:.45rem .75rem;border:1px solid var(--accent);border-radius:.4rem;font-weight:700;text-decoration:none}
+.source-links a:hover{background:#e8f4fa}
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem;margin:1.3rem 0 2rem}
+.meta div{min-width:0;padding:.75rem .85rem;background:var(--soft);border-left:4px solid #8bb6c8}
+.meta dt{font-size:.73rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.meta dd{margin:.18rem 0 0;font-weight:650;overflow-wrap:anywhere}
+main{display:grid;gap:1rem}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:.7rem;padding:1.15rem 1.25rem;box-shadow:0 4px 14px #102a4308}
+.card h2{margin:0 0 .75rem;font-size:1.35rem;line-height:1.25}
+.card h3{margin:1.15rem 0 .35rem;font-size:1.03rem}
+.card p{margin:.55rem 0}
+.card ul,.card ol{padding-left:1.3rem}
+.card li{margin:.35rem 0}
+.callout{border-left:5px solid var(--accent);background:#eef7fb}
+.limit{border-left-color:var(--warm);background:#fff8f1}
+.answer{font-size:1.12rem;font-weight:650}
+.task-grid,.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+.task{border:1px solid var(--line);border-radius:.55rem;padding:.8rem}
+.task h3{margin:0 0 .28rem}
+.tag{display:inline-block;margin-bottom:.4rem;padding:.12rem .42rem;border-radius:999px;background:#e3f1f6;color:var(--accent-dark);font-size:.74rem;font-weight:800}
+.flow{counter-reset:step;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.15rem;margin:1rem 0;padding:0;list-style:none}
+.flow li{counter-increment:step;position:relative;min-height:9.2rem;padding:.85rem .75rem .75rem;border:2px solid #9ab7c2;border-radius:.6rem;background:#f8fbfc}
+.flow li::before{content:counter(step);display:grid;place-items:center;width:1.8rem;height:1.8rem;margin-bottom:.5rem;border-radius:50%;background:var(--bar);color:#fff;font-weight:800}
+.flow li:not(:last-child)::after{content:"→";position:absolute;right:-1.05rem;top:45%;color:var(--accent);font-size:1.25rem;font-weight:900}
+.flow strong{display:block;margin-bottom:.25rem}
+.flow-note{color:var(--muted);font-size:.9rem}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:.5rem}
+table{width:100%;border-collapse:collapse;font-size:.9rem;background:#fff}
+th,td{padding:.58rem .65rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#edf4f3;color:#263b45;font-weight:800}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.formula{display:block;margin:.5rem 0;padding:.65rem .75rem;background:#f5f7f8;border-radius:.4rem;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.88rem;overflow-wrap:anywhere}
+.term{font-weight:750;color:var(--accent-dark)}
+.result{padding:.8rem;border:1px solid var(--line);border-radius:.55rem}
+.result .big{display:block;color:var(--accent-dark);font-size:1.65rem;font-weight:850;line-height:1.15}
+.note{color:var(--muted);font-size:.9rem}
+.citation-list li{margin:.55rem 0}
+footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
+@media(max-width:780px){
+  .meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .flow{grid-template-columns:1fr;gap:.75rem}
+  .flow li{min-height:0}
+  .flow li:not(:last-child)::after{content:"↓";left:50%;right:auto;top:auto;bottom:-1.05rem}
+}
+@media(max-width:560px){
+  .wrap{padding-inline:.9rem}
+  .meta,.task-grid,.result-grid{grid-template-columns:1fr}
+  .card{padding:1rem}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<nav class="sitebar" aria-label="Site"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
 <div class="wrap">
-<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
-<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>P97GR95W</td></tr><tr><th>wiki_id</th><td>P97GR95W</td></tr><tr><th>aliases</th><td>[P97GR95W]</td></tr><tr><th>slug</th><td>wang-2025-shoppingbench-intent-grounded</td></tr><tr><th>title</th><td>&quot;ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents&quot;</td></tr><tr><th>authors</th><td>[&quot;Wang, Jiangyuan&quot;, &quot;Xiao, Kejun&quot;, &quot;Sun, Qi&quot;, &quot;Zhao, Huaipeng&quot;, &quot;Luo, Tao&quot;, &quot;Zhang, Jian Dong&quot;, &quot;Zeng, Xiaoyi&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>arXiv</td></tr><tr><th>url</th><td>&quot;https://arxiv.org/abs/2508.04266&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2508.04266&quot;</td></tr><tr><th>doi</th><td>&quot;10.48550/ARXIV.2508.04266&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;benchmark&quot;, &quot;e-commerce&quot;, &quot;language agents&quot;, &quot;tool use&quot;, &quot;agent evaluation&quot;, &quot;shopping&quot;, &quot;intent grounding&quot;, &quot;complex user intents&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
-<h1>ShoppingBench: A Real-World Intent-Grounded Shopping Benchmark for LLM-based Agents</h1>
-<h2>Contribution</h2>
-<p>The authors propose ShoppingBench, a large-scale end-to-end shopping benchmark with 3,310 user instructions designed to evaluate language agents on increasingly complex, real-world e-commerce tasks. They provide a scalable framework to simulate user instructions based on diverse intents derived from sampled real-world products, a large-scale interactive shopping sandbox environment containing over 2.5 million real products from Lazada, and automatic evaluation metrics grounded in intent-specific constraints. Additionally, they propose a trajectory distillation strategy where tool-use trajectories generated by GPT-4.1 are filtered using rejection sampling; these synthetic trajectories are then used with supervised fine-tuning and reinforcement learning to train smaller models like Qwen3-4B to achieve competitive performance with GPT-4.1.</p>
-<h2>Research Question</h2>
-<p>How can language agents be systematically evaluated on complex, realistic e-commerce intents that extend beyond basic product purchase tasks, and what are the actual capabilities and limitations of state-of-the-art language models when faced with such grounded shopping scenarios?</p>
-<h2>Task</h2>
-<p>ShoppingBench encompasses four progressively challenging user purchase intent categories: Products Finder (identifying products based on attribute descriptions), Knowledge (inferring knowledge requirements and identifying related products), Multi-products Seller (finding stores that sell multiple products), and Coupon &amp; Budget (understanding voucher rules and finding optimal product combinations within budget constraints). The benchmark requires agents to perform multi-step reasoning, leverage domain-specific e-commerce knowledge, and effectively utilize a suite of predefined API tools.</p>
-<h2>Data</h2>
-<p>The benchmark comprises 3,310 intent-grounded user instructions constructed through three stages. Stage I involves sampling diverse real-world products from a shopping sandbox covering varied categories, brands, attributes, and services. Stage II extracts structured product fields including titles, attributes, associated services, and metadata. Stage III uses GPT-4.1 to simulate diverse and realistic user queries tailored to each purchase intent. The test set contains 900 instructions with 250 samples each for Products Finder, Multi-products Seller, and Coupon &amp; Budget intents, and 150 samples for Knowledge intent. The training set comprises 2,410 user instructions. The shopping sandbox environment incorporates over 2.5 million real products sourced from Lazada with diverse categories, brands, and services.</p>
-<h2>Metrics</h2>
-<p>The authors propose Absolute Success Rate (ASR) and Cumulative Average of product Relevance (CAR) as overall metrics, computed from intent-specific constraint scores. Product Relevance Score evaluates title similarity, price range match, and feature overlap between predicted and target products. Knowledge Constraint Score verifies whether predicted products have correct knowledge attributes. Shop Constraint Score assesses whether predicted products come from the same shop for multi-product requests. Budget Constraint Score checks whether final prices satisfy the user's budget after applying vouchers. ASR measures the proportion of tasks where predicted products fully satisfy all specified constraints, while CAR measures average product relevance across all tasks.</p>
-<h2>Baselines</h2>
-<p>The authors evaluate 17 language agents including leading closed-source models (GPT-4.1, o3-mini, GPT-4o, Claude-4-Sonnet, Qwen2.5-max, Gemini-2.5-Flash), open-source models (DeepSeek-R1, DeepSeek-V3, Qwen3-235B-A22B, Qwen3-32B, Qwen3-14B, Qwen3-8B, Gemma-3-27B, Gemma-3-12B, Gemma-3-4B), and their trajectory-distilled Qwen3-4B variants trained with supervised fine-tuning (SFT) and reinforcement learning (RL using GRPO). The best untrained model, GPT-4.1, achieves an overall ASR of 48.2%, demonstrating that even state-of-the-art agents struggle significantly with these complex tasks. The SFT+RL-Qwen3-4B model achieves 48.7% overall ASR, surpassing GPT-4.1 by 0.5 percentage points.</p>
-<h2>Related Work</h2>
-<h3>Agent Benchmarks</h3>
-<p>WebShop and WebArena — These benchmarks establish web shopping as a key domain for evaluating language agent capabilities in fulfilling user purchase requests. However, they primarily focus on basic user intents such as finding and purchasing products, lacking the complex, multi-faceted goals present in real-world e-commerce scenarios.</p>
-<p>Recent advances in language agents show promise for task automation and autonomous decision-making across diverse domains, requiring evaluation of agents' abilities to aggregate information for multi-step reasoning and effective tool utilization. Language agents have been applied to domain-specific scenarios, with e-commerce emerging as a particularly realistic application area for evaluation.</p>
-<h3>E-commerce Datasets</h3>
-<p>Shopping MMLU and ChineseEcomQA — These multidimensional benchmarks constructed from large e-commerce corpora focus on conceptual and skill-based question answering in e-commerce rather than end-to-end agent performance, limiting their effectiveness in assessing agents' ability to fulfill complex user intents in real-world shopping scenarios.</p>
-<p>E-ConvRec — A large-scale conversational recommendation dataset for e-commerce customer service addressing isolated or narrowly-scoped downstream recommendation tasks.</p>
-<p>EcomScriptBench — Proposes evaluation of language models' ability to generate plans with scripts and recommend products based on step-wise intention-driven product association.</p>
-<p>Previous e-commerce benchmarks have primarily addressed isolated downstream tasks or narrow task scopes, with recent large-scale benchmarks focusing on question-answering and skill evaluation rather than end-to-end agent task completion.</p>
-<h2>Conclusion</h2>
-<p>Even the best-performing language agent, GPT-4.1, achieves a success rate below 50% on ShoppingBench, underscoring the significant challenges posed by the benchmark and revealing substantial gaps between current agent capabilities and real-world e-commerce requirements. Analysis of GPT-4.1 failures identifies five error types: missing or mismatched product attributes, metric issues from strict evaluation thresholds, product not found in the sandbox, user constraints not satisfied, and knowledge reasoning errors. The benchmark reveals that viewing product details strongly correlates with task success across all intents, while web search is particularly crucial for knowledge-dependent tasks. The proposed trajectory distillation strategy successfully distills GPT-4.1 capabilities into smaller models through rejection sampling, supervised fine-tuning, and reinforcement learning, achieving comparable performance. The authors note that advances in agent architecture, tool usage strategies, problem decomposition, and web information integration are needed to address these real-world e-commerce challenges.</p>
-<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+<nav class="subbar" aria-label="Wiki sections"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+
+<header class="hero">
+<p class="eyebrow">Paper card · benchmark and dataset</p>
+<h1>ShoppingBench</h1>
+<p class="dek">A benchmark for shopping agents that must search products, use external knowledge, satisfy same-shop rules, and apply voucher or budget constraints.</p>
+<div class="source-links" aria-label="Primary sources">
+<a href="https://arxiv.org/abs/2508.04266v4">arXiv v4 record</a>
+<a href="https://arxiv.org/html/2508.04266v4">Full text (HTML)</a>
+<a href="https://ojs.aaai.org/index.php/AAAI/article/view/40640">AAAI 2026 record</a>
+<a href="https://github.com/yjwjy/ShoppingBench">Official code and data</a>
+</div>
+<dl class="meta">
+<div><dt>Paper</dt><dd>Wang et al., 2025</dd></div>
+<div><dt>Published</dt><dd>AAAI 2026</dd></div>
+<div><dt>Version read</dt><dd>arXiv v4 · 18 Jun 2026</dd></div>
+<div><dt>Wiki ID</dt><dd>P97GR95W</dd></div>
+<div><dt>Dataset</dt><dd>3,310 instructions</dd></div>
+<div><dt>Test set</dt><dd>900 tasks</dd></div>
+<div><dt>Catalog</dt><dd>2,746,368 products</dd></div>
+<div><dt>DOI</dt><dd>10.48550/arXiv.2508.04266</dd></div>
+</dl>
+</header>
+
+<main>
+<section class="card callout" aria-labelledby="question">
+<h2 id="question">Question</h2>
+<p class="answer">Can an agent complete realistic shopping requests when success depends on several product attributes, factual knowledge, one seller, or a voucher and budget?</p>
+<p>The paper tests the full interaction. An agent reads an instruction, calls tools, observes results, and recommends products. The benchmark then checks the terminal recommendation against product and intent constraints.</p>
+</section>
+
+<section class="card" aria-labelledby="contribution">
+<h2 id="contribution">What is new</h2>
+<p>ShoppingBench combines three elements in one end-to-end test: a catalog with more than 2.7 million products, four levels of shopping intent, and automatic checks for the final recommendation. It also uses successful GPT-4.1 tool trajectories to train a Qwen3-4B agent.</p>
+<p class="note">“Grounded intent” means that the request and its answer are tied to sampled products and explicit constraints in the sandbox.</p>
+</section>
+
+<section class="card" aria-labelledby="task">
+<h2 id="task">Exact task and setup</h2>
+<div class="task-grid">
+<article class="task"><span class="tag">250 test tasks</span><h3>1. Products Finder</h3><p>Find one product that matches the requested title, price range, features, and services.</p></article>
+<article class="task"><span class="tag">150 test tasks</span><h3>2. Knowledge</h3><p>Answer an implicit factual question, then find a product whose title contains the required knowledge attribute. SimpleQA supplies the linked facts.</p></article>
+<article class="task"><span class="tag">250 test tasks</span><h3>3. Multi-products seller</h3><p>Find all requested products and make sure that they come from one shop.</p></article>
+<article class="task"><span class="tag">250 test tasks</span><h3>4. Coupon &amp; Budget</h3><p>Find the requested product set, apply the stated voucher rules, and keep the total within the budget.</p></article>
+</div>
+<h3>Data construction</h3>
+<ol>
+<li>Sample real products from the Lazada catalog. For coupon tasks, also synthesize voucher rules and sample products that meet them.</li>
+<li>Extract titles, attributes, services, prices, and other fields.</li>
+<li>Use GPT-4.1 and intent-specific prompts to turn those fields into user instructions.</li>
+</ol>
+<p>The full set has 3,310 instructions: 2,410 for training and 900 for testing. The four intent totals are 1,000, 310, 1,000, and 1,000 respectively.</p>
+<h3>Environment and tools</h3>
+<p>The sandbox uses BM25 product retrieval through Pyserini and web retrieval through Serper. The six tool roles are product search, product-detail view, Python calculation for discounts and budgets, web search, product recommendation, and termination.</p>
+</section>
+
+<section class="card" aria-labelledby="flow-title">
+<h2 id="flow-title">Evaluation flow</h2>
+<p class="flow-note" id="flow-help">Read the steps from 1 to 5. The order stays the same on wide and narrow screens.</p>
+<ol class="flow" aria-describedby="flow-help">
+<li><strong>Receive a task</strong><span>The agent gets one intent-grounded instruction.</span></li>
+<li><strong>Reason and call a tool</strong><span>It emits a reasoning step and one tool action.</span></li>
+<li><strong>Observe the result</strong><span>The sandbox runs the call and returns product, web, or calculation data.</span></li>
+<li><strong>Repeat or stop</strong><span>The loop continues until the agent calls a terminal tool.</span></li>
+<li><strong>Score the products</strong><span>The evaluator compares the final recommendation with target products and intent constraints.</span></li>
+</ol>
+</section>
+
+<section class="card" aria-labelledby="metrics">
+<h2 id="metrics">Metrics, with denominators</h2>
+<p>Each test task is one sample. Let <span class="term">n</span> be the number of test samples for the intent. Let <span class="term">nᵢ</span> be the number of products in sample <em>i</em>.</p>
+
+<h3>Product relevance, r<sub>pro</sub></h3>
+<span class="formula">r_pro = [I(title similarity ≥ 0.5) + I(target min ≤ predicted price ≤ target max) + |target features ∩ predicted features|] / [2 + |target features|]</span>
+<p>The numerator gives one point for title similarity, one for price, and one point for each target feature found. The denominator is the two binary checks plus the number of target features. A product gets 1 only when every component passes.</p>
+
+<h3>Constraint checks</h3>
+<ul>
+<li><span class="term">Knowledge, r<sub>kw</sub>:</span> 1 if the required knowledge attribute occurs in the predicted product title; otherwise 0.</li>
+<li><span class="term">Shop, r<sub>shop</sub>:</span> 1 if the predicted count equals the target count and all predicted products have one unique shop ID; otherwise 0.</li>
+<li><span class="term">Budget, r<sub>budget</sub>:</span> 1 if total price is at or below the budget; otherwise 0.</li>
+</ul>
+
+<h3>CAR: partial product quality</h3>
+<span class="formula">CAR = (1 / n) × Σᵢ [(1 / nᵢ) × Σⱼ r_pro(i,j)]</span>
+<p>For each task, average product relevance over its <span class="term">nᵢ</span> products. Then average those task scores over all <span class="term">n</span> tasks in that intent. CAR can give credit for a partial match.</p>
+
+<h3>ASR: exact task success</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Intent</th><th>One task succeeds only if…</th><th class="num">ASR denominator</th></tr></thead>
+<tbody>
+<tr><td>Products Finder</td><td>r<sub>pro</sub> = 1.</td><td class="num">250 tasks</td></tr>
+<tr><td>Knowledge</td><td>r<sub>pro</sub> = 1 and r<sub>kw</sub> = 1.</td><td class="num">150 tasks</td></tr>
+<tr><td>Multi-products seller</td><td>The mean r<sub>pro</sub> over all requested products is 1, and r<sub>shop</sub> = 1.</td><td class="num">250 tasks</td></tr>
+<tr><td>Coupon &amp; Budget</td><td>The mean r<sub>pro</sub> over all requested products is 1, and r<sub>budget</sub> = 1.</td><td class="num">250 tasks</td></tr>
+</tbody>
+</table>
+</div>
+<p>For each intent, ASR is successful tasks divided by <span class="term">n</span>. It is strict: one missed attribute can make a task fail.</p>
+</section>
+
+<section class="card" aria-labelledby="experiments">
+<h2 id="experiments">Experiments and baselines</h2>
+<p>The main test compares 17 untrained language agents plus two trained Qwen3-4B variants. The reported main table uses the models’ “Think” condition.</p>
+<ul>
+<li><strong>Closed models:</strong> GPT-4.1, o3-mini, GPT-4o, GPT-4o-mini, Gemini-2.5-Flash, Claude-4-Sonnet, and Qwen2.5-max.</li>
+<li><strong>Open models:</strong> DeepSeek-R1, DeepSeek-V3, Qwen3-235B-A22B, Qwen3-32B, Qwen3-14B, Qwen3-8B, Qwen3-4B, Gemma-3-27B, Gemma-3-12B, and Gemma-3-4B.</li>
+<li><strong>Trained variants:</strong> SFT-Qwen3-4B and SFT+RL-Qwen3-4B.</li>
+</ul>
+<h3>Training comparison</h3>
+<p>GPT-4.1 produces trajectories for the 2,410 training instructions. Rejection sampling keeps only trajectories with absolute success. The AAAI paper states that this removes about half of the generated data. The retained trajectories become 5,552 step-level samples for supervised fine-tuning. The authors then use GRPO reinforcement learning with rewards for output format and matching the target tool name, parameter names, and parameter values.</p>
+<p class="note">Training used 8 NVIDIA A100 80 GB GPUs. The appendix reports 5 SFT epochs at a 5×10<sup>−5</sup> learning rate and 5 GRPO epochs at 1×10<sup>−6</sup>.</p>
+</section>
+
+<section class="card" aria-labelledby="results">
+<h2 id="results">Key results</h2>
+<div class="result-grid">
+<div class="result"><span class="big">48.2% ASR</span><strong>GPT-4.1 overall</strong><p>Best among the 17 untrained agents.</p></div>
+<div class="result"><span class="big">30.4% ASR</span><strong>GPT-4.1 on Coupon &amp; Budget</strong><p>Its weakest intent; CAR was 72.8%.</p></div>
+<div class="result"><span class="big">18.0% → 48.7%</span><strong>Qwen3-4B overall ASR</strong><p>SFT+RL improves by 30.7 percentage points and finishes 0.5 points above GPT-4.1.</p></div>
+<div class="result"><span class="big">−12.0 points</span><strong>GPT-4.1 Knowledge ASR</strong><p>Removing web search reduces ASR from 62.0% to 50.0%.</p></div>
+</div>
+
+<h3>Main-table detail</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Agent</th><th class="num">Finder ASR / CAR</th><th class="num">Knowledge ASR / CAR</th><th class="num">Same-shop ASR / CAR</th><th class="num">Budget ASR / CAR</th><th class="num">Overall ASR</th></tr></thead>
+<tbody>
+<tr><td>GPT-4.1</td><td class="num">59.6 / 83.6</td><td class="num">62.0 / 67.3</td><td class="num">46.4 / 79.2</td><td class="num">30.4 / 72.8</td><td class="num">48.2</td></tr>
+<tr><td>DeepSeek-R1</td><td class="num">53.2 / 75.8</td><td class="num">44.0 / 53.3</td><td class="num">37.2 / 51.5</td><td class="num">24.4 / 43.9</td><td class="num">39.2</td></tr>
+<tr><td>Qwen3-4B</td><td class="num">36.4 / 66.4</td><td class="num">18.7 / 26.0</td><td class="num">8.8 / 29.8</td><td class="num">8.4 / 45.5</td><td class="num">18.0</td></tr>
+<tr><td>SFT-Qwen3-4B</td><td class="num">55.6 / 81.1</td><td class="num">52.7 / 59.3</td><td class="num">39.2 / 77.9</td><td class="num">30.4 / 76.0</td><td class="num">43.6</td></tr>
+<tr><td>SFT+RL-Qwen3-4B</td><td class="num">60.8 / 86.1</td><td class="num">46.7 / 51.3</td><td class="num">53.2 / 85.5</td><td class="num">33.2 / 79.0</td><td class="num">48.7</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">Values are percentages from Table 1. The table above shows the strongest untrained closed model, the strongest reported untrained open model by overall ASR, the base 4B model, and both trained 4B variants.</p>
+
+<h3>What the analyses add</h3>
+<ul>
+<li>In a manual review of 60 failed GPT-4.1 trajectories, missing or mismatched attributes were the largest failure category.</li>
+<li>Product-detail views correlate strongly with success across intents. Web-search use correlates with Knowledge success. In-shop search correlates with Multi-products seller success.</li>
+<li>For GPT-4.1, “No Think” improves Products Finder ASR from 59.6% to 61.6%, but reduces Coupon &amp; Budget ASR from 30.4% to 23.2%.</li>
+<li>The human comparison covers 200 tasks and three participants. The paper reports that agents remain below humans, while humans also struggle on harder intents.</li>
+</ul>
+</section>
+
+<section class="card limit" aria-labelledby="limits">
+<h2 id="limits">Limits and reading cautions</h2>
+<ul>
+<li><strong>Synthetic instructions:</strong> products are real catalog entries, but GPT-4.1 writes the user requests. The benchmark does not measure naturally occurring user language.</li>
+<li><strong>One marketplace:</strong> the catalog comes from Lazada. Results may not transfer to other stores, regions, languages, inventory rules, or checkout systems.</li>
+<li><strong>Strict matching:</strong> the appendix shows that “high waist” can fail against the label “high.” ASR can therefore count a useful recommendation as wrong.</li>
+<li><strong>Dynamic external knowledge:</strong> Knowledge tasks can use Serper web search. Search results may change over time.</li>
+<li><strong>Incomplete protocol detail:</strong> the paper gives training hyperparameters, but it does not fully specify every hosted-model snapshot and inference setting. It reports no confidence intervals or repeated-run variance.</li>
+<li><strong>Product alignment is underspecified:</strong> the equations define per-product relevance and task averages, but the paper does not fully explain how predicted and target products are paired when several products are present.</li>
+<li><strong>Failure label needs care:</strong> the appendix’s “Product Missing” example says the agent stopped after finding three of four requested products. It does not show that the fourth product was absent from the catalog.</li>
+</ul>
+<h3>Reported-average discrepancy</h3>
+<p>Table 1 calls the final column a “domain-weighted ASR.” However, GPT-4.1’s 48.2% matches a sample-count weighted calculation over the four test sets: 250, 150, 250, and 250 tasks. The equal-intent mean of its four ASRs is 49.6%. This page keeps the reported 48.2% and states the arithmetic difference instead of choosing a new label.</p>
+</section>
+
+<section class="card" aria-labelledby="sources">
+<h2 id="sources">Primary evidence</h2>
+<ol class="citation-list">
+<li><a href="https://arxiv.org/html/2508.04266v4#S4">Construction and tools</a>: four intents, sandbox, instruction generation, and six tool roles.</li>
+<li><a href="https://arxiv.org/html/2508.04266v4#S5">Evaluation</a>: product relevance, intent constraints, CAR, and ASR equations.</li>
+<li><a href="https://arxiv.org/html/2508.04266v4#S7">Experiments and Table 1</a>: baselines, test split, and main results.</li>
+<li><a href="https://arxiv.org/html/2508.04266v4#S8">Further analysis and Table 2</a>: failures, human comparison, thinking, and web-search ablation.</li>
+<li><a href="https://arxiv.org/html/2508.04266v4#A2">Appendix</a>: product count, training settings, dataset statistics, cases, and detailed ablations.</li>
+</ol>
+<p class="note">Version note: the arXiv identifier begins with 2025 because v1 was posted on 6 August 2025. This card reads v4, posted on 18 June 2026, and also identifies the AAAI 2026 publication.</p>
+</section>
+</main>
+
+<footer>Agentic Commerce Wiki — static export. Technical prose follows ASD-STE100 plain-language principles; this page does not claim ASD-STE100 certification.</footer>
 </div>
 </body>
 </html>

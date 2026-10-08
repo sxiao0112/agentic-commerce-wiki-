@@ -3,72 +3,114 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WebMall - A Multi-Shop Benchmark for Evaluating Web Agents</title>
+<title>WebMall — evidence card</title>
 <style>
-:root{--fg:#1a1a1a;--muted:#666;--bg:#fff;--accent:#2a5db0;--border:#e2e2e2;--code:#f5f5f5;--barbg:#0f1b33;--barfg:#eaf0fb;}
-*{box-sizing:border-box;}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
- line-height:1.6;color:var(--fg);background:var(--bg);margin:0;padding:0;}
-.wrap{max-width:880px;margin:0 auto;padding:1.5rem 1.25rem 5rem;}
-nav.sitebar{background:var(--barbg);color:var(--barfg);position:sticky;top:0;z-index:10;
- box-shadow:0 1px 4px rgba(0,0,0,.15);}
-nav.sitebar .inner{max-width:880px;margin:0 auto;padding:.6rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:.25rem 1.2rem;}
-nav.sitebar .brand{font-weight:700;letter-spacing:.02em;margin-right:.6rem;color:#fff;}
-nav.sitebar a{color:var(--barfg);text-decoration:none;font-size:.92rem;padding:.15rem 0;border-bottom:2px solid transparent;}
-nav.sitebar a:hover{color:#fff;border-bottom-color:#6f9be8;}
-nav.sitebar a.active{color:#fff;border-bottom-color:#6f9be8;font-weight:600;}
-nav.subbar{font-size:.84rem;color:var(--muted);margin:1.2rem 0 1.6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
-nav.subbar a{margin-right:.9rem;}
-nav.subbar .sublabel{color:var(--muted);margin-right:.6rem;text-transform:uppercase;letter-spacing:.05em;font-size:.72rem;}
-h1{font-size:1.75rem;line-height:1.25;margin:.2rem 0 1rem;}
-h2{font-size:1.3rem;margin-top:2rem;border-bottom:1px solid var(--border);padding-bottom:.3rem;}
-h3{font-size:1.1rem;margin-top:1.5rem;}
-a{color:var(--accent);text-decoration:none;}
-a:hover{text-decoration:underline;}
-span.missing{color:#b00;border-bottom:1px dotted #b00;cursor:help;}
-code{background:var(--code);padding:.1rem .35rem;border-radius:3px;font-size:.9em;}
-pre{background:var(--code);padding:1rem;border-radius:6px;overflow-x:auto;}
-pre code{background:none;padding:0;}
-blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.3rem 1rem;color:var(--muted);background:#fafafa;}
-table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem;}
-th,td{border:1px solid var(--border);padding:.45rem .65rem;text-align:left;vertical-align:top;}
-th{background:#f7f7f7;}
-table.frontmatter{font-size:.85rem;margin:0 0 1.5rem;}
-table.frontmatter th{width:160px;white-space:nowrap;color:var(--muted);font-weight:600;background:#fafafa;}
-ul,ol{padding-left:1.4rem;}
-li{margin:.15rem 0;}
-hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
-footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);}
+:root{--ink:#172033;--muted:#586174;--paper:#fff;--wash:#f4f7fb;--line:#d9e0ea;--blue:#1d4e89;--teal:#087f78;--amber:#8a5500;--nav:#101d35;--navink:#eef4ff;--focus:#ffbf47}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--wash);color:var(--ink);font:16px/1.58 system-ui,-apple-system,"Segoe UI",sans-serif}.wrap{max-width:1020px;margin:auto;padding:1.35rem 1rem 4rem}.sitebar{position:sticky;top:0;z-index:5;background:var(--nav);color:var(--navink);box-shadow:0 1px 5px #0004}.sitebar .inner{max-width:1020px;margin:auto;padding:.65rem 1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}.sitebar a{color:var(--navink);text-decoration:none}.brand{font-weight:750}.subbar{display:flex;gap:.45rem 1rem;flex-wrap:wrap;padding:.8rem 0 1rem;border-bottom:1px solid var(--line);font-size:.9rem}.subbar a{color:var(--blue)}a{color:var(--blue);text-underline-offset:2px}a:hover{text-decoration-thickness:2px}a:focus-visible{outline:3px solid var(--focus);outline-offset:3px}h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.08;margin:.45rem 0 .65rem;letter-spacing:-.035em}h2{font-size:1.45rem;line-height:1.25;margin:2.35rem 0 .85rem}h3{font-size:1.05rem;line-height:1.3;margin:.2rem 0 .5rem}p{margin:.45rem 0 1rem}.lede{font-size:1.12rem;max-width:75ch}.eyebrow{font-size:.78rem;font-weight:750;letter-spacing:.09em;text-transform:uppercase;color:var(--teal)}.meta{display:flex;gap:.45rem;flex-wrap:wrap;margin:1rem 0}.pill{border:1px solid var(--line);border-radius:999px;background:var(--paper);padding:.3rem .7rem;font-size:.84rem}.callout{border-left:5px solid var(--amber);background:#fff8e8;padding:.85rem 1rem;margin:1.2rem 0;border-radius:0 .45rem .45rem 0}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}.card{grid-column:span 6;background:var(--paper);border:1px solid var(--line);border-radius:.65rem;padding:1rem;box-shadow:0 1px 2px #1020400a}.card.wide{grid-column:1/-1}.number{font-size:2rem;font-weight:780;color:var(--blue);line-height:1}.label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}.term{background:var(--paper);border-top:3px solid var(--teal);padding:.8rem}.term dt{font-weight:750}.term dd{margin:.2rem 0;color:var(--muted)}figure{margin:1rem 0}.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:1.35rem}.flow li{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:.6rem;padding:.85rem;min-height:8.8rem}.flow li:not(:last-child)::after{content:"→";position:absolute;right:-1.12rem;top:43%;font-size:1.4rem;color:var(--blue);font-weight:800}.flow b{display:block;margin:.25rem 0}.step{display:inline-grid;place-items:center;width:1.6rem;height:1.6rem;border-radius:50%;background:var(--blue);color:white;font-weight:750}.caption,figcaption{font-size:.84rem;color:var(--muted);margin-top:.55rem}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:.55rem;background:var(--paper)}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{padding:.62rem .68rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#eaf0f8;font-weight:720}tr:last-child td{border-bottom:0}.best{font-weight:750;color:#075e59}.formula{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#edf2f8;padding:.08rem .3rem;border-radius:.2rem;white-space:nowrap}.sources{padding-left:1.2rem}.sources li{margin:.5rem 0}.fine{font-size:.86rem;color:var(--muted)}footer{border-top:1px solid var(--line);margin-top:2.5rem;padding-top:1rem;color:var(--muted);font-size:.82rem}
+@media(max-width:760px){.card{grid-column:1/-1}.terms{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.flow li{min-height:auto}.flow li:not(:last-child)::after{content:"↓";left:50%;right:auto;top:auto;bottom:-1.35rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<nav class="sitebar"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
-<div class="wrap">
-<nav class="subbar"><span class="sublabel">Agentic Commerce Wiki</span><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
-<table class="frontmatter"><tbody><tr><th>zotero_key</th><td>WZ5CP8MZ</td></tr><tr><th>wiki_id</th><td>WZ5CP8MZ</td></tr><tr><th>aliases</th><td>[WZ5CP8MZ]</td></tr><tr><th>slug</th><td>peeters-2025-webmall-multi-shop-benchmark</td></tr><tr><th>title</th><td>&quot;WebMall - A Multi-Shop Benchmark for Evaluating Web Agents&quot;</td></tr><tr><th>authors</th><td>[&quot;Peeters, Ralph&quot;, &quot;Steiner, Aaron&quot;, &quot;Schwarz, Luca&quot;, &quot;Caspary, Julian Yuya&quot;, &quot;Bizer, Christian&quot;]</td></tr><tr><th>year</th><td>2025</td></tr><tr><th>paper_type</th><td>benchmark-dataset</td></tr><tr><th>venue</th><td>&quot;&quot;</td></tr><tr><th>url</th><td>&quot;https://arxiv.org/abs/2508.13024v2&quot;</td></tr><tr><th>arxiv</th><td>&quot;https://arxiv.org/abs/2508.13024&quot;</td></tr><tr><th>doi</th><td>&quot;&quot;</td></tr><tr><th>status</th><td>full-text</td></tr><tr><th>text_source</th><td>pdf</td></tr><tr><th>keywords</th><td>[&quot;web agents&quot;, &quot;e-commerce benchmark&quot;, &quot;comparison shopping&quot;, &quot;product search&quot;, &quot;multi-shop environment&quot;]</td></tr><tr><th>updated</th><td>2026-06-23</td></tr></tbody></table>
-<h1>WebMall - A Multi-Shop Benchmark for Evaluating Web Agents</h1>
-<h2>Contribution</h2>
-<p>WebMall is the first offline multi-shop e-commerce benchmark designed to evaluate web agents on challenging comparison shopping tasks in a reproducible environment. The benchmark consists of four simulated electronics-focused online shops populated with real product offers extracted from the Common Crawl, along with 91 tasks across 11 task categories. WebMall distinguishes itself from existing simulated environment benchmarks by requiring agents to navigate multiple shops with heterogeneous product descriptions, category structures, and pricing interfaces, performing complex retrieval tasks that range from specific product searches and price comparisons to searches for substitute or compatible products, as well as checkout processes. The authors validate WebMall using eight baseline agent configurations that vary along three dimensions: observation space (accessibility tree and/or screenshots), availability of short-term memory, and underlying language model (GPT-5.4 versus Qwen 3.6 Plus).</p>
-<h2>Research Question</h2>
-<p>How should web agents be evaluated on complex comparison shopping tasks that require navigation and search across multiple e-shops with heterogeneous product data, and what design choices in agent architecture (observation modality, memory, and language model) most effectively enable agent performance on such tasks?</p>
-<h2>Task</h2>
-<p>WebMall includes 91 tasks across 11 task categories grouped into five task groups. Specific Product Search tasks require agents to retrieve all offers for a named product or offers satisfying explicit attribute constraints. Vague Product Search tasks capture retrieval under vague user specifications, including finding substitutes or compatible products. Cheapest Product Search tasks require price-based ranking and selection after relevance and constraints are satisfied. Action and Transaction tasks include adding offers to carts and completing checkout with form-filling. End-to-End tasks combine price-aware retrieval with cart and checkout workflows. Tasks are expressed as natural-language queries with solution URLs as ground truth, enabling evaluation of set retrieval (recall of all relevant offers) and specific selection or ranking (choosing the cheapest relevant offer under constraints). All tasks were created and cross-checked by domain experts and refined over multiple baseline runs and human trials before finalization.</p>
-<h2>Data</h2>
-<p>The WebMall environment consists of four electronics-focused WordPress shops implemented using free WooCommerce templates, each with a shopping cart, checkout functionality, search bar, category drop-down, and product detail pages. Products are populated from the WDC Extraction of the October 2024 Common Crawl, filtered to English-language offers containing title, description, price, and price currency. After filtering and deduplication, offers are clustered by globally unique product identifiers (GTIN or MPN numbers) to group same real-world products, then manually selected and distributed across shops to ensure a realistic comparison shopping scenario. The four shops contain a total of 4,421 product offers distributed across three categories: PC Components (1,477 offers), PC Peripherals (1,388 offers), and Other Electronics (1,556 offers). Product titles range from 6 to 264 characters with median length 69, while descriptions span 15 to over 14,000 characters with median 573. The category trees in each shop are heterogeneous and manually created to simulate real e-shop variation.</p>
-<h2>Metrics</h2>
-<p>Agent effectiveness is evaluated using task-level metrics: task completion rate (strict exact-match when the agent returns every relevant item and no additional irrelevant items), precision, recall, and F1 aggregated by macro-averaging over tasks in each category. Efficiency is measured using token usage, runtime per task, and API cost. For each task, an agent is allowed up to 50 steps (actions such as go to page, click, fill text, and scroll) to complete it.</p>
-<h2>Baselines</h2>
-<p>The authors validate WebMall using eight baseline agent configurations implemented in the Browsergym and AgentLab frameworks, varying observation space (accessibility tree only, screenshots only, or both), availability of persistent short-term memory, and language model backend (GPT-5.4 via OpenAI API and Qwen 3.6 Plus via OpenRouter API). Results show that GPT-5.4 achieves best performance on most task groups with completion rates below 65% on challenging categories (cheapest product search and vague product search), while using the accessibility tree is most important for task completion and screenshots alone are insufficient. GPT-5.4 agents average 2.1-2.8 minutes per task with costs ranging from $0.34 to $0.56, whereas Qwen 3.6 Plus agents average 3.9-6.4 minutes per task but cost only $0.07-$0.12. Adding memory reduces average steps for GPT-5.4 but does not offset the additional token context. Vision-only agents are substantially weaker than accessibility-tree-based agents, with Qwen 3.6 Plus vision agents failing entirely on every task group due to inability to maintain stable mapping from rendered screenshots to navigation elements.</p>
-<h2>Conclusion</h2>
-<p>WebMall fills a gap in existing web agent benchmarks by introducing the first offline, reproducible, multi-shop e-commerce benchmark requiring agents to perform comparison shopping across multiple shops with heterogeneous product data and interfaces. The benchmark's difficulty is validated through baseline experiments showing that state-of-the-art models achieve task completion rates below 65% on complex categories, demonstrating the need for improved agent architectures that can effectively perform product comparisons and maintain information over longer interaction trajectories while reducing token consumption and runtime. The results highlight that structural grounding via accessibility trees is crucial for navigation and that vision-only approaches are insufficient without adequate semantic grounding.</p>
-<h2>Related Work</h2>
-<h3>Web Agent Benchmarks (Single-Shop and Multi-Domain)</h3>
-<p>Early and existing single-shop benchmarks: WebShop (2022) simulates a single e-shop populated with over one million Amazon product offers — <a href="WZ5CP8MZ.html" title="WebMall - A Multi-Shop Benchmark for Evaluating Web Agents [WZ5CP8MZ]">Peeters et al., 2025</a> notes this as foundational but limited to single-shop scenarios. Mind2Web (2023) uses snapshots of real websites to simulate a web environment covering various tasks including online shopping but limits shopping tasks to single websites with shorter trajectories. WebArena (2024) simulates multiple websites spanning e-commerce, social media, and productivity but shopping tasks are limited to single e-shops focusing on shop administration and sales statistics rather than product search. REAL benchmark (2026) spans various task types including shopping in single-shop environments such as product search, shopping cart management, and checkout. ShoppingBench (2026) also simulates a single shop requiring tasks like product search, voucher usage, and budget adherence. AgentBench (2024) extends beyond the Web to databases and operating systems. VisualWebArena (2024) focuses on visually grounded tasks. WebChoreArena (2025) emphasizes memory-intensive tasks.</p>
-<h3>Online Web Benchmarks</h3>
-<p>Online-Mind2Web (extension of Mind2Web to the live Web). BrowseComp features deliberately difficult reasoning and web search tasks. DeepShop (2025) evaluates complex product search queries. ShoppingComp (2026) includes complex shopping queries with safety-critical constraints. AmazonBench (2026) covers e-commerce tasks with focus on agent safety. ShopperBench (2026) and AgenticShop (2026) assess persona-guided shopping abilities. A survey paper on web agents (2025) provides comprehensive overview of the landscape.</p>
-<h3>Related Work by Authors</h3>
-<p>Aaron Steiner, Ralph Peeters, and Christian Bizer (2026) follow up on WebMall with a comparison of different agent interfaces to the Web including HTML browsing, RAG search, MCP interaction, and NLWeb querying.</p>
-<footer>Agentic Commerce Wiki — static export. Generated from the Obsidian source; links resolve within this site.</footer>
+<nav class="sitebar" aria-label="Site"><div class="inner"><a class="brand" href="../index.html">Agentic Commerce Wiki</a></div></nav>
+<main class="wrap">
+<nav class="subbar" aria-label="Wiki sections"><a href="../catalog.html">Index</a><a href="../overview.html">Overview</a><a href="../next-step.html">Next Step</a><a href="../open-questions.html">Open Questions</a><a href="../contradictions.html">Contradictions</a><a href="../log.html">Log</a></nav>
+
+<header>
+<div class="eyebrow">Benchmark evidence card · WZ5CP8MZ</div>
+<h1>WebMall</h1>
+<p class="lede">A reproducible test of whether a web agent can search, compare, and buy products across four different simulated shops.</p>
+<div class="meta" aria-label="Paper metadata"><span class="pill">Peeters et al.</span><span class="pill">arXiv:2508.13024v2</span><span class="pill">2 December 2025</span><span class="pill">Technical report</span></div>
+<p><a href="https://arxiv.org/abs/2508.13024v2">Abstract and version record</a> · <a href="https://arxiv.org/pdf/2508.13024v2">PDF</a> · <a href="https://github.com/wbsg-uni-mannheim/WebMall">Code and data</a> · <a href="https://wbsg-uni-mannheim.github.io/WebMall/">Project page</a></p>
+</header>
+
+<aside class="callout" aria-labelledby="version-note"><strong id="version-note">Version boundary.</strong> This card reports arXiv v2 only. ArXiv lists v3 dated 30 April 2026, and the live project page now shows additional models and 16 setups. Those later results are outside this card. The v2 paper tests eight setups based on GPT‑4.1 and Claude Sonnet 4.</aside>
+
+<section aria-labelledby="question"><h2 id="question">Research question</h2><div class="card wide"><p>Can a fixed, offline environment measure how well web agents complete long comparison-shopping journeys across several heterogeneous shops? Within that environment, how do three agent choices affect effectiveness and efficiency: page representation, short-term memory, and language model?</p></div></section>
+
+<section aria-labelledby="terms-title"><h2 id="terms-title">Terms used on this page</h2><dl class="terms"><div class="term"><dt>AX-Tree</dt><dd>The browser accessibility tree. It exposes page structure, controls, and labels as text.</dd></div><div class="term"><dt>Vision</dt><dd>A screenshot with numbered marks that connect visible elements to accessibility-tree IDs.</dd></div><div class="term"><dt>Short-term memory</dt><dd>A persistent note area that the agent can update between browser steps.</dd></div></dl></section>
+
+<section aria-labelledby="testbed"><h2 id="testbed">What the benchmark tests</h2><div class="grid">
+<article class="card"><div class="number">4</div><div class="label">simulated shops</div><p>Four locally hosted WooCommerce shops use different templates, visual designs, and category trees. Each shop has search, product pages, a cart, and checkout.</p></article>
+<article class="card"><div class="number">4,421</div><div class="label">product offers</div><p>Offers come from the October 2024 Web Data Commons extraction of Common Crawl. The authors keep English offers with title, description, price, and currency, remove exact duplicates, and cluster offers with GTIN or MPN identifiers.</p></article>
+<article class="card"><div class="number">91</div><div class="label">tasks</div><p>Eleven categories form five groups. The tasks cover cross-shop search, price comparison, cart actions, checkout, substitutes, and compatible products.</p></article>
+<article class="card"><div class="number">50</div><div class="label">maximum steps per run</div><p>A step is an AgentLab browser action such as going to a page, clicking, filling text, or scrolling.</p></article>
 </div>
+<div class="table-wrap"><table><caption class="caption">Task inventory. Counts sum to 91.</caption><thead><tr><th scope="col">Group</th><th scope="col">Categories and task counts</th><th scope="col">Required result</th></tr></thead><tbody>
+<tr><th scope="row">Specific product search</th><td>Named product (12); explicit requirements (11)</td><td>Return every matching offer.</td></tr>
+<tr><th scope="row">Vague product search</th><td>Vague requirements (8); substitutes (6); compatible products (5)</td><td>Interpret the request and return every valid offer or requested alternative.</td></tr>
+<tr><th scope="row">Cheapest product search</th><td>Named product (10); explicit requirements (10); vague requirements (6)</td><td>Return the cheapest valid offer or offers.</td></tr>
+<tr><th scope="row">Action and transaction</th><td>Add to cart (7); checkout (8)</td><td>Place all required offers in carts, or complete checkout.</td></tr>
+<tr><th scope="row">End to end</th><td>Search-to-purchase (8)</td><td>Find the cheapest valid offer, add it, and check out.</td></tr>
+</tbody></table></div>
+<p class="fine">Catalog mix: 1,477 PC-component offers, 1,388 PC-peripheral offers, and 1,556 other-electronics offers. The shops contain 1,150, 1,095, 1,156, and 1,020 offers.</p></section>
+
+<section aria-labelledby="flow-title"><h2 id="flow-title">One run, from instruction to score</h2><figure><ol class="flow">
+<li><span class="step">1</span><b>Receive task</b>A natural-language instruction names the four shop URLs and explains how to submit.</li>
+<li><span class="step">2</span><b>Observe page</b>The agent receives an AX-Tree, a marked screenshot, or both.</li>
+<li><span class="step">3</span><b>Act</b>The agent searches and navigates. A memory setup can save facts between steps.</li>
+<li><span class="step">4</span><b>Submit</b>The agent enters offer URLs on the solution site, or finishes the required cart or checkout action.</li>
+<li><span class="step">5</span><b>Compare</b>The evaluator compares the returned set or completed state with the stored solution.</li>
+</ol><figcaption>The paper permits at most 50 browser actions for each task. The ordered nodes show the evaluation sequence; arrows do not encode a model architecture.</figcaption></figure></section>
+
+<section aria-labelledby="experiment"><h2 id="experiment">Exact experiment</h2><div class="grid">
+<article class="card"><h3>Two model backends</h3><ul><li>GPT‑4.1: <span class="formula">gpt-4.1-2025-04-14</span></li><li>Claude Sonnet 4: <span class="formula">claude-sonnet-4-20250514</span></li></ul></article>
+<article class="card"><h3>Four observation setups per model</h3><ol><li>AX-Tree</li><li>AX-Tree + memory</li><li>AX-Tree + vision</li><li>Vision only</li></ol><p>Two models × four setups = eight baseline agents. The paper does not test a vision-plus-memory setup.</p></article>
+<article class="card wide"><h3>Shared protocol</h3><p>All eight agents use BrowserGym and AgentLab, the same 91 tasks, the same four shops, and the same 50-step cap. No human baseline, random baseline, repeated-run variance, confidence interval, or statistical significance test is reported in v2.</p></article>
+</div></section>
+
+<section aria-labelledby="metrics"><h2 id="metrics">Metrics and denominators</h2><div class="table-wrap"><table><thead><tr><th scope="col">Metric</th><th scope="col">Definition</th><th scope="col">Denominator or aggregation</th></tr></thead><tbody>
+<tr><th scope="row">Completion rate (CR)</th><td>A task is complete only when all relevant answers are returned and no irrelevant answer is added. Cart and checkout tasks require all relevant offers.</td><td><span class="formula">completed tasks ÷ tasks in the reported group</span>. Group sizes are 23, 19, 26, 15, and 8; the full benchmark has 91.</td></tr>
+<tr><th scope="row">Precision</th><td><span class="formula">TP ÷ (TP + FP)</span> for one task, where TP is a correct returned offer and FP is an extra offer.</td><td>Computed per task, then macro-averaged: each task receives equal weight.</td></tr>
+<tr><th scope="row">Recall</th><td><span class="formula">TP ÷ (TP + FN)</span> for one task, where FN is a missed relevant offer.</td><td>Computed per task, then macro-averaged.</td></tr>
+<tr><th scope="row">F1</th><td>The harmonic mean of task precision and task recall.</td><td>Computed per task, then macro-averaged.</td></tr>
+<tr><th scope="row">Efficiency</th><td>Steps, input tokens, output tokens, wall-clock runtime, and estimated API cost.</td><td>Mean per task across all 91 tasks for each setup.</td></tr>
+</tbody></table></div><p class="fine">The paper states the per-task macro averaging rule. It does not document special handling for a zero precision or recall denominator.</p></section>
+
+<section aria-labelledby="results"><h2 id="results">Supported findings</h2><div class="grid">
+<article class="card"><h3>Structure is the strongest common signal</h3><p>Every task group’s best setup uses the AX-Tree. Vision-only agents are weaker. Both vision-only models score 0% CR on the eight end-to-end tasks. Claude vision-only also scores 0% CR on the 15 action and transaction tasks.</p></article>
+<article class="card"><h3>Memory helps selected workflows</h3><p>GPT‑4.1 AX-Tree + memory reaches 100% CR on the 15 action and transaction tasks. Claude AX-Tree + memory reaches 75% CR and 84.26% F1 on the eight end-to-end tasks. Memory reduces mean steps for each model, but increases total token use.</p></article>
+<article class="card"><h3>Search remains hard</h3><p>The best group-level CR is 54.44% for cheapest search (Claude, AX-Tree) and 53.61% for vague search (Claude, AX-Tree). These denominators are 26 and 19 tasks. Partial-credit F1 is 60.29% and 70.16%.</p></article>
+<article class="card"><h3>Failure is often procedural</h3><p>Observed errors include stopping after one shop, using a rigid query, misreading attributes, clicking the wrong control, and submitting malformed URLs. These failures can reduce the score even when some product reasoning is correct.</p></article>
+</div>
+
+<div class="table-wrap"><table><caption class="caption">Best completion result in each task group in arXiv v2, selected from Table 3. Ties are shown.</caption><thead><tr><th scope="col">Task group (n)</th><th scope="col">Best setup</th><th scope="col">CR</th><th scope="col">F1</th></tr></thead><tbody>
+<tr><th scope="row">Specific product search (23)</th><td>Claude Sonnet 4, AX-Tree + memory or AX-Tree + vision</td><td class="best">60.23%</td><td>75.08% or 70.74%</td></tr>
+<tr><th scope="row">Cheapest product search (26)</th><td>Claude Sonnet 4, AX-Tree</td><td class="best">54.44%</td><td>60.29%</td></tr>
+<tr><th scope="row">Vague product search (19)</th><td>Claude Sonnet 4, AX-Tree</td><td class="best">53.61%</td><td>70.16%</td></tr>
+<tr><th scope="row">Action and transaction (15)</th><td>GPT‑4.1, AX-Tree + memory</td><td class="best">100.00%</td><td>100.00%</td></tr>
+<tr><th scope="row">End to end (8)</th><td>GPT‑4.1, AX-Tree + vision; Claude, AX-Tree + memory</td><td class="best">75.00%</td><td>75.00%; 84.26%</td></tr>
+</tbody></table></div>
+
+<div class="table-wrap" style="margin-top:1rem"><table><caption class="caption">Efficiency over all 91 tasks, from Table 5.</caption><thead><tr><th scope="col">Model and setup</th><th scope="col">Steps</th><th scope="col">Input / output tokens</th><th scope="col">Runtime</th><th scope="col">Cost</th></tr></thead><tbody>
+<tr><th scope="row">GPT‑4.1 · AX-Tree</th><td>23.83</td><td>146,112 / 2,642</td><td>144.8 s</td><td>$0.31</td></tr>
+<tr><th scope="row">GPT‑4.1 · AX-Tree + memory</th><td>22.53</td><td>154,609 / 4,084</td><td>159.7 s</td><td>$0.34</td></tr>
+<tr><th scope="row">GPT‑4.1 · AX-Tree + vision</th><td>22.33</td><td>152,659 / 2,184</td><td>171.6 s</td><td>$0.32</td></tr>
+<tr><th scope="row">GPT‑4.1 · vision</th><td>30.94</td><td>119,294 / 2,786</td><td>196.3 s</td><td>$0.26</td></tr>
+<tr><th scope="row">Claude · AX-Tree</th><td>26.67</td><td>239,563 / 8,427</td><td>277.2 s</td><td>$0.85</td></tr>
+<tr><th scope="row">Claude · AX-Tree + memory</th><td>24.68</td><td>300,745 / 16,628</td><td>377.8 s</td><td>$1.15</td></tr>
+<tr><th scope="row">Claude · AX-Tree + vision</th><td>31.44</td><td>361,398 / 9,442</td><td>375.7 s</td><td>$1.23</td></tr>
+<tr><th scope="row">Claude · vision</th><td>45.57</td><td>393,199 / 15,696</td><td>491.6 s</td><td>$1.42</td></tr>
+</tbody></table></div></section>
+
+<section aria-labelledby="reading"><h2 id="reading">What this paper uniquely adds</h2><div class="card wide"><p>WebMall turns comparison shopping into a controlled web-agent problem. Its main contribution is the combination of four independently styled shops, heterogeneous offers collected from many real sites, cross-shop answer sets, and executable cart and checkout actions. This design exposes a failure mode that a single-store benchmark can hide: an agent can find one plausible item and still fail because it did not search and aggregate across every shop.</p></div></section>
+
+<section aria-labelledby="limits"><h2 id="limits">Limits on interpretation</h2><ul>
+<li>The environment is reproducible, but it covers four simulated WooCommerce shops and three electronics categories. Results do not establish performance on the live Web or in other retail domains.</li>
+<li>The authors manually select and distribute task-relevant offers. They use GPT‑4.1, embeddings, and manual constraints to add other catalog offers. The resulting task set is curated, not a random sample of shopping requests.</li>
+<li>There are 91 tasks, including only 5–12 tasks in each category. The paper reports one result per setup without run-to-run variance or statistical tests.</li>
+<li>Exact-match CR treats an extra URL, a missed URL, or a malformed submission as failure. Precision, recall, and F1 show partial progress, but the benchmark does not score user satisfaction or product quality beyond its stored solutions.</li>
+<li>The eight baselines vary several coupled implementation choices across two proprietary model APIs. Their results establish baseline difficulty; they do not isolate causal effects or rank all possible agents.</li>
+</ul></section>
+
+<section aria-labelledby="sources"><h2 id="sources">Primary evidence map</h2><ul class="sources">
+<li><a href="https://arxiv.org/html/2508.13024v2#S2">Section 2</a>: shops, offer collection, catalog construction, and distribution.</li>
+<li><a href="https://arxiv.org/html/2508.13024v2#S3">Section 3 and Table 2</a>: task categories, counts, prompts, and solution artifacts.</li>
+<li><a href="https://arxiv.org/html/2508.13024v2#S4">Section 4 and Tables 3–5</a>: eight setups, 50-step limit, metric definitions, results, efficiency, and observed errors.</li>
+<li><a href="https://arxiv.org/abs/2508.13024v2">arXiv version record</a>: v2 date and later v3 boundary.</li>
+</ul></section>
+
+<footer>Agentic Commerce Wiki — evidence card based on the pinned primary full text. Internal navigation is preserved.</footer>
+</main>
 </body>
 </html>
